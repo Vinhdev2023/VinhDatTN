@@ -37,5 +37,15 @@ class DatabaseSeeder extends Seeder
             AuthorSeeder::class,
             WritingSeeder::class,
         ]);
+
+        $order_ids = OrderDetail::distinct()->get('order_id');
+        foreach($order_ids as $order_id) {
+            $parameters = OrderDetail::where('order_id', '=', $order_id->order_id)->get();
+            $total = 0;
+            foreach($parameters as $parameter) {
+                $total += ($parameter->quantity * $parameter->price); 
+            }
+            Order::where('id', '=', $order_id->order_id)->update(['total' => $total]);
+        }
     }
 }

@@ -20,7 +20,7 @@ class BookFactory extends Factory
     {
         return [
             'isbn_code' => fake()->unique()->isbn13(),
-            'title' => fake()->unique()->title(),
+            'title' => fake()->unique()->name(),
             'image' => fake()->imageUrl(),
             'quantity' => fake()->numberBetween(100, 200),
             'price' => fake()->numberBetween(20, 500)*1000,

@@ -13,6 +13,6 @@ class ClassifyingSeeder extends Seeder
      */
     public function run(): void
     {
-        Classifying::factory()->create();
+        Classifying::factory(5)->create();
     }
 }

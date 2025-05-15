@@ -17,5 +17,11 @@ class OrderDetail extends Model
     
     public $timestamps = false;
 
+    public function Order() {
+        return [
+            $this->belongsTo(Order::class),
+        ];
+    }
+
     use HasFactory;
 }

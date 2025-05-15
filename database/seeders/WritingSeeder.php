@@ -13,6 +13,6 @@ class WritingSeeder extends Seeder
      */
     public function run(): void
     {
-        Writing::factory(4)->create();
+        Writing::factory(5)->create();
     }
 }

@@ -18,11 +18,12 @@ class OrderDetailFactory extends Factory
      */
     public function definition(): array
     {
+        $book = Book::inRandomOrder()->first();
         return [
-            'order_id' => Order::inRandomOrder()->first(['id']),
-            'book_id' => Book::inRandomOrder()->first(['id']),
+            'order_id' => Order::inRandomOrder()->first()->id,
+            'book_id' => $book->id,
             'quantity' => fake()->numberBetween(1, 10),
-            'price' => Book::inRandomOrder()->first()->price,
+            'price' => $book->price,
         ];
     }
 }
