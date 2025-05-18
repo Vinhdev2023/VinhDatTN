@@ -13,6 +13,11 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        Admin::factory()->create([
+            'name' => 'vinh',
+            'email' => 'vinh@gmail.com',
+            'role' => 'admin',
+        ]);
         Admin::factory()->count(10)->create();
     }
 }
