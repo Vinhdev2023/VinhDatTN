@@ -6,15 +6,15 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Booksto - Responsive Bootstrap 4 Admin Dashboard Template</title>
       <!-- Favicon -->
-      <link rel="shortcut icon" href="images/favicon.ico" />
+      <link rel="shortcut icon" href="/customer_plugin/images/favicon.ico" />
       <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="/customer_plugin/css/bootstrap.min.css">
       <!-- Typography CSS -->
-      <link rel="stylesheet" href="css/typography.css">
+      <link rel="stylesheet" href="/customer_plugin/css/typography.css">
       <!-- Style CSS -->
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="/customer_plugin/css/style.css">
       <!-- Responsive CSS -->
-      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="/customer_plugin/css/responsive.css">
    </head>
    <body>
       <!-- loader Start -->
@@ -29,7 +29,7 @@
          <div class="iq-sidebar">
             <div class="iq-sidebar-logo d-flex justify-content-between">
                <a href="index.html" class="header-logo">
-                  <img src="images/logo.png" class="img-fluid rounded-normal" alt="">
+                  <img src="/customer_plugin/images/logo.png" class="img-fluid rounded-normal" alt="">
                   <div class="logo-title">
                      <span class="text-primary text-uppercase">NHASACHTV</span>
                   </div>
@@ -57,7 +57,7 @@
                            </li>
                            <li class="elements">
                               <a href="#sub-menu" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-play-circle-line"></i><span>Sách Văn Học</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                           </li>                                                   
+                           </li>
                         </ul>
                      </li>
                      <li>
@@ -93,7 +93,7 @@
                      </div>
                      <div class="iq-navbar-logo d-flex justify-content-between">
                         <a href="index.html" class="header-logo">
-                           <img src="images/logo.png" class="img-fluid rounded-normal" alt="">
+                           <img src="/customer_plugin/images/logo.png" class="img-fluid rounded-normal" alt="">
                            <div class="logo-title">
                               <span class="text-primary text-uppercase">img01</span>
                            </div>
@@ -301,7 +301,7 @@
                         </li>
                         <li class="line-height pt-3">
                            <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-                              <img src="images/user/1.jpg" class="img-fluid rounded-circle mr-3" alt="user">
+                              <img src="/customer_plugin/images/user/1.jpg" class="img-fluid rounded-circle mr-3" alt="user">
                               <div class="caption">
                                  <h6 class="mb-1 line-height">Ông Trần Thuận</h6>
                                  <p class="mb-0 text-primary">Tài Khoản</p>
@@ -571,31 +571,31 @@
                                     <div class="row mt-3">
                                        <div class="col-md-6">
                                           <div class="form-group">
-                                             <label>Họ và tên: *</label> 
+                                             <label>Họ và tên: *</label>
                                              <input type="text" class="form-control" name="fname" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Số điện thoại: *</label> 
+                                          <div class="form-group">
+                                             <label>Số điện thoại: *</label>
                                              <input type="text" class="form-control" name="mno" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Địa chỉ: *</label> 
+                                          <div class="form-group">
+                                             <label>Địa chỉ: *</label>
                                              <input type="text" class="form-control" name="houseno" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Tỉnh/thành phố: *</label> 
+                                          <div class="form-group">
+                                             <label>Tỉnh/thành phố: *</label>
                                              <input type="text" class="form-control" name="city" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Phường: *</label> 
+                                          <div class="form-group">
+                                             <label>Phường: *</label>
                                              <input type="text" class="form-control" name="state" required="">
                                           </div>
                                        </div>
@@ -646,7 +646,7 @@
                                     <div class="d-flex align-items-center">
                                        <span>Mã giảm giá: </span>
                                        <div class="cvv-input ml-3 mr-3">
-                                          <input type="text" class="form-control" required=""> 
+                                          <input type="text" class="form-control" required="">
                                        </div>
                                        <button type="submit" class="btn btn-primary">Tiếp tục</button>
                                     </div>
@@ -724,57 +724,57 @@
       <!-- Footer END -->
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
+      <script src="/customer_plugin/js/jquery.min.js"></script>
+      <script src="/customer_plugin/js/popper.min.js"></script>
+      <script src="/customer_plugin/js/bootstrap.min.js"></script>
       <!-- Appear JavaScript -->
-      <script src="js/jquery.appear.js"></script>
+      <script src="/customer_plugin/js/jquery.appear.js"></script>
       <!-- Countdown JavaScript -->
-      <script src="js/countdown.min.js"></script>
+      <script src="/customer_plugin/js/countdown.min.js"></script>
       <!-- Counterup JavaScript -->
-      <script src="js/waypoints.min.js"></script>
-      <script src="js/jquery.counterup.min.js"></script>
+      <script src="/customer_plugin/js/waypoints.min.js"></script>
+      <script src="/customer_plugin/js/jquery.counterup.min.js"></script>
       <!-- Wow JavaScript -->
-      <script src="js/wow.min.js"></script>
+      <script src="/customer_plugin/js/wow.min.js"></script>
       <!-- Apexcharts JavaScript -->
-      <script src="js/apexcharts.js"></script>
+      <script src="/customer_plugin/js/apexcharts.js"></script>
       <!-- Slick JavaScript -->
-      <script src="js/slick.min.js"></script>
+      <script src="/customer_plugin/js/slick.min.js"></script>
       <!-- Select2 JavaScript -->
-      <script src="js/select2.min.js"></script>
+      <script src="/customer_plugin/js/select2.min.js"></script>
       <!-- Owl Carousel JavaScript -->
-      <script src="js/owl.carousel.min.js"></script>
+      <script src="/customer_plugin/js/owl.carousel.min.js"></script>
       <!-- Magnific Popup JavaScript -->
-      <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="/customer_plugin/js/jquery.magnific-popup.min.js"></script>
       <!-- Smooth Scrollbar JavaScript -->
-      <script src="js/smooth-scrollbar.js"></script>
+      <script src="/customer_plugin/js/smooth-scrollbar.js"></script>
       <!-- lottie JavaScript -->
-      <script src="js/lottie.js"></script>
+      <script src="/customer_plugin/js/lottie.js"></script>
       <!-- am core JavaScript -->
-      <script src="js/core.js"></script>
+      <script src="/customer_plugin/js/core.js"></script>
       <!-- am charts JavaScript -->
-      <script src="js/charts.js"></script>
+      <script src="/customer_plugin/js/charts.js"></script>
       <!-- am animated JavaScript -->
-      <script src="js/animated.js"></script>
+      <script src="/customer_plugin/js/animated.js"></script>
       <!-- am kelly JavaScript -->
-      <script src="js/kelly.js"></script>
+      <script src="/customer_plugin/js/kelly.js"></script>
       <!-- am maps JavaScript -->
-      <script src="js/maps.js"></script>
+      <script src="/customer_plugin/js/maps.js"></script>
       <!-- am worldLow JavaScript -->
-      <script src="js/worldLow.js"></script>
+      <script src="/customer_plugin/js/worldLow.js"></script>
       <!-- Raphael-min JavaScript -->
-      <script src="js/raphael-min.js"></script>
+      <script src="/customer_plugin/js/raphael-min.js"></script>
       <!-- Morris JavaScript -->
-      <script src="js/morris.js"></script>
+      <script src="/customer_plugin/js/morris.js"></script>
       <!-- Morris min JavaScript -->
-      <script src="js/morris.min.js"></script>
+      <script src="/customer_plugin/js/morris.min.js"></script>
       <!-- Flatpicker Js -->
-      <script src="js/flatpickr.js"></script>
+      <script src="/customer_plugin/js/flatpickr.js"></script>
       <!-- Style Customizer -->
-      <script src="js/style-customizer.js"></script>
+      <script src="/customer_plugin/js/style-customizer.js"></script>
       <!-- Chart Custom JavaScript -->
-      <script src="js/chart-custom.js"></script>
+      <script src="/customer_plugin/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
-      <script src="js/custom.js"></script>
+      <script src="/customer_plugin/js/custom.js"></script>
    </body>
 </html>

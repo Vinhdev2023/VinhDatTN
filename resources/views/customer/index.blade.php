@@ -6,15 +6,15 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>NHASACHTV - Nhà sách trực tuyến</title>
       <!-- Favicon -->
-      <link rel="shortcut icon" href="images/favicon.ico" />
+      <link rel="shortcut icon" href="/customer_plugin/images/favicon.ico" />
       <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="/customer_plugin/css/bootstrap.min.css">
       <!-- Typography CSS -->
-      <link rel="stylesheet" href="css/typography.css">
+      <link rel="stylesheet" href="/customer_plugin/css/typography.css">
       <!-- Style CSS -->
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="/customer_plugin/css/style.css">
       <!-- Responsive CSS -->
-      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="/customer_plugin/css/responsive.css">
    </head>
    <body>
       <!-- Wrapper Start -->
@@ -23,7 +23,7 @@
          <div class="iq-sidebar">
             <div class="iq-sidebar-logo d-flex justify-content-between">
                <a href="index.html" class="header-logo">
-                  <img src="images/logo.png" class="img-fluid rounded-normal" alt="">
+                  <img src="/customer_plugin/images/logo.png" class="img-fluid rounded-normal" alt="">
                   <div class="logo-title">
                      <span class="text-primary text-uppercase">NHASACHTV</span>
                   </div>
@@ -51,7 +51,7 @@
                            </li>
                            <li class="elements">
                               <a href="#sub-menu" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-play-circle-line"></i><span>Sách Văn Học</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                           </li>                                                   
+                           </li>
                         </ul>
                      </li>
                      <li>
@@ -87,7 +87,7 @@
                      </div>
                      <div class="iq-navbar-logo d-flex justify-content-between">
                         <a href="index.html" class="header-logo">
-                           <img src="images/logo.png" class="img-fluid rounded-normal" alt="">
+                           <img src="/customer_plugin/images/logo.png" class="img-fluid rounded-normal" alt="">
                            <div class="logo-title">
                               <span class="text-primary text-uppercase">img01</span>
                            </div>
@@ -370,48 +370,48 @@
                            <ul id="newrealease-slider" class="list-inline p-0 m-0 d-flex align-items-center">
                               <li class="item">
                                  <a href="javascript:void(0);">
-                                    <img src="images/new_realeases/img01.jpg" class="img-fluid w-100 rounded" alt="">
+                                    <img src="/customer_plugin/images/new_realeases/img01.jpg" class="img-fluid w-100 rounded" alt="">
                                  </a>
                               </li>
                               <li class="item">
                                  <a href="javascript:void(0);">
-                                    <img src="images/new_realeases/07.jpg" class="img-fluid w-100 rounded" alt="">
+                                    <img src="/customer_plugin/images/new_realeases/07.jpg" class="img-fluid w-100 rounded" alt="">
                                  </a>
                               </li>
                               <li class="item">
                                  <a href="javascript:void(0);">
-                                    <img src="images/new_realeases/img05.jpg" class="img-fluid w-100 rounded" alt="">
+                                    <img src="/customer_plugin/images/new_realeases/img05.jpg" class="img-fluid w-100 rounded" alt="">
                                  </a>
                               </li>
                               <li class="item">
                                  <a href="javascript:void(0);">
-                                    <img src="images/new_realeases/img04.jpg" class="img-fluid w-100 rounded" alt="">
+                                    <img src="/customer_plugin/images/new_realeases/img04.jpg" class="img-fluid w-100 rounded" alt="">
                                  </a>
                               </li>
                               <li class="item">
                                  <a href="javascript:void(0);">
-                                    <img src="images/new_realeases/img05.jpg" class="img-fluid w-100 rounded" alt="">
+                                    <img src="/customer_plugin/images/new_realeases/img05.jpg" class="img-fluid w-100 rounded" alt="">
                                  </a>
                               </li>
                               <li class="item">
                                  <a href="javascript:void(0);">
-                                    <img src="images/new_realeases/01.jpg" class="img-fluid w-100 rounded" alt="">
+                                    <img src="/customer_plugin/images/new_realeases/01.jpg" class="img-fluid w-100 rounded" alt="">
                                  </a>
                               </li>
                               <li class="item">
                                  <a href="javascript:void(0);">
-                                    <img src="images/new_realeases/07.jpg" class="img-fluid w-100 rounded" alt="">
+                                    <img src="/customer_plugin/images/new_realeases/07.jpg" class="img-fluid w-100 rounded" alt="">
                                  </a>
                               </li>
                               <li class="item">
                                  <a href="javascript:void(0);">
-                                    <img src="images/new_realeases/08.jpg" class="img-fluid w-100 rounded" alt="">
+                                    <img src="/customer_plugin/images/new_realeases/08.jpg" class="img-fluid w-100 rounded" alt="">
                                  </a>
                               </li>
                               <li class="item">
                                  <a href="javascript:void(0);">
-                                    <img src="images/new_realeases/09.jpg" class="img-fluid w-100 rounded" alt="">
-                                 </a>                              
+                                    <img src="/customer_plugin/images/new_realeases/09.jpg" class="img-fluid w-100 rounded" alt="">
+                                 </a>
                               </li>
                            </ul>
                         </div>
@@ -423,11 +423,11 @@
                            <div class="iq-header-title">
                               <h4 class="card-title mb-0">Gợi ý cho bạn</h4>
                            </div>
-                           <div class="iq-card-header-toolbar d-flex align-items-center">                              
+                           <div class="iq-card-header-toolbar d-flex align-items-center">
                               <a href="category.html" class="btn btn-sm btn-primary view-more">Xem Thêm</a>
                            </div>
-                        </div> 
-                        <div class="iq-card-body">  
+                        </div>
+                        <div class="iq-card-body">
                            <div class="row">
                               <div class="col-sm-6 col-md-4 col-lg-3">
                                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
@@ -450,7 +450,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -459,7 +459,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -486,7 +486,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -495,7 +495,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -522,7 +522,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -531,7 +531,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -558,7 +558,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -567,7 +567,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -594,7 +594,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -603,7 +603,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -630,7 +630,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -639,7 +639,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -666,7 +666,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -675,7 +675,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -702,7 +702,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -711,7 +711,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -738,7 +738,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -747,7 +747,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -774,7 +774,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -783,7 +783,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -810,7 +810,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -819,7 +819,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -846,7 +846,7 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
-                                                   </span>                                             
+                                                   </span>
                                                 </div>
                                              </div>
                                              <div class="price d-flex align-items-center">
@@ -855,7 +855,7 @@
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
                                                 <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
-                                             </div>                                      
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -901,7 +901,7 @@
                                        <i class="fa fa-star"></i>
                                     </span>
                                  </div>
-                                 <span class="text-dark mb-3 d-block">NGÀY ĐÒI NỢ – Payback Time 
+                                 <span class="text-dark mb-3 d-block">NGÀY ĐÒI NỢ – Payback Time
                                  “Một cuộc sống hạnh phúc được bắt đầu từ những quyết định đầu tư khôn ngoan”</span>
                                  <button type="submit" class="btn btn-primary learn-more">Xem thêm</button>
                               </div>
@@ -998,19 +998,19 @@
                            <div class="iq-card-header-toolbar d-flex align-items-center">
                               <a href="category.html" class="btn btn-sm btn-primary view-more">Xem thêm</a>
                            </div>
-                        </div>                         
+                        </div>
                         <div class="iq-card-body favorites-contens">
                            <ul id="favorites-slider" class="list-inline p-0 mb-0 row">
                               <li class="col-md-4">
                                  <div class="d-flex align-items-center">
                                     <div class="col-5 p-0 position-relative">
                                        <a href="javascript:void();">
-                                          <img src="images/favorite/01.jpg" class="img-fluid rounded w-100" alt="">
-                                       </a>                                
+                                          <img src="/customer_plugin/images/favorite/01.jpg" class="img-fluid rounded w-100" alt="">
+                                       </a>
                                     </div>
                                     <div class="col-7">
                                        <h5 class="mb-2">D. Trump - Nghệ Thuật Đàm Phán</h5>
-                                       <p class="mb-2">Tác giả : Pedro Araez</p>                                          
+                                       <p class="mb-2">Tác giả : Pedro Araez</p>
                                        <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
                                           <span>Đã bán</span>
                                           <span class="mr-4">69</span>
@@ -1028,12 +1028,12 @@
                                  <div class="d-flex align-items-center">
                                     <div class="col-5 p-0 position-relative">
                                        <a href="javascript:void();">
-                                          <img src="images/favorite/02.jpg" class="img-fluid rounded w-100" alt="">
-                                       </a>                                
+                                          <img src="/customer_plugin/images/favorite/02.jpg" class="img-fluid rounded w-100" alt="">
+                                       </a>
                                     </div>
                                     <div class="col-7">
                                        <h5 class="mb-2">Một Đời Quản Trị</h5>
-                                       <p class="mb-2">Tác giả : Michael klock</p>                                          
+                                       <p class="mb-2">Tác giả : Michael klock</p>
                                        <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
                                           <span>Đã bán</span>
                                           <span class="mr-4">450</span>
@@ -1051,12 +1051,12 @@
                                  <div class="d-flex align-items-center">
                                     <div class="col-5 p-0 position-relative">
                                        <a href="javascript:void();">
-                                          <img src="images/favorite/03.jpg" class="img-fluid rounded w-100" alt="">
-                                       </a>                                
+                                          <img src="/customer_plugin/images/favorite/03.jpg" class="img-fluid rounded w-100" alt="">
+                                       </a>
                                     </div>
                                     <div class="col-7">
                                        <h5 class="mb-2">Người Bán Hàng Vĩ Đại Nhất Thế Giới</h5>
-                                       <p class="mb-2">Tác giả : Daniel Ace</p>                                          
+                                       <p class="mb-2">Tác giả : Daniel Ace</p>
                                        <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
                                           <span>Đã bán</span>
                                           <span class="mr-4">79</span>
@@ -1074,12 +1074,12 @@
                                  <div class="d-flex align-items-center">
                                     <div class="col-5 p-0 position-relative">
                                        <a href="javascript:void();">
-                                          <img src="images/favorite/04.jpg" class="img-fluid rounded w-100" alt="">
-                                       </a>                                
+                                          <img src="/customer_plugin/images/favorite/04.jpg" class="img-fluid rounded w-100" alt="">
+                                       </a>
                                     </div>
                                     <div class="col-7">
                                        <h5 class="mb-2">Economix- Các Nền Kinh Tế Vận Hành</h5>
-                                       <p class="mb-2">Tác giả : Luka Afton</p>                                          
+                                       <p class="mb-2">Tác giả : Luka Afton</p>
                                        <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
                                           <span>Đã bán</span>
                                           <span class="mr-4">900</span>
@@ -1121,57 +1121,57 @@
       <!-- Footer END -->
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
+      <script src="/customer_plugin/js/jquery.min.js"></script>
+      <script src="/customer_plugin/js/popper.min.js"></script>
+      <script src="/customer_plugin/js/bootstrap.min.js"></script>
       <!-- Appear JavaScript -->
-      <script src="js/jquery.appear.js"></script>
+      <script src="/customer_plugin/js/jquery.appear.js"></script>
       <!-- Countdown JavaScript -->
-      <script src="js/countdown.min.js"></script>
+      <script src="/customer_plugin/js/countdown.min.js"></script>
       <!-- Counterup JavaScript -->
-      <script src="js/waypoints.min.js"></script>
-      <script src="js/jquery.counterup.min.js"></script>
+      <script src="/customer_plugin/js/waypoints.min.js"></script>
+      <script src="/customer_plugin/js/jquery.counterup.min.js"></script>
       <!-- Wow JavaScript -->
-      <script src="js/wow.min.js"></script>
+      <script src="/customer_plugin/js/wow.min.js"></script>
       <!-- Apexcharts JavaScript -->
-      <script src="js/apexcharts.js"></script>
+      <script src="/customer_plugin/js/apexcharts.js"></script>
       <!-- Slick JavaScript -->
-      <script src="js/slick.min.js"></script>
+      <script src="/customer_plugin/js/slick.min.js"></script>
       <!-- Select2 JavaScript -->
-      <script src="js/select2.min.js"></script>
+      <script src="/customer_plugin/js/select2.min.js"></script>
       <!-- Owl Carousel JavaScript -->
-      <script src="js/owl.carousel.min.js"></script>
+      <script src="/customer_plugin/js/owl.carousel.min.js"></script>
       <!-- Magnific Popup JavaScript -->
-      <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="/customer_plugin/js/jquery.magnific-popup.min.js"></script>
       <!-- Smooth Scrollbar JavaScript -->
-      <script src="js/smooth-scrollbar.js"></script>
+      <script src="/customer_plugin/js/smooth-scrollbar.js"></script>
       <!-- lottie JavaScript -->
-      <script src="js/lottie.js"></script>
+      <script src="/customer_plugin/js/lottie.js"></script>
       <!-- am core JavaScript -->
-      <script src="js/core.js"></script>
+      <script src="/customer_plugin/js/core.js"></script>
       <!-- am charts JavaScript -->
-      <script src="js/charts.js"></script>
+      <script src="/customer_plugin/js/charts.js"></script>
       <!-- am animated JavaScript -->
-      <script src="js/animated.js"></script>
+      <script src="/customer_plugin/js/animated.js"></script>
       <!-- am kelly JavaScript -->
-      <script src="js/kelly.js"></script>
+      <script src="/customer_plugin/js/kelly.js"></script>
       <!-- am maps JavaScript -->
-      <script src="js/maps.js"></script>
+      <script src="/customer_plugin/js/maps.js"></script>
       <!-- am worldLow JavaScript -->
-      <script src="js/worldLow.js"></script>
+      <script src="/customer_plugin/js/worldLow.js"></script>
       <!-- Raphael-min JavaScript -->
-      <script src="js/raphael-min.js"></script>
+      <script src="/customer_plugin/js/raphael-min.js"></script>
       <!-- Morris JavaScript -->
-      <script src="js/morris.js"></script>
+      <script src="/customer_plugin/js/morris.js"></script>
       <!-- Morris min JavaScript -->
-      <script src="js/morris.min.js"></script>
+      <script src="/customer_plugin/js/morris.min.js"></script>
       <!-- Flatpicker Js -->
-      <script src="js/flatpickr.js"></script>
+      <script src="/customer_plugin/js/flatpickr.js"></script>
       <!-- Style Customizer -->
-      <script src="js/style-customizer.js"></script>
+      <script src="/customer_plugin/js/style-customizer.js"></script>
       <!-- Chart Custom JavaScript -->
-      <script src="js/chart-custom.js"></script>
+      <script src="/customer_plugin/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
-      <script src="js/custom.js"></script>
+      <script src="/customer_plugin/js/custom.js"></script>
    </body>
 </html>
