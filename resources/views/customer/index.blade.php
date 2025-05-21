@@ -54,23 +54,23 @@
                            </li>
                         </ul>
                      </li>
-                     <li>
-                        <a href="#pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-file-alt iq-arrow-left"></i><span>Admin Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li><a href="admin-dashboard.html"><i class="ri-question-answer-line"></i>Dashboard</a></li>
+{{--                     <li>--}}
+{{--                        <a href="#pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-file-alt iq-arrow-left"></i><span>Admin Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>--}}
+{{--                        <ul id="pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">--}}
+{{--                           <li><a href="admin-dashboard.html"><i class="ri-question-answer-line"></i>Dashboard</a></li>--}}
 
-                           <li>
-                              <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Extra Pages</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                              <ul id="extra-pages" class="iq-submenu collapse" data-parent="#pages">
-                                 <li><a href="pages-invoice.html"><i class="ri-question-answer-line"></i>Invoice</a></li>
-                                 <li><a href="pages-comingsoon.html"><i class="ri-mastercard-line"></i>Login</a></li>
-                                 <li><a href="pages-faq.html"><i class="ri-compasses-line"></i>Register</a></li>
-                              </ul>
-                           </li>
-                        </ul>
-                     </li>
-                     <li><a href="book-page.html"><i class="ri-book-line"></i>Yêu Thích</a></li>
-                     <li><a href="book-pdf.html"><i class="ri-book-line"></i>Sách PDF</a></li>
+{{--                           <li>--}}
+{{--                              <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Extra Pages</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>--}}
+{{--                              <ul id="extra-pages" class="iq-submenu collapse" data-parent="#pages">--}}
+{{--                                 <li><a href="pages-invoice.html"><i class="ri-question-answer-line"></i>Invoice</a></li>--}}
+{{--                                 <li><a href="pages-comingsoon.html"><i class="ri-mastercard-line"></i>Login</a></li>--}}
+{{--                                 <li><a href="pages-faq.html"><i class="ri-compasses-line"></i>Register</a></li>--}}
+{{--                              </ul>--}}
+{{--                           </li>--}}
+{{--                        </ul>--}}
+{{--                     </li>--}}
+{{--                     <li><a href="book-page.html"><i class="ri-book-line"></i>Yêu Thích</a></li>--}}
+{{--                     <li><a href="book-pdf.html"><i class="ri-book-line"></i>Sách PDF</a></li>--}}
                      <li><a href="sign-in.html"><i class="ri-book-line"></i>Logout</a></li>
 
                   </ul>
