@@ -137,7 +137,7 @@
                                     <a href="#" class="iq-sub-card" >
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="avatar-40 rounded" src="images/user/1.jpg" alt="">
+                                             <img class="avatar-40 rounded" src="/customer_plugin/images/user/1.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
@@ -149,7 +149,7 @@
                                     <a href="#" class="iq-sub-card" >
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="avatar-40 rounded" src="images/user/02.jpg" alt="">
+                                             <img class="avatar-40 rounded" src="/customer_plugin/images/user/02.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
@@ -161,7 +161,7 @@
                                     <a href="#" class="iq-sub-card" >
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="avatar-40 rounded" src="images/user/03.jpg" alt="">
+                                             <img class="avatar-40 rounded" src="/customer_plugin/images/user/03.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
@@ -173,7 +173,7 @@
                                     <a href="#" class="iq-sub-card" >
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="avatar-40 rounded" src="images/user/04.jpg" alt="">
+                                             <img class="avatar-40 rounded" src="/customer_plugin/images/user/04.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">Đơn hàng #7979 giao không thành công</h6>
@@ -200,7 +200,7 @@
                                     <a href="#" class="iq-sub-card">
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="avatar-40 rounded" src="images/user/01.jpg" alt="">
+                                             <img class="avatar-40 rounded" src="/customer_plugin/images/user/01.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">QT Shop</h6>
@@ -211,7 +211,7 @@
                                     <a href="#" class="iq-sub-card">
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="avatar-40 rounded" src="images/user/02.jpg" alt="">
+                                             <img class="avatar-40 rounded" src="/customer_plugin/images/user/02.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">Tran Thuan Store</h6>
@@ -222,7 +222,7 @@
                                     <a href="#" class="iq-sub-card">
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="avatar-40 rounded" src="images/user/03.jpg" alt="">
+                                             <img class="avatar-40 rounded" src="/customer_plugin/images/user/03.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">Hoang Vu Book</h6>
@@ -233,7 +233,7 @@
                                     <a href="#" class="iq-sub-card">
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="avatar-40 rounded" src="images/user/04.jpg" alt="">
+                                             <img class="avatar-40 rounded" src="/customer_plugin/images/user/04.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">Quang Minh Book</h6>
@@ -244,7 +244,7 @@
                                     <a href="#" class="iq-sub-card">
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="avatar-40 rounded" src="images/user/05.jpg" alt="">
+                                             <img class="avatar-40 rounded" src="/customer_plugin/images/user/05.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">TV Team</h6>
@@ -270,7 +270,7 @@
                                     <a href="#" class="iq-sub-card">
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="rounded" src="images/cart/01.jpg" alt="">
+                                             <img class="rounded" src="/customer_plugin/images/cart/01.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">Night People book</h6>
@@ -282,7 +282,7 @@
                                     <a href="#" class="iq-sub-card">
                                        <div class="media align-items-center">
                                           <div class="">
-                                             <img class="rounded" src="images/cart/02.jpg" alt="">
+                                             <img class="rounded" src="/customer_plugin/images/cart/02.jpg" alt="">
                                           </div>
                                           <div class="media-body ml-3">
                                              <h6 class="mb-0 ">The Sin Eater Book</h6>
@@ -385,7 +385,7 @@
                                        <div class="row align-items-center">
                                           <div class="col-sm-2">
                                              <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="images/checkout/01.jpg" alt=""></a>
+                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/customer_plugin/images/checkout/01.jpg" alt=""></a>
                                              </span>
                                           </div>
                                           <div class="col-sm-4">
@@ -422,7 +422,7 @@
                                        <div class="row align-items-center">
                                           <div class="col-sm-2">
                                              <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="images/checkout/02.jpg" alt=""></a>
+                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/customer_plugin/images/checkout/02.jpg" alt=""></a>
                                              </span>
                                           </div>
                                           <div class="col-sm-4">
@@ -459,7 +459,7 @@
                                        <div class="row align-items-center">
                                           <div class="col-sm-2">
                                              <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="images/checkout/03.jpg" alt=""></a>
+                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/customer_plugin/images/checkout/03.jpg" alt=""></a>
                                              </span>
                                           </div>
                                           <div class="col-sm-4">

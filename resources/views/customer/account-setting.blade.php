@@ -531,7 +531,7 @@
          <div id="content-page" class="content-page">
             <div class="container-fluid">
                <div class="row">
-                  <div class="col-lg-6">
+                  <div class="col">
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
@@ -553,33 +553,6 @@
                                     <label for="altemail">Alternate Email:</label>
                                     <input type="email" class="form-control" id="altemail" value="designtheme@gmail.com">
                                  </div>
-                                 <div class="form-group">
-                                    <label class="d-block">Language Known:</label>
-                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                       <input type="checkbox" class="custom-control-input" id="english" checked="">
-                                       <label class="custom-control-label" for="english">English</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                       <input type="checkbox" class="custom-control-input" id="french" checked="">
-                                       <label class="custom-control-label" for="french">French</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                       <input type="checkbox" class="custom-control-input" id="hindi">
-                                       <label class="custom-control-label" for="hindi">Hindi</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                       <input type="checkbox" class="custom-control-input" id="spanish" checked="">
-                                       <label class="custom-control-label" for="spanish">Spanish</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                       <input type="checkbox" class="custom-control-input" id="arabic">
-                                       <label class="custom-control-label" for="arabic">Arabic</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                       <input type="checkbox" class="custom-control-input" id="italian">
-                                       <label class="custom-control-label" for="italian">Italian</label>
-                                    </div>
-                                 </div>
                                  <button type="submit" class="btn btn-primary">Submit</button>
                                  <button type="reset" class="btn iq-bg-danger">Cancel</button>
                               </form>
@@ -587,7 +560,6 @@
                         </div>
                      </div>
                   </div>
-
                </div>
             </div>
          </div>
