@@ -13,7 +13,7 @@
                 <img src="/admin_plugin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="/admin/logout" class="d-block">vinh</a>
+                <a class="d-block">vinh</a>
             </div>
         </div>
 
@@ -36,8 +36,8 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-item @if($path == '/admin') {{' menu-open'}} @endif">
                     <a href="/admin" class="nav-link @if($path == '/admin') {{' active'}} @endif">
-                        {{-- <i class="nav-icon fas fa-tachometer-alt"></i> --}}
-                        <i class="nav-icon fas fa-truck"></i>
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        {{-- <i class="nav-icon fas fa-truck"></i> --}}
                         <p>
                             Dashboard
                         </p>
@@ -61,37 +61,37 @@
                             <span class="badge badge-info right">0</span>
                         </p>
                     </a>
-                        <ul class="nav nav-treeview">
-                            @if($path == '/admin/product/edit-form')
-                                <li class="nav-item menu-open">
-                                    <a href="/admin/product/edit-form/{{$book->id}}" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Edit Book</p>
-                                    </a>
-                                </li>
-                            @else
-                                <li class="nav-item @if($path == '/admin/product/add-form') {{'menu-open'}} @endif">
-                                    <a href="/admin/product/add-form" class="nav-link @if($path == '/admin/product/add-form') {{'active'}} @endif">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add A New Book</p>
-                                    </a>
-                                </li>
-                            @endif
-                            <li class="nav-item @if($path == '/admin/products' || $path == '/admin/product/detail') {{'menu-open'}} @endif">
-                                <a href="@if($path == '/admin/product/detail'){{'/admin/product/detail/'.$book->id}}@else{{'/admin/products'}}@endif" class="nav-link @if($path == '/admin/products' || $path == '/admin/product/detail') {{'active'}} @endif">
+                    <ul class="nav nav-treeview">
+                        @if($path == '/admin/product/edit-form')
+                            <li class="nav-item menu-open">
+                                <a href="/admin/product/edit-form/{{$book->id}}" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>@if($path == '/admin/product/detail'){{'Book detail'}}@else{{'Books'}}@endif</p>
+                                    <p>Edit Book</p>
                                 </a>
                             </li>
-                            @if($path == '/admin/product/detail')
-                                <li class="nav-item">
-                                    <a href="/admin/products" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Books</p>
-                                    </a>
-                                </li>
-                            @endif
-                        </ul>
+                        @else
+                            <li class="nav-item @if($path == '/admin/product/add-form') {{'menu-open'}} @endif">
+                                <a href="/admin/product/add-form" class="nav-link @if($path == '/admin/product/add-form') {{'active'}} @endif">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add A New Book</p>
+                                </a>
+                            </li>
+                        @endif
+                        <li class="nav-item @if($path == '/admin/products' || $path == '/admin/product/detail') {{'menu-open'}} @endif">
+                            <a href="@if($path == '/admin/product/detail'){{'/admin/product/detail/'.$book->id}}@else{{'/admin/products'}}@endif" class="nav-link @if($path == '/admin/products' || $path == '/admin/product/detail') {{'active'}} @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>@if($path == '/admin/product/detail'){{'Book detail'}}@else{{'Books'}}@endif</p>
+                            </a>
+                        </li>
+                        @if($path == '/admin/product/detail')
+                            <li class="nav-item">
+                                <a href="/admin/products" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Books</p>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
                 </li>
                 <li class="nav-item @if($path == '/admin/categories' || $path == '/admin/category/add-form' || $path == '/admin/category/edit-form') {{'menu-open'}} @endif">
                     <a href="/admin/categories" class="nav-link @if($path == '/admin/categories' || $path == '/admin/category/add-form' || $path == '/admin/category/edit-form') {{'active'}} @endif">
@@ -164,6 +164,14 @@
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Statistics
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/logout" class="nav-link btn btn-primary">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>
+                            Logout
                         </p>
                     </a>
                 </li>

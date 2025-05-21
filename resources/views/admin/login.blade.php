@@ -3,13 +3,17 @@
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card">
-            <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-ban"></i> Alert!</h5>
-                Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my
-                entire
-                soul, like these sweet mornings of spring which I enjoy with my whole heart.
-            </div>
+            @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                    <ul class="">
+                        @foreach ($errors->all() as $error)
+                            <li class="">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
