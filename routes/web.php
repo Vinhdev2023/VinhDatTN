@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminHomeController;
@@ -8,15 +9,14 @@ use App\Http\Controllers\Customer;
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::middleware('adminAuth')->group(function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('index');
-
-        
+        Route::resource('/books', AdminBookController::class);
     });
 
     Route::middleware('adminGuest')->group(function () {
         Route::get('/login', [AdminLoginController::class, 'showLogin'])->name('showLogin');
         Route::post('/login', [AdminLoginController::class, 'login'])->name('login');
     });
-    Route::get('/logout', [AdminLoginController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 });
 
 Route::get('/',[Customer::class,'customer']);

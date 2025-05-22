@@ -1,7 +1,7 @@
-<x-admin-layout :page="'not-login-page'">
-    <x-admin-preloader></x-admin-preloader>
-    <x-admin-navbar></x-admin-navbar>
-    <x-admin-main-sidebar-container :path="$path"></x-admin-main-sidebar-container>
+<x-admin.layout :page="'not-login-page'">
+    <x-admin.preloader></x-admin.preloader>
+    <x-admin.navbar></x-admin.navbar>
+    <x-admin.main-sidebar-container :path="$path"></x-admin.main-sidebar-container>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -89,5 +89,5 @@
             </div><!-- /.container-fluid -->
         </section>
     </div>
-    {{-- <x-admin-footer></x-admin-footer> --}}
-</x-admin-layout>
+    <x-admin.footer></x-admin.footer>
+</x-admin.layout>

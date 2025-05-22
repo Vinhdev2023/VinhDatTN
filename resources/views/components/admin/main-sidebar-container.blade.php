@@ -52,8 +52,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item @if($path == '/admin/products' || $path == '/admin/product/add-form' || $path == '/admin/product/detail' || $path == '/admin/product/edit-form') {{'menu-open'}} @endif">
-                    <a href="/admin/products" class="nav-link @if($path == '/admin/products' || $path == '/admin/product/add-form' || $path == '/admin/product/detail' || $path == '/admin/product/edit-form') {{'active'}} @endif">
+                <li class="nav-item @if($path == 'admin.books.index') {{'menu-open'}} @endif">
+                    <a href="{{ route('admin.books.index') }}" class="nav-link @if($path == 'admin.books.index') {{'active'}} @endif">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Books
@@ -77,15 +77,15 @@
                                 </a>
                             </li>
                         @endif
-                        <li class="nav-item @if($path == '/admin/products' || $path == '/admin/product/detail') {{'menu-open'}} @endif">
-                            <a href="@if($path == '/admin/product/detail'){{'/admin/product/detail/'.$book->id}}@else{{'/admin/products'}}@endif" class="nav-link @if($path == '/admin/products' || $path == '/admin/product/detail') {{'active'}} @endif">
+                        <li class="nav-item @if($path == 'admin.books.index') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.books.index') }}" class="nav-link @if($path == 'admin.books.index') {{'active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>@if($path == '/admin/product/detail'){{'Book detail'}}@else{{'Books'}}@endif</p>
+                                <p>Books</p>
                             </a>
                         </li>
                         @if($path == '/admin/product/detail')
                             <li class="nav-item">
-                                <a href="/admin/products" class="nav-link">
+                                <a href="{{ route('admin.books.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Books</p>
                                 </a>
@@ -167,13 +167,16 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/admin/logout" class="nav-link btn btn-primary">
-                        <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p>
-                            Logout
-                        </p>
-                    </a>
+                <li class="nav-item open-menu">
+                    <form action="/admin/logout" method="post">
+                        @csrf
+                        <button type="submit" class="btn nav-link active">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p>
+                                Logout
+                            </p>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </nav>
