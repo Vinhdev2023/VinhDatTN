@@ -46,4 +46,5 @@
             <!-- /.login-card-body -->
         </div>
     </div>
+    <x-admin.script></x-admin.script>
 </x-admin.layout>

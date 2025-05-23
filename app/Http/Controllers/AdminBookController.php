@@ -20,7 +20,8 @@ class AdminBookController extends Controller
      */
     public function create()
     {
-        //
+        $path = 'admin.books.create';
+        return view('admin.book.create', compact('path'));
     }
 
     /**

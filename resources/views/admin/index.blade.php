@@ -90,4 +90,5 @@
         </section>
     </div>
     <x-admin.footer></x-admin.footer>
+    <x-admin.script></x-admin.script>
 </x-admin.layout>
