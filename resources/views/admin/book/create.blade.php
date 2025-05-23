@@ -110,13 +110,6 @@
             $(function () {
                 bsCustomFileInput.init();
                 $('#summernote').summernote()
-
-                $('#quantity').on('input', function() {
-                    $(this).val($(this).val().replace(/[^0-9]/, ''));
-                });
-                $('#price').on('input', function() {
-                    $(this).val($(this).val().replace(/[e\+\-]/gi, ''));
-                });
                 //Initialize Select2 Elements
                 $('.select2').select2()
 
