@@ -31,45 +31,67 @@
                                 <h3 class="card-title">Form Add A New Book</h3>
                             </x-admin.card-header>
                             <x-admin.card-body>
-                                <div class="form-group">
-                                    <label for="">ISBN code of Book</label>
-                                    <input type="text" name="" id="" class="form-control" placeholder="Enter ISBN code of Book">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Title of Book</label>
-                                    <input type="text" name="" id="" class="form-control" placeholder="Enter Title of Book">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Image of book</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" name="Image" class="custom-file-input" id="exampleInputFile" accept="image/*" onchange="img.src = window.URL.createObjectURL(this.files[0])">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="">ISBN code of Book</label>
+                                            <input type="text" name="" id="" class="form-control" placeholder="Enter ISBN code of Book">
                                         </div>
                                     </div>
-                                    <div class="container mt-3">
-                                        <div class="row">
-                                            <div class="col nav justify-content-center">
-                                                <img src="" style="max-width: 400px;" class="" id="img" alt="abc">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="">Title of Book</label>
+                                            <input type="text" name="" id="" class="form-control" placeholder="Enter Title of Book">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="nav justify-content-center">
+                                                <img src="" style="max-width: 200px;" class="" id="img" alt="image of book">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Image of book</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" name="Image" class="custom-file-input" id="exampleInputFile" accept="image/*" onchange="img.src = window.URL.createObjectURL(this.files[0])">
+                                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">Upload</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="">Price of book</label>
+                                            <div class="input-group">
+                                                <input type="number" name="" id="price" class="form-control" placeholder="Enter price of Book">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">VND</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="">Quantity of book</label>
+                                            <div class="input-group">
+                                                <input type="number" name="" id="quantity" min="0" step="1" oninput="this.value = Math.round(this.value);" class="form-control" placeholder="Enter quantity of Book">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Price of book</label>
-                                    <div class="input-group">
-                                        <input type="number" name="" class="form-control" placeholder="Enter price of Book">
-                                        <div class="input-group-append">
-                                            <div class="input-group-text">VND</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label for="">Description</label>
-                                    <textarea class="form-control" rows="3" name=""></textarea>
+                                    <textarea class="form-control" rows="5" name=""></textarea>
                                 </div>
                             </x-admin.card-body>
                             <x-admin.card-footer>
