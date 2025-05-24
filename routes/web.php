@@ -21,11 +21,10 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
 Route::get('/',[Customer::class,'customer']);
 Route::get('/account_setting',[Customer::class,'account_setting']);
-Route::get('/add_user',[Customer::class,'add_user']);
 Route::get('/book-page',[Customer::class,'book_page']);
 Route::get('/category',[Customer::class,'category']);
 Route::get('/Checkout',[Customer::class,'Checkout']);
 Route::get('/profile',[Customer::class,'profile']);
-Route::get('/profile_edit',[Customer::class,'profile_edit']);
-Route::get('/sign_in',[Customer::class,'sign_in']);
-Route::get('/sign_up',[Customer::class,'sign_up']);
+Route::get('/profile-edit',[Customer::class,'profile_edit']);
+Route::get('/sign-in',[Customer::class,'sign_in']);
+Route::get('/sign-up',[Customer::class,'sign_up']);

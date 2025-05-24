@@ -484,9 +484,9 @@
                                  <div class="row align-items-center">
                                     <div class="col-5">
                                        <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="images/similar-books/01.jpg" alt=""></a>
+                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/01.jpg" alt=""></a>
                                           <div class="view-book">
-                                             <a href="book-page.html" class="btn btn-sm btn-white">Xem thêm</a>
+                                             <a href="book-page" class="btn btn-sm btn-white">Xem thêm</a>
                                           </div>
                                        </div>
                                     </div>
@@ -501,9 +501,9 @@
                                  <div class="row align-items-center">
                                     <div class="col-5">
                                        <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="images/similar-books/02.jpg" alt=""></a>
+                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/02.jpg" alt=""></a>
                                           <div class="view-book">
-                                             <a href="book-page.html" class="btn btn-sm btn-white">Xem sách</a>
+                                             <a href="book-page" class="btn btn-sm btn-white">Xem sách</a>
                                           </div>
                                        </div>
                                     </div>
@@ -518,9 +518,9 @@
                                  <div class="row align-items-center">
                                     <div class="col-5">
                                        <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="images/similar-books/03.jpg" alt=""></a>
+                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/03.jpg" alt=""></a>
                                           <div class="view-book">
-                                             <a href="book-page.html" class="btn btn-sm btn-white">Xem sách</a>
+                                             <a href="book-page" class="btn btn-sm btn-white">Xem sách</a>
                                           </div>
                                        </div>
                                     </div>
@@ -535,9 +535,9 @@
                                  <div class="row align-items-center">
                                     <div class="col-5">
                                        <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="images/similar-books/04.jpg" alt=""></a>
+                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/04.jpg" alt=""></a>
                                           <div class="view-book">
-                                             <a href="book-page.html" class="btn btn-sm btn-white">Xem sách</a>
+                                             <a href="book-page" class="btn btn-sm btn-white">Xem sách</a>
                                           </div>
                                        </div>
                                     </div>
@@ -552,9 +552,9 @@
                                  <div class="row align-items-center">
                                     <div class="col-5">
                                        <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="images/similar-books/05.jpg" alt=""></a>
+                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/05.jpg" alt=""></a>
                                           <div class="view-book">
-                                             <a href="book-page.html" class="btn btn-sm btn-white">Xem sách</a>
+                                             <a href="book-page" class="btn btn-sm btn-white">Xem sách</a>
                                           </div>
                                        </div>
                                     </div>

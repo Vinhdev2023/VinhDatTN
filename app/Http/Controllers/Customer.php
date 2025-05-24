@@ -13,10 +13,7 @@ class Customer extends Controller
     public function account_setting(){
         return view('customer.account-setting');
     }
-
-    public function add_user(){
-        return view('customer.add-user');
-    }
+    
     public function book_page(){
         return view('customer.book-page');
     }
