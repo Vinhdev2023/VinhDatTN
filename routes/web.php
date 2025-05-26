@@ -1,15 +1,21 @@
 <?php
 
+use App\Http\Controllers\AdminAuthorController;
 use App\Http\Controllers\AdminBookController;
+use App\Http\Controllers\AdminCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\AdminPublisherController;
 use App\Http\Controllers\Customer;
 
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::middleware('adminAuth')->group(function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('index');
         Route::resource('/books', AdminBookController::class);
+        Route::resource('/categories', AdminCategoryController::class);
+        Route::resource('/publishers', AdminPublisherController::class);
+        Route::resource('/authors', AdminAuthorController::class);
     });
 
     Route::middleware('adminGuest')->group(function () {

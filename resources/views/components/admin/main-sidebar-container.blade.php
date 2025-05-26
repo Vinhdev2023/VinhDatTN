@@ -74,18 +74,10 @@
                                 <p>Books</p>
                             </a>
                         </li>
-                        @if($path == '/admin/product/detail')
-                            <li class="nav-item">
-                                <a href="{{ route('admin.books.index') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Books</p>
-                                </a>
-                            </li>
-                        @endif
                     </ul>
                 </li>
-                <li class="nav-item @if($path == '/admin/categories' || $path == '/admin/category/add-form' || $path == '/admin/category/edit-form') {{'menu-open'}} @endif">
-                    <a href="/admin/categories" class="nav-link @if($path == '/admin/categories' || $path == '/admin/category/add-form' || $path == '/admin/category/edit-form') {{'active'}} @endif">
+                <li class="nav-item @if($path == 'admin.categories.index' || $path == 'admin.categories.create' || $path == '/admin/category/edit-form') {{'menu-open'}} @endif">
+                    <a href="{{ route('admin.categories.index') }}" class="nav-link @if($path == 'admin.categories.index' || $path == 'admin.categories.create' || $path == '/admin/category/edit-form') {{'active'}} @endif">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Categories
@@ -94,31 +86,46 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @if($path == '/admin/category/edit-form')
-                            <li class="nav-item menu-open">
-                                <a href="/admin/category/edit-form/{{$category[0]->id}}" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Edit Category</p>
-                                </a>
-                            </li>
-                        @else
-                            <li class="nav-item @if($path == '/admin/category/add-form') {{'menu-open'}} @endif">
-                                <a href="/admin/category/add-form" class="nav-link @if($path == '/admin/category/add-form') {{'active'}} @endif">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add A New Category</p>
-                                </a>
-                            </li>
-                        @endif
-                        <li class="nav-item @if($path == '/admin/categories') {{'menu-open'}} @endif">
-                            <a href="/admin/categories" class="nav-link @if($path == '/admin/categories') {{'active'}} @endif">
+                        <li class="nav-item @if($path == 'admin.categories.create') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.categories.create') }}" class="nav-link @if($path == 'admin.categories.create') {{'active'}} @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add A New Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item @if($path == 'admin.categories.index') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link @if($path == 'admin.categories.index') {{'active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Categories</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item  @if($path == '/admin/publishers' || $path == '/admin/publisher/add-form' || $path == '/admin/publisher/edit-form') {{'menu-open'}} @endif">
-                    <a href="/admin/publishers" class="nav-link @if($path == '/admin/publishers' || $path == '/admin/publisher/add-form' || $path == '/admin/publisher/edit-form') {{'active'}} @endif">
+                <li class="nav-item @if($path == 'admin.authors.index' || $path == 'admin.authors.create' || $path == '/admin/category/edit-form') {{'menu-open'}} @endif">
+                    <a href="{{ route('admin.authors.index') }}" class="nav-link @if($path == 'admin.authors.index' || $path == 'admin.authors.create' || $path == '/admin/category/edit-form') {{'active'}} @endif">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Authors
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">0</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item @if($path == 'admin.authors.create') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.authors.create') }}" class="nav-link @if($path == 'admin.authors.create') {{'active'}} @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add A New Author</p>
+                            </a>
+                        </li>
+                        <li class="nav-item @if($path == 'admin.authors.index') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.authors.index') }}" class="nav-link @if($path == 'admin.authors.index') {{'active'}} @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Authors</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item  @if($path == 'admin.publishers.index' || $path == 'admin.publishers.create' || $path == 'admin.publishers.edit') {{'menu-open'}} @endif">
+                    <a href="{{ route('admin.publishers.index') }}" class="nav-link @if($path == 'admin.publishers.index' || $path == 'admin.publishers.create' || $path == 'admin.publishers.edit') {{'active'}} @endif">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Publishers
@@ -127,23 +134,22 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @if($path == '/admin/publisher/edit-form')
+                        @if ($path == 'admin.publishers.edit')
                             <li class="nav-item menu-open">
-                                <a href="/admin/publisher/edit-form/{{$publisher[0]->id}}" class="nav-link active">
+                                <a href="#" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Edit Publisher</p>
-                                </a>
-                            </li>
-                        @else
-                            <li class="nav-item @if($path == '/admin/publisher/add-form') {{'menu-open'}} @endif">
-                                <a href="/admin/publisher/add-form" class="nav-link @if($path == '/admin/publisher/add-form') {{'active'}} @endif">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add A New Publisher</p>
+                                    <p>Edit A Publisher</p>
                                 </a>
                             </li>
                         @endif
-                        <li class="nav-item @if($path == '/admin/publishers') {{'menu-open'}} @endif">
-                            <a href="/admin/publishers" class="nav-link @if($path == '/admin/publishers') {{'active'}} @endif">
+                        <li class="nav-item @if($path == 'admin.publishers.create') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.publishers.create') }}" class="nav-link @if($path == 'admin.publishers.create') {{'active'}} @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add A New Publisher</p>
+                            </a>
+                        </li>
+                        <li class="nav-item @if($path == 'admin.publishers.index') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.publishers.index') }}" class="nav-link @if($path == 'admin.publishers.index') {{'active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Publishers</p>
                             </a>

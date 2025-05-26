@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-12">
                     <x-admin.card>
-                        <form action="{{ route('admin.books.store') }}" method="post">
+                        <form action="{{ route('admin.books.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <x-admin.card-header>
                                 <h3 class="card-title">Form Add A New Book</h3>
@@ -73,7 +73,7 @@
                                         <div class="form-group">
                                             <label for="">Price of book</label>
                                             <div class="input-group">
-                                                <input type="number" name="" id="price" class="form-control" placeholder="Enter price of Book">
+                                                <input type="number" name="" oninput="this.value = Math.round(this.value);" id="price" class="form-control" placeholder="Enter price of Book">
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">VND</div>
                                                 </div>
@@ -124,18 +124,20 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Minimal</label>
-                                    <select class="form-control select2" style="width: 100%;">
-                                        <option selected="selected">Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option>Washington</option>
-                                    </select>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>Minimal</label>
+                                            <select class="form-control select2" style="width: 100%;">
+                                                <option selected="selected">Alabama</option>
+                                                <option>Alaska</option>
+                                                <option>California</option>
+                                                <option>Delaware</option>
+                                                <option>Tennessee</option>
+                                                <option>Texas</option>
+                                                <option>Washington</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </x-admin.card-body>
                             <x-admin.card-footer>
