@@ -41,12 +41,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>abc</td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary">detail</a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($authors as $author)
+                                        <tr>
+                                            <td>{{ $author->name }}</td>
+                                            <td>
+                                                <form action="{{ route('admin.authors.destroy', $author->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a href="{{ route('admin.authors.edit', $author->id) }}" class="btn btn-warning">Update</a>
+                                                    <button type="submit" onclick="return confirm('You want to delete?')" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -57,7 +64,7 @@
                             </table>
                         </x-admin.card-body>
                         <x-admin.card-footer>
-                            <a href="{{ route('admin.books.create') }}" class="btn btn-primary">Add a new book</a>
+                            <a href="{{ route('admin.authors.create') }}" class="btn btn-primary">Add a new author</a>
                         </x-admin.card-footer>
                     </x-admin.card>
                 </div>

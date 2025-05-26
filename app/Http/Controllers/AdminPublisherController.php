@@ -14,7 +14,7 @@ class AdminPublisherController extends Controller
     public function index()
     {
         $path='admin.publishers.index';
-        $publishers = Publisher::orderBy('created_at', 'desc')->get();
+        $publishers = Publisher::orderBy('updated_at', 'desc')->get();
         return view('admin.publisher.publishers', compact('path', 'publishers'));
     }
 
@@ -56,7 +56,7 @@ class AdminPublisherController extends Controller
     public function update(Request $request, Publisher $publisher)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255'
+            'name' => 'required|string|max:255|unique:publishers,name'
         ]);
 
         $publisher->update($validated);

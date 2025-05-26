@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-12">
                     <x-admin.card>
-                        <form action="{{ route('admin.authors.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.authors.store') }}" method="post">
                             @csrf
                             <x-admin.card-header>
                                 <h3 class="card-title">Form Add A New Author</h3>
@@ -33,7 +33,7 @@
                             <x-admin.card-body>
                                 <div class="form-group">
                                     <label for="">Name of Author</label>
-                                    <input type="text" name="" id="" class="form-control" placeholder="Enter name of author">
+                                    <input type="text" name="name" id="" value="{{ old('name') }}" class="form-control" placeholder="Enter name of author" required>
                                 </div>
                             </x-admin.card-body>
                             <x-admin.card-footer>

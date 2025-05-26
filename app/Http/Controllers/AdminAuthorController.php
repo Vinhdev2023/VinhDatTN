@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use Illuminate\Http\Request;
 
 class AdminAuthorController extends Controller
@@ -12,7 +13,8 @@ class AdminAuthorController extends Controller
     public function index()
     {
         $path='admin.authors.index';
-        return view('admin.author.authors', compact('path'));
+        $authors = Author::orderBy('updated_at', 'desc')->get();
+        return view('admin.author.authors', compact('path', 'authors'));
     }
 
     /**
@@ -29,7 +31,13 @@ class AdminAuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:authors,name'
+        ]);
+
+        Author::create($validated);
+
+        return redirect();
     }
 
     /**
