@@ -33,7 +33,7 @@
                             <x-admin.card-body>
                                 <div class="form-group">
                                     <label for="">Name of Category</label>
-                                    <input type="text" name="" id="" class="form-control" placeholder="Enter name of category">
+                                    <input type="text" name="name" value="{{ old('name') }}" required id="" class="form-control" placeholder="Enter name of category">
                                 </div>
                             </x-admin.card-body>
                             <x-admin.card-footer>
@@ -44,6 +44,17 @@
                     </x-admin.card>
                 </div>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </x-admin.main-content>
     </div>
     <x-admin.footer></x-admin.footer>

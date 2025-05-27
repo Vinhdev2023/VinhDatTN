@@ -26,7 +26,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 });
 
 Route::get('/',[Customer::class,'customer']);
-Route::get('/account_setting',[Customer::class,'account_setting']);
+Route::get('/account-setting',[Customer::class,'account_setting']);
 Route::get('/book-page',[Customer::class,'book_page']);
 Route::get('/category',[Customer::class,'category']);
 Route::get('/Checkout',[Customer::class,'Checkout']);

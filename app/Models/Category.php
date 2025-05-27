@@ -14,7 +14,7 @@ class Category extends Model
 
     use HasFactory;
 
-    public function book() {
-        return $this->hasManyThrough(Book::class, Classifying::class);
+    public function classifying() {
+        return $this->hasMany(Classifying::class);
     }
 }

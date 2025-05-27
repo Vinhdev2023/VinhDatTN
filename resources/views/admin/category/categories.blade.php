@@ -21,6 +21,13 @@
         </section>
 
         <x-admin.main-content>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <x-admin.card>
@@ -41,12 +48,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>abc</td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary">detail</a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($categories as $category)
+                                        <tr>
+                                            <td>{{ $category->name }}</td>
+                                            <td>
+                                                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning">Update</a>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('You want to delete?')">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -72,7 +86,7 @@
                     "paging": true,
                     "lengthChange": false,
                     "searching": true,
-                    "ordering": true,
+                    "ordering": false,
                     "info": true,
                     "autoWidth": false,
                     "responsive": true,

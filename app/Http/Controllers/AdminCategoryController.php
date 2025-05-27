@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
@@ -12,7 +13,8 @@ class AdminCategoryController extends Controller
     public function index()
     {
         $path='admin.categories.index';
-        return view('admin.category.categories', compact('path'));
+        $categories = Category::orderBy('updated_at', 'desc')->get();
+        return view('admin.category.categories', compact('path', 'categories'));
     }
 
     /**
@@ -29,38 +31,49 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name'
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        Category::create($validated);
+
+        return redirect()->route('admin.categories.index')->with('success', 'Category is Created');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        $path='admin.categories.edit';
+        return view('admin.category.edit', compact('path', 'category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name'
+        ]);
+
+        $category->update($validated);
+
+        return redirect()->route('admin.categories.index')->with('success', 'Category is Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        if ($category->load('classifying')->classifying()->exists()) {
+            return redirect()->route('admin.categories.index')->with('fail', 'Category Cannot Deleted Because It Has Some Book!');
+        }
+
+        $category->delete();
+
+        return redirect()->route('admin.categories.index')->with('success', 'Category is Deleted');
     }
 }

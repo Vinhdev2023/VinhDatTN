@@ -37,38 +37,43 @@ class AdminAuthorController extends Controller
 
         Author::create($validated);
 
-        return redirect();
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        return redirect()->route('admin.authors.index')->with('success', 'Author is Created!');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Author $author)
     {
-        //
+        $path='admin.authors.edit';
+        return view('admin.author.edit', compact('path', 'author'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Author $author)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:authors,name'
+        ]);
+
+        $author->update($validated);
+
+        return redirect()->route('admin.authors.index')->with('success', 'Author is Updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Author $author)
     {
-        //
+        if ($author->load('writing')->writing()->exists()) {
+            return redirect()->route('admin.authors.index')->with('fail', 'Author Cannot Deleted Because It Has Some Book!');
+        }
+
+        $author->delete();
+
+        return redirect()->route('admin.authors.index')->with('success', 'Author is Delete');
     }
 }

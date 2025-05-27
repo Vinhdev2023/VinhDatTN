@@ -38,7 +38,7 @@ class AdminPublisherController extends Controller
 
         Publisher::create($validated);
 
-        return redirect()->route('admin.publishers.index')->with('success', 'Publisher Created!');
+        return redirect()->route('admin.publishers.index')->with('success', 'Publisher is Created!');
     }
 
     /**

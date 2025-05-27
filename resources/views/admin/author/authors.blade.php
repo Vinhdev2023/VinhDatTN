@@ -21,6 +21,20 @@
         </section>
 
         <x-admin.main-content>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('fail'))
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                    {{ session('fail') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <x-admin.card>
@@ -79,7 +93,7 @@
                     "paging": true,
                     "lengthChange": false,
                     "searching": true,
-                    "ordering": true,
+                    "ordering": false,
                     "info": true,
                     "autoWidth": false,
                     "responsive": true,

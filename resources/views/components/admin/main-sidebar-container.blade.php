@@ -76,8 +76,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @if($path == 'admin.categories.index' || $path == 'admin.categories.create' || $path == '/admin/category/edit-form') {{'menu-open'}} @endif">
-                    <a href="{{ route('admin.categories.index') }}" class="nav-link @if($path == 'admin.categories.index' || $path == 'admin.categories.create' || $path == '/admin/category/edit-form') {{'active'}} @endif">
+                <li class="nav-item @if($path == 'admin.categories.index' || $path == 'admin.categories.create' || $path == 'admin.categories.edit') {{'menu-open'}} @endif">
+                    <a href="{{ route('admin.categories.index') }}" class="nav-link @if($path == 'admin.categories.index' || $path == 'admin.categories.create' || $path == 'admin.categories.edit') {{'active'}} @endif">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Categories
@@ -86,6 +86,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @if ($path == 'admin.categories.edit')
+                            <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Edit Category</p>
+                            </a>
+                        </li>
+                        @endif
                         <li class="nav-item @if($path == 'admin.categories.create') {{'menu-open'}} @endif">
                             <a href="{{ route('admin.categories.create') }}" class="nav-link @if($path == 'admin.categories.create') {{'active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
@@ -100,8 +108,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @if($path == 'admin.authors.index' || $path == 'admin.authors.create' || $path == '/admin/category/edit-form') {{'menu-open'}} @endif">
-                    <a href="{{ route('admin.authors.index') }}" class="nav-link @if($path == 'admin.authors.index' || $path == 'admin.authors.create' || $path == '/admin/category/edit-form') {{'active'}} @endif">
+                <li class="nav-item @if($path == 'admin.authors.index' || $path == 'admin.authors.create' || $path == 'admin.authors.edit') {{'menu-open'}} @endif">
+                    <a href="{{ route('admin.authors.index') }}" class="nav-link @if($path == 'admin.authors.index' || $path == 'admin.authors.create' || $path == 'admin.authors.edit') {{'active'}} @endif">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Authors
@@ -110,6 +118,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @if ($path == 'admin.authors.edit')
+                            <li class="nav-item menu-open">
+                                <a href="#" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Edit Author</p>
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item @if($path == 'admin.authors.create') {{'menu-open'}} @endif">
                             <a href="{{ route('admin.authors.create') }}" class="nav-link @if($path == 'admin.authors.create') {{'active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
@@ -138,7 +154,7 @@
                             <li class="nav-item menu-open">
                                 <a href="#" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Edit A Publisher</p>
+                                    <p>Edit Publisher</p>
                                 </a>
                             </li>
                         @endif
