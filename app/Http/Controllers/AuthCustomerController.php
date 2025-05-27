@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Customer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
+class AuthCustomerController extends Controller
+{
+    public function showRegister () {
+        return view('customer.sign-up');
+    }
+
+    public function showLogin () {
+        return view('customer.sign-in');
+    }
+
+    public function register(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:customers,email',
+            'password' => 'required|string|min:8|confirmed'
+        ]);
+
+        $customer = Customer::create($validated);
+
+        Auth::guard('customers')->login($customer);
+
+        return redirect('/');
+    }
+
+    public function login(Request $request) {
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:8'
+        ]);
+
+        if (Auth::guard('customers')->attempt($validated)) {
+            $request->session()->regenerate();
+
+            return redirect('/');
+        }
+
+        throw ValidationException::withMessages([
+            'credentials' => 'sorry, incorrect credentials'
+        ]);
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('customer.sign_in.show');
+    }
+}

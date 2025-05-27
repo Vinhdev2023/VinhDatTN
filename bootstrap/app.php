@@ -2,6 +2,8 @@
 
 use App\Http\Middleware\AdminAuth;
 use App\Http\Middleware\AdminGuest;
+use App\Http\Middleware\CustomerAuth;
+use App\Http\Middleware\CustomerGuest;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,6 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'adminAuth' => AdminAuth::class,
             'adminGuest' => AdminGuest::class,
+            'customerAuth' => CustomerAuth::class,
+            'customerGuest' => CustomerGuest::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

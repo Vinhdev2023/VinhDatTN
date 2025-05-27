@@ -39,15 +39,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>abc</td>
-                                        <td>{{number_format(100000)}}</td>
-                                        <td>{{number_format(1000)}}</td>
-                                        <td>are selling</td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary">detail</a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($books as $book)
+                                        <tr>
+                                            <td>{{ $book->title }}</td>
+                                            <td><img src="/images/{{ $book->image }}" alt="{{ $book->image }}" style="width: 200px"></td>
+                                            <td>{{number_format($book->price, 0, ",", ".")}}</td>
+                                            <td>{{number_format($book->quantity, 0, ",", ".")}}</td>
+                                            <td>
+                                                <a href="#" class="btn btn-primary">show</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -76,7 +78,7 @@
                     "paging": true,
                     "lengthChange": false,
                     "searching": true,
-                    "ordering": true,
+                    "ordering": false,
                     "info": true,
                     "autoWidth": false,
                     "responsive": true,

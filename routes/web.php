@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminAuthorController;
 use App\Http\Controllers\AdminBookController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AuthCustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminHomeController;
@@ -25,12 +26,18 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 });
 
-Route::get('/',[Customer::class,'customer']);
+Route::get('/',[Customer::class,'customer'])->middleware('customerAuth');
 Route::get('/account-setting',[Customer::class,'account_setting']);
 Route::get('/book-page',[Customer::class,'book_page']);
 Route::get('/category',[Customer::class,'category']);
 Route::get('/Checkout',[Customer::class,'Checkout']);
 Route::get('/profile',[Customer::class,'profile']);
 Route::get('/profile-edit',[Customer::class,'profile_edit']);
-Route::get('/sign-in',[Customer::class,'sign_in']);
-Route::get('/sign-up',[Customer::class,'sign_up']);
+Route::middleware('customerGuest')->group(function () {
+    Route::get('/sign-in',[AuthCustomerController::class,'showLogin'])->name('customer.sign_in.show');
+    Route::post('/sign-in', [AuthCustomerController::class,'login'])->name('customer.sign_in');
+    Route::get('/sign-up',[AuthCustomerController::class,'showRegister'])->name('customer.sign_up.show');
+    Route::post('/sign-up', [AuthCustomerController::class,'register'])->name('customer.sign_up');
+
+});
+Route::post('/logout', [AuthCustomerController::class,'logout'])->name('customer.logout');

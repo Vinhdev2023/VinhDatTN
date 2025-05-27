@@ -33,26 +33,27 @@
                           <div class="sign-in-from bg-primary rounded">
                               <h3 class="mb-0 text-center text-white">Sign Up</h3>
                               <p class="text-center text-white">Enter your email address and password to access admin panel.</p>
-                              <form class="mt-4 form-text">
+                              <form class="mt-4 form-text" action="" method="post">
+                                @csrf
                                   <div class="form-group">
                                       <label for="exampleInputEmail1">Your Full Name</label>
-                                      <input type="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Your Full Name">
+                                      <input type="text" name="name" class="form-control mb-0" id="exampleInputEmail1" placeholder="Your Full Name" required>
                                   </div>
                                   <div class="form-group">
                                       <label for="exampleInputEmail2">Email address</label>
-                                      <input type="email" class="form-control mb-0" id="exampleInputEmail2" placeholder="Enter email">
+                                      <input type="email" name="email" class="form-control mb-0" id="exampleInputEmail2" placeholder="Enter email" required>
                                   </div>
                                   <div class="form-group">
                                       <label for="exampleInputPassword1">Password</label>
-                                      <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password">
+                                      <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
                                   </div>
                                   <div class="form-group">
                                       <label for="exampleInputPassword1">Conform Password</label>
-                                      <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password">
+                                      <input type="password" name="password_confirmation" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
                                   </div>
                                   <div class="d-inline-block w-100">
                                       <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
-                                          <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                          <input type="checkbox" class="custom-control-input" id="customCheck1" required>
                                           <label class="custom-control-label" for="customCheck1">I accept <a href="#" class="text-light">Terms and Conditions</a></label>
                                       </div>
                                   </div>

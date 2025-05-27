@@ -64,7 +64,12 @@
                         </ul>
                      </li>
 
-                     <li><a href="sign-in.html"><i class="ri-book-line"></i>Logout</a></li>
+                     <li class="d-inline-block w-100 text-center p-3">
+                        <form action="{{ route('customer.logout') }}" method="post" class="iq-waves-effect collapsed">
+                           @csrf
+                           <button type="submit" class="btn btn-primary"><i class="ri-book-line"></i>Logout</button>
+                        </form>
+                     </li>
 
                   </ul>
                </nav>
@@ -341,7 +346,10 @@
                                        </div>
                                     </a>
                                     <div class="d-inline-block w-100 text-center p-3">
-                                       <a class="bg-primary iq-sign-btn" href="sign-in.html" role="button">Sign out<i class="ri-login-box-line ml-2"></i></a>
+                                          <form action="{{ route('customer.logout') }}" method="post">
+                                             @csrf
+                                             <button type="submit" class="btn btn-primary"><i class="ri-book-line"></i>Logout</button>
+                                          </form>
                                     </div>
                                  </div>
                               </div>
