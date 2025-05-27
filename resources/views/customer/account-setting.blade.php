@@ -55,15 +55,7 @@
                           <li><a href="wishlist.html"><i class="ri-heart-line"></i>wishlist</a></li>
                         </ul>
                      </li>
-                     <li>
-                        <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="admin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li><a href="admin-dashboard.html"><i class="ri-dashboard-line"></i>Dashboard</a></li>
-                           <li><a href="admin-category.html"><i class="ri-list-check-2"></i>Category Lists</a></li>
-                           <li><a href="admin-author.html"><i class="ri-file-user-line"></i>Author</a></li>
-                           <li><a href="admin-books.html"><i class="ri-book-2-line"></i>Books</a></li>
-                        </ul>
-                     </li>
+
                      <li>
                         <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>User</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
