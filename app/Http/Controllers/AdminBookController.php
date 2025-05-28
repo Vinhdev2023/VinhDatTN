@@ -82,6 +82,11 @@ class AdminBookController extends Controller
     public function show(Book $book)
     {
         $path='admin.books.index';
+        $book->load('category');
+        $book->load('author');
+        $book->load('publisher');
+        // dd($book->author);
+        // dd($book->category);
         return view('admin.book.show', compact('path', 'book'));
     }
 

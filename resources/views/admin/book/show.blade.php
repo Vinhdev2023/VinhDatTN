@@ -35,93 +35,41 @@
                                 <div class="col-12 col-sm-6">
                                     <h3 class="my-3">{{$book->title}}</h3>
                                     <hr>
-                                    <h4>Available Colors</h4>
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-default text-center active">
-                                        <input type="radio" name="color_option" id="color_option_a1" autocomplete="off" checked>
-                                        Green
-                                        <br>
-                                        <i class="fas fa-circle fa-2x text-green"></i>
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_a2" autocomplete="off">
-                                        Blue
-                                        <br>
-                                        <i class="fas fa-circle fa-2x text-blue"></i>
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_a3" autocomplete="off">
-                                        Purple
-                                        <br>
-                                        <i class="fas fa-circle fa-2x text-purple"></i>
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_a4" autocomplete="off">
-                                        Red
-                                        <br>
-                                        <i class="fas fa-circle fa-2x text-red"></i>
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_a5" autocomplete="off">
-                                        Orange
-                                        <br>
-                                        <i class="fas fa-circle fa-2x text-orange"></i>
-                                        </label>
+                                    <h4>Author</h4>
+                                    <div class="btn-group btn-group-toggle">
+                                        @foreach ($book->author as $author)
+                                            @if ($author == null)
+                                                <label for="" class="btn text-center">
+                                                    No Author
+                                                </label>
+                                                @break
+                                            @endif
+                                            <label for="" class="btn text-center">
+                                                {{ $author->name }}
+                                            </label>
+                                        @endforeach
                                     </div>
 
                                     <h4 class="mt-3">Publisher</h4>
-                                    <div class="btn-group btn-group-toggle">
-                                        <label class="btn btn-default text-center">
-                                            <span class="text-xl">S</span>
-                                            <br>
-                                            Small
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_b2" autocomplete="off">
-                                        <span class="text-xl">M</span>
-                                        <br>
-                                        Medium
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_b3" autocomplete="off">
-                                        <span class="text-xl">L</span>
-                                        <br>
-                                        Large
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_b4" autocomplete="off">
-                                        <span class="text-xl">XL</span>
-                                        <br>
-                                        Xtra-Large
+                                    <div class="btn-group">
+                                        <label for="" class="btn btn-default text-center">
+                                            {{ $book->publisher->name }}
                                         </label>
                                     </div>
 
-                                    <h4 class="mt-3">Size <small>Please select one</small></h4>
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
-                                        <span class="text-xl">S</span>
-                                        <br>
-                                        Small
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_b2" autocomplete="off">
-                                        <span class="text-xl">M</span>
-                                        <br>
-                                        Medium
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_b3" autocomplete="off">
-                                        <span class="text-xl">L</span>
-                                        <br>
-                                        Large
-                                        </label>
-                                        <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_b4" autocomplete="off">
-                                        <span class="text-xl">XL</span>
-                                        <br>
-                                        Xtra-Large
-                                        </label>
+                                    <h4 class="mt-3">Category</h4>
+                                    <div class="btn-group">
+                                        @foreach ($book->category as $category)
+                                            @if ($category == null)
+                                                <label for="" class="btn text-center">
+                                                    No Category
+                                                </label>
+                                                @break
+                                            @endif
+                                            <label for="" class="btn btn-default text-center">
+                                                {{ $category->name }}
+                                            </label>
+                                        @endforeach
                                     </div>
 
                                     <div class="bg-gray py-2 px-3 mt-4">

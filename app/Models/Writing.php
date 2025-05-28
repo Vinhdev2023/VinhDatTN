@@ -16,4 +16,8 @@ class Writing extends Model
     public $timestamps = false;
 
     use HasFactory;
+
+    public function author() {
+        return $this->belongsTo(Author::class);
+    }
 }
