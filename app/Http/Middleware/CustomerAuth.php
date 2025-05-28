@@ -17,6 +17,10 @@ class CustomerAuth
     public function handle(Request $request, Closure $next): Response
     {
         if(!Auth::guard('customers')->check()) {
+            Auth::logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
             return redirect()->route('customer.sign_in.show');
         }
         return $next($request);

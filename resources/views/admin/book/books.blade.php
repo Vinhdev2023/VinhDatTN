@@ -46,7 +46,7 @@
                                             <td>{{number_format($book->price, 0, ",", ".")}}</td>
                                             <td>{{number_format($book->quantity, 0, ",", ".")}}</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">show</a>
+                                                <a href="{{ route('admin.books.show', $book->id)}}" class="btn btn-primary">show</a>
                                             </td>
                                         </tr>
                                     @endforeach

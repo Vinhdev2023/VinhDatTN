@@ -18,6 +18,11 @@ class AdminAuth
     {
         // dd(Auth::guard('admins')->check());
         if(!Auth::guard('admins')->check()) {
+            Auth::logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
             return redirect()->route('admin.login');
         }
         return $next($request);
