@@ -25,7 +25,7 @@
                <a href="/" class="header-logo">
                   <img src="/customer_plugin/images/logo.png" class="img-fluid rounded-normal" alt="">
                   <div class="logo-title">
-                     <span class="text-primary text-uppercase">NHASACHTV</span>
+                     <span class="text-primary text-uppercase">BOOKSTORE</span>
                   </div>
                </a>
             </div>
@@ -38,9 +38,9 @@
                           <a href="#dashboard" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="las la-home iq-arrow-left"></i><span>Trang Chủ</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                           <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
 {{--                              <li><a href="index.html"><i class="las la-house-damage"></i>Home Page</a></li>--}}
-                              <li><a href="category.html"><i class="ri-function-line"></i>Category Page</a></li>
-                              <li><a href="book-page.html"><i class="ri-book-line"></i>Book Page</a></li>
-                              <li><a href="Checkout.html"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
+                              <li><a href="/category"><i class="ri-function-line"></i>Category Page</a></li>
+                              <li><a href="/book-page"><i class="ri-book-line"></i>Book Page</a></li>
+                              <li><a href="/Checkout"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
                           </ul>
                       </li>
                         <ul id="dashboard" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle">
@@ -64,6 +64,13 @@
                         </ul>
                      </li>
 
+                      <li>
+                          <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>User</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                          <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+                              <li><a href="/profile"><i class="las la-id-card-alt"></i>User Profile</a></li>
+                              <li><a href="/profile-edit"><i class="las la-edit"></i>User Edit</a></li>
+                          </ul>
+                      </li>
                      <li class="d-inline-block w-100 text-center p-3">
                         <form action="{{ route('customer.logout') }}" method="post" class="iq-waves-effect collapsed">
                            @csrf
@@ -1004,7 +1011,7 @@
                   </ul>
                </div>
                <div class="col-lg-6 text-right" >
-                  Copyright 2020 <a href="#">NHASACHTV</a> All Rights Reserved.
+                  Copyright 2020 <a href="#">BOOKSTORE</a> All Rights Reserved.
                </div>
             </div>
          </div>
