@@ -69,13 +69,12 @@
                                         </label>
                                     </div>
 
-                                    <h4 class="mt-3">Size <small>Please select one</small></h4>
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <h4 class="mt-3">Publisher</h4>
+                                    <div class="btn-group btn-group-toggle">
                                         <label class="btn btn-default text-center">
-                                        <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
-                                        <span class="text-xl">S</span>
-                                        <br>
-                                        Small
+                                            <span class="text-xl">S</span>
+                                            <br>
+                                            Small
                                         </label>
                                         <label class="btn btn-default text-center">
                                         <input type="radio" name="color_option" id="color_option_b2" autocomplete="off">
