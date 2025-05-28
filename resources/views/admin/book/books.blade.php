@@ -42,7 +42,7 @@
                                     @foreach ($books as $book)
                                         <tr>
                                             <td>{{ $book->title }}</td>
-                                            <td><img src="/images/{{ $book->image }}" alt="{{ $book->image }}" style="width: 200px"></td>
+                                            <td><img src="/images/{{ $book->image }}" alt="{{ $book->image }}" style="width: 100px"></td>
                                             <td>{{number_format($book->price, 0, ",", ".")}}</td>
                                             <td>{{number_format($book->quantity, 0, ",", ".")}}</td>
                                             <td>

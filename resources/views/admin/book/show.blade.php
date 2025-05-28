@@ -37,14 +37,13 @@
                                     <hr>
                                     <h4>Author</h4>
                                     <div class="btn-group btn-group-toggle">
+                                        @if (sizeof($book->author) == 0)
+                                            <label for="" class="btn btn-default text-center">
+                                                No Author
+                                            </label>
+                                        @endif
                                         @foreach ($book->author as $author)
-                                            @if ($author == null)
-                                                <label for="" class="btn text-center">
-                                                    No Author
-                                                </label>
-                                                @break
-                                            @endif
-                                            <label for="" class="btn text-center">
+                                            <label for="" class="btn btn-default text-center">
                                                 {{ $author->name }}
                                             </label>
                                         @endforeach
@@ -59,39 +58,44 @@
 
                                     <h4 class="mt-3">Category</h4>
                                     <div class="btn-group">
+                                        @if (sizeof($book->category) == 0)
+                                            <label for="" class="btn text-center">
+                                                No Category
+                                            </label>
+                                        @endif
                                         @foreach ($book->category as $category)
-                                            @if ($category == null)
-                                                <label for="" class="btn text-center">
-                                                    No Category
-                                                </label>
-                                                @break
-                                            @endif
                                             <label for="" class="btn btn-default text-center">
                                                 {{ $category->name }}
                                             </label>
                                         @endforeach
                                     </div>
 
+                                    <h4 class="mt-3">Price</h4>
                                     <div class="bg-gray py-2 px-3 mt-4">
                                         <h2 class="mb-0">
                                         {{number_format($book->price,0, ',', '.')}} VND
                                         </h2>
                                     </div>
 
+                                    <h4 class="mt-3">Quantity</h4>
                                     <div class="bg-gray py-2 px-3 mt-4">
                                         <h2 class="mb-0">
-                                        There are {{number_format($book->quantity,0, ',', '.')}} of these books in stock.
+                                            {{number_format($book->quantity,0, ',', '.')}}
                                         </h2>
                                     </div>
 
                                     <div class="mt-4">
-                                        <div class="btn btn-warning btn-lg btn-flat">
-                                            Update
-                                        </div>
+                                        <form action="{{route('admin.books.destroy', $book->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="{{route('admin.books.edit', $book->id)}}" class="btn btn-warning btn-lg btn-flat">
+                                                Update
+                                            </a>
 
-                                        <div class="btn btn-danger btn-lg btn-flat">
-                                            Delete
-                                        </div>
+                                            <button type="submit" class="btn btn-danger btn-lg btn-flat">
+                                                Delete
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

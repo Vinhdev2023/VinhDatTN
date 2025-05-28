@@ -32,4 +32,16 @@ class Book extends Model
     public function author() {
         return $this->belongsToMany(Author::class, 'writings', 'book_id', 'author_id');
     }
+
+    public function orderDetail() {
+        return $this->hasMany(OrderDetail::class);
+    }
+
+    public function classifying() {
+        return $this->hasMany(Classifying::class);
+    }
+
+    public function writing() {
+        return $this->hasMany(Writing::class);
+    }
 }

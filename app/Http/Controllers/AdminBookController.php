@@ -85,7 +85,7 @@ class AdminBookController extends Controller
         $book->load('category');
         $book->load('author');
         $book->load('publisher');
-        // dd($book->author);
+        // dd(sizeof($book->author));
         // dd($book->category);
         return view('admin.book.show', compact('path', 'book'));
     }
@@ -93,15 +93,22 @@ class AdminBookController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Book $book)
     {
-        //
+        $path = 'admin.books.edit';
+        $categories = Category::all();
+        $authors = Author::all();
+        $publishers = Publisher::all();
+        $book->load('category');
+        $book->load('author');
+        $book->load('publisher');
+        return view('admin.book.edit', compact('path', 'categories', 'authors', 'publishers', 'book'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Book $book)
     {
         //
     }
@@ -109,8 +116,18 @@ class AdminBookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Book $book)
     {
-        //
+        $book->load('orderDetail');
+        if (sizeof($book->orderDetail) == 0) {
+            Classifying::where('book_id', '=', $book->id)->delete();
+            Writing::where('book_id', '=', $book->id)->delete();
+            $book->forceDelete();
+            return redirect()->route('admin.books.index');
+        }
+
+        $book->delete();
+
+        return redirect()->route('admin.books.index');
     }
 }
