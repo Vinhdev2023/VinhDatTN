@@ -38,6 +38,7 @@
                     <x-admin.card>
                         <form action="{{ route('admin.books.update', $book->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('PATCH')
                             <x-admin.card-header>
                                 <h3 class="card-title">Form Edit A Book</h3>
                             </x-admin.card-header>
