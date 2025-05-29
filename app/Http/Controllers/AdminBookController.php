@@ -9,6 +9,8 @@ use App\Models\Classifying;
 use App\Models\Publisher;
 use App\Models\Writing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class AdminBookController extends Controller
 {
@@ -110,7 +112,65 @@ class AdminBookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $validated = $request->validate([
+            'isbn_code' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'image' => 'image',
+            'quantity' => 'required|integer',
+            'price' => 'required|integer',
+            'description' => 'required',
+            'categories' => 'required|exists:categories,id',
+            'authors' => 'required|exists:authors,id',
+            'publisher_id' => 'required|exists:publishers,id',
+        ]);
+
+        $ortherBooks = DB::table(
+            DB::table('books', 'orther_book')
+            ->whereNot('id', $book->id))
+                ->where('title', $request->title)
+                ->where('isbn_code', $request->isbn_code)
+                ->count();
+        if ($ortherBooks > 0) {
+            return throw ValidationException::withMessages([
+                'isbn_code' => 'isbn code is taken',
+                'title' => 'title is taken'
+            ]);
+        }
+
+        $ortherBooksIsbnCode = DB::table(
+            DB::table('books', 'orther_book')
+            ->whereNot('id', $book->id))
+                ->where('isbn_code', $request->isbn_code)
+                ->count();
+        if ($ortherBooksIsbnCode > 0) {
+            return throw ValidationException::withMessages([
+                'isbn_code' => 'isbn code is taken'
+            ]);
+        }
+
+        $ortherBooksTitle = DB::table(
+            DB::table('books', 'orther_book')
+            ->whereNot('id', $book->id))
+                ->where('title', $request->title)
+                ->count();
+        if ($ortherBooksTitle > 0) {
+            return throw ValidationException::withMessages([
+                'title' => 'title is taken'
+            ]);
+        }
+
+        if ($request->image != null) {
+            $image = $request->image->getClientOriginalName();
+            $request->image->move(public_path('images'), $image);
+        } else {
+            $image = $book->image;
+        }
+        $book->update($validated);
+        $book->update([
+            'image' => $image
+        ]);
+
+        return redirect()->route('admin.books.show', $book->id);
     }
 
     /**
