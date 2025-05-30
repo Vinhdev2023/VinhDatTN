@@ -20,7 +20,10 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::resource('/publishers', AdminPublisherController::class);
         Route::resource('/authors', AdminAuthorController::class);
 
-        Route::get('/account-setting', [AdminAccountSettingController::class, 'showAccountSetting'])->name('showAccountSetting');
+        Route::controller(AdminAccountSettingController::class)->group(function () {
+            Route::get('/account-setting', 'showAccountSetting')->name('showAccountSetting');
+            Route::patch('/account-setting/{admin}', 'updatePassword')->name('updatePassword');
+        });
     });
 
     Route::middleware('adminGuest')->group(function () {

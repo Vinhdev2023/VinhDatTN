@@ -20,18 +20,7 @@
             </div><!-- /.container-fluid -->
         </section>
 
-        <x-admin.main-content>
-            @if ($errors->any())
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h5><i class="icon fas fa-ban"></i> Alert!</h5>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+        <x-admin.main-content>            
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
@@ -46,6 +35,8 @@
                                 <h3 class="profile-username text-center">{{auth()->guard('admins')->user()->name}}</h3>
 
                                 <p class="text-muted text-center">{{auth()->guard('admins')->user()->role}}</p>
+
+                                <p class="text-muted text-center">{{auth()->guard('admins')->user()->email}}</p>
 
                                 <form action="{{route('admin.logout')}}" method="post" class="nav justify-content-center">
                                     @csrf
@@ -65,23 +56,25 @@
                                 </ul>
                             </x-admin.card-header>
                             <x-admin.card-body>
-                                <form action="" method="post" class="form-horizontal">
+                                <form action="{{route('admin.updatePassword', auth()->guard('admins')->user()->id)}}" method="post" class="form-horizontal">
+                                    @csrf
+                                    @method('PATCH')
                                     <div class="form-group row">
                                         <label for="inputOldPassword" class="col-sm-2 col-form-label">Old Password</label>
                                         <div class="col-sm-10">
-                                            <input type="password" name="" class="form-control" id="inputOldPassword" placeholder="Old Password">
+                                            <input type="password" name="old_password" class="form-control" id="inputOldPassword" placeholder="Old Password" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="inputOldPassword" class="col-sm-2 col-form-label">New Password</label>
                                         <div class="col-sm-10">
-                                            <input type="password" name="" class="form-control" id="inputOldPassword" placeholder="New Password">
+                                            <input type="password" name="password" class="form-control" id="inputOldPassword" placeholder="New Password" required minlength="8">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="inputOldPassword" class="col-sm-2 col-form-label">Confirm New Password</label>
                                         <div class="col-sm-10">
-                                            <input type="password" name="" class="form-control" id="inputOldPassword" placeholder="Confirm New Password">
+                                            <input type="password" name="password_confirmation" class="form-control" id="inputOldPassword" placeholder="Confirm New Password" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -92,6 +85,20 @@
                                 </form>
                             </x-admin.card-body>
                         </x-admin.card>
+                        @if ($errors->any())
+                            <x-admin.alert-danger>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </x-admin.alert-danger>
+                        @endif
+                        @if (session('success'))
+                            <x-admin.alert-success>
+                                {{ session('success') }}
+                            </x-admin.alert-success>
+                        @endif
                     </div>
                 </div>
             </div>

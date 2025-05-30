@@ -21,6 +21,16 @@
         </section>
 
         <x-admin.main-content>
+            @if (session('success'))
+                <x-admin.alert-success>
+                    {{ session('success') }}
+                </x-admin.alert-success>
+            @endif
+            @if (session('fail'))
+                <x-admin.alert-warning>
+                    {{ session('fail') }}
+                </x-admin.alert-warning>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <x-admin.card>

@@ -22,11 +22,14 @@
 
         <x-admin.main-content>
             @if (session('success'))
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                <x-admin.alert-success>
                     {{ session('success') }}
-                </div>
+                </x-admin.alert-success>
+            @endif
+            @if (session('fail'))
+                <x-admin.alert-warning>
+                    {{ session('fail') }}
+                </x-admin.alert-warning>
             @endif
             <div class="row">
                 <div class="col-12">
