@@ -1,5 +1,5 @@
 <x-admin.layout :page="'login-page'">
-    <x-admin.preloader></x-admin.preloader>
+    <x-admin.preloader/>
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card">
@@ -46,5 +46,5 @@
             <!-- /.login-card-body -->
         </div>
     </div>
-    <x-admin.script></x-admin.script>
+    <x-admin.script/>
 </x-admin.layout>

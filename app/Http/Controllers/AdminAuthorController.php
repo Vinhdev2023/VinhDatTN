@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+use App\Models\Book;
+use App\Models\Category;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 
 class AdminAuthorController extends Controller
@@ -12,9 +15,15 @@ class AdminAuthorController extends Controller
      */
     public function index()
     {
-        $path='admin.authors.index';
+        $path = 'admin.authors.index';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
         $authors = Author::orderBy('updated_at', 'desc')->get();
-        return view('admin.author.authors', compact('path', 'authors'));
+        
+        return view('admin.author.authors', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'authors'));
     }
 
     /**
@@ -23,7 +32,12 @@ class AdminAuthorController extends Controller
     public function create()
     {
         $path='admin.authors.create';
-        return view('admin.author.create', compact('path'));
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
+        return view('admin.author.create', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher'));
     }
 
     /**
@@ -46,7 +60,12 @@ class AdminAuthorController extends Controller
     public function edit(Author $author)
     {
         $path='admin.authors.edit';
-        return view('admin.author.edit', compact('path', 'author'));
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+        
+        return view('admin.author.edit', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'author'));
     }
 
     /**

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+use App\Models\Book;
 use App\Models\Category;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
@@ -12,9 +15,14 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $path='admin.categories.index';
+        $path = 'admin.categories.index';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
         $categories = Category::orderBy('updated_at', 'desc')->get();
-        return view('admin.category.categories', compact('path', 'categories'));
+        return view('admin.category.categories', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'categories'));
     }
 
     /**
@@ -22,8 +30,13 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        $path='admin.categories.create';
-        return view('admin.category.create', compact('path'));
+        $path = 'admin.categories.create';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
+        return view('admin.category.create', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher'));
     }
 
     /**
@@ -45,8 +58,13 @@ class AdminCategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $path='admin.categories.edit';
-        return view('admin.category.edit', compact('path', 'category'));
+        $path = 'admin.categories.edit';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
+        return view('admin.category.edit', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'category'));
     }
 
     /**

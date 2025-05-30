@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
 
@@ -13,9 +15,15 @@ class AdminPublisherController extends Controller
      */
     public function index()
     {
-        $path='admin.publishers.index';
+        $path = 'admin.publishers.index';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
         $publishers = Publisher::orderBy('updated_at', 'desc')->get();
-        return view('admin.publisher.publishers', compact('path', 'publishers'));
+
+        return view('admin.publisher.publishers', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'publishers'));
     }
 
     /**
@@ -23,8 +31,13 @@ class AdminPublisherController extends Controller
      */
     public function create()
     {
-        $path='admin.publishers.create';
-        return view('admin.publisher.create', compact('path'));
+        $path = 'admin.publishers.create';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
+        return view('admin.publisher.create', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'publishers'));
     }
 
     /**
@@ -46,8 +59,13 @@ class AdminPublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        $path='admin.publishers.edit';
-        return view('admin.publisher.edit', compact('path', 'publisher'));
+        $path = 'admin.publishers.edit';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
+        return view('admin.publisher.edit', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'publishers', 'publisher'));
     }
 
     /**

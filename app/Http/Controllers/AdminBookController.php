@@ -19,9 +19,14 @@ class AdminBookController extends Controller
      */
     public function index()
     {
-        $path='admin.books.index';
+        $path = 'admin.books.index';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
         $books = Book::orderBy('updated_at', 'desc')->get();
-        return view('admin.book.books', compact('path', 'books'));
+        return view('admin.book.books', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'books'));
     }
 
     /**
@@ -30,10 +35,15 @@ class AdminBookController extends Controller
     public function create()
     {
         $path = 'admin.books.create';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
         $categories = Category::all();
         $authors = Author::all();
         $publishers = Publisher::all();
-        return view('admin.book.create', compact('path', 'categories', 'authors', 'publishers'));
+        return view('admin.book.create', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'categories', 'authors', 'publishers'));
     }
 
     /**
@@ -83,13 +93,18 @@ class AdminBookController extends Controller
      */
     public function show(Book $book)
     {
-        $path='admin.books.index';
+        $path = 'admin.books.index';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
         $book->load('category');
         $book->load('author');
         $book->load('publisher');
         // dd(sizeof($book->author));
         // dd($book->category);
-        return view('admin.book.show', compact('path', 'book'));
+        return view('admin.book.show', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'book'));
     }
 
     /**
@@ -98,13 +113,19 @@ class AdminBookController extends Controller
     public function edit(Book $book)
     {
         $path = 'admin.books.edit';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+        
         $categories = Category::all();
         $authors = Author::all();
         $publishers = Publisher::all();
         $book->load('category');
         $book->load('author');
         $book->load('publisher');
-        return view('admin.book.edit', compact('path', 'categories', 'authors', 'publishers', 'book'));
+        
+        return view('admin.book.edit', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'categories', 'authors', 'publishers', 'book'));
     }
 
     /**
@@ -170,7 +191,7 @@ class AdminBookController extends Controller
             'image' => $image
         ]);
 
-        return redirect()->route('admin.books.show', $book->id);
+        return redirect()->route('admin.books.show', $book->id)->with('success', 'Book is Updated');
     }
 
     /**
@@ -183,11 +204,11 @@ class AdminBookController extends Controller
             Classifying::where('book_id', '=', $book->id)->delete();
             Writing::where('book_id', '=', $book->id)->delete();
             $book->forceDelete();
-            return redirect()->route('admin.books.index');
+            return redirect()->route('admin.books.index')->with('success', 'Book is Deleted');
         }
 
         $book->delete();
 
-        return redirect()->route('admin.books.index');
+        return redirect()->route('admin.books.index')->with('success', 'Book is Deleted');
     }
 }

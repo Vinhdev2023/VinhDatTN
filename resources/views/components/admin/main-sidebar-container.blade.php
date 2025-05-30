@@ -13,7 +13,7 @@
                 <img src="/admin_plugin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a class="d-block">vinh</a>
+                <a href="{{route('admin.showAccountSetting')}}" class="d-block">vinh</a>
             </div>
         </div>
 
@@ -34,8 +34,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item @if($path == '/admin') {{' menu-open'}} @endif">
-                    <a href="/admin" class="nav-link @if($path == '/admin') {{' active'}} @endif">
+                <li class="nav-item @if($path == 'admin.index') {{' menu-open'}} @endif">
+                    <a href="{{route('admin.index')}}" class="nav-link @if($path == 'admin.index') {{' active'}} @endif">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         {{-- <i class="nav-icon fas fa-truck"></i> --}}
                         <p>
@@ -43,7 +43,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item @if($path == '/admin/orders' || $path == '/admin/order/detail') {{'menu-open'}} @endif">
+                {{-- <li class="nav-item @if($path == '/admin/orders' || $path == '/admin/order/detail') {{'menu-open'}} @endif">
                     <a href="/admin/orders" class="nav-link @if($path == '/admin/orders' || $path == '/admin/order/detail') {{'active'}} @endif">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
@@ -51,14 +51,14 @@
                             <span class="right badge badge-danger">0 News</span>
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit') {{'menu-open'}} @endif">
                     <a href="{{ route('admin.books.index') }}" class="nav-link @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit') {{'active'}} @endif">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Books
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">0</span>
+                            <span class="badge badge-info right">{{$numbook}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -90,7 +90,7 @@
                         <p>
                             Categories
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">0</span>
+                            <span class="badge badge-info right">{{$numcategory}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -122,7 +122,7 @@
                         <p>
                             Authors
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">0</span>
+                            <span class="badge badge-info right">{{$numauthor}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -154,7 +154,7 @@
                         <p>
                             Publishers
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">0</span>
+                            <span class="badge badge-info right">{{$numauthor}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -180,25 +180,14 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @if($path == '/admin/statistics' || $path == '/admin/statistics/data'){{'open-menu'}}@endif">
+                {{-- <li class="nav-item @if($path == '/admin/statistics' || $path == '/admin/statistics/data'){{'open-menu'}}@endif">
                     <a href="/admin/statistics" class="nav-link @if($path == '/admin/statistics' || $path == '/admin/statistics/data'){{'active'}}@endif">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Statistics
                         </p>
                     </a>
-                </li>
-                <li class="nav-item open-menu">
-                    <form action="/admin/logout" method="post">
-                        @csrf
-                        <button type="submit" class="btn nav-link active">
-                            <i class="nav-icon fas fa-sign-out-alt"></i>
-                            <p>
-                                Logout
-                            </p>
-                        </button>
-                    </form>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

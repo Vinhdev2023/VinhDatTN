@@ -1,3 +1,3 @@
-<div class="card-header">
+<div class="card-header @if(@isset($class)){{$class}}@endif">
     {{ $slot }}
 </div>

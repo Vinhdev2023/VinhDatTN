@@ -1,7 +1,8 @@
 <x-admin.layout :page="'not-login-page'">
-    <x-admin.preloader></x-admin.preloader>
-    <x-admin.navbar></x-admin.navbar>
-    <x-admin.main-sidebar-container :path="$path"></x-admin.main-sidebar-container>
+    <x-admin.preloader/>
+    <x-admin.navbar/>
+    <x-admin.main-sidebar-container :path="$path" :numbook="$num_book" :numcategory="$num_category" :numauthor="$num_author" :numpublisher="$num_publisher"/>
+    {{-- :num_book="$num_book" :num_category="$num_category" :num_author="$num_author" :num_publisher="$num_publisher" --}}
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -54,20 +55,20 @@
                         </div>
                     </div>
                     <!-- ./col -->
-{{--                    <div class="col-lg-3 col-6">--}}
-{{--                        <!-- small box -->--}}
-{{--                        <div class="small-box bg-warning">--}}
-{{--                            <div class="inner">--}}
-{{--                                <h3>44</h3>--}}
+                   <div class="col-lg-3 col-6">
+                       <!-- small box -->
+                       <div class="small-box bg-warning">
+                           <div class="inner">
+                               <h3>!!</h3>
 
-{{--                                <p>Customer Account</p>--}}
-{{--                            </div>--}}
-{{--                            <div class="icon">--}}
-{{--                                <i class="ion ion-person-add"></i>--}}
-{{--                            </div>--}}
-{{--                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                               <p>Customer Account</p>
+                           </div>
+                           <div class="icon">
+                               <i class="ion ion-person-add"></i>
+                           </div>
+                           <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                       </div>
+                   </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
@@ -89,6 +90,6 @@
             </div><!-- /.container-fluid -->
         </section>
     </div>
-    <x-admin.footer></x-admin.footer>
+    <x-admin.footer/>
     <x-admin.script></x-admin.script>
 </x-admin.layout>
