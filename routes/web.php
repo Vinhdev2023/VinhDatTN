@@ -34,12 +34,12 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 });
 
 Route::get('/',[Customer::class,'customer'])->middleware('customerAuth');
-Route::get('/account-setting',[Customer::class,'account_setting']);
+Route::get('/account-setting',[Customer::class,'account_setting'])->middleware('customerAuth');
 Route::get('/book-page',[Customer::class,'book_page']);
 Route::get('/category',[Customer::class,'category']);
-Route::get('/Checkout',[Customer::class,'Checkout']);
-Route::get('/profile',[Customer::class,'profile']);
-Route::get('/profile-edit',[Customer::class,'profile_edit']);
+Route::get('/checkout',[Customer::class,'Checkout']);
+Route::get('/profile',[Customer::class,'profile'])->middleware('customerAuth');
+Route::get('/profile-edit',[Customer::class,'profile_edit'])->middleware('customerAuth');
 Route::middleware('customerGuest')->group(function () {
     Route::get('/sign-in',[AuthCustomerController::class,'showLogin'])->name('customer.sign_in.show');
     Route::post('/sign-in', [AuthCustomerController::class,'login'])->name('customer.sign_in');
