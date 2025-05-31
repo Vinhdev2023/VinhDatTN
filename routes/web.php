@@ -33,7 +33,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 });
 
-Route::get('/',[Customer::class,'customer'])->middleware('customerAuth');
+Route::get('/',[Customer::class,'customer']);
 Route::get('/account-setting',[Customer::class,'account_setting'])->middleware('customerAuth');
 Route::get('/book-page',[Customer::class,'book_page']);
 Route::get('/category',[Customer::class,'category']);

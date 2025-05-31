@@ -37,57 +37,59 @@
                             <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                         </form>
                     </li>
-                    <li class="nav-item nav-icon">
-                        <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                            <i class="ri-notification-2-line"></i>
-                            <span class="bg-primary dots"></span>
-                        </a>
-                        <div class="iq-sub-dropdown">
-                            <div class="iq-card shadow-none m-0">
-                                <div class="iq-card-body p-0">
-                                    <div class="bg-primary p-3">
-                                        <h5 class="mb-0 text-white">Thông Báo<small class="badge  badge-light float-right pt-1">4</small></h5>
+                    @if (auth()->guard('customers')->check())
+                        <li class="nav-item nav-icon">
+                            <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                                <i class="ri-notification-2-line"></i>
+                                <span class="bg-primary dots"></span>
+                            </a>                        
+                            <div class="iq-sub-dropdown">
+                                <div class="iq-card shadow-none m-0">
+                                    <div class="iq-card-body p-0">
+                                        <div class="bg-primary p-3">
+                                            <h5 class="mb-0 text-white">Thông Báo<small class="badge  badge-light float-right pt-1">4</small></h5>
+                                        </div>
+                                        <a href="#" class="iq-sub-card" >
+                                            <div class="media align-items-center">
+                                                <div class="media-body ml-3">
+                                                    <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
+                                                    <small class="float-right font-size-12">Just Now</small>
+                                                    <p class="mb-0">95.000đ</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="iq-sub-card" >
+                                            <div class="media align-items-center">
+                                                <div class="media-body ml-3">
+                                                    <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
+                                                    <small class="float-right font-size-12">5 days ago</small>
+                                                    <p class="mb-0">255.000đ</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="iq-sub-card" >
+                                            <div class="media align-items-center">
+                                                <div class="media-body ml-3">
+                                                    <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
+                                                    <small class="float-right font-size-12">2 days ago</small>
+                                                    <p class="mb-0">79.000đ</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="iq-sub-card" >
+                                            <div class="media align-items-center">
+                                                <div class="media-body ml-3">
+                                                    <h6 class="mb-0 ">Đơn hàng #7979 giao không thành công</h6>
+                                                    <small class="float-right font-size-12">3 days ago</small>
+                                                    <p class="mb-0">100.000đ</p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <a href="#" class="iq-sub-card" >
-                                        <div class="media align-items-center">
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
-                                                <small class="float-right font-size-12">Just Now</small>
-                                                <p class="mb-0">95.000đ</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card" >
-                                        <div class="media align-items-center">
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
-                                                <small class="float-right font-size-12">5 days ago</small>
-                                                <p class="mb-0">255.000đ</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card" >
-                                        <div class="media align-items-center">
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
-                                                <small class="float-right font-size-12">2 days ago</small>
-                                                <p class="mb-0">79.000đ</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card" >
-                                        <div class="media align-items-center">
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">Đơn hàng #7979 giao không thành công</h6>
-                                                <small class="float-right font-size-12">3 days ago</small>
-                                                <p class="mb-0">100.000đ</p>
-                                            </div>
-                                        </div>
-                                    </a>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endif
                     <li class="nav-item nav-icon dropdown">
                         <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                             <i class="ri-shopping-cart-2-line"></i>
@@ -135,55 +137,59 @@
                         <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
                             <img src="/customer_plugin/images/user/1.jpg" class="img-fluid rounded-circle mr-3" alt="user">
                             <div class="caption">
-                                <h6 class="mb-1 line-height">{{auth()->guard('customers')->user()->name}}</h6>
-                                <p class="mb-0 text-primary">Tài Khoản</p>
+                                <h6 class="mb-1 line-height">{{auth()->guard('customers')->check() ? auth()->guard('customers')->user()->name : 'Khách Hàng'}}</h6>
+                                @if (auth()->guard('customers')->check())
+                                    <p class="mb-0 text-primary">Tài Khoản</p>
+                                @endif
                             </div>
                         </a>
-                        <div class="iq-sub-dropdown iq-user-dropdown">
-                            <div class="iq-card shadow-none m-0">
-                                <div class="iq-card-body p-0 ">
-                                    <div class="bg-primary p-3">
-                                        <h5 class="mb-0 text-white line-height">Xin Chào {{auth()->guard('customers')->user()->name}}</h5>
-                                    </div>
-                                    <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
-                                        <div class="media align-items-center">
-                                            <div class="rounded iq-card-icon iq-bg-primary">
-                                                <i class="ri-file-user-line"></i>
-                                            </div>
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">Tài khoản của tôi</h6>
-                                            </div>
+                        @if (auth()->guard('customers')->check())
+                            <div class="iq-sub-dropdown iq-user-dropdown">
+                                <div class="iq-card shadow-none m-0">
+                                    <div class="iq-card-body p-0 ">
+                                        <div class="bg-primary p-3">
+                                            <h5 class="mb-0 text-white line-height">Xin Chào {{auth()->guard('customers')->user()->name}}</h5>
                                         </div>
-                                    </a>
-                                    <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
-                                        <div class="media align-items-center">
-                                            <div class="rounded iq-card-icon iq-bg-primary">
-                                                <i class="ri-profile-line"></i>
+                                        <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
+                                            <div class="media align-items-center">
+                                                <div class="rounded iq-card-icon iq-bg-primary">
+                                                    <i class="ri-file-user-line"></i>
+                                                </div>
+                                                <div class="media-body ml-3">
+                                                    <h6 class="mb-0 ">Tài khoản của tôi</h6>
+                                                </div>
                                             </div>
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">Sổ địa chỉ</h6>
+                                        </a>
+                                        <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
+                                            <div class="media align-items-center">
+                                                <div class="rounded iq-card-icon iq-bg-primary">
+                                                    <i class="ri-profile-line"></i>
+                                                </div>
+                                                <div class="media-body ml-3">
+                                                    <h6 class="mb-0 ">Sổ địa chỉ</h6>
+                                                </div>
                                             </div>
+                                        </a>
+                                        <a href="#" class="iq-sub-card iq-bg-primary-hover">
+                                            <div class="media align-items-center">
+                                                <div class="rounded iq-card-icon iq-bg-primary">
+                                                    <i class="ri-account-box-line"></i>
+                                                </div>
+                                                <div class="media-body ml-3">
+                                                    <h6 class="mb-0 ">Đơn hàng của tôi</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="d-inline-block w-100 text-center p-3">
+                                            <form action="{{ route('customer.logout') }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary"><i class="ri-book-line"></i>Logout</button>
+                                            </form>
                                         </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card iq-bg-primary-hover">
-                                        <div class="media align-items-center">
-                                            <div class="rounded iq-card-icon iq-bg-primary">
-                                                <i class="ri-account-box-line"></i>
-                                            </div>
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">Đơn hàng của tôi</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="d-inline-block w-100 text-center p-3">
-                                        <form action="{{ route('customer.logout') }}" method="post">
-                                            @csrf
-                                            <button type="submit" class="btn btn-primary"><i class="ri-book-line"></i>Logout</button>
-                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div>                            
+                        @endif
                     </li>
                 </ul>
             </div>
