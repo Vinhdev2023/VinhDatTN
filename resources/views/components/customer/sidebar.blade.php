@@ -24,6 +24,8 @@
                         <li><a href="/category"><i class="ri-function-line"></i>Category Page</a></li>
                         <li><a href="/book-page"><i class="ri-book-line"></i>Book Page</a></li>
                         <li><a href="/checkout"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
+                        <li><a href="/cart-page"><i class="ri-checkbox-multiple-blank-line"></i>Cart</a></li>
+                        <li><a href="/order-page"><i class="ri-checkbox-multiple-blank-line"></i>Orders</a></li>
                     </ul>
                 </li>
                 <li>
