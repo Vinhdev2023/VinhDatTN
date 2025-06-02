@@ -106,6 +106,7 @@
                                         <span class="text-dark"><strong>Tổng</strong></span>
                                         <span class="text-dark"><strong>327.900đ</strong></span>
                                     </div>
+                                    <a href="javascript:void();" class="btn btn-danger d-block mt-3 next">Hủy</a>
                                 </div>
                             </div>
                         </div>
