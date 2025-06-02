@@ -13,7 +13,7 @@ class Customer extends Controller
     public function account_setting(){
         return view('customer.account-setting');
     }
-    
+
     public function book_page(){
         return view('customer.book-page');
     }
@@ -23,8 +23,17 @@ class Customer extends Controller
     public function Checkout(){
         return view('customer.Checkout');
     }
+    public function cart_page(){
+        return view('customer.cart-page');
+    }
     public function profile(){
         return view('customer.profile');
+    }
+    public function order_detail(){
+        return view('customer.order-detail');
+    }
+    public function order_page(){
+        return view('customer.order-page');
     }
     public function profile_edit(){
         return view('customer.profile-edit');

@@ -50,7 +50,7 @@
                                        <div class="row align-items-center">
                                           <div class="col-sm-2">
                                              <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/customer_plugin/images/checkout/01.jpg" alt=""></a>
+                                             <a href=""><img class="img-fluid rounded" src="/customer_plugin/images/checkout/01.jpg" alt=""></a>
                                              </span>
                                           </div>
                                           <div class="col-sm-4">
