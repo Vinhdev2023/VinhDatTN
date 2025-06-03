@@ -83,7 +83,7 @@ class AdminBookController extends Controller
                 'book_id' => $book->id,
                 'author_id' => $author_id
             ]);
-       }
+        }
 
         return redirect()->route('admin.books.index')->with('success', 'Book is Created');
     }
@@ -190,6 +190,22 @@ class AdminBookController extends Controller
         $book->update([
             'image' => $image
         ]);
+
+        Classifying::where('book_id', $book->id)->delete();
+        foreach ($validated['categories'] as $category_id) {
+            Classifying::create([
+                'book_id' => $book->id,
+                'category_id' => $category_id
+            ]);
+        }
+
+        Writing::where('book_id', $book->id)->delete();
+        foreach ($validated['authors'] as $author_id) {
+            Writing::create([
+                'book_id' => $book->id,
+                'author_id' => $author_id
+            ]);
+        }
 
         return redirect()->route('admin.books.show', $book->id)->with('success', 'Book is Updated');
     }

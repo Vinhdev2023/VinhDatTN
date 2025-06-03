@@ -43,6 +43,8 @@
 <script src="/admin_plugin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/admin_plugin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/admin_plugin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="/admin_plugin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
 <script src="/admin_plugin/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->

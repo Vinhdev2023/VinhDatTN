@@ -21,7 +21,7 @@ class AdminLoginController extends Controller
         // $password = $request->password;
         // dd($vadilated);
         if (Auth::guard('admins')->attempt($vadilated)) {
-            // $request->session()->regenerate();
+            $request->session()->regenerate();
 
             return redirect()->route('admin.index');
         }
