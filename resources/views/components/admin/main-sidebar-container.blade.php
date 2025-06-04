@@ -43,8 +43,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item @if($path == 'admin.account.add' || $path == 'admin.account.index') {{' menu-open'}} @endif">
-                    <a href="#" class="nav-link @if($path == 'admin.account.add' || $path == 'admin.account.index') {{' active'}} @endif">
+                <li class="nav-item @if($path == 'admin.account.add' || $path == 'admin.account.index' || $path == 'admin.account.trashed') {{' menu-open'}} @endif">
+                    <a href="#" class="nav-link @if($path == 'admin.account.add' || $path == 'admin.account.index' || $path == 'admin.account.trashed') {{' active'}} @endif">
                         <i class="nav-icon fas fa-user-secret"></i>
                         <p>
                             Admins
@@ -66,10 +66,11 @@
                                 <p>Employees and Admins</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        {{-- @dd($path) --}}
+                        <li class="nav-item @if($path == 'admin.account.trashed') {{' menu-open'}} @endif">
+                            <a href="{{route('admin.account.trashed')}}" class="nav-link @if($path == 'admin.account.trashed') {{' active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Employees and Admins are Trashed</p>
+                                <p>Employees are Trashed</p>
                             </a>
                         </li>
                     </ul>

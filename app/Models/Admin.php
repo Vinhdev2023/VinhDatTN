@@ -23,6 +23,10 @@ class Admin extends Authenticatable
         'password',
     ];
 
+    public function order() {
+        return $this->hasMany(Order::class, 'admin_id_confirmed');
+    }
+
     protected function casts() {
         return [
             'password' => 'hashed',

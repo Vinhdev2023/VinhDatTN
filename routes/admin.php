@@ -27,8 +27,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::controller(AdminControlAccountController::class)->group(function () {
             Route::get('/employee-account', 'index')->name('account.index');
             Route::post('/employee-account', 'store')->name('account.store');
-            Route::get('/employee-account/create', 'add')->name('account.add')->middleware('adminRole:admin');
-            Route::delete('/employee-account/{admin}', 'destroy')->name('account.destroy')->middleware('adminRole:admin');
+            Route::get('/employee-account/create', 'add')->name('account.add')->middleware('adminRole');
+            Route::delete('/employee-account/{admin}', 'destroy')->name('account.destroy')->middleware('adminRole');
+            Route::get('/employee-account/trashed', 'trashed')->name('account.trashed')->middleware('adminRole');
         });
     });
 

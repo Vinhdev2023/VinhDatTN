@@ -19,7 +19,7 @@ class AdminControlAccountController extends Controller
         $num_author = Author::count();
         $num_publisher = Publisher::count();
 
-        $employees = Admin::orderBy('updated_at', 'desc')->get();
+        $employees = Admin::orderBy('created_at', 'desc')->get();
 
         return view('admin.account.employees', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'employees'));
     }
@@ -50,5 +50,23 @@ class AdminControlAccountController extends Controller
         Admin::factory()->create($validated);
 
         return redirect()->route('admin.account.index')->with('success', 'employee is added');
+    }
+
+    public function destroy(Admin $admin) {
+        $admin->delete();
+
+        return redirect()->route('admin.account.index')->with('success', 'Account is locked');
+    }
+
+    public function trashed() {
+        $path = 'admin.account.trashed';
+        $num_book = Book::count();
+        $num_category = Category::count();
+        $num_author = Author::count();
+        $num_publisher = Publisher::count();
+
+        $employees = Admin::onlyTrashed()->orderBy('updated_at', 'desc')->get();
+
+        return view('admin.account.employees-trashed', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'employees'));
     }
 }
