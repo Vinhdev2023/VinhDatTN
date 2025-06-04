@@ -97,7 +97,7 @@
                                                 Update
                                             </a>
 
-                                            <button type="submit" class="btn btn-danger btn-lg btn-flat">
+                                            <button type="submit" class="btn btn-danger btn-lg btn-flat" onclick="return confirm('You want to delete?')">
                                                 Delete
                                             </button>
                                         </form>

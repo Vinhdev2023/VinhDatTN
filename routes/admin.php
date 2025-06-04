@@ -27,10 +27,16 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::controller(AdminControlAccountController::class)->group(function () {
             Route::get('/employee-account', 'index')->name('account.index');
             Route::post('/employee-account', 'store')->name('account.store');
-            Route::get('/employee-account/create', 'add')->name('account.add')->middleware('adminRole');
-            Route::delete('/employee-account/{admin}', 'destroy')->name('account.destroy')->middleware('adminRole');
-            Route::get('/employee-account/trashed', 'trashed')->name('account.trashed')->middleware('adminRole');
+            Route::get('/employee-account/trashed', 'trashed')->name('account.trashed');
+
+            Route::middleware('adminRole')->group(function () {
+                Route::get('/employee-account/create', 'add')->name('account.add');
+                Route::delete('/employee-account/{admin}', 'destroy')->name('account.destroy');
+                Route::post('/employee-account/restore/{admin}', 'restore')->name('account.restore');
+            });
         });
+
+        
     });
 
     Route::middleware('adminGuest')->group(function () {

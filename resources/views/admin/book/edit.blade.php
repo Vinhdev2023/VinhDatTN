@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label for="">Price of book</label>
                                             <div class="input-group">
-                                                <input type="number" name="price" value="{{ $book->price }}" oninput="this.value = Math.round(this.value);" id="price" class="form-control" placeholder="Enter price of Book" required>
+                                                <input type="number" name="price" value="{{ $book->price }}" oninput="this.value = Math.round(this.value);" min="0" id="price" class="form-control" placeholder="Enter price of Book" required>
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">VND</div>
                                                 </div>

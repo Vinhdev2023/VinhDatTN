@@ -69,4 +69,10 @@ class AdminControlAccountController extends Controller
 
         return view('admin.account.employees-trashed', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'employees'));
     }
+
+    public function restore(string $admin) {
+        $admin = Admin::onlyTrashed()->findOrFail($admin)->restore();
+
+        return redirect()->route('admin.account.trashed')->with('success', 'Account is unlocked');
+    }
 }

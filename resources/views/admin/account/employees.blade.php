@@ -55,7 +55,7 @@
                                                         <form action="{{route('admin.account.destroy', $employee->id)}}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('You want to lock?')">Lock</button>
                                                         </form>
                                                     @endif
                                                 </td>

@@ -52,10 +52,9 @@
                                             @if (auth()->guard('admins')->user()->role == 'admin')
                                                 <td>
                                                     @if ($employee->role != 'admin')
-                                                        <form action="{{route('admin.account.destroy', $employee->id)}}" method="post">
+                                                        <form action="{{route('admin.account.restore', $employee->id)}}" method="post">
                                                             @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('You want to restore?')">Restore</button>
                                                         </form>
                                                     @endif
                                                 </td>
