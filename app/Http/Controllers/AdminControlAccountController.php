@@ -49,6 +49,6 @@ class AdminControlAccountController extends Controller
 
         Admin::factory()->create($validated);
 
-        return redirect()->route('admin.account.add')->with('success', 'employee is added');
+        return redirect()->route('admin.account.index')->with('success', 'employee is added');
     }
 }

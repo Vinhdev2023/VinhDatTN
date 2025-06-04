@@ -33,16 +33,39 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
+                                        @if (auth()->guard('admins')->user()->role == 'admin')
+                                            <th>Action</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    @foreach ($employees as $employee)
+                                        <tr>
+                                            <td>{{$employee->name}}</td>
+                                            <td>{{$employee->email}}</td>
+                                            <td>{{$employee->role}}</td>
+                                            @if (auth()->guard('admins')->user()->role == 'admin')
+                                                <td>
+                                                    @if ($employee->role != 'admin')
+                                                        <form action="" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    @endif
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
+                                        @if (auth()->guard('admins')->user()->role == 'admin')
+                                            <th>Action</th>
+                                        @endif
                                     </tr>
                                 </tfoot>
                             </table>

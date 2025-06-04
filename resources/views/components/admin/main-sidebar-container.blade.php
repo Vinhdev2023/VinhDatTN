@@ -13,7 +13,7 @@
                 <img src="/admin_plugin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{route('admin.showAccountSetting')}}" class="d-block">vinh</a>
+                <a href="{{route('admin.showAccountSetting')}}" class="d-block">{{auth()->guard('admins')->user()->name}}</a>
             </div>
         </div>
 
@@ -52,12 +52,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item @if($path == 'admin.account.add') {{' menu-open'}} @endif">
-                            <a href="{{route('admin.account.add')}}" class="nav-link @if($path == 'admin.account.add') {{' active'}} @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add A Employee</p>
-                            </a>
-                        </li>
+                        @if (auth()->guard('admins')->user()->role == 'admin')                            
+                            <li class="nav-item @if($path == 'admin.account.add') {{' menu-open'}} @endif">
+                                <a href="{{route('admin.account.add')}}" class="nav-link @if($path == 'admin.account.add') {{' active'}} @endif">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add A Employee</p>
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item @if($path == 'admin.account.index') {{' menu-open'}} @endif">
                             <a href="{{route('admin.account.index')}}" class="nav-link @if($path == 'admin.account.index') {{' active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
