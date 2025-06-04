@@ -71,7 +71,7 @@ class AdminControlAccountController extends Controller
     }
 
     public function restore(string $admin) {
-        $admin = Admin::onlyTrashed()->findOrFail($admin)->restore();
+        Admin::onlyTrashed()->findOrFail($admin)->restore();
 
         return redirect()->route('admin.account.trashed')->with('success', 'Account is unlocked');
     }

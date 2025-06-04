@@ -75,8 +75,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item @if($path == 'admin.customer.index' || $path == 'admin.customer.trashed') {{' menu-open'}} @endif">
+                    <a href="#" class="nav-link @if($path == 'admin.customer.index' || $path == 'admin.customer.trashed') {{' active'}} @endif">
                         <i class="nav-icon far fa-user"></i>
                         <p>
                             Customers
@@ -84,14 +84,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item @if($path == 'admin.customer.index') {{' menu-open'}} @endif">
+                            <a href="{{route('admin.customer.index')}}" class="nav-link @if($path == 'admin.customer.index') {{' active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Customers</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item @if($path == 'admin.customer.trashed') {{' menu-open'}} @endif">
+                            <a href="{{route('admin.customer.trashed')}}" class="nav-link @if($path == 'admin.customer.trashed') {{' active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Customers are Trashed</p>
                             </a>

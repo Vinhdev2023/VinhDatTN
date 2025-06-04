@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminAuthorController;
 use App\Http\Controllers\AdminBookController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminControlAccountController;
+use App\Http\Controllers\AdminControlCustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminHomeController;
@@ -36,7 +37,13 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             });
         });
 
-        
+        Route::controller(AdminControlCustomerController::class)->group(function () {
+            Route::get('/customer-account', 'index')->name('customer.index');
+            Route::delete('/customer-account/{customer}', 'destroy')->name('customer.destroy');
+
+            Route::get('/customer-account/trashed', 'trashed')->name('customer.trashed');
+            Route::post('/customer-account/{customer}/restore', 'restore')->name('customer.restore');
+        });
     });
 
     Route::middleware('adminGuest')->group(function () {
