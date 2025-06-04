@@ -122,30 +122,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/01.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">A Hunger knut book</h6>
                                                 <p class="font-size-13 line-height mb-1">Gurt Mistrioty</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$99</span>
+
                                                 <h6><b>$89</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -159,30 +151,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/02.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">In Cold Blood Book..</h6>
                                                 <p class="font-size-13 line-height mb-1">Anna Mull</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$129</span>
+
                                                 <h6><b>$99</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -196,30 +180,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/03.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">The Truman Capite</h6>
                                                 <p class="font-size-13 line-height mb-1">Ira Membrit</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$79</span>
+
                                                 <h6><b>$70</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -233,29 +209,21 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/04.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">A Book Of Thinner</h6>
                                                 <p class="font-size-13 line-height mb-1">Pete Sariya</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
                                                 <h6><b>$129</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -269,30 +237,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/05.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">Book of Texi Driver</h6>
                                                 <p class="font-size-13 line-height mb-1">Paige Turner</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$129</span>
+
                                                 <h6><b>$120</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -306,30 +266,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/06.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">A man with those Faces</h6>
                                                 <p class="font-size-13 line-height mb-1">Bob Frapples</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$89</span>
+
                                                 <h6><b>$79</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -343,30 +295,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/07.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">The Great Gatsb</h6>
                                                 <p class="font-size-13 line-height mb-1">Barb Ackue</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$99</span>
+
                                                 <h6><b>$89</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -380,30 +324,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/08.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">The Cover Design Book</h6>
                                                 <p class="font-size-13 line-height mb-1">Monty Carlo</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$102</span>
+
                                                 <h6><b>$89</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -417,30 +353,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/09.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">Starving Start up book</h6>
                                                 <p class="font-size-13 line-height mb-1">Monty Carlo</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$105</span>
+
                                                 <h6><b>$99</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -454,30 +382,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/10.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">I can do it anything</h6>
                                                 <p class="font-size-13 line-height mb-1">Terry Aki</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$103</span>
+
                                                 <h6><b>$98</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -491,30 +411,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/11.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">A horror Novel Book</h6>
                                                 <p class="font-size-13 line-height mb-1">Hal Appeno</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$99</span>
+
                                                 <h6><b>$79</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
@@ -528,30 +440,22 @@
                                           <div class="col-6 p-0 position-relative image-overlap-shadow">
                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/search-book/12.jpg" alt=""></a>
                                              <div class="view-book">
-                                                <a href="book-page.html" class="btn btn-sm btn-white">View Book</a>
+                                                <a href="book-page" class="btn btn-sm btn-white">View Book</a>
                                              </div>
                                           </div>
                                           <div class="col-6">
                                              <div class="mb-2">
                                                 <h6 class="mb-1">Think Outside Box</h6>
                                                 <p class="font-size-13 line-height mb-1">Bill Emia</p>
-                                                <div class="d-block">
-                                                   <span class="font-size-13 text-warning">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </span>
-                                                </div>
+
                                              </div>
                                              <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$110</span>
+
                                                 <h6><b>$99</b></h6>
                                              </div>
                                              <div class="iq-product-action">
                                                 <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+
                                              </div>
                                           </div>
                                        </div>
