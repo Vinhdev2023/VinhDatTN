@@ -9,8 +9,8 @@ Route::get('/book-page',[Customer::class,'book_page']);
 Route::get('/category',[Customer::class,'category']);
 Route::get('/checkout',[Customer::class,'Checkout']);
 Route::get('/cart-page',[Customer::class,'cart_page']);
-Route::get('/order-page',[Customer::class,'order_page']);
-Route::get('/order-detail',[Customer::class,'order_detail']);
+Route::get('/order-page',[Customer::class,'order_page'])->middleware('customerAuth');
+Route::get('/order-detail',[Customer::class,'order_detail'])->middleware('customerAuth');
 Route::get('/profile',[Customer::class,'profile'])->middleware('customerAuth');
 Route::get('/profile-edit',[Customer::class,'profile_edit'])->middleware('customerAuth');
 Route::middleware('customerGuest')->group(function () {

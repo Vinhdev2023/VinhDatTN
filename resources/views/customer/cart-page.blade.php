@@ -68,7 +68,7 @@
                                                             <div class="row align-items-center mt-2">
                                                                 <div class="col-sm-7 col-md-6">
                                                                     <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                                    <input type="text" id="quantity" value="0">
+                                                                    <input type="number" oninput="this.value = Math.round(this.value);" id="quantity" onchange="this.value < 0 ? this.value = 1 : this.value" min="1" value="1" style="width: 50px">
                                                                     <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
                                                                 </div>
                                                                 <div class="col-sm-5 col-md-6">
@@ -77,7 +77,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
-                                                            <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
+                                                            <a href="javascript:void();" class="text-dark font-size-20">
+                                                                <i class="ri-delete-bin-7-fill"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -105,7 +107,7 @@
                                                             <div class="row align-items-center mt-2">
                                                                 <div class="col-sm-7 col-md-6">
                                                                     <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                                    <input type="text" id="quantity" value="0">
+                                                                    <input type="number" oninput="this.value = Math.round(this.value);" id="quantity" onchange="this.value < 0 ? this.value = 1 : this.value" min="1" value="1" style="width: 50px">
                                                                     <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
                                                                 </div>
                                                                 <div class="col-sm-5 col-md-6">
@@ -114,7 +116,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
-                                                            <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
+                                                            <a href="javascript:void();" class="text-dark font-size-20">
+                                                                <i class="ri-delete-bin-7-fill"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -142,7 +146,7 @@
                                                             <div class="row align-items-center mt-2">
                                                                 <div class="col-sm-7 col-md-6">
                                                                     <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                                    <input type="text" id="quantity" value="0">
+                                                                    <input type="number" oninput="this.value = Math.round(this.value);" id="quantity" onchange="this.value < 0 ? this.value = 1 : this.value" min="1" value="1" style="width: 50px">
                                                                     <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
                                                                 </div>
                                                                 <div class="col-sm-5 col-md-6">
@@ -151,7 +155,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
-                                                            <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
+                                                            <a href="javascript:void();" class="text-dark font-size-20">
+                                                                <i class="ri-delete-bin-7-fill"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>

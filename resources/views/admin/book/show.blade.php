@@ -97,6 +97,10 @@
                                                 Update
                                             </a>
 
+                                            <a href="{{route('admin.books.index')}}" class="btn btn-primary btn-lg btn-flat">
+                                                Orther Book
+                                            </a>
+
                                             <button type="submit" class="btn btn-danger btn-lg btn-flat" onclick="return confirm('You want to delete?')">
                                                 Delete
                                             </button>

@@ -66,7 +66,6 @@
                                 <p>Employees and Admins</p>
                             </a>
                         </li>
-                        {{-- @dd($path) --}}
                         <li class="nav-item @if($path == 'admin.account.trashed') {{' menu-open'}} @endif">
                             <a href="{{route('admin.account.trashed')}}" class="nav-link @if($path == 'admin.account.trashed') {{' active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
@@ -114,7 +113,6 @@
                         <p>
                             Books
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">{{$numbook}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -138,7 +136,6 @@
                         <p>
                             Categories
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">{{$numcategory}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -162,7 +159,6 @@
                         <p>
                             Authors
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">{{$numauthor}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -186,7 +182,6 @@
                         <p>
                             Publishers
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">{{$numauthor}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">

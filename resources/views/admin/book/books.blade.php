@@ -36,6 +36,9 @@
                     <x-admin.card>
                         <x-admin.card-header>
                             <h3 class="card-title">Book data</h3>
+                            <div class="card-tools">
+                                <a href="{{ route('admin.books.create') }}" class="btn btn-primary">Add a new book</a>
+                            </div>
                         </x-admin.card-header>
                         <x-admin.card-body>
                             <table id="example2" class="table table-bordered table-hover">
