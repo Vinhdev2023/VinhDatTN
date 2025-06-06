@@ -59,16 +59,15 @@
                 </li> --}}
                 <li>
                     <a href="/cart-page">
-                        <img src="/customer_plugin/images/cart-icon-png-12.jpg" style="width: 25px">
-                        <span>Cart</span>
+                       <i class="ri-shopping-cart-line"></i>Cart
                     </a>
                 </li>
                 @if (auth()->guard('customers')->check())
                     <li>
                         <a href="/order-page">
-                            <img src="/customer_plugin/images/order-icon-png-12.jpg" style="width: 25px">
-                            <span>Orders</span>
+                          <i class="ri-article-line"></i>Orders
                         </a>
+
                     </li>
                 @endif
             </ul>
