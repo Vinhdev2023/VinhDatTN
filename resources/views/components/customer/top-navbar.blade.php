@@ -38,6 +38,7 @@
                             <button class="search-link btn-primary btn" href="#"><i class="ri-search-line"></i></button>
                         </form>
                     </li>
+                    @if (session()->get('cart'))
                     <li class="nav-item nav-icon dropdown">
                         <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                             <i class="ri-shopping-cart-2-line"></i>
@@ -83,6 +84,7 @@
                             </div>
                         </div>
                     </li>
+                    @endif
                     <li class="line-height pt-3">
                         <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
                             <img src="/customer_plugin/images/user/1.jpg" class="img-fluid rounded-circle mr-3" alt="user">
