@@ -46,6 +46,7 @@
                                 </div>
                                 <div class="iq-card-body">
                                     <ul class="list-inline p-0 m-0">
+                                        @if (session()->get('cart'))
                                         @foreach (session()->get('cart') as $item)
                                         <li class="checkout-product">
                                             <div class="row align-items-center">
@@ -68,9 +69,11 @@
                                                         <div class="col-sm-10">
                                                             <div class="row align-items-center mt-2">
                                                                 <div class="col-sm-7 col-md-6">
-                                                                    <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                                    <input type="number" oninput="this.value = Math.round(this.value);" id="quantity" onchange="this.value < 0 ? this.value = 1 : this.value" min="1" value="{{$item->quantity}}" style="width: 50px">
-                                                                    <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
+                                                                    <form action="" method="post">
+                                                                        @csrf
+                                                                        <input type="number" oninput="this.value = Math.round(this.value);"  onchange="this.value <= 0 ? this.value = 1 : this.value" min="1" value="{{$item->quantity}}" style="width: 50px">
+                                                                        <button type="submit" class="fa fa-circle qty-btn"></button>
+                                                                    </form>
                                                                 </div>
                                                                 <div class="col-sm-5 col-md-6">
                                                                     <span class="product-price">{{number_format($item->price * $item->quantity)}} ₫</span>
@@ -88,6 +91,7 @@
                                         </li>
                                             
                                         @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

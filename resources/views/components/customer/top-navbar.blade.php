@@ -6,7 +6,7 @@
                     <div class="main-circle"><i class="las la-bars"></i></div>
                 </div>
                 <div class="iq-navbar-logo d-flex justify-content-between">
-                    <a href="index.html" class="header-logo">
+                    <a href="/" class="header-logo">
                         <img src="/customer_plugin/images/logo.png" class="img-fluid rounded-normal" alt="">
                         <div class="logo-title">
                             <span class="text-primary text-uppercase">BOOKSTORE</span>
@@ -29,77 +29,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navbar-list">
                     <li class="nav-item nav-icon search-content">
-                        <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                        <a href="/" class="search-toggle iq-waves-effect text-gray rounded">
                             <i class="ri-search-line"></i>
                         </a>
-                        <form action="#" class="search-box p-0">
+                        <form action="#" method="get" class="search-box p-0">
+                            @csrf
                             <input type="text" class="text search-input" placeholder="Type here to search...">
-                            <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                            <button class="search-link btn-primary btn" href="#"><i class="ri-search-line"></i></button>
                         </form>
                     </li>
-                    @if (auth()->guard('customers')->check())
-                        <li class="nav-item nav-icon">
-                            <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                                <i class="ri-notification-2-line"></i>
-                                <span class="bg-primary dots"></span>
-                            </a>                        
-                            <div class="iq-sub-dropdown">
-                                <div class="iq-card shadow-none m-0">
-                                    <div class="iq-card-body p-0">
-                                        <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white">Thông Báo<small class="badge  badge-light float-right pt-1">4</small></h5>
-                                        </div>
-                                        <a href="#" class="iq-sub-card" >
-                                            <div class="media align-items-center">
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
-                                                    <small class="float-right font-size-12">Just Now</small>
-                                                    <p class="mb-0">95.000đ</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card" >
-                                            <div class="media align-items-center">
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
-                                                    <small class="float-right font-size-12">5 days ago</small>
-                                                    <p class="mb-0">255.000đ</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card" >
-                                            <div class="media align-items-center">
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
-                                                    <small class="float-right font-size-12">2 days ago</small>
-                                                    <p class="mb-0">79.000đ</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card" >
-                                            <div class="media align-items-center">
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Đơn hàng #7979 giao không thành công</h6>
-                                                    <small class="float-right font-size-12">3 days ago</small>
-                                                    <p class="mb-0">100.000đ</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    @endif
                     <li class="nav-item nav-icon dropdown">
                         <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                             <i class="ri-shopping-cart-2-line"></i>
-                            <span class="badge badge-danger count-cart rounded-circle">2</span>
+                            @if (session()->get('cart'))
+                            <span class="badge badge-danger count-cart rounded-circle">{{ sizeof(session()->get('cart')) }}</span>
+                            @endif
                         </a>
                         <div class="iq-sub-dropdown">
                             <div class="iq-card shadow-none m-0">
                                 <div class="iq-card-body p-0 toggle-cart-info">
                                     <div class="bg-primary p-3">
-                                        <h5 class="mb-0 text-white">Giỏ Hàng<small class="badge  badge-light float-right pt-1">2</small></h5>
+                                        <h5 class="mb-0 text-white">Giỏ Hàng<small class="badge  badge-light float-right pt-1">{{ sizeof(session()->get('cart')) }}</small></h5>
                                     </div>
                                     <a href="#" class="iq-sub-card">
                                         <div class="media align-items-center">
