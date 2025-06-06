@@ -46,19 +46,20 @@
                                 </div>
                                 <div class="iq-card-body">
                                     <ul class="list-inline p-0 m-0">
+                                        @foreach (session()->get('cart') as $item)
                                         <li class="checkout-product">
                                             <div class="row align-items-center">
                                                 <div class="col-sm-2">
                                              <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/customer_plugin/images/checkout/01.jpg" alt=""></a>
+                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/images/{{$item->image}}" alt=""></a>
                                              </span>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="checkout-product-details">
-                                                        <h5>Economix - Các Nền Kinh Tế Vận Hành</h5>
+                                                        <h5>{{ $item->title }}</h5>
                                                         <p class="text-success">Còn hàng</p>
                                                         <div class="price">
-                                                            <h5>99.900 ₫</h5>
+                                                            <h5>{{number_format($item->price)}} ₫</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -68,16 +69,16 @@
                                                             <div class="row align-items-center mt-2">
                                                                 <div class="col-sm-7 col-md-6">
                                                                     <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                                    <input type="number" oninput="this.value = Math.round(this.value);" id="quantity" onchange="this.value < 0 ? this.value = 1 : this.value" min="1" value="1" style="width: 50px">
+                                                                    <input type="number" oninput="this.value = Math.round(this.value);" id="quantity" onchange="this.value < 0 ? this.value = 1 : this.value" min="1" value="{{$item->quantity}}" style="width: 50px">
                                                                     <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
                                                                 </div>
                                                                 <div class="col-sm-5 col-md-6">
-                                                                    <span class="product-price">99.900 ₫</span>
+                                                                    <span class="product-price">{{number_format($item->price * $item->quantity)}} ₫</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
-                                                            <a href="javascript:void();" class="text-dark font-size-20">
+                                                            <a href="/remove-in-cart/{{$item->id}}" class="text-dark font-size-20">
                                                                 <i class="ri-delete-bin-7-fill"></i>
                                                             </a>
                                                         </div>
@@ -85,84 +86,8 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="checkout-product">
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-2">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/customer_plugin/images/checkout/02.jpg" alt=""></a>
-                                             </span>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="checkout-product-details">
-                                                        <h5>Người Bán Hàng Vĩ Đại Nhất Thế Giới</h5>
-                                                        <p class="text-success">Còn hàng</p>
-                                                        <div class="price">
-                                                            <h5>92.900 ₫</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="row">
-                                                        <div class="col-sm-10">
-                                                            <div class="row align-items-center mt-2">
-                                                                <div class="col-sm-7 col-md-6">
-                                                                    <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                                    <input type="number" oninput="this.value = Math.round(this.value);" id="quantity" onchange="this.value < 0 ? this.value = 1 : this.value" min="1" value="1" style="width: 50px">
-                                                                    <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
-                                                                </div>
-                                                                <div class="col-sm-5 col-md-6">
-                                                                    <span class="product-price">92.900 ₫</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <a href="javascript:void();" class="text-dark font-size-20">
-                                                                <i class="ri-delete-bin-7-fill"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="checkout-product">
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-2">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/customer_plugin/images/checkout/03.jpg" alt=""></a>
-                                             </span>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="checkout-product-details">
-                                                        <h5>Một Đời Quản Trị </h5>
-                                                        <p class="text-success">Còn hàng</p>
-                                                        <div class="price">
-                                                            <h5>136.900 ₫</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="row">
-                                                        <div class="col-sm-10">
-                                                            <div class="row align-items-center mt-2">
-                                                                <div class="col-sm-7 col-md-6">
-                                                                    <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                                    <input type="number" oninput="this.value = Math.round(this.value);" id="quantity" onchange="this.value < 0 ? this.value = 1 : this.value" min="1" value="1" style="width: 50px">
-                                                                    <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
-                                                                </div>
-                                                                <div class="col-sm-5 col-md-6">
-                                                                    <span class="product-price">136.900 ₫</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <a href="javascript:void();" class="text-dark font-size-20">
-                                                                <i class="ri-delete-bin-7-fill"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -175,20 +100,12 @@
                                     <p><b>Chi tiết</b></p>
                                     <div class="d-flex justify-content-between mb-1">
                                         <span>Tổng</span>
-                                        <span>339.900đ</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Thuế VAT</span>
-                                        <span>16.900đ</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <span>Phí vận chuyển</span>
-                                        <span class="text-success">Miễn phí</span>
+                                        <span>{{ number_format(session()->get('cart_total')) }}</span>
                                     </div>
                                     <hr>
                                     <div class="d-flex justify-content-between">
                                         <span class="text-dark"><strong>Tổng</strong></span>
-                                        <span class="text-dark"><strong>327.900đ</strong></span>
+                                        <span class="text-dark"><strong>{{ number_format(session()->get('cart_total')) }}đ</strong></span>
                                     </div>
                                     <a id="place-order" href="/checkout" class="btn btn-primary d-block mt-3 next">Đặt hàng</a>
                                 </div>
