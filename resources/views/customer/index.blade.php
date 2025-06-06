@@ -40,372 +40,46 @@
                         </div>
                         <div class="iq-card-body">
                            <div class="row">
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="#"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/img01.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
+                              @foreach ($books as $book)
+                                 <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
+                                       <div class="iq-card-body p-0">
+                                          <div class="d-flex align-items-center">
+                                             <div class="col-6 p-0 position-relative image-overlap-shadow">
+                                                <a href="#"><img class="img-fluid rounded w-100" src="/images/{{$book->image}}" alt=""></a>
+                                                <div class="view-book">
+                                                   <a href="book-page/{{ $book->id }}" class="btn btn-sm btn-white">Mua Ngay</a>
+                                                </div>
                                              </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Bí Quyết Làm Giàu Của Napoleon Hill (Tái Bản 2019)</h6>
-                                                <p class="font-size-13 line-height mb-1">Napoleon Hill</p>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>79.000 đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="#"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/02.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Trên Đỉnh Phố Wall(Tái bản 2019)</h6>
-                                                <p class="font-size-13 line-height mb-1">Fritz Wold</p>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>79.000 đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="#"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
+                                             <div class="col-6">
+                                                <div class="mb-2">
+                                                   <h6 class="mb-1">{{$book->title}}</h6>
+                                                   @foreach ($book->author as $author)
+                                                      <p class="font-size-13 line-height mb-1">
+                                                         {{$author->name}}
+                                                      </p>
+                                                   @endforeach
+                                                </div>
+                                                <div class="price d-flex align-items-center">
+                                                   <h6><b>{{number_format($book->price, 0,',','.')}} đ</b></h6>
+                                                </div>
+                                                <div class="iq-product-action">
+                                                   <a href="/add-cart/{{ $book->id }}">
+                                                      <i class="ri-shopping-cart-2-fill text-primary"></i>
+                                                   </a>
+                                                </div>
                                              </div>
                                           </div>
                                        </div>
                                     </div>
                                  </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="#"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/03.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Đến Starbucks Mua Cà Phê Cốc Lớn</h6>
-                                                <p class="font-size-13 line-height mb-1">John Klok</p>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>79.000 đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="#"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="#"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/04.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Kinh Tế Học Viking</h6>
-                                                <p class="font-size-13 line-height mb-1">George Strong</p>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>68.000 đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="#"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/05.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Cha Giàu Cha Nghèo</h6>
-                                                <p class="font-size-13 line-height mb-1">Ichae Semos</p>
-
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>39.000đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/06.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Find The Wave Book</h6>
-                                                <p class="font-size-13 line-height mb-1">Fidel Martin</p>
-
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>79.000đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/07.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">See the More Story</h6>
-                                                <p class="font-size-13 line-height mb-1">Jules Boutin</p>
-
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>79.000đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/08.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">The Wikde Book</h6>
-                                                <p class="font-size-13 line-height mb-1">Kusti Franti</p>
-
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>79.390đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent mb-lg-0">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/09.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">Conversion Erik Routley</h6>
-                                                <p class="font-size-13 line-height mb-1">Argele Intili</p>
-
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>79.000đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent mb-md-0 mb-lg-0">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/10.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">The Leo Dominica</h6>
-                                                <p class="font-size-13 line-height mb-1">Henry Jurk</p>
-
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>79.000đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent mb-sm-0 mb-md-0 mb-lg-0">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/11.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">By The Editbeth Jat</h6>
-                                                <p class="font-size-13 line-height mb-1">David King</p>
-
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>68.6080đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent mb-0 mb-sm-0 mb-md-0 mb-lg-0">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/browse-books/12.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page" class="btn btn-sm btn-white">Mua Ngay</a>
-                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">The Crucial Decade</h6>
-                                                <p class="font-size-13 line-height mb-1">Attilio Marzi</p>
-
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <h6><b>179.000đ</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
+                              @endforeach
                            </div>
                         </div>
                      </div>
                   </div>
-                  <div class="col-lg-12">
-                     <div class="iq-card">
-                        <div class="iq-card-body p-0">
-                           <div class="iq-edit-list">
-                              <ul class="iq-edit-profile d-flex nav nav-pills">
-                                 <li class="col-md p-0">
-                                    <a class="nav-link" href="#">
-                                       <--
-                                    </a>
-                                 </li>
-                                 <li class="col-md p-0">
-                                    <a class="nav-link" href="#">
-                                       1
-                                    </a>
-                                 </li>
-                                 <li class="col-md p-0">
-                                    <a class="nav-link" href="#">
-                                       2
-                                    </a>
-                                 </li>
-                                 <li class="col-md p-0">
-                                    <a class="nav-link" href="#">
-                                       3
-                                    </a>
-                                 </li>
-                                 <li class="col-md p-0">
-                                    <a class="nav-link" href="#">
-                                       -->
-                                    </a>
-                                 </li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
+                  <div class="col-12">
+                     {{ $books->links('customer.pagination')}}
                   </div>
                </div>
             </div>

@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthCustomerController;
+use App\Http\Controllers\BookViewController;
 use App\Http\Controllers\Customer;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/account-setting',[Customer::class,'account_setting'])->middleware('customerAuth');
-Route::get('/book-page',[Customer::class,'book_page']);
+Route::get('/book-page/{book}',[BookViewController::class,'view']);
 Route::get('/category',[Customer::class,'category']);
 Route::get('/checkout',[Customer::class,'Checkout']);
 Route::get('/cart-page',[Customer::class,'cart_page']);

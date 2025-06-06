@@ -33,7 +33,7 @@
                         <li><a href="/order-page"><img src="/customer_plugin/images/order-icon-png-12.jpg" style="width: 25px">Orders</a></li>
                     </ul>
                 </li> --}}
-                <li class="active active-menu">
+                <li>
                     <a href="/">
                         <i class="las la-house-damage"></i>
                         <span>Home Page</span>
@@ -45,18 +45,18 @@
                         <span>Category Page</span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="/book-page">
                         <i class="ri-book-line"></i>
                         <span>Book Page</span>
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a href="/checkout">
                         <i class="ri-checkbox-multiple-blank-line"></i>
                         <span>Checkout</span>
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="/cart-page">
                         <img src="/customer_plugin/images/cart-icon-png-12.jpg" style="width: 25px">

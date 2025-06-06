@@ -44,7 +44,7 @@
                                              <ul id="description-slider" class="list-inline p-0 m-0  d-flex nav justify-content-center">
                                                 <li>
                                                    <a href="javascript:void(0);">
-                                                   <img src="/customer_plugin/images/new_realeases/img01.jpg" class="img-fluid w-100 rounded" alt="">
+                                                   <img src="/images/{{$book->image}}" class="img-fluid w-100 rounded" alt="">
                                                    </a>
                                                 </li>
                                              </ul>
@@ -56,15 +56,19 @@
                               <div class="col-md-6">
                                  <div class="iq-card-transparent iq-card-block iq-card-stretch iq-card-height">
                                     <div class="iq-card-body p-0">
-                                       <h3 class="mb-3">Payback Time - Ngày Đòi Nợ</h3>
+                                       <h3 class="mb-3">{{$book->title}}</h3>
                                        <div class="price d-flex align-items-center font-weight-500 mb-2">
-                                          <span class="font-size-24 text-dark">299.000 ₫</span>
+                                          <span class="font-size-24 text-dark">{{number_format($book->price, 0,',','.')}} ₫</span>
                                        </div>
-                                       <span class="text-dark mb-4 pb-4 iq-border-bottom d-block">"Trong chứng khoán và thị trường tài chính, dám tham gia đầu tư cũng là một thành công tâm lý ban đầu. Dù vậy, 95% nhà đầu tư Việt Nam thuộc nhóm nhà đầu tư nhỏ lẻ với vốn kiến thức tài chính vô cùng hạn chế. Họ tham gia vào thị trường chứng khoán với 100% ý chí và sự quyết tâm chiến thắng thị trường, nhưng thật không may mắn kết cục cuối cùng của họ luôn là sự thất bại và mất tiền.</span>
-                                       <div class="text-primary mb-4">Tác giả: <span class="text-body">HappyLive</span></div>
+                                       <span class="text-dark mb-4 pb-4 iq-border-bottom d-block">{{$book->description}}</span>
+                                       <div class="text-primary mb-4">Tác giả: 
+                                          @foreach ($book->author as $author)
+                                             <span class="text-body">{{$author->name}}</span>,
+                                          @endforeach
+                                       </div>
                                        <div class="mb-4 d-flex align-items-center">
-                                          <a href="checkout.html" class="btn btn-primary view-more mr-2">Thêm vào giỏ hàng</a>
-                                          <a href="book-pdf.html" class="btn btn-primary view-more mr-2">Mua ngay</a>
+                                          <a href="/add-cart/{{ $book->id }}" class="btn btn-primary view-more mr-2">Thêm vào giỏ hàng</a>
+                                          <a href="#" class="btn btn-primary view-more mr-2">Mua ngay</a>
                                        </div>
                                     </div>
                                  </div>
@@ -73,129 +77,11 @@
                         </div>
                      </div>
                   </div>
-                  <div class="col-lg-12">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
-                        <div class="iq-card-header d-flex justify-content-between align-items-center position-relative">
-                           <div class="iq-header-title">
-                              <h4 class="card-title mb-0">Sản phẩm tương tự</h4>
-                           </div>
-                           <div class="iq-card-header-toolbar d-flex align-items-center">
-                              <a href="category" class="btn btn-sm btn-primary view-more">Xem thêm</a>
-                           </div>
-                        </div>
-                        <div class="iq-card-body single-similar-contens">
-                           <ul id="single-similar-slider" class="list-inline p-0 mb-0 row">
-                              <li class="col-md-3">
-                                 <div class="row align-items-center">
-                                    <div class="col-5">
-                                       <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/01.jpg" alt=""></a>
-                                          <div class="view-book">
-                                             <a href="book-page" class="btn btn-sm btn-white">Xem thêm</a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-7 pl-0">
-                                       <h6 class="mb-2">Nhà Đầu Tư Thông Minh...</h6>
-                                       <p class="text-body">Dịch giả : Lê Quốc Phương</p>
-                                       <a href="#" class="text-dark" tabindex="-1">Đọc ngay<i class="ri-arrow-right-s-line"></i></a>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li class="col-md-3">
-                                 <div class="row align-items-center">
-                                    <div class="col-5">
-                                       <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/02.jpg" alt=""></a>
-                                          <div class="view-book">
-                                             <a href="book-page" class="btn btn-sm btn-white">Xem sách</a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-7 pl-0">
-                                       <h6 class="mb-2">Nhà Lãnh Đạo Không Chức Danh</h6>
-                                       <p class="text-body">Tác giả : NXB Trẻ</p>
-                                       <a href="#" class="text-dark" tabindex="-1">Đọc ngay<i class="ri-arrow-right-s-line"></i></a>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li class="col-md-3">
-                                 <div class="row align-items-center">
-                                    <div class="col-5">
-                                       <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/03.jpg" alt=""></a>
-                                          <div class="view-book">
-                                             <a href="book-page" class="btn btn-sm btn-white">Xem sách</a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-7 pl-0">
-                                       <h6 class="mb-2">Nghệ Thuật đầu tư Dhandho...</h6>
-                                       <p class="text-body">Tác giả : Bill Emia</p>
-                                       <a href="#" class="text-dark" tabindex="-1">Đọc ngay<i class="ri-arrow-right-s-line"></i></a>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li class="col-md-3">
-                                 <div class="row align-items-center">
-                                    <div class="col-5">
-                                       <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/04.jpg" alt=""></a>
-                                          <div class="view-book">
-                                             <a href="book-page" class="btn btn-sm btn-white">Xem sách</a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-7 pl-0">
-                                       <h6 class="mb-2">Từ Tốt Đến Vĩ Đại.</h6>
-                                       <p class="text-body">Tác giả : Hal Appeno</p>
-                                       <a href="#" class="text-dark" tabindex="-1">Đọc ngay<i class="ri-arrow-right-s-line"></i></a>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li class="col-md-3">
-                                 <div class="row align-items-center">
-                                    <div class="col-5">
-                                       <div class="position-relative image-overlap-shadow">
-                                          <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/customer_plugin/images/similar-books/05.jpg" alt=""></a>
-                                          <div class="view-book">
-                                             <a href="book-page" class="btn btn-sm btn-white">Xem sách</a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-7 pl-0">
-                                       <h6 class="mb-2">D. Trump - Đừng Bao Giờ Bỏ Cuộc..</h6>
-                                       <p class="text-body">Tác giả : Zack Lee</p>
-                                       <a href="#" class="text-dark" tabindex="-1">Đọc ngay<i class="ri-arrow-right-s-line"></i></a>
-                                    </div>
-                                 </div>
-                              </li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
                </div>
             </div>
          </div>
       </div>
       <!-- Wrapper END -->
-      <!-- Footer -->
-      <footer class="iq-footer">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-lg-6">
-                  <ul class="list-inline mb-0">
-                     <li class="list-inline-item"><a href="privacy-policy.html">Chính sách</a></li>
-                     <li class="list-inline-item"><a href="terms-of-service.html">Điều khoản</a></li>
-                  </ul>
-               </div>
-               <div class="col-lg-6 text-right">
-                  Copyright 2020 <a href="#">TVteam</a>
-               </div>
-            </div>
-         </div>
-      </footer>
-      <!-- Footer END -->
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="/customer_plugin/js/jquery.min.js"></script>
