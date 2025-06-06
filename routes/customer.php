@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthCustomerController;
 use App\Http\Controllers\BookViewController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Customer;
 use Illuminate\Support\Facades\Route;
 
@@ -9,7 +10,10 @@ Route::get('/account-setting',[Customer::class,'account_setting'])->middleware('
 Route::get('/book-page/{book}',[BookViewController::class,'view']);
 Route::get('/category',[Customer::class,'category']);
 Route::get('/checkout',[Customer::class,'Checkout']);
-Route::get('/cart-page',[Customer::class,'cart_page']);
+
+Route::get('/cart-page',[CartController::class,'index']);
+Route::get('/add-cart/{book}',[CartController::class,'addCart']);
+
 Route::get('/order-page',[Customer::class,'order_page'])->middleware('customerAuth');
 Route::get('/order-detail',[Customer::class,'order_detail'])->middleware('customerAuth');
 Route::get('/profile',[Customer::class,'profile'])->middleware('customerAuth');

@@ -20,15 +20,14 @@ class Customer extends Controller
 
     public function category(){
         $books = Book::orderBy('created_at', 'desc')->paginate(12);
+        $books->load('author');
 
         return view('customer.category', compact('books'));
     }
     public function Checkout(){
         return view('customer.Checkout');
     }
-    public function cart_page(){
-        return view('customer.cart-page');
-    }
+
     public function profile(){
         return view('customer.profile');
     }

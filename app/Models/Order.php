@@ -18,5 +18,13 @@ class Order extends Model
         'status',
     ];
 
+    public function orderDetails() {
+        return $this->hasMany(OrderDetail::class);
+    }
+
+    // public function numBook() {
+    //     return $this->orderDetails()->where('quantity','>',0);
+    // }
+
     use HasFactory;
 }

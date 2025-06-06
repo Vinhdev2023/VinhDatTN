@@ -17,10 +17,12 @@ class OrderDetail extends Model
     
     public $timestamps = false;
 
-    public function Order() {
-        return [
-            $this->belongsTo(Order::class),
-        ];
+    public function order() {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function book() {
+        return $this->belongsTo(Book::class);
     }
 
     use HasFactory;
