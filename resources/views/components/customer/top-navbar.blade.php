@@ -85,6 +85,7 @@
                         </div>
                     </li>
                     @endif
+                    @if (auth()->guard('customers')->check())
                     <li class="line-height pt-3">
                         <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
                             <img src="/customer_plugin/images/user/1.jpg" class="img-fluid rounded-circle mr-3" alt="user">
@@ -95,54 +96,54 @@
                                 @endif
                             </div>
                         </a>
-                        @if (auth()->guard('customers')->check())
-                            <div class="iq-sub-dropdown iq-user-dropdown">
-                                <div class="iq-card shadow-none m-0">
-                                    <div class="iq-card-body p-0 ">
-                                        <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white line-height">Xin Chào {{auth()->guard('customers')->user()->name}}</h5>
+                        
+                        <div class="iq-sub-dropdown iq-user-dropdown">
+                            <div class="iq-card shadow-none m-0">
+                                <div class="iq-card-body p-0 ">
+                                    <div class="bg-primary p-3">
+                                        <h5 class="mb-0 text-white line-height">Xin Chào {{auth()->guard('customers')->user()->name}}</h5>
+                                    </div>
+                                    <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
+                                        <div class="media align-items-center">
+                                            <div class="rounded iq-card-icon iq-bg-primary">
+                                                <i class="ri-file-user-line"></i>
+                                            </div>
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Tài khoản của tôi</h6>
+                                            </div>
                                         </div>
-                                        <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
-                                            <div class="media align-items-center">
-                                                <div class="rounded iq-card-icon iq-bg-primary">
-                                                    <i class="ri-file-user-line"></i>
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Tài khoản của tôi</h6>
-                                                </div>
+                                    </a>
+                                    <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
+                                        <div class="media align-items-center">
+                                            <div class="rounded iq-card-icon iq-bg-primary">
+                                                <i class="ri-profile-line"></i>
                                             </div>
-                                        </a>
-                                        <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
-                                            <div class="media align-items-center">
-                                                <div class="rounded iq-card-icon iq-bg-primary">
-                                                    <i class="ri-profile-line"></i>
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Sổ địa chỉ</h6>
-                                                </div>
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Sổ địa chỉ</h6>
                                             </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card iq-bg-primary-hover">
-                                            <div class="media align-items-center">
-                                                <div class="rounded iq-card-icon iq-bg-primary">
-                                                    <i class="ri-account-box-line"></i>
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Đơn hàng của tôi</h6>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="d-inline-block w-100 text-center p-3">
-                                            <form action="{{ route('customer.logout') }}" method="post">
-                                                @csrf
-                                                <button type="submit" class="btn btn-primary"><i class="ri-book-line"></i>Logout</button>
-                                            </form>
                                         </div>
+                                    </a>
+                                    <a href="#" class="iq-sub-card iq-bg-primary-hover">
+                                        <div class="media align-items-center">
+                                            <div class="rounded iq-card-icon iq-bg-primary">
+                                                <i class="ri-account-box-line"></i>
+                                            </div>
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Đơn hàng của tôi</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="d-inline-block w-100 text-center p-3">
+                                        <form action="{{ route('customer.logout') }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary"><i class="ri-book-line"></i>Logout</button>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>                            
-                        @endif
+                            </div>
+                        </div>
                     </li>
+                    @endif
                 </ul>
             </div>
         </nav>
