@@ -13,6 +13,7 @@ Route::get('/checkout',[Customer::class,'Checkout'])->middleware('customerAuth')
 
 Route::get('/cart-page',[CartController::class,'index']);
 Route::get('/add-cart/{book}',[CartController::class,'addCart']);
+Route::get('/remove-in-cart/{book}',[CartController::class,'removeInCart']);
 
 Route::get('/order-page',[Customer::class,'order_page'])->middleware('customerAuth');
 Route::get('/order-detail',[Customer::class,'order_detail'])->middleware('customerAuth');

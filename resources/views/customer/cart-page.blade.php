@@ -60,7 +60,7 @@
                                                         <h5>{{ $item->title }}</h5>
                                                         <p class="text-success">Còn hàng</p>
                                                         <div class="price">
-                                                            <h5>{{number_format($item->price)}} ₫</h5>
+                                                            <h5>{{ number_format($item->price,0,',','.') }} ₫</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -76,7 +76,7 @@
                                                                     </form>
                                                                 </div>
                                                                 <div class="col-sm-5 col-md-6">
-                                                                    <span class="product-price">{{number_format($item->price * $item->quantity)}} ₫</span>
+                                                                    <span class="product-price">{{number_format($item->price * $item->quantity,0,',','.')}} ₫</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -89,7 +89,6 @@
                                                 </div>
                                             </div>
                                         </li>
-                                            
                                         @endforeach
                                         @endif
                                     </ul>
@@ -104,12 +103,12 @@
                                     <p><b>Chi tiết</b></p>
                                     <div class="d-flex justify-content-between mb-1">
                                         <span>Tổng</span>
-                                        <span>{{ number_format(session()->get('cart_total')) }}</span>
+                                        <span>{{ number_format(session()->get('cart_total'),0,',','.') }} đ</span>
                                     </div>
                                     <hr>
                                     <div class="d-flex justify-content-between">
                                         <span class="text-dark"><strong>Tổng</strong></span>
-                                        <span class="text-dark"><strong>{{ number_format(session()->get('cart_total')) }}đ</strong></span>
+                                        <span class="text-dark"><strong>{{ number_format(session()->get('cart_total'),0,',','.') }} đ</strong></span>
                                     </div>
                                     <a id="place-order" href="/checkout" class="btn btn-primary d-block mt-3 next">Đặt hàng</a>
                                 </div>

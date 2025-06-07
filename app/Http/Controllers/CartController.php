@@ -52,8 +52,53 @@ class CartController extends Controller
             return redirect()->back();
         }
         return redirect()->back();
-        // $orderPending = Order::find(3);
-        // $bookTaken = $orderPending->orderDetails()->where('book_id', $book->id)->sum('quantity');
-        // dd( $bookTaken, session()->get('cart'), session()->get('cart_total'));
+    }
+
+    public function removeInCart(Book $book) {
+        $cart = session()->get('cart');
+        foreach ($cart as $key => $obj) {
+            if ($obj->id == $book->id) {
+                unset($cart[$key]);
+                break;
+            }
+        }
+        if ($cart == null || $cart == []){
+            session()->forget('cart');
+            session()->forget('cart_total');
+            session()->save();
+            return redirect()->back();
+        }
+        session()->put('cart', $cart);
+        $total = 0;
+        $cart = session()->get('cart');
+        foreach ($cart as $obj) {
+            $total += $obj->price * $obj->quantity;
+        }
+        session()->put('cart_total', $total);
+        return redirect()->back();
+    }
+
+    public function update_cart(Request $request, Book $book){
+        $request->validate([
+            'quantity' => 'required|integer|min:1'
+        ]);
+        
+        $quantity = $request->quantity;
+        $cart = session()->get('cart');
+        foreach ($cart as $obj) {
+            if ($obj->id == $book->id) {
+                $obj->quantity = $quantity;
+            }
+        }
+        session()->put('cart', $cart);
+
+        $total = 0;
+        $cart = session()->get('cart');
+        foreach ($cart as $obj) {
+            $total += $obj->price * $obj->quantity;
+        }
+
+        session()->put('cart_total', $total);
+        return redirect()->back();
     }
 }

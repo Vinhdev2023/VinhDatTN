@@ -23,23 +23,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navbar-list">
-                    <li class="nav-item nav-icon search-content">
-                        <a href="/" class="search-toggle iq-waves-effect text-gray rounded">
-                            <i class="ri-search-line"></i>
-                        </a>
-                        <form action="#" method="get" class="search-box p-0">
-                            @csrf
-                            <input type="text" class="text search-input" placeholder="Type here to search...">
-                            <button class="search-link btn-primary btn" href="#"><i class="ri-search-line"></i></button>
-                        </form>
-                    </li>
                     @if (session()->get('cart'))
                     <li class="nav-item nav-icon dropdown">
                         <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                             <i class="ri-shopping-cart-2-line"></i>
-                            @if (session()->get('cart'))
                             <span class="badge badge-danger count-cart rounded-circle">{{ sizeof(session()->get('cart')) }}</span>
-                            @endif
                         </a>
                         <div class="iq-sub-dropdown">
                             <div class="iq-card shadow-none m-0">
@@ -47,30 +35,20 @@
                                     <div class="bg-primary p-3">
                                         <h5 class="mb-0 text-white">Giỏ Hàng<small class="badge  badge-light float-right pt-1">{{ sizeof(session()->get('cart')) }}</small></h5>
                                     </div>
+                                    @foreach (session()->get('cart') as $item)
                                     <a href="#" class="iq-sub-card">
                                         <div class="media align-items-center">
                                             <div class="">
-                                                <img class="rounded" src="/customer_plugin/images/cart/01.jpg" alt="">
+                                                <img class="rounded" src="/images/{{ $item->image }}" alt="">
                                             </div>
                                             <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">Night People book</h6>
-                                                <p class="mb-0">$32</p>
+                                                <h6 class="mb-0 ">{{ $item->title }}</h6>
+                                                <p class="mb-0">{{ number_format($item->price,0,',','.') }} đ</p>
                                             </div>
                                             <div class="float-right font-size-24 text-danger"><i class="ri-close-fill"></i></div>
                                         </div>
                                     </a>
-                                    <a href="#" class="iq-sub-card">
-                                        <div class="media align-items-center">
-                                            <div class="">
-                                                <img class="rounded" src="/customer_plugin/images/cart/02.jpg" alt="">
-                                            </div>
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">The Sin Eater Book</h6>
-                                                <p class="mb-0">$40</p>
-                                            </div>
-                                            <div class="float-right font-size-24 text-danger"><i class="ri-close-fill"></i></div>
-                                        </div>
-                                    </a>
+                                    @endforeach
                                     <div class="d-flex align-items-center text-center p-3">
                                         <a class="btn btn-primary mr-2 iq-sign-btn" href="/cart-page" role="button">Giỏ Hàng</a>
                                         <a class="btn btn-primary iq-sign-btn" href="/checkout" role="button">Thanh Toán</a>
