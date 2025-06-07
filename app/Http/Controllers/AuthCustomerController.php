@@ -21,7 +21,7 @@ class AuthCustomerController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:customers,email',
-            'password' => 'required|string|min:8|confirmed'
+            'password' => 'required|string|min:1|confirmed'
         ]);
 
         $customer = Customer::create($validated);

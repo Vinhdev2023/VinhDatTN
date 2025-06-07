@@ -85,12 +85,12 @@
                         </div>
                     </li>
                     @endif
-                    @if (auth()->guard('customers')->check())
                     <li class="line-height pt-3">
+                        @if (auth()->guard('customers')->check())
                         <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
                             <img src="/customer_plugin/images/user/1.jpg" class="img-fluid rounded-circle mr-3" alt="user">
                             <div class="caption">
-                                <h6 class="mb-1 line-height">{{auth()->guard('customers')->check() ? auth()->guard('customers')->user()->name : 'Khách Hàng'}}</h6>
+                                <h6 class="mb-1 line-height">{{auth()->guard('customers')->user()->name}}</h6>
                                 @if (auth()->guard('customers')->check())
                                     <p class="mb-0 text-primary">Tài Khoản</p>
                                 @endif
@@ -142,8 +142,14 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                            <div class="caption">
+                                <h6 class="line-height">Đăng Nhập Tài Khoản</h6>
+                            </div>
+                        </a>
+                        @endif
                     </li>
-                    @endif
                 </ul>
             </div>
         </nav>
