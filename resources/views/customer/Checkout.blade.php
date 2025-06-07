@@ -85,10 +85,6 @@
                                         <span>339.900đ</span>
                                     </div>
 
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Thuế VAT</span>
-                                        <span>16.900đ</span>
-                                    </div>
                                     <div class="d-flex justify-content-between">
                                         <span>Phí vận chuyển</span>
                                         <span class="text-success">Miễn phí</span>

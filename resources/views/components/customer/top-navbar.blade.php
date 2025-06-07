@@ -15,14 +15,9 @@
                 </div>
             </div>
             <div class="navbar-breadcrumb">
-                <h5 class="mb-0">Trang Chủ</h5>
+{{--                <h5 class="mb-0">Trang Chủ</h5>--}}
             </div>
-            <div class="iq-search-bar">
-                <form action="#" class="searchbox">
-                    <input type="text" class="text search-input" placeholder="Tìm kiếm sản phẩm...">
-                    <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                </form>
-            </div>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-label="Toggle navigation">
                 <i class="ri-menu-3-line"></i>
             </button>
@@ -77,8 +72,8 @@
                                         </div>
                                     </a>
                                     <div class="d-flex align-items-center text-center p-3">
-                                        <a class="btn btn-primary mr-2 iq-sign-btn" href="cart-page" role="button">Giỏ Hàng</a>
-                                        <a class="btn btn-primary iq-sign-btn" href="checkout" role="button">Thanh Toán</a>
+                                        <a class="btn btn-primary mr-2 iq-sign-btn" href="/cart-page" role="button">Giỏ Hàng</a>
+                                        <a class="btn btn-primary iq-sign-btn" href="/checkout" role="button">Thanh Toán</a>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +91,7 @@
                                 @endif
                             </div>
                         </a>
-                        
+
                         <div class="iq-sub-dropdown iq-user-dropdown">
                             <div class="iq-card shadow-none m-0">
                                 <div class="iq-card-body p-0 ">
@@ -123,7 +118,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a href="#" class="iq-sub-card iq-bg-primary-hover">
+                                    <a href="/order-page" class="iq-sub-card iq-bg-primary-hover">
                                         <div class="media align-items-center">
                                             <div class="rounded iq-card-icon iq-bg-primary">
                                                 <i class="ri-account-box-line"></i>

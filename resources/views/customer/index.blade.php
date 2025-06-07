@@ -35,7 +35,7 @@
                               <h4 class="card-title mb-0">Các cuốn sách khác</h4>
                            </div>
                            <div class="iq-card-header-toolbar d-flex align-items-center">
-                              <a href="category.html" class="btn btn-sm btn-primary view-more">Xem Thêm</a>
+                              <a href="/category" class="btn btn-sm btn-primary view-more">Xem Thêm</a>
                            </div>
                         </div>
                         <div class="iq-card-body">
