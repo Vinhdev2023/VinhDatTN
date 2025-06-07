@@ -36,13 +36,13 @@
                 <li>
                     <a href="/">
                         <i class="las la-house-damage"></i>
-                        <span>Home Page</span>
+                        <span>Trang Chủ</span>
                     </a>
                 </li>
                 <li>
                     <a href="/category">
                         <i class="ri-function-line"></i>
-                        <span>Category Page</span>
+                        <span>Danh Mục Sách</span>
                     </a>
                 </li>
                 {{-- <li>
@@ -59,13 +59,15 @@
                 </li> --}}
                 <li>
                     <a href="/cart-page">
-                       <i class="ri-shopping-cart-line"></i>Cart
+                       <i class="ri-shopping-cart-line"></i>
+                        <span>Giỏ Hàng</span>
                     </a>
                 </li>
                 @if (auth()->guard('customers')->check())
                     <li>
                         <a href="/order-page">
-                          <i class="ri-article-line"></i>Orders
+                          <i class="ri-article-line"></i>
+                            <span>Đơn Hàng</span>
                         </a>
 
                     </li>
