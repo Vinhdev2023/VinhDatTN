@@ -83,7 +83,7 @@
                                         <div class="form-group">
                                             <label for="">Quantity of book</label>
                                             <div class="input-group">
-                                                <input type="number" name="quantity" value="{{ $book->quantity }}" id="quantity" min="0" step="1" oninput="this.value = Math.round(this.value);" onchange="this.value < 0 ? this.value = 1 : this.value" class="form-control" placeholder="Enter quantity of Book" required>
+                                                <input type="number" name="quantity" value="{{ $book->quantity }}" id="quantity" min="0" step="1" oninput="this.value = Math.round(this.value);" onchange="this.value < 0 ? this.value = 0 : this.value" class="form-control" placeholder="Enter quantity of Book" required>
                                             </div>
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label for="">Price of book</label>
                                             <div class="input-group">
-                                                <input type="number" name="price" value="{{ $book->price }}" oninput="this.value = Math.round(this.value);" onchange="this.value < 0 ? this.value = 1000 : this.value" min="1000" id="price" min="1000" id="price" class="form-control" placeholder="Enter price of Book" required>
+                                                <input type="number" name="price" value="{{ $book->price }}" oninput="this.value = Math.round(this.value);" onchange="this.value < 1000 ? this.value = 1000 : this.value" min="1000" id="price" min="1000" id="price" class="form-control" placeholder="Enter price of Book" required>
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">VND</div>
                                                 </div>

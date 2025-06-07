@@ -138,7 +138,7 @@
                             </div>
                         </div>
                         @else
-                        <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                        <a href="/sign-in" class="search-toggle iq-waves-effect d-flex align-items-center">
                             <div class="caption">
                                 <h6 class="line-height">Đăng Nhập Tài Khoản</h6>
                             </div>
