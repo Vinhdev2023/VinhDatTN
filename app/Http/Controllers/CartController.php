@@ -5,10 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class CartController extends Controller
 {
     public function index() {
+        if (session()->get('cart')) {
+            $cart = session()->get('cart');
+            foreach ($cart as $value) {
+                $book = Book::findOrFail($value->id);
+
+                $orderPendingorConfirmed = Order::where('status', 'PENDING')
+                    ->orWhere('status', 'CONFIRMED')
+                    ->get();
+                $bookTaken = 0;
+                foreach ($orderPendingorConfirmed as $order) {
+                    $bookTaken += Order::find($order->id)->orderDetails()->where('book_id', $value->id)->sum('quantity');
+                }
+
+                $value->quantityInStock = $book->quantity - $bookTaken;
+            }
+
+            session()->put('cart', $cart);
+            // dd(session()->get('cart'));
+            return view('customer.cart-page');
+        }
+
         return view('customer.cart-page');
     }
 
@@ -24,6 +46,7 @@ class CartController extends Controller
 
         if ($book->quantity - $bookTaken > 0) {
             $cart = session()->get('cart');
+
             $flag = 0;
             if (isset($cart)) {
                 foreach ($cart as $obj) {
@@ -36,6 +59,7 @@ class CartController extends Controller
                     }
                 }
             }
+            
             if ($flag == 0) {
                 $book->quantity = 1;
                 $cart = $book;
@@ -78,27 +102,41 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function update_cart(Request $request, Book $book){
+    public function updateCart(Request $request, Book $book){
         $request->validate([
             'quantity' => 'required|integer|min:1'
         ]);
-        
         $quantity = $request->quantity;
-        $cart = session()->get('cart');
-        foreach ($cart as $obj) {
-            if ($obj->id == $book->id) {
-                $obj->quantity = $quantity;
+
+        $orderPendingorConfirmed = Order::where('status', 'PENDING')
+            ->orWhere('status', 'CONFIRMED')
+            ->get();
+        
+        $bookTaken = 0;
+        foreach ($orderPendingorConfirmed as $order) {
+            $bookTaken += Order::find($order->id)->orderDetails()->where('book_id', $book->id)->sum('quantity');
+        }
+        
+        if ($book->quantity - $bookTaken >= $quantity && $quantity <= $book->quantity) {
+            $cart = session()->get('cart');
+            foreach ($cart as $obj) {
+                if ($obj->id == $book->id) {
+                    $obj->quantity = $quantity;
+                }
             }
-        }
-        session()->put('cart', $cart);
+            session()->put('cart', $cart);
 
-        $total = 0;
-        $cart = session()->get('cart');
-        foreach ($cart as $obj) {
-            $total += $obj->price * $obj->quantity;
+            $total = 0;
+            $cart = session()->get('cart');
+            foreach ($cart as $obj) {
+                $total += $obj->price * $obj->quantity;
+            }
+            session()->put('cart_total', $total);
+            return redirect()->back();
         }
 
-        session()->put('cart_total', $total);
-        return redirect()->back();
+        throw ValidationException::withMessages([
+            0 => 'the quantity too much'
+        ]);
     }
 }

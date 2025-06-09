@@ -30,10 +30,9 @@
     <!-- TOP Nav Bar -->
     <x-customer.top-navbar/>
     <!-- TOP Nav Bar END -->
-    <!-- TOP Nav Bar END -->
     <!-- Page Content  -->
     <div id="content-page" class="content-page">
-        <div class="container-fluid checkout-content">
+        <div class="container-fluid">
             <div class="row">
                 <div class="card-block show p-0 col-12">
                     <div class="row align-item-center">
@@ -47,53 +46,64 @@
                                 <div class="iq-card-body">
                                     <ul class="list-inline p-0 m-0">
                                         @if (session()->get('cart'))
-                                        @foreach (session()->get('cart') as $item)
-                                        <li class="checkout-product">
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-2">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/images/{{$item->image}}" alt=""></a>
-                                             </span>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="checkout-product-details">
-                                                        <h5>{{ $item->title }}</h5>
-                                                        <p class="text-success">Còn hàng</p>
-                                                        <div class="price">
-                                                            <h5>{{ number_format($item->price,0,',','.') }} ₫</h5>
+                                            @foreach (session()->get('cart') as $item)
+                                                <li class="checkout-product">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-sm-2">
+                                                            <span class="checkout-product-img">
+                                                                <a href="javascript:void();">
+                                                                    <img class="img-fluid rounded" src="/images/{{$item->image}}" alt="">
+                                                                </a>
+                                                            </span>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="row">
-                                                        <div class="col-sm-10">
-                                                            <div class="row align-items-center mt-2">
-                                                                <div class="col-sm-7 col-md-6">
-                                                                    <form action="" method="post">
-                                                                        @csrf
-                                                                        <input type="number" oninput="this.value = Math.round(this.value);"  onchange="this.value <= 0 ? this.value = 1 : this.value" min="1" value="{{$item->quantity}}" style="width: 50px">
-                                                                        <button type="submit" class="fa fa-circle qty-btn"></button>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="col-sm-5 col-md-6">
-                                                                    <span class="product-price">{{number_format($item->price * $item->quantity,0,',','.')}} ₫</span>
+                                                        <div class="col-sm-4">
+                                                            <div class="checkout-product-details">
+                                                                <h5>{{ $item->title }}</h5>
+                                                                <p class="text-success">Còn {{ $item->quantityInStock }}</p>
+                                                                <div class="price">
+                                                                    <h5>{{ number_format($item->price,0,',','.') }} ₫</h5>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-2">
-                                                            <a href="/remove-in-cart/{{$item->id}}" class="text-dark font-size-20">
-                                                                <i class="ri-delete-bin-7-fill"></i>
-                                                            </a>
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <div class="col-sm-10">
+                                                                    <div class="row align-items-center mt-2">
+                                                                        <div class="col-sm-7 col-md-6">
+                                                                            <form action="/update-cart/{{ $item->id }}" method="post">
+                                                                                @csrf
+                                                                                <input type="number" name="quantity" oninput="this.value = Math.round(this.value);"  onchange="this.value <= 0 ? this.value = 1 : this.value" min="1" value="{{$item->quantity}}" style="width: 50px" required>
+                                                                                <button type="submit" class="fa fa-circle qty-btn"></button>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="col-sm-5 col-md-6">
+                                                                            <span class="product-price">{{number_format($item->price * $item->quantity,0,',','.')}} ₫</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <a href="/remove-in-cart/{{$item->id}}" class="text-dark font-size-20">
+                                                                        <i class="ri-delete-bin-7-fill"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        @endforeach
+                                                </li>
+                                            @endforeach
                                         @endif
                                     </ul>
                                 </div>
                             </div>
+                            @if ($errors->any())
+                                <x-admin.alert-danger>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </x-admin.alert-danger>
+                            @endif
                         </div>
                         <div class="col-lg-4">
                             <div class="iq-card">
@@ -110,7 +120,7 @@
                                         <span class="text-dark"><strong>Tổng</strong></span>
                                         <span class="text-dark"><strong>{{ number_format(session()->get('cart_total'),0,',','.') }} đ</strong></span>
                                     </div>
-                                    <a id="place-order" href="/checkout" class="btn btn-primary d-block mt-3 next">Đặt hàng</a>
+                                    <a href="/checkout" class="btn btn-primary d-block mt-3">Đặt hàng</a>
                                 </div>
                             </div>
                         </div>

@@ -45,7 +45,11 @@
                                                 <h6 class="mb-0 ">{{ $item->title }}</h6>
                                                 <p class="mb-0">{{ number_format($item->price,0,',','.') }} đ</p>
                                             </div>
-                                            <div class="float-right font-size-24 text-danger"><i class="ri-close-fill"></i></div>
+                                            <form action="/remove-in-cart/{{$item->id}}" method="get">
+                                                <button class="btn btn-danger">
+                                                    <i class="ri-close-fill"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </a>
                                     @endforeach
@@ -116,7 +120,7 @@
                             </div>
                         </div>
                         @else
-                        <a href="/sign-in" class="search-toggle iq-waves-effect d-flex align-items-center">
+                        <a href="/sign-in" class="d-flex align-items-center">
                             <div class="caption">
                                 <h6 class="line-height">Đăng Nhập Tài Khoản</h6>
                             </div>

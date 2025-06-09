@@ -3,6 +3,7 @@
 use App\Http\Middleware\AdminAuth;
 use App\Http\Middleware\AdminGuest;
 use App\Http\Middleware\AdminRole;
+use App\Http\Middleware\CheckCart;
 use App\Http\Middleware\CustomerAuth;
 use App\Http\Middleware\CustomerGuest;
 use Illuminate\Foundation\Application;
@@ -22,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'adminRole' => AdminRole::class,
             'customerAuth' => CustomerAuth::class,
             'customerGuest' => CustomerGuest::class,
+            'checkCart' => CheckCart::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

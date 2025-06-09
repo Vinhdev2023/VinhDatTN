@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/account-setting',[Customer::class,'account_setting'])->middleware('customerAuth');
 Route::get('/book-page/{book}',[BookViewController::class,'view']);
 Route::get('/category',[Customer::class,'category']);
-Route::get('/checkout',[Customer::class,'Checkout'])->middleware('customerAuth');
+Route::get('/checkout',[Customer::class,'Checkout'])->middleware(['customerAuth', 'checkCart']);
 
 Route::get('/cart-page',[CartController::class,'index']);
 Route::get('/add-cart/{book}',[CartController::class,'addCart']);
 Route::get('/remove-in-cart/{book}',[CartController::class,'removeInCart']);
+Route::post('/update-cart/{book}',[CartController::class,'updateCart']);
 
 Route::get('/order-page',[Customer::class,'order_page'])->middleware('customerAuth');
 Route::get('/order-detail',[Customer::class,'order_detail'])->middleware('customerAuth');
