@@ -113,12 +113,12 @@
                                     <p><b>Chi tiết</b></p>
                                     <div class="d-flex justify-content-between mb-1">
                                         <span>Tổng</span>
-                                        <span>{{ number_format(session()->get('cart_total'),0,',','.') }} đ</span>
+                                        <span>{{ number_format(session()->get('cart_total'),0,',','.') }}đ</span>
                                     </div>
                                     <hr>
                                     <div class="d-flex justify-content-between">
                                         <span class="text-dark"><strong>Tổng</strong></span>
-                                        <span class="text-dark"><strong>{{ number_format(session()->get('cart_total'),0,',','.') }} đ</strong></span>
+                                        <span class="text-dark"><strong>{{ number_format(session()->get('cart_total'),0,',','.') }}đ</strong></span>
                                     </div>
                                     <a href="/checkout" class="btn btn-primary d-block mt-3">Đặt hàng</a>
                                 </div>

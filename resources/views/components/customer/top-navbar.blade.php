@@ -90,16 +90,6 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
-                                        <div class="media align-items-center">
-                                            <div class="rounded iq-card-icon iq-bg-primary">
-                                                <i class="ri-profile-line"></i>
-                                            </div>
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-0 ">Sổ địa chỉ</h6>
-                                            </div>
-                                        </div>
-                                    </a>
                                     <a href="/order-page" class="iq-sub-card iq-bg-primary-hover">
                                         <div class="media align-items-center">
                                             <div class="rounded iq-card-icon iq-bg-primary">

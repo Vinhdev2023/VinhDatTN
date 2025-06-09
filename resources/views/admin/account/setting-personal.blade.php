@@ -79,7 +79,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="reset" class="btn btn-danger">Cancel</button>
                                         </div>
                                     </div>
                                 </form>

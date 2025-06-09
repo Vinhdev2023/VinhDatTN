@@ -39,19 +39,14 @@
                      <div class="iq-card-body p-0">
                         <div class="iq-edit-list">
                            <ul class="iq-edit-profile d-flex nav nav-pills">
-                              <li class="col-md-4 p-0">
-                                 <a class="nav-link active" data-toggle="pill" href="#personal-information">
-                                    Thông tin cá nhân
+                              <li class="col-md p-0">
+                                 <a class="nav-link active" data-toggle="pill" href="#info">
+                                    thông tin cơ bản
                                  </a>
                               </li>
-                              <li class="col-md-4 p-0">
+                              <li class="col-md p-0">
                                  <a class="nav-link" data-toggle="pill" href="#chang-pwd">
                                     Đổi mật khẩu
-                                 </a>
-                              </li>
-                              <li class="col-md-4 p-0">
-                                 <a class="nav-link" data-toggle="pill" href="#manage-contact">
-                                    Quản lý liên hệ
                                  </a>
                               </li>
                            </ul>
@@ -62,87 +57,114 @@
                <div class="col-lg-12">
                   <div class="iq-edit-list-data">
                      <div class="tab-content">
-                        <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
-                           <div class="iq-card">
-                              <div class="iq-card-header d-flex justify-content-between">
-                                 <div class="iq-header-title">
-                                    <h4 class="card-title">Thông tin cá nhân</h4>
-                                 </div>
-                              </div>
-                              <div class="iq-card-body">
-                                 <form>
-                                    <div class="form-group row align-items-center">
-                                       <div class="col-md-12">
-                                          <div class="profile-img-edit">
-                                             <img class="profile-pic" src="images/user/1.jpg" alt="profile-pic">
-                                             <div class="p-image">
-                                                <i class="ri-pencil-line upload-button"></i>
-                                                <input class="file-upload" type="file" accept="image/*"/>
+                        <div class="tab-pane fade active show" id="info" role="tabpanel">
+                           <div class="row profile-content">
+                              <div class="col-12 col-md-12 col-lg-4">
+                                 <div class="iq-card">
+                                    <div class="iq-card-body profile-page">
+                                       <div class="profile-header">
+                                          <div class="cover-container text-center">
+                                             <img src="/customer_plugin/images/user/1.jpg" alt="profile-bg" class="rounded-circle img-fluid">
+                                             <div class="profile-detail mt-3">
+                                                <h3>{{auth()->guard('customers')->user()->name}}</h3>
                                              </div>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class=" row align-items-center">
-                                       <div class="form-group col-sm-6">
-                                          <label for="fname">First Name:</label>
-                                          <input type="text" class="form-control" id="fname" value="Ông">
-                                       </div>
-                                       <div class="form-group col-sm-6">
-                                          <label for="lname">Last Name:</label>
-                                          <input type="text" class="form-control" id="lname" value="Trần Thuận">
-                                       </div>
-                                       <div class="form-group col-sm-6">
-                                          <label for="uname">Tên tài khoản:</label>
-                                          <input type="text" class="form-control" id="uname" value="Thuangiaosu">
-                                       </div>
-                                       <div class="form-group col-sm-6">
-                                          <label class="d-block">Giới tính:</label>
-                                          <div class="custom-control custom-radio custom-control-inline">
-                                             <input type="radio" id="customRadio6" name="customRadio1" class="custom-control-input" checked="">
-                                             <label class="custom-control-label" for="customRadio6"> Nam </label>
-                                          </div>
-                                          <div class="custom-control custom-radio custom-control-inline">
-                                             <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-                                             <label class="custom-control-label" for="customRadio7"> Nữ </label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group col-sm-6">
-                                          <label for="dob">Ngày sinh:</label>
-                                          <input  class="form-control" id="dob" value="1984-01-24">
-                                       </div>
-                                       <div class="form-group col-sm-6">
-                                          <label>Tuổi:</label>
-                                          <select class="form-control" id="exampleFormControlSelect2">
-                                             <option>12-18</option>
-                                             <option>19-32</option>
-                                             <option selected="">33-45</option>
-                                             <option>46-62</option>
-                                             <option>63 > </option>
-                                          </select>
-                                       </div>
-                                       <div class="form-group col-sm-6">
-                                          <label>Tỉnh/Thành phố:</label>
-                                          <select class="form-control" id="exampleFormControlSelect4">
-                                             <option></option>
-                                             <option>Hà Nội</option>
-                                             <option selected="">Đà Nẵng</option>
-                                             <option>HCM</option>
-                                             <option>Buôn Ma Thuột</option>
-                                          </select>
-                                       </div>
-                                       <div class="form-group col-sm-12">
-                                          <label>Địa chỉ:</label>
-                                          <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">
-                                             06 Nam Thành
-                                             Đà Nãng, VA 23803
-                                             Viet Nam
-                                             Zip Code: 40001
-                                          </textarea>
+                                 </div>
+                                 <div class="iq-card">
+                                    <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
+                                       <div class="iq-header-title">
+                                          <h4 class="card-title mb-0">Personal Details</h4>
                                        </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary mr-2">Gửi</button>
-                                    <button type="reset" class="btn iq-bg-danger">Hủy bỏ</button>
-                                 </form>
+                                    <div class="iq-card-body">
+                                       <ul class="list-inline p-0 mb-0">
+                                          <li>
+                                             <div class="row align-items-center justify-content-between mb-3">
+                                                <div class="col-sm-6">
+                                                   <h6>Tên tài khoản</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                   <p class="mb-0">{{auth()->guard('customers')->user()->name }}</p>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div class="row align-items-center justify-content-between mb-3">
+                                                <div class="col-sm-6">
+                                                   <h6>Tên đầy đủ</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                   <p class="mb-0">{{ auth()->guard('customers')->user()->full_name == null ? 'chưa có tên đầy đủ' : auth()->guard('customers')->user()->full_name }}</p>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div class="row align-items-center justify-content-between mb-3">
+                                                <div class="col-sm-6">
+                                                   <h6>Địa chỉ</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                   <p class="mb-0">{{auth()->guard('customers')->user()->address == null ? 'chưa có địa chỉ' : auth()->guard('customers')->user()->address}}</p>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div class="row align-items-center justify-content-between mb-3">
+                                                <div class="col-sm-6">
+                                                   <h6>Số điện thoại</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                   <p class="mb-0">{{auth()->guard('customers')->user()->phone == null ? 'chưa có số điện thoại' : auth()->guard('customers')->user()->phone}}</p>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <li>
+                                             <div class="row align-items-center justify-content-between mb-3">
+                                                <div class="col-sm-6">
+                                                   <h6>Email</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                   <p class="mb-0">{{auth()->guard('customers')->user()->email}}</p>
+                                                </div>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-12 col-lg-8">
+                                 <div class="iq-card">
+                                    <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
+                                       <div class="iq-header-title">
+                                          <h4 class="card-title mb-0">Order List</h4>
+                                       </div>
+                                       <div class="iq-card-header-toolbar d-flex align-items-center">
+                                          <div class="dropdown">
+                                             <span class="dropdown-toggle text-primary" id="dropdownMenuButton05" data-toggle="dropdown">
+                                             <i class="ri-more-fill"></i>
+                                             </span>
+                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton05">
+                                                <a class="dropdown-item" href="#"><i class="ri-eye-fill mr-2"></i>View All</a>
+                                                <a class="dropdown-item" href="#"><i class="ri-delete-bin-6-fill mr-2"></i>View Only Pending Order</a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="iq-card-body">
+                                    <ul class="perfomer-lists m-0 p-0">
+                                          <li class="d-flex mb-4 align-items-center">
+                                             <div class="media-support-info ml-3">
+                                                <h5>đơn hàng đặt lúc: 12/12/2012</h5>
+                                             </div>
+                                             <div class="iq-card-header-toolbar d-flex align-items-center">
+                                                <span class="text-dark"><b>total: 82đ</b></span>
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </div>
@@ -157,7 +179,6 @@
                                  <form>
                                     <div class="form-group">
                                        <label for="cpass">Mật khẩu hiện tại:</label>
-                                       <a href="javascripe:void();" class="float-right">Quên mật khẩu</a>
                                        <input type="Password" class="form-control" id="cpass" value="">
                                     </div>
                                     <div class="form-group">
@@ -174,29 +195,6 @@
                               </div>
                            </div>
                         </div>
-                        <div class="tab-pane fade" id="manage-contact" role="tabpanel">
-                           <div class="iq-card">
-                              <div class="iq-card-header d-flex justify-content-between">
-                                 <div class="iq-header-title">
-                                    <h4 class="card-title">Quản lý liên hệ</h4>
-                                 </div>
-                              </div>
-                              <div class="iq-card-body">
-                                 <form>
-                                    <div class="form-group">
-                                       <label for="cno">Số liên lạc:</label>
-                                       <input type="text" class="form-control" id="cno" value="089">
-                                    </div>
-                                    <div class="form-group">
-                                       <label for="email">Email:</label>
-                                       <input type="text" class="form-control" id="email" value="tvtean@ttnm.com">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mr-2">Gửi</button>
-                                    <button type="reset" class="btn iq-bg-danger">Hủy bỏ</button>
-                                 </form>
-                              </div>
-                           </div>
-                        </div>
                      </div>
                   </div>
                </div>
@@ -205,23 +203,6 @@
       </div>
    </div>
    <!-- Wrapper END -->
-   <!-- Footer -->
-   <footer class="iq-footer">
-      <div class="container-fluid">
-         <div class="row">
-            <div class="col-lg-6">
-               <ul class="list-inline mb-0">
-                  <li class="list-inline-item"><a href="privacy-policy.html">Chính sách bảo mật</a></li>
-                  <li class="list-inline-item"><a href="terms-of-service.html">Điều khoản sử dụng</a></li>
-               </ul>
-            </div>
-            <div class="col-lg-6 text-right">
-               Copyright 2020 <a href="#">TVteam</a> Đã đăng ký.
-            </div>
-         </div>
-      </div>
-   </footer>
-   <!-- Footer END -->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="/customer_plugin/js/jquery.min.js"></script>

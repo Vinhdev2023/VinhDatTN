@@ -45,18 +45,18 @@
                                  </div>
                               </div>
                               <div class="iq-card-body">
-                                 <form onsubmit="required()">
+                                 <form onsubmit="required()" action="">
                                     <div class="row mt-3">
                                        <div class="col-md-6">
                                           <div class="form-group">
                                              <label>Họ và tên: *</label>
-                                             <input type="text" class="form-control" name="fname" required="">
+                                             <input type="text" class="form-control" name="fname" required>
                                           </div>
                                        </div>
                                        <div class="col-md-6">
                                           <div class="form-group">
                                              <label>Số điện thoại: *</label>
-                                             <input type="text" class="form-control" name="mno" required="">
+                                             <input type="text" class="form-control" name="mno" required>
                                           </div>
                                        </div>
                                        <div class="col-md-12">
@@ -82,17 +82,12 @@
                                     <p><b>Chi tiết</b></p>
                                     <div class="d-flex justify-content-between mb-1">
                                         <span>Tổng</span>
-                                        <span>339.900đ</span>
-                                    </div>
-
-                                    <div class="d-flex justify-content-between">
-                                        <span>Phí vận chuyển</span>
-                                        <span class="text-success">Miễn phí</span>
+                                        <span>{{ number_format(session()->get('cart_total'),0,',','.') }}đ</span>
                                     </div>
                                     <hr>
                                     <div class="d-flex justify-content-between">
                                         <span class="text-dark"><strong>Tổng</strong></span>
-                                        <span class="text-dark"><strong>327.900đ</strong></span>
+                                        <span class="text-dark"><strong>{{ number_format(session()->get('cart_total'),0,',','.') }}đ</strong></span>
                                     </div>
                                 </div>
                             </div>

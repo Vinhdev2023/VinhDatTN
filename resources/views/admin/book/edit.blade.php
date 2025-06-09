@@ -152,7 +152,7 @@
                             </x-admin.card-body>
                             <x-admin.card-footer>
                                 <button type="submit" class="btn btn-primary">Update</button>
-                                <a href="{{ route('admin.books.show', $book->id)}}" class="btn btn-danger">Cancel</a>
+                                <button type="reset" class="btn btn-danger">Cancel</button>
                             </x-admin.card-footer>
                         </form>
                     </x-admin.card>

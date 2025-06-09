@@ -19,8 +19,6 @@ class OrderController extends Controller
         }
 
         if ($book->quantity - $bookTaken > 0) {
-            $cart = session()->get('cart');
-
             $book->quantity = 1;
             $cart = $book;
             session()->push('cart', $cart);
@@ -32,9 +30,9 @@ class OrderController extends Controller
             }
             session()->put('cart_total', $total);
 
-            return redirect('/checkout');
+            return redirect('/cart-page');
         }
-        
+
         return redirect()->back();
     }
 }

@@ -38,7 +38,7 @@
                             </x-admin.card-body>
                             <x-admin.card-footer>
                                 <button type="submit" class="btn btn-primary">Add</button>
-                                <a href="{{ route('admin.authors.index')}}" class="btn btn-danger">Cancel</a>
+                                <button type="reset" class="btn btn-danger">Cancel</button>
                             </x-admin.card-footer>
                         </form>
                     </x-admin.card>

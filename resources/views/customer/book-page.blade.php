@@ -68,7 +68,7 @@
                                        </div>
                                        <div class="mb-4 d-flex align-items-center">
                                           <a href="/add-cart/{{ $book->id }}" class="btn btn-primary view-more mr-2">Thêm vào giỏ hàng</a>
-                                          <a href="#" class="btn btn-primary view-more mr-2">Mua ngay</a>
+                                          <a href="/buy-now/{{ $book->id }}" class="btn btn-primary view-more mr-2">Mua ngay</a>
                                        </div>
                                     </div>
                                  </div>

@@ -70,7 +70,7 @@
                                   </div>
                                   <div class="sign-info text-center">
                                       <button type="submit" class="btn btn-white d-block w-100 mb-2">Sign Up</button>
-                                      <span class="text-dark d-inline-block line-height-2">Already Have Account ? <a href="sign-in.html" class="text-white">Log In</a></span>
+                                      <span class="text-dark d-inline-block line-height-2">Already Have Account ? <a href="sign-in" class="text-white">Log In</a></span>
                                   </div>
                               </form>
                           </div>

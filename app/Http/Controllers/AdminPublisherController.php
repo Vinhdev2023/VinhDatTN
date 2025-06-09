@@ -65,7 +65,7 @@ class AdminPublisherController extends Controller
         $num_author = Author::count();
         $num_publisher = Publisher::count();
 
-        return view('admin.publisher.edit', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'publishers', 'publisher'));
+        return view('admin.publisher.edit', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'publisher'));
     }
 
     /**
