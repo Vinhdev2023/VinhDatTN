@@ -64,7 +64,7 @@
                                     <div class="iq-card-body profile-page">
                                        <div class="profile-header">
                                           <div class="cover-container text-center">
-                                             <img src="/customer_plugin/images/user/1.jpg" alt="profile-bg" class="rounded-circle img-fluid">
+{{--                                             <img src="/customer_plugin/images/user/1.jpg" alt="profile-bg" class="rounded-circle img-fluid">--}}
                                              <div class="profile-detail mt-3">
                                                 <h3>{{auth()->guard('customers')->user()->name}}</h3>
                                              </div>
@@ -140,17 +140,7 @@
                                        <div class="iq-header-title">
                                           <h4 class="card-title mb-0">Order List</h4>
                                        </div>
-                                       <div class="iq-card-header-toolbar d-flex align-items-center">
-                                          <div class="dropdown">
-                                             <span class="dropdown-toggle text-primary" id="dropdownMenuButton05" data-toggle="dropdown">
-                                             <i class="ri-more-fill"></i>
-                                             </span>
-                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton05">
-                                                <a class="dropdown-item" href="#"><i class="ri-eye-fill mr-2"></i>View All</a>
-                                                <a class="dropdown-item" href="#"><i class="ri-delete-bin-6-fill mr-2"></i>View Only Pending Order</a>
-                                             </div>
-                                          </div>
-                                       </div>
+
                                     </div>
                                     <div class="iq-card-body">
                                     <ul class="perfomer-lists m-0 p-0">
