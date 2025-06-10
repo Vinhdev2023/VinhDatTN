@@ -39,12 +39,12 @@
                         <span>Trang Chủ</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/category">
-                        <i class="ri-function-line"></i>
-                        <span>Danh Mục Sách</span>
-                    </a>
-                </li>
+{{--                <li>--}}
+{{--                    <a href="/category">--}}
+{{--                        <i class="ri-function-line"></i>--}}
+{{--                        <span>Danh Mục Sách</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 {{-- <li>
                     <a href="/book-page">
                         <i class="ri-book-line"></i>

@@ -41,7 +41,7 @@
                             <div class="iq-card">
                                 <div class="iq-card-header d-flex justify-content-between iq-border-bottom mb-0">
                                     <div class="iq-header-title">
-                                        <h4 class="card-title">Danh sách mua hàng</h4>
+                                        <h4 class="card-title">Danh sách đơn hàng</h4>
                                     </div>
                                 </div>
                                 <div class="iq-card-body">

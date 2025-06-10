@@ -37,51 +37,51 @@
                   <div class="col-lg-12">
                      <div class="iq-card-transparent mb-0">
                         <div class="d-block text-center">
-                           <h2 class="mb-3">Search by Book Name</h2>
+                           <h2 class="mb-3">Tìm kiếm tên sách</h2>
                            <div class="w-100 iq-search-filter">
                               <form action="">
                                  <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
                                     <li class="search-menu-opt">
                                        <div class="iq-dropdown">
                                           <div class="form-group mb-0">
-                                             <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect1">
-                                                <option selected="">All</option>
-                                                <option>A Books</option>
-                                                <option>the Sun</option>
-                                                <option>Harsh book</option>
-                                                <option>People book</option>
-                                                <option>the Fog</option>
-                                             </select>
+{{--                                             <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect1">--}}
+{{--                                                <option selected="">Tất cả</option>--}}
+{{--                                                <option>Sách</option>--}}
+{{--                                                <option>the Sun</option>--}}
+{{--                                                <option>Harsh book</option>--}}
+{{--                                                <option>People book</option>--}}
+{{--                                                <option>the Fog</option>--}}
+{{--                                             </select>--}}
                                           </div>
                                        </div>
                                     </li>
                                     <li class="search-menu-opt">
                                        <div class="iq-dropdown">
                                           <div class="form-group mb-0">
-                                             <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect2">
-                                                <option selected="">Genres</option>
-                                                <option>General</option>
-                                                <option>History</option>
-                                                <option>Horror</option>
-                                                <option>Fantasy</option>
-                                                <option>Literary</option>
-                                                <option>Manga</option>
-                                             </select>
+{{--                                             <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect2">--}}
+{{--                                                <option selected="">Genres</option>--}}
+{{--                                                <option>General</option>--}}
+{{--                                                <option>History</option>--}}
+{{--                                                <option>Horror</option>--}}
+{{--                                                <option>Fantasy</option>--}}
+{{--                                                <option>Literary</option>--}}
+{{--                                                <option>Manga</option>--}}
+{{--                                             </select>--}}
                                           </div>
                                        </div>
                                     </li>
                                     <li class="search-menu-opt">
                                        <div class="iq-dropdown">
                                           <div class="form-group mb-0">
-                                             <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect4">
-                                                <option selected="">Author</option>
-                                                <option>Milesiy Yor</option>
-                                                <option>Ira Membrit</option>
-                                                <option>Anna Mull</option>
-                                                <option>John Smith</option>
-                                                <option>David King</option>
-                                                <option>Kusti Franti</option>
-                                             </select>
+{{--                                             <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect4">--}}
+{{--                                                <option selected="">Author</option>--}}
+{{--                                                <option>Milesiy Yor</option>--}}
+{{--                                                <option>Ira Membrit</option>--}}
+{{--                                                <option>Anna Mull</option>--}}
+{{--                                                <option>John Smith</option>--}}
+{{--                                                <option>David King</option>--}}
+{{--                                                <option>Kusti Franti</option>--}}
+{{--                                             </select>--}}
                                           </div>
                                        </div>
                                     </li>

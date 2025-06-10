@@ -25,65 +25,179 @@
          <x-customer.top-navbar/>
          <!-- TOP Nav Bar END -->
          <!-- Page Content  -->
-         <div id="content-page" class="content-page">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-lg-12">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
-                        <div class="iq-card-header d-flex justify-content-between align-items-center position-relative">
-                           <div class="iq-header-title">
-                              <h4 class="card-title mb-0">Các cuốn sách khác</h4>
-                           </div>
-                           <div class="iq-card-header-toolbar d-flex align-items-center">
-                              <a href="/category" class="btn btn-sm btn-primary view-more">Xem Thêm</a>
-                           </div>
-                        </div>
-                        <div class="iq-card-body">
-                           <div class="row">
-                              @foreach ($books as $book)
-                                 <div class="col-sm-6 col-md-4 col-lg-3">
-                                    <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
-                                       <div class="iq-card-body p-0">
-                                          <div class="d-flex align-items-center">
-                                             <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                                <a href="#"><img class="img-fluid rounded w-100" src="/images/{{$book->image}}" alt=""></a>
-                                                <div class="view-book">
-                                                   <a href="book-page/{{ $book->id }}" class="btn btn-sm btn-white">Mua Ngay</a>
-                                                </div>
-                                             </div>
-                                             <div class="col-6">
-                                                <div class="mb-2">
-                                                   <h6 class="mb-1">{{$book->title}}</h6>
-                                                   @foreach ($book->author as $author)
-                                                      <p class="font-size-13 line-height mb-1">
-                                                         {{$author->name}}
-                                                      </p>
-                                                   @endforeach
-                                                </div>
-                                                <div class="price d-flex align-items-center">
-                                                   <h6><b>{{number_format($book->price, 0,',','.')}} đ</b></h6>
-                                                </div>
-                                                <div class="iq-product-action">
-                                                   <a href="/add-cart/{{ $book->id }}">
-                                                      <i class="ri-shopping-cart-2-fill text-primary"></i>
-                                                   </a>
-                                                </div>
-                                             </div>
+{{--         <div id="content-page" class="content-page">--}}
+{{--            <div class="container-fluid">--}}
+{{--               <div class="row">--}}
+{{--                  <div class="col-lg-12">--}}
+{{--                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height">--}}
+{{--                        <div class="iq-card-header d-flex justify-content-between align-items-center position-relative">--}}
+{{--                           <div class="iq-header-title">--}}
+{{--                              <h4 class="card-title mb-0">Các cuốn sách khác</h4>--}}
+{{--                           </div>--}}
+{{--                           <div class="iq-card-header-toolbar d-flex align-items-center">--}}
+{{--                              <a href="/category" class="btn btn-sm btn-primary view-more">Xem Thêm</a>--}}
+{{--                           </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="iq-card-body">--}}
+{{--                           <div class="row">--}}
+{{--                              @foreach ($books as $book)--}}
+{{--                                 <div class="col-sm-6 col-md-4 col-lg-3">--}}
+{{--                                    <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">--}}
+{{--                                       <div class="iq-card-body p-0">--}}
+{{--                                          <div class="d-flex align-items-center">--}}
+{{--                                             <div class="col-6 p-0 position-relative image-overlap-shadow">--}}
+{{--                                                <a href="#"><img class="img-fluid rounded w-100" src="/images/{{$book->image}}" alt=""></a>--}}
+{{--                                                <div class="view-book">--}}
+{{--                                                   <a href="book-page/{{ $book->id }}" class="btn btn-sm btn-white">Mua Ngay</a>--}}
+{{--                                                </div>--}}
+{{--                                             </div>--}}
+{{--                                             <div class="col-6">--}}
+{{--                                                <div class="mb-2">--}}
+{{--                                                   <h6 class="mb-1">{{$book->title}}</h6>--}}
+{{--                                                   @foreach ($book->author as $author)--}}
+{{--                                                      <p class="font-size-13 line-height mb-1">--}}
+{{--                                                         {{$author->name}}--}}
+{{--                                                      </p>--}}
+{{--                                                   @endforeach--}}
+{{--                                                </div>--}}
+{{--                                                <div class="price d-flex align-items-center">--}}
+{{--                                                   <h6><b>{{number_format($book->price, 0,',','.')}} đ</b></h6>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="iq-product-action">--}}
+{{--                                                   <a href="/add-cart/{{ $book->id }}">--}}
+{{--                                                      <i class="ri-shopping-cart-2-fill text-primary"></i>--}}
+{{--                                                   </a>--}}
+{{--                                                </div>--}}
+{{--                                             </div>--}}
+{{--                                          </div>--}}
+{{--                                       </div>--}}
+{{--                                    </div>--}}
+{{--                                 </div>--}}
+{{--                              @endforeach--}}
+{{--                           </div>--}}
+{{--                        </div>--}}
+{{--                     </div>--}}
+{{--                  </div>--}}
+{{--                  <div class="col-12">--}}
+{{--                     {{ $books->links('customer.pagination')}}--}}
+{{--                  </div>--}}
+{{--               </div>--}}
+{{--            </div>--}}
+{{--         </div>--}}
+          <div id="content-page" class="content-page">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="iq-card-transparent mb-0">
+                              <div class="d-block text-center">
+                                  <h2 class="mb-3">Tìm kiếm tên sách</h2>
+                                  <div class="w-100 iq-search-filter">
+                                      <form action="">
+                                          <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
+                                              <li class="search-menu-opt">
+                                                  <div class="iq-dropdown">
+                                                      <div class="form-group mb-0">
+                                                          {{--                                             <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect1">--}}
+                                                          {{--                                                <option selected="">Tất cả</option>--}}
+                                                          {{--                                                <option>Sách</option>--}}
+                                                          {{--                                                <option>the Sun</option>--}}
+                                                          {{--                                                <option>Harsh book</option>--}}
+                                                          {{--                                                <option>People book</option>--}}
+                                                          {{--                                                <option>the Fog</option>--}}
+                                                          {{--                                             </select>--}}
+                                                      </div>
+                                                  </div>
+                                              </li>
+                                              <li class="search-menu-opt">
+                                                  <div class="iq-dropdown">
+                                                      <div class="form-group mb-0">
+                                                          {{--                                             <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect2">--}}
+                                                          {{--                                                <option selected="">Genres</option>--}}
+                                                          {{--                                                <option>General</option>--}}
+                                                          {{--                                                <option>History</option>--}}
+                                                          {{--                                                <option>Horror</option>--}}
+                                                          {{--                                                <option>Fantasy</option>--}}
+                                                          {{--                                                <option>Literary</option>--}}
+                                                          {{--                                                <option>Manga</option>--}}
+                                                          {{--                                             </select>--}}
+                                                      </div>
+                                                  </div>
+                                              </li>
+                                              <li class="search-menu-opt">
+                                                  <div class="iq-dropdown">
+                                                      <div class="form-group mb-0">
+                                                          {{--                                             <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect4">--}}
+                                                          {{--                                                <option selected="">Author</option>--}}
+                                                          {{--                                                <option>Milesiy Yor</option>--}}
+                                                          {{--                                                <option>Ira Membrit</option>--}}
+                                                          {{--                                                <option>Anna Mull</option>--}}
+                                                          {{--                                                <option>John Smith</option>--}}
+                                                          {{--                                                <option>David King</option>--}}
+                                                          {{--                                                <option>Kusti Franti</option>--}}
+                                                          {{--                                             </select>--}}
+                                                      </div>
+                                                  </div>
+                                              </li>
+                                              <li class="search-menu-opt">
+                                                  <div class="iq-search-bar search-book d-flex align-items-center">
+                                                      <div class="searchbox">
+                                                          <input type="text" class="text search-input" placeholder="search here...">
+                                                          <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                                                      </div>
+                                                      <button type="submit" class="btn btn-primary search-data ml-2">Search</button>
+                                                  </div>
+                                              </li>
+                                          </ul>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="iq-card">
+                              <div class="iq-card-body">
+                                  <div class="row">
+                                      @foreach ($books as $book)
+                                          <div class="col-sm-6 col-md-4 col-lg-3">
+                                              <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
+                                                  <div class="iq-card-body p-0">
+                                                      <div class="d-flex align-items-center">
+                                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
+                                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/images/{{$book->image}}" alt=""></a>
+                                                              <div class="view-book">
+                                                                  <a href="book-page/{{ $book->id }}" class="btn btn-sm btn-white">View Book</a>
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-6">
+                                                              <div class="mb-2">
+                                                                  <h6 class="mb-1">{{ $book->title }}</h6>
+                                                                  @foreach ($book->author as $author)
+                                                                      <p class="font-size-13 line-height mb-1">{{$author->name}}</p>
+                                                                  @endforeach
+                                                              </div>
+                                                              <div class="price d-flex align-items-center">
+
+                                                                  <h6><b>{{number_format($book->price, 0,',','.')}} đ</b></h6>
+                                                              </div>
+                                                              <div class="iq-product-action">
+                                                                  <a href="/add-cart/{{ $book->id }}">
+                                                                      <i class="ri-shopping-cart-2-fill text-primary"></i>
+                                                                  </a>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
                                           </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              @endforeach
-                           </div>
-                        </div>
-                     </div>
+                                      @endforeach
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-12">
+                          {{ $books->links('customer.pagination') }}
+                      </div>
                   </div>
-                  <div class="col-12">
-                     {{ $books->links('customer.pagination')}}
-                  </div>
-               </div>
-            </div>
-         </div>
+              </div>
+          </div>
       </div>
       <!-- Wrapper END -->
       <!-- Optional JavaScript -->
