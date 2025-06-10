@@ -19,8 +19,19 @@ class CustomerAuth
         if(!Auth::guard('customers')->check()) {
             Auth::logout();
 
+            if (session()->get('cart') != null && session()->get('cart_total') != null) {
+                $cart = session()->get('cart');
+                $cart_total = session()->get('cart_total');
+            }
+
             $request->session()->invalidate();
             $request->session()->regenerateToken();
+
+            if (isset($cart, $cart_total)) {
+                session()->put('cart',$cart);
+                session()->put('cart_total',$cart_total);
+            }
+            
             return redirect()->route('customer.sign_in.show');
         }
         return $next($request);
