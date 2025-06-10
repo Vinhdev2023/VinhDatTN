@@ -45,24 +45,25 @@
                                  </div>
                               </div>
                               <div class="iq-card-body">
-                                 <form onsubmit="required()" action="">
+                                 <form onsubmit="required()" action="/add-order" method="post">
+                                    @csrf
                                     <div class="row mt-3">
                                        <div class="col-md-6">
                                           <div class="form-group">
                                              <label>Họ và tên: *</label>
-                                             <input type="text" class="form-control" name="fname" required>
+                                             <input type="text" class="form-control" name="full_name" value="{{ auth('customers')->user()->full_name }}" required>
                                           </div>
                                        </div>
                                        <div class="col-md-6">
                                           <div class="form-group">
                                              <label>Số điện thoại: *</label>
-                                             <input type="text" class="form-control" name="mno" required>
+                                             <input type="number" class="form-control" name="phone" value="{{ auth('customers')->user()->phone }}" required>
                                           </div>
                                        </div>
                                        <div class="col-md-12">
                                           <div class="form-group">
                                              <label>Địa chỉ: *</label>
-                                             <textarea name="" id="" class="form-control"></textarea>
+                                             <textarea name="address" id="" class="form-control">{{ auth('customers')->user()->address }}</textarea>
                                           </div>
                                        </div>
                                        <div class="col-md-6">

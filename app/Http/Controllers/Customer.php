@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class Customer extends Controller
@@ -31,13 +32,14 @@ class Customer extends Controller
     public function profile(){
         return view('customer.profile');
     }
-    public function order_detail(){
-        return view('customer.order-detail');
-    }
-    public function order_page(){
-        return view('customer.order-page');
-    }
+    
     public function profile_edit(){
-        return view('customer.profile-edit');
+        $orders = Order::where('customer_id',auth('customers')->user()->id)
+            ->select('*')
+            ->selectRaw('DATE_FORMAT(created_at, "%d/%m/%Y") AS created_at_date')
+            ->selectRaw('DATE_FORMAT(created_at, "%H:%i:%s") AS created_at_time')
+            ->get();
+        
+        return view('customer.profile-edit', ['orders' => $orders]);
     }
 }

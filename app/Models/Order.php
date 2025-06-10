@@ -22,9 +22,9 @@ class Order extends Model
         return $this->hasMany(OrderDetail::class);
     }
 
-    // public function numBook() {
-    //     return $this->orderDetails()->where('quantity','>',0);
-    // }
+    public function book() {
+        return $this->belongsToMany(Book::class, 'order_details');
+    }
 
     use HasFactory;
 }

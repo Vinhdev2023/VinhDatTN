@@ -154,14 +154,16 @@
                                     </div>
                                     <div class="iq-card-body">
                                     <ul class="perfomer-lists m-0 p-0">
+                                       @foreach ($orders as $item)
                                           <li class="d-flex mb-4 align-items-center">
                                              <div class="media-support-info ml-3">
-                                                <h5>đơn hàng đặt lúc: 12/12/2012</h5>
+                                                <h5>đơn hàng đặt vào ngày {{ $item->created_at_date }} lúc {{ $item->created_at_time }}</h5>
                                              </div>
                                              <div class="iq-card-header-toolbar d-flex align-items-center">
-                                                <span class="text-dark"><b>total: 82đ</b></span>
+                                                <span class="text-dark"><b>total: {{ number_format($item->total,0,',','.') }}đ</b></span>
                                              </div>
                                           </li>
+                                       @endforeach
                                        </ul>
                                     </div>
                                  </div>

@@ -46,84 +46,48 @@
                                 </div>
                                 <div class="iq-card-body">
                                     <ul class="list-inline p-0 m-0">
-                                        <li class="checkout-product">
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-8">
-                                                    <div class="checout-product-details">
-                                                        <h5>Đơn Hàng đặt vào lúc: 15 - 5 - 2025</h5>
-                                                        <div class="price">
-                                                            <h5>Tổng: 99.900 ₫</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <div class="row align-items-center">
-                                                                <div class="col">
-                                                                    <a href="/order-detail" type="button" class="btn btn-primary" id="btn-plus">Chi tiết</a>
-                                                                </div>
+                                        @foreach ($orders as $item)
+                                            <li class="checkout-product">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-8">
+                                                        <div class="checout-product-details">
+                                                            <h5>Đơn Hàng đặt vào ngày {{ $item->created_at_date }} lúc {{ $item->created_at_time }}</h5>
+                                                            <div class="price">
+                                                                <h5>Tổng: {{ number_format($item->total,0,',','.') }} ₫</h5>
+                                                                <h5>
+                                                                    Trạng thái: 
+                                                                    @if ($item->status == 'PENDING')
+                                                                        Chờ xác nhận
+                                                                    @elseif ($item->status == 'CONFIRMED')
+                                                                        Đã xác nhận
+                                                                    @elseif ($item->status == 'COMPLETED')
+                                                                        Đã hoàn thành
+                                                                    @elseif ($item->status == 'CANCELED')
+                                                                        Đã hủy
+                                                                    @endif
+                                                                </h5>
                                                             </div>
                                                         </div>
-                                                        <div class="col-6">
-                                                            <a href="javascript:void();" class="btn btn-danger">Hủy</a>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="checkout-product">
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-8">
-                                                    <div class="checout-product-details">
-                                                        <h5>Đơn Hàng đặt vào lúc: 15 - 5 - 2025</h5>
-                                                        <div class="price">
-                                                            <h5>Tổng: 99.900 ₫</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <div class="row align-items-center">
-                                                                <div class="col">
-                                                                    <a href="/order-detail" type="button" class="btn btn-primary" id="btn-plus">Chi tiết</a>
+                                                    <div class="col-sm-4">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col">
+                                                                        <a href="/order-detail/{{ $item->id }}" type="button" class="btn btn-primary" id="btn-plus">Chi tiết</a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <a href="javascript:void();" class="btn btn-danger">Hủy</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="checkout-product">
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-8">
-                                                    <div class="checout-product-details">
-                                                        <h5>Đơn Hàng đặt vào lúc: 15 - 5 - 2025</h5>
-                                                        <div class="price">
-                                                            <h5>Tổng: 99.900 ₫</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <div class="row align-items-center">
-                                                                <div class="col">
-                                                                    <a href="/order-detail" type="button" class="btn btn-primary" id="btn-plus">Chi tiết</a>
-                                                                </div>
+                                                            <div class="col-6">
+                                                                @if ($item->status == 'PENDING')
+                                                                    <a href="/update-status/CANCELED/{{ $item->id }}" class="btn btn-danger">Hủy</a>
+                                                                @endif
                                                             </div>
                                                         </div>
-                                                        <div class="col-6">
-                                                            <a href="javascript:void();" class="btn btn-danger">Hủy</a>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>

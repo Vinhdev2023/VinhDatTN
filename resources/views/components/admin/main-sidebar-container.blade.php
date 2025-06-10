@@ -97,15 +97,14 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="nav-item @if($path == '/admin/orders' || $path == '/admin/order/detail') {{'menu-open'}} @endif">
-                    <a href="/admin/orders" class="nav-link @if($path == '/admin/orders' || $path == '/admin/order/detail') {{'active'}} @endif">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Orders
-                            <span class="right badge badge-danger">0 Pending</span>
                         </p>
                     </a>
-                </li> --}}
+                </li>
                 <li class="nav-item @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit') {{'menu-open'}} @endif">
                     <a href="#" class="nav-link @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit') {{'active'}} @endif">
                         {{-- <i class="nav-icon fas fa-copy"></i> --}}

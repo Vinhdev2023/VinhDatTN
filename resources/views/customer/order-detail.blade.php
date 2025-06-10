@@ -41,46 +41,45 @@
                             <div class="iq-card">
                                 <div class="iq-card-header d-flex justify-content-between iq-border-bottom mb-0">
                                     <div class="iq-header-title">
-                                        <h4 class="card-title">Giỏ hàng</h4>
+                                        <h4 class="card-title">Danh sách mua hàng</h4>
                                     </div>
                                 </div>
                                 <div class="iq-card-body">
                                     <ul class="list-inline p-0 m-0">
-                                        <li class="checkout-product">
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-2">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="/customer_plugin/images/checkout/01.jpg" alt=""></a>
-                                             </span>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="checkout-product-details">
-                                                        <h5>Economix - Các Nền Kinh Tế Vận Hành</h5>
-                                                        <p class="text-success">Còn hàng</p>
-                                                        <div class="price">
-                                                            <h5>99.900 ₫</h5>
+                                        @foreach ($order_details as $key => $item)
+                                            <li class="checkout-product">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-2">
+                                                <span class="checkout-product-img">
+                                                    <img class="img-fluid rounded" src="/images/{{ $item->book->image }}" alt="">
+                                                </span>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="checkout-product-details">
+                                                            <h5>{{ $item->book->title }}</h5>
+                                                            {{-- <p class="text-success">Còn hàng</p> --}}
+                                                            <div class="price">
+                                                                <h5>{{ number_format($item->price,0,',','.') }} ₫</h5>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="row">
-                                                        <div class="col-sm-10">
-                                                            <div class="row align-items-center mt-2">
-                                                                <div class="col-sm-7 col-md-6">
-                                                                    <input type="text" id="quantity" value="1" readonly>
-                                                                </div>
-                                                                <div class="col-sm-5 col-md-6">
-                                                                    <span class="product-price">99.900 ₫</span>
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                <div class="row align-items-center mt-2">
+                                                                    <div class="col-sm-7 col-md-6">
+                                                                        <span class="product-price">{{ number_format($item->quantity,0,',','.') }}</span>
+                                                                    </div>
+                                                                    <div class="col-sm-5 col-md-6">
+                                                                        <span class="product-price">{{ number_format($item->quantity*$item->price,0,',','.') }} ₫</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-2">
-                                                            <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -91,22 +90,30 @@
                                     <p><b>Chi tiết</b></p>
                                     <div class="d-flex justify-content-between mb-1">
                                         <span>Tổng</span>
-                                        <span>339.900đ</span>
+                                        <span>{{ number_format($order->total,0,',','.') }}đ</span>
                                     </div>
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span>Thuế VAT</span>
-                                        <span>16.900đ</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <span>Phí vận chuyển</span>
-                                        <span class="text-success">Miễn phí</span>
+                                        <span>Trạng thái</span>
+                                        <span>
+                                            @if ($order->status == 'PENDING')
+                                                Chờ xác nhận
+                                            @elseif ($order->status == 'CONFIRMED')
+                                                Đã xác nhận
+                                            @elseif ($order->status == 'COMPLETED')
+                                                Đã hoàn thành
+                                            @elseif ($order->status == 'CANCELED')
+                                                Đã hủy
+                                            @endif
+                                        </span>
                                     </div>
                                     <hr>
                                     <div class="d-flex justify-content-between">
                                         <span class="text-dark"><strong>Tổng</strong></span>
-                                        <span class="text-dark"><strong>327.900đ</strong></span>
+                                        <span class="text-dark"><strong>{{ number_format($order->total,0,',','.') }}đ</strong></span>
                                     </div>
-                                    <a href="javascript:void();" class="btn btn-danger d-block mt-3 next">Hủy</a>
+                                    @if ($order->status == 'PENDING')
+                                        <a href="/update-status/CANCELED/{{ $order->id }}" class="btn btn-danger d-block mt-3">Hủy</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
