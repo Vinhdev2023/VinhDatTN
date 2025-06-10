@@ -33,6 +33,7 @@
                                     <tr>
                                         <th>Tên Khách hàng</th>
                                         <th>Số điện thoại</th>
+                                        <th>Trạng thái</th>
                                         <th>Địa chỉ</th>
                                         <th>Show</th>
                                     </tr>
@@ -42,6 +43,17 @@
                                         <tr>
                                             <td>{{ $item->customer_name }}</td>
                                             <td>{{ $item->customer_phone }}</td>
+                                            <td>
+                                                @if ($item->status == 'PENDING')
+                                                    Chờ xác nhận
+                                                @elseif ($item->status == 'CONFIRMED')
+                                                    Đã xác nhận
+                                                @elseif ($item->status == 'COMPLETED')
+                                                    Đã hoàn thành
+                                                @elseif ($item->status == 'CANCELED')
+                                                    Đã hủy
+                                                @endif
+                                            </td>
                                             <td>{{ $item->ship_to_address }}</td>
                                             <td>
                                                 <a href="#" class="btn btn-primary">Show</a>
@@ -53,6 +65,7 @@
                                     <tr>
                                         <th>Tên Khách hàng</th>
                                         <th>Số điện thoại</th>
+                                        <th>Trạng thái</th>
                                         <th>Địa chỉ</th>
                                         <th>Show</th>
                                     </tr>
