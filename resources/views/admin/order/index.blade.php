@@ -1,19 +1,19 @@
 <x-admin.layout :page="'not-login-page'">
     <x-admin.preloader/>
     <x-admin.navbar/>
-    <x-admin.main-sidebar-container :path="$path" :numbook="$num_book" :numcategory="$num_category" :numauthor="$num_author" :numpublisher="$num_publisher"/>
+    <x-admin.main-sidebar-container :path="$path"/>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>List of Publishers</h1>
+                        <h1>List of Orders</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                            <li class="breadcrumb-item">Publishers</li>
+                            <li class="breadcrumb-item">Orders</li>
                         </ol>
                     </div>
                 </div>
@@ -21,56 +21,44 @@
         </section>
 
         <x-admin.main-content>
-            @if (session('success'))
-                <x-admin.alert-success>
-                    {{ session('success') }}
-                </x-admin.alert-success>
-            @endif
-            @if (session('fail'))
-                <x-admin.alert-warning>
-                    {{ session('fail') }}
-                </x-admin.alert-warning>
-            @endif
             <div class="row">
                 <div class="col-12">
                     <x-admin.card>
                         <x-admin.card-header>
-                            <h3 class="card-title">Publisher data</h3>
+                            <h3 class="card-title">Orders data</h3>
                         </x-admin.card-header>
                         <x-admin.card-body>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Publisher's name</th>
-                                        <th>Action</th>
+                                        <th>Tên Khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Show</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($publishers as $publisher)
+                                    @foreach ($orders as $item)
                                         <tr>
-                                            <td>{{ $publisher->name }}</td>
+                                            <td>{{ $item->customer_name }}</td>
+                                            <td>{{ $item->customer_phone }}</td>
+                                            <td>{{ $item->ship_to_address }}</td>
                                             <td>
-                                                <form action="{{ route('admin.publishers.destroy', $publisher->id) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a href="{{ route('admin.publishers.edit', $publisher->id) }}" class="btn btn-warning">Update</a>
-                                                    <button type="submit" onclick="return confirm('You want to delete?')" class="btn btn-danger">Delete</button>
-                                                </form>
+                                                <a href="#" class="btn btn-primary">Show</a>
                                             </td>
-                                        </tr>                                    
+                                        </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Publisher's name</th>
-                                        <th>Action</th>
+                                        <th>Tên Khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Show</th>
                                     </tr>
                                 </tfoot>
                             </table>
                         </x-admin.card-body>
-                        <x-admin.card-footer>
-                            <a href="{{ route('admin.publishers.create') }}" class="btn btn-primary">Add a new publisher</a>
-                        </x-admin.card-footer>
                     </x-admin.card>
                 </div>
             </div>

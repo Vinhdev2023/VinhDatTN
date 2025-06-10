@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminControlCustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminPublisherController;
 
 Route::prefix('/admin')->name('admin.')->group(function () {
@@ -43,6 +44,10 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
             Route::get('/customer-account/trashed', 'trashed')->name('customer.trashed');
             Route::post('/customer-account/{customer}/restore', 'restore')->name('customer.restore');
+        });
+
+        Route::controller(AdminOrderController::class)->group(function () {
+            Route::get('/orders','index')->name('orders.index');
         });
     });
 

@@ -22,9 +22,27 @@ class OrderController extends Controller
         }
 
         if ($book->quantity - $bookTaken > 0) {
-            $book->quantity = 1;
-            $cart = $book;
-            session()->push('cart', $cart);
+            $cart = session()->get('cart');
+
+            $flag = 0;
+            if (isset($cart)) {
+                foreach ($cart as $obj) {
+                    if ($obj->id == $book->id) {
+                        if ($obj->quantity >= $book->quantity - $bookTaken) {
+                            return redirect('/cart-page');
+                        }
+                        $flag = 1;
+                    }
+                }
+            }
+            
+            if ($flag == 0) {
+                $book->quantity = 1;
+                $cart = $book;
+                session()->push('cart', $cart);
+            }else{
+                return redirect('/cart-page');
+            }
 
             $total = 0;
             $cart = session()->get('cart');
