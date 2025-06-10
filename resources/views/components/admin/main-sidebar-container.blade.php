@@ -97,8 +97,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item @if($path == 'admin.orders.index') {{'menu-open'}} @endif">
+                    <a href="{{ route('admin.orders.index') }}" class="nav-link @if($path == 'admin.orders.index') {{'active'}} @endif">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Orders
