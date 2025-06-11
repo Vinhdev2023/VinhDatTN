@@ -1,8 +1,7 @@
 <x-admin.layout :page="'not-login-page'">
     <x-admin.preloader/>
     <x-admin.navbar/>
-    <x-admin.main-sidebar-container :path="$path" :numbook="$num_book" :numcategory="$num_category" :numauthor="$num_author" :numpublisher="$num_publisher"/>
-    {{-- :num_book="$num_book" :num_category="$num_category" :num_author="$num_author" :num_publisher="$num_publisher" --}}
+    <x-admin.main-sidebar-container :path="$path"/>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -29,14 +28,14 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>!!</h3>
+                                <h3>{{ number_format($orders,0,',','.') }}</h3>
 
                                 <p>New Orders</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="/admin/orders/filter/PENDING" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('admin.orders.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

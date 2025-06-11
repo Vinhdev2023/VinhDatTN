@@ -26,6 +26,12 @@
                     <x-admin.card>
                         <x-admin.card-header>
                             <h3 class="card-title">Orders data</h3>
+                            <div class="card-tools">
+                                <a href="" class="btn btn-danger">CANCELED</a>
+                                <a href="" class="btn btn-primary">PENDING</a>
+                                <a href="" class="btn btn-warning">CONFIRMED</a>
+                                <a href="" class="btn btn-success">COMPLETED</a>
+                            </div>
                         </x-admin.card-header>
                         <x-admin.card-body>
                             <table id="example2" class="table table-bordered table-hover">

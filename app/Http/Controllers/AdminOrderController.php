@@ -39,25 +39,28 @@ class AdminOrderController extends Controller
                 return redirect()->back()->with('fail', "Order can't complete now!");
             }
             $order->update([
-                'status' => $status
+                'status' => $status,
+                'admin_id_confirmed' => auth('admins')->user()->id
             ]);
         } elseif ($order->status == 'CANCELED') {
             return redirect()->back()->with('fail', "Order is canceled!");
         } elseif ($order->status == 'CONFIRMED') {
             if ($status == 'PENDING') {
                 return redirect()->back()->with('fail', "Order can't change to pending now!");
+            } elseif ($status == 'COMPLETED') {
+                $order->load('orderDetails');
+                foreach ($order->orderDetails as $value) {
+                    $book = Book::whereKey($value->book_id)->first();
+                    $book->update([
+                        'quantity' => $book->quantity - $value->quantity
+                    ]);
+                }
             }
             $order->update([
-                'status' => $status
+                'status' => $status,
+                'admin_id_confirmed' => auth('admins')->user()->id
             ]);
         } elseif ($order->status == 'COMPLETED') {
-            $order->load('orderDetails');
-            foreach ($order->orderDetails as $value) {
-                $book = Book::whereKey($value->book_id)->first();
-                $book->update([
-                    'quantity' => $book->quantity - $value->quantity
-                ]);
-            }
             return redirect()->back()->with('fail', "Order is completed!");
         }
 

@@ -49,7 +49,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::controller(AdminOrderController::class)->group(function () {
             Route::get('/orders','index')->name('orders.index');
             Route::get('/orders/{order}/show','show')->name('orders.show');
-            Route::get('/order/update/{status}/{order}','changeStatus')->name('orders.update');
+            Route::get('/orders/update/{status}/{order}','changeStatus')->name('orders.update');
+            Route::get('/orders/filter/{status}','filter')->name('orders.filter');
         });
     });
 
