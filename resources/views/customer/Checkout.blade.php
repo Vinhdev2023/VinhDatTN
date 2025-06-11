@@ -81,10 +81,13 @@
 
                                     <hr>
                                     <p><b>Chi tiết</b></p>
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Tổng</span>
-                                        <span>{{ number_format(session()->get('cart_total'),0,',','.') }}đ</span>
-                                    </div>
+                                    @foreach (session()->get('cart') as $item)
+                                        <div class="d-flex justify-content-between mb-1">
+                                          <span>{{ $item->title }}</span>
+                                          <span>{{ number_format($item->quantity,0,',','.') }}</span>
+                                          <span>{{ number_format($item->quantity*$item->price,0,',','.') }}đ</span>
+                                        </div>
+                                    @endforeach
                                     <hr>
                                     <div class="d-flex justify-content-between">
                                         <span class="text-dark"><strong>Tổng</strong></span>

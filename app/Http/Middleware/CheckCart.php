@@ -16,7 +16,7 @@ class CheckCart
     public function handle(Request $request, Closure $next): Response
     {
         if (session()->get('cart') == null && session()->get('cart_total') == null) {
-            return redirect()->back();
+            return redirect('/cart-page');
         }
         return $next($request);
     }

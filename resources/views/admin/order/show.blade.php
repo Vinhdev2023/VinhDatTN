@@ -55,6 +55,16 @@
                                 <b>Status:</b> {{$order->status}}
                             </div>
                             <!-- /.col -->
+                            @if (@isset($order->admin))
+                                <div class="col-sm-4 invoice-col">
+                                Checked
+                                <address>
+                                    <strong>{{$order->admin->role}}'s Name: {{$order->admin->name}}</strong><br>
+                                    Role: {{$order->admin->role}}<br>
+                                    Email: {{$order->admin->email}}
+                                </address>
+                            </div>
+                            @endif
                         </div>
                         <!-- /.row -->
 
@@ -92,8 +102,9 @@
                         <!-- /.row -->
 
                         <div class="row">
+                            <div class="col-6"></div>
                             <!-- /.col -->
-                            <div class="col-12">
+                            <div class="col-6">
                                 <p class="lead">Thay đổi vào ngày {{date_format(date_create($order->updated_at), "d/m/Y")}} lúc {{date_format(date_create($order->updated_at), "H:i:s")}}</p>
 
                                 <div class="table-responsive">
@@ -118,18 +129,17 @@
                                     <p class="left m-0">Checked by: Customer</p>
                                 @endif
                                 @if ($order->status == 'PENDING')
-                                    <a href="/admin/order/update/CANCELED/{{$order->id}}" type="button" class="btn btn-danger float-right">
+                                    <a href="{{ route('admin.orders.update',['status' => 'CANCELED','order' => $order->id]) }}" type="button" class="btn btn-danger float-right">
                                         Cancel
                                     </a>
-                                    <a href="/admin/order/update/CONFIRMED/{{$order->id}}" type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
+                                    <a href="{{ route('admin.orders.update',['status' => 'CONFIRMED','order' => $order->id]) }}" type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
                                         Confirm
                                     </a>
-                                @elseif($order->status == 'CONFIRMED' && $order->type == 'online')
-                                    <a href="/admin/order/update/SHIPPING/{{$order->id}}" type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
-                                        SHIPPING
+                                @elseif($order->status == 'CONFIRMED')
+                                    <a href="{{ route('admin.orders.update',['status' => 'CANCELED','order' => $order->id]) }}" type="button" class="btn btn-danger float-right">
+                                        Cancel
                                     </a>
-                                @elseif($order->status == 'CONFIRMED' && $order->type == 'offline' || $order->status == 'SHIPPING')
-                                    <a href="/admin/order/update/COMPLETED/{{$order->id}}" type="button" class="btn btn-success float-right" style="margin-right: 5px;">
+                                    <a href="{{ route('admin.orders.update',['status' => 'COMPLETED','order' => $order->id]) }}" type="button" class="btn btn-success float-right" style="margin-right: 5px;">
                                         Complete
                                     </a>
                                 @endif

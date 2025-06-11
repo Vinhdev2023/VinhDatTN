@@ -26,5 +26,9 @@ class Order extends Model
         return $this->belongsToMany(Book::class, 'order_details');
     }
 
+    public function admin() {
+        return $this->belongsTo(Admin::class,'admin_id_confirmed');
+    }
+
     use HasFactory;
 }

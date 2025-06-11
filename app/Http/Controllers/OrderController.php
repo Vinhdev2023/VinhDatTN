@@ -59,7 +59,7 @@ class OrderController extends Controller
 
     public function addOrder(Request $request) {
         $cart = session()->get('cart');
-        foreach ($cart as $key => $value) {
+        foreach ($cart as $value) {
             $orderPendingorConfirmed = Order::where('status', 'PENDING')
                 ->orWhere('status', 'CONFIRMED')
                 ->get();
@@ -69,11 +69,11 @@ class OrderController extends Controller
                 $bookTaken += Order::find($order->id)->orderDetails()->where('book_id', $value->id)->sum('quantity');
             }
             $book = Book::whereKey($value->id)->first();
-            if ($book->quantity - $bookTaken - $value->quantity <= 0) {
+            if ($book->quantity - $bookTaken - $value->quantity < 0) {
                 session()->forget('cart');
                 session()->forget('cart_total');
                 session()->save();
-                return redirect('/cart-page');
+                return redirect('/cart-page')->with('fail', 'Số lượng không còn hợp lệ');
             }
         }
 
@@ -119,6 +119,7 @@ class OrderController extends Controller
             ->select('*')
             ->selectRaw('DATE_FORMAT(created_at, "%d/%m/%Y") AS created_at_date')
             ->selectRaw('DATE_FORMAT(created_at, "%H:%i:%s") AS created_at_time')
+            ->orderByRaw('CASE WHEN status = "PENDING" THEN 1 ELSE 2 END, created_at DESC')
             ->get();
 
         return view('customer.order-page', ['orders' => $orders]);
