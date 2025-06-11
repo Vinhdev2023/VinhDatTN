@@ -56,7 +56,7 @@
                                             </td>
                                             <td>{{ $item->ship_to_address }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">Show</a>
+                                                <a href="{{ route('admin.orders.show',$item->id) }}" class="btn btn-primary">Show</a>
                                             </td>
                                         </tr>
                                     @endforeach

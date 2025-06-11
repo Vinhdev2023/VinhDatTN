@@ -1,0 +1,159 @@
+<x-admin.layout :page="'not-login-page'">
+    <x-admin.preloader/>
+    <x-admin.navbar/>
+    <x-admin.main-sidebar-container :path="$path"/>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>List of Orders</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.orders.index') }}">Orders</a></li>
+                            <li class="breadcrumb-item">Order Detail</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <x-admin.main-content>
+            <div class="row">
+                <div class="col-12">
+                    <div class="invoice p-3 mb-3">
+                        <!-- title row -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h4>
+                                    <i class="fas fa-globe"></i> AdminLTE, Inc.
+                                    <small class="float-right">Date: {{$order->created_at_date}}</small>
+                                    <br>
+                                    <small class="float-right">Time: {{$order->created_at_time}}</small>
+                                </h4>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- info row -->
+                        <div class="row invoice-info">
+                            <!-- /.col -->
+                            <div class="col-sm-4 invoice-col">
+                                To
+                                <address>
+                                    <strong>Customer's Name: {{$order->customer_name}}</strong><br>
+                                    Address: {{$order->ship_to_address}}<br>
+                                    Phone: {{$order->customer_phone}}<br>
+                                    {{-- Email: john.doe@example.com --}}
+                                </address>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-4 invoice-col">
+                                <br>
+                                <b>Status:</b> {{$order->status}}
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <!-- Table row -->
+                        <div class="row">
+                            <div class="col-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Serial #</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($order_details as $obj)
+                                    <tr>
+
+                                        <td>{{$obj->book->title}}</td>
+                                        <td>{{$obj->book->id}}</td>
+                                        <td><a href="{{ route('admin.books.show',$obj->book->id) }}">Description</a></td>
+                                        <td>{{$obj->quantity}}</td>
+                                        <td>{{number_format($obj->price)}}</td>
+                                        <td>{{number_format($obj->price*$obj->quantity)}}</td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-12">
+                                <p class="lead">Thay đổi vào ngày {{date_format(date_create($order->updated_at), "d/m/Y")}} lúc {{date_format(date_create($order->updated_at), "H:i:s")}}</p>
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tr>
+                                            <th>Total:</th>
+                                            <td>{{number_format($order->total)}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <!-- this row will not appear when printing -->
+                        <div class="row no-print">
+                            <div class="col-12">
+                                @if (@isset($user_check_order))
+                                    <p class="left m-0">Checked by: {{$user_check_order->name}}</p>
+                                @elseif($order->status != 'PENDING')
+                                    <p class="left m-0">Checked by: Customer</p>
+                                @endif
+                                @if ($order->status == 'PENDING')
+                                    <a href="/admin/order/update/CANCELED/{{$order->id}}" type="button" class="btn btn-danger float-right">
+                                        Cancel
+                                    </a>
+                                    <a href="/admin/order/update/CONFIRMED/{{$order->id}}" type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
+                                        Confirm
+                                    </a>
+                                @elseif($order->status == 'CONFIRMED' && $order->type == 'online')
+                                    <a href="/admin/order/update/SHIPPING/{{$order->id}}" type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
+                                        SHIPPING
+                                    </a>
+                                @elseif($order->status == 'CONFIRMED' && $order->type == 'offline' || $order->status == 'SHIPPING')
+                                    <a href="/admin/order/update/COMPLETED/{{$order->id}}" type="button" class="btn btn-success float-right" style="margin-right: 5px;">
+                                        Complete
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </x-admin.main-content>
+    </div>
+    <x-admin.footer></x-admin.footer>
+    <x-admin.script>
+        <script>
+            $(function () {
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": false,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
+            });
+        </script>
+    </x-admin.script>
+</x-admin.layout>

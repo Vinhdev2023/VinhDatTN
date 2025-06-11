@@ -58,6 +58,25 @@ class OrderController extends Controller
     }
 
     public function addOrder(Request $request) {
+        $cart = session()->get('cart');
+        foreach ($cart as $key => $value) {
+            $orderPendingorConfirmed = Order::where('status', 'PENDING')
+                ->orWhere('status', 'CONFIRMED')
+                ->get();
+            
+            $bookTaken = 0;
+            foreach ($orderPendingorConfirmed as $order) {
+                $bookTaken += Order::find($order->id)->orderDetails()->where('book_id', $value->id)->sum('quantity');
+            }
+            $book = Book::whereKey($value->id)->first();
+            if ($book->quantity - $bookTaken - $value->quantity <= 0) {
+                session()->forget('cart');
+                session()->forget('cart_total');
+                session()->save();
+                return redirect('/cart-page');
+            }
+        }
+
         $validated = $request->validate([
             'full_name' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
@@ -66,12 +85,12 @@ class OrderController extends Controller
 
         $cart = session()->get('cart');
 
-        Customer::where('id',auth('customers')->user()->id)->update($validated);
+        Customer::whereKey(auth('customers')->user()->id)->update($validated);
 
-        $customer = Customer::where('id',auth('customers')->user()->id)->get();
+        $customer = Customer::whereKey(auth('customers')->user()->id)->first();
 
         $order = Order::create([
-            'customer_id' => $customer[0]->id,
+            'customer_id' => $customer->id,
             'customer_name' => $request->full_name,
             'customer_phone' => $request->phone,
             'ship_to_address' => $request->address,
