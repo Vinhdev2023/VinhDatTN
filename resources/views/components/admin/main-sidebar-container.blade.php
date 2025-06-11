@@ -52,7 +52,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @if (auth()->guard('admins')->user()->role == 'admin')                            
+                        @if (auth()->guard('admins')->user()->role == 'admin')
                             <li class="nav-item @if($path == 'admin.account.add') {{' menu-open'}} @endif">
                                 <a href="{{route('admin.account.add')}}" class="nav-link @if($path == 'admin.account.add') {{' active'}} @endif">
                                     <i class="far fa-circle nav-icon"></i>
@@ -131,7 +131,7 @@
                 </li>
                 <li class="nav-item @if($path == 'admin.categories.index' || $path == 'admin.categories.create' || $path == 'admin.categories.edit') {{'menu-open'}} @endif">
                     <a href="#" class="nav-link @if($path == 'admin.categories.index' || $path == 'admin.categories.create' || $path == 'admin.categories.edit') {{'active'}} @endif">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-list"></i>
                         <p>
                             Categories
                             <i class="fas fa-angle-left right"></i>
@@ -154,7 +154,7 @@
                 </li>
                 <li class="nav-item @if($path == 'admin.authors.index' || $path == 'admin.authors.create' || $path == 'admin.authors.edit') {{'menu-open'}} @endif">
                     <a href="#" class="nav-link @if($path == 'admin.authors.index' || $path == 'admin.authors.create' || $path == 'admin.authors.edit') {{'active'}} @endif">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
                             Authors
                             <i class="fas fa-angle-left right"></i>
@@ -177,7 +177,7 @@
                 </li>
                 <li class="nav-item  @if($path == 'admin.publishers.index' || $path == 'admin.publishers.create' || $path == 'admin.publishers.edit') {{'menu-open'}} @endif">
                     <a href="#" class="nav-link @if($path == 'admin.publishers.index' || $path == 'admin.publishers.create' || $path == 'admin.publishers.edit') {{'active'}} @endif">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-building"></i>
                         <p>
                             Publishers
                             <i class="fas fa-angle-left right"></i>
