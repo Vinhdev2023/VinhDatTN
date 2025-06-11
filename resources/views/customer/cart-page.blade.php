@@ -72,8 +72,12 @@
                                                                         <div class="col-sm-7 col-md-6">
                                                                             <form action="/update-cart/{{ $item->id }}" method="post">
                                                                                 @csrf
-                                                                                <input type="number" name="quantity" oninput="this.value = Math.round(this.value);"  onchange="this.value <= 0 ? this.value = 1 : this.value" min="1" value="{{$item->quantity}}" max="{{ $item->quantityInStock }}" style="width: 50px" required>
-                                                                                <button type="submit" class="fa fa-circle qty-btn"></button>
+                                                                                <input type="number" name="quantity" oninput="this.value = Math.round(this.value);"  onchange="this.value <= 0 ? this.value = 1 : this.value" min="1" value="{{$item->quantity}}" style="width: 50px" required>
+                                                                                <button
+                                                                                    type="submit"
+                                                                                    class="ri-refresh-line qty-btn"
+                                                                                    style="border: none; outline: none;">
+                                                                                </button>
                                                                             </form>
                                                                         </div>
                                                                         <div class="col-sm-5 col-md-6">
