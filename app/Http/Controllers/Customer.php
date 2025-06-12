@@ -19,15 +19,6 @@ class Customer extends Controller
         return view('customer.account-setting');
     }
 
-    public function category(){
-        $books = Book::orderBy('created_at', 'desc')
-        ->where('quantity', '>', 0)
-        ->paginate(12);
-        
-        $books->load('author');
-
-        return view('customer.category', compact('books'));
-    }
     public function Checkout(){
         return view('customer.Checkout');
     }

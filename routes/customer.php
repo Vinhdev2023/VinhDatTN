@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/account-setting',[Customer::class,'account_setting'])->middleware('customerAuth');
 Route::get('/book-page/{book}',[BookViewController::class,'view']);
-Route::get('/category',[Customer::class,'category']);
 
 Route::get('/checkout',[Customer::class,'Checkout'])->middleware(['customerAuth', 'checkCart']);
 Route::get('/buy-now/{book}',[OrderController::class,'buyNow']);

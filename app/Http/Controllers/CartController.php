@@ -136,7 +136,7 @@ class CartController extends Controller
         }
 
         throw ValidationException::withMessages([
-            0 => 'the quantity too much'
+            0 => 'số lượng quá nhiều'
         ]);
     }
 }
