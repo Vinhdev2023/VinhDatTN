@@ -46,7 +46,7 @@
                                     <strong>Customer's Name: {{$order->customer_name}}</strong><br>
                                     Address: {{$order->ship_to_address}}<br>
                                     Phone: {{$order->customer_phone}}<br>
-                                    {{-- Email: john.doe@example.com --}}
+                                    Email: {{$order->customer->email}}
                                 </address>
                             </div>
                             <!-- /.col -->

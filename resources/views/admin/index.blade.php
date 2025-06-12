@@ -58,7 +58,7 @@
                        <!-- small box -->
                        <div class="small-box bg-warning">
                            <div class="inner">
-                               <h3>!!</h3>
+                               <h3>{{ number_format($customers,0,',','.') }}</h3>
 
                                <p>Customer Account</p>
                            </div>
@@ -80,7 +80,7 @@
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="/admin/statistics" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

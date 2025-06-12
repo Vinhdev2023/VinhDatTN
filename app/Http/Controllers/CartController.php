@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class CartController extends Controller
@@ -12,22 +13,27 @@ class CartController extends Controller
     public function index() {
         if (session()->get('cart')) {
             $cart = session()->get('cart');
+            $orderPendingorConfirmed = Order::whereIn('status', ['PENDING', 'CONFIRMED'])
+                ->with(['orderDetails' => function ($query) {
+                    $query->select('order_id', 'book_id', DB::raw('SUM(quantity) as total_quantity'))->groupBy('book_id', 'order_id');
+                }])
+                ->get();
+
             foreach ($cart as $value) {
                 $book = Book::findOrFail($value->id);
 
-                $orderPendingorConfirmed = Order::where('status', 'PENDING')
-                    ->orWhere('status', 'CONFIRMED')
-                    ->get();
-                $bookTaken = 0;
-                foreach ($orderPendingorConfirmed as $order) {
-                    $bookTaken += Order::find($order->id)->orderDetails()->where('book_id', $value->id)->sum('quantity');
-                }
+                // Tính tổng số lượng sách đã đặt từ tất cả đơn hàng liên quan
+                $bookTaken = $orderPendingorConfirmed->pluck('orderDetails')
+                    ->flatten()
+                    ->where('book_id', $value->id)
+                    ->sum('total_quantity');
 
                 $value->quantityInStock = $book->quantity - $bookTaken;
             }
 
+            // Cập nhật lại giỏ hàng
             session()->put('cart', $cart);
-            // dd(session()->get('cart'));
+            
             return view('customer.cart-page');
         }
 
