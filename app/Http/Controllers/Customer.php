@@ -20,7 +20,10 @@ class Customer extends Controller
     }
 
     public function category(){
-        $books = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->paginate(12);
+        $books = Book::orderBy('created_at', 'desc')
+        ->where('quantity', '>', 0)
+        ->paginate(12);
+        
         $books->load('author');
 
         return view('customer.category', compact('books'));

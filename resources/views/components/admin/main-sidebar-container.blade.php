@@ -88,8 +88,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @if($path == 'admin.orders.index' || $path == 'admin.orders.show') {{'menu-open'}} @endif">
-                    <a href="{{ route('admin.orders.index') }}" class="nav-link @if($path == 'admin.orders.index' || $path == 'admin.orders.show') {{'active'}} @endif">
+                <li class="nav-item @if($path == 'admin.orders.index' || $path == 'admin.orders.show' || $path == 'admin.orders.filter') {{'menu-open'}} @endif">
+                    <a href="{{ route('admin.orders.index') }}" class="nav-link @if($path == 'admin.orders.index' || $path == 'admin.orders.show' || $path == 'admin.orders.filter') {{'active'}} @endif">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Orders

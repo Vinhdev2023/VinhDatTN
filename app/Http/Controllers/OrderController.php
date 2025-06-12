@@ -119,7 +119,7 @@ class OrderController extends Controller
             ->select('*')
             ->selectRaw('DATE_FORMAT(created_at, "%d/%m/%Y") AS created_at_date')
             ->selectRaw('DATE_FORMAT(created_at, "%H:%i:%s") AS created_at_time')
-            ->orderByRaw('CASE WHEN status = "PENDING" THEN 1 ELSE 2 END, created_at DESC')
+            ->orderByRaw('CASE WHEN status = "PENDING" THEN 1 WHEN STATUS = "COMPLETED" THEN 2 ELSE 3 END, created_at DESC')
             ->get();
 
         return view('customer.order-page', ['orders' => $orders]);

@@ -27,10 +27,10 @@
                         <x-admin.card-header>
                             <h3 class="card-title">Orders data</h3>
                             <div class="card-tools">
-                                <a href="" class="btn btn-danger">CANCELED</a>
-                                <a href="" class="btn btn-primary">PENDING</a>
-                                <a href="" class="btn btn-warning">CONFIRMED</a>
-                                <a href="" class="btn btn-success">COMPLETED</a>
+                                <a href="{{ route('admin.orders.filter','CANCELED') }}" class="btn btn-danger">CANCELED</a>
+                                <a href="{{ route('admin.orders.filter','PENDING') }}" class="btn btn-primary">PENDING</a>
+                                <a href="{{ route('admin.orders.filter','CONFIRMED') }}" class="btn btn-warning">CONFIRMED</a>
+                                <a href="{{ route('admin.orders.filter','COMPLETED') }}" class="btn btn-success">COMPLETED</a>
                             </div>
                         </x-admin.card-header>
                         <x-admin.card-body>
@@ -62,7 +62,15 @@
                                             </td>
                                             <td>{{ $item->ship_to_address }}</td>
                                             <td>
-                                                <a href="{{ route('admin.orders.show',$item->id) }}" class="btn btn-primary">Show</a>
+                                                <form action="{{route('admin.customer.destroy', $item->customer_id)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a href="{{ route('admin.orders.show',$item->id) }}" class="btn btn-primary">Show</a>
+                                                    @if ($item->customer != null)
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('You want to lock now?')">Lock now</button>
+                                                        
+                                                    @endif
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

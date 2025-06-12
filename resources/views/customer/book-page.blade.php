@@ -62,8 +62,8 @@
                                        </div>
                                        <span class="text-dark mb-4 pb-4 iq-border-bottom d-block">{{$book->description}}</span>
                                        <div class="text-primary mb-4">Tác giả: 
-                                          @foreach ($book->author as $author)
-                                             <span class="text-body">{{$author->name}}</span>,
+                                          @foreach ($book->author as $key => $author)
+                                             <span class="text-body">{{ $author->name }}{{ $key == sizeof($book->author)-1 ? '. ' : ', ' }}</span>
                                           @endforeach
                                        </div>
                                        <div class="mb-4 d-flex align-items-center">

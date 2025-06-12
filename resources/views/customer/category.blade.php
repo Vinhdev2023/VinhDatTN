@@ -116,8 +116,11 @@
                                              <div class="col-6">
                                                 <div class="mb-2">
                                                    <h6 class="mb-1">{{ $book->title }}</h6>
-                                                   @foreach ($book->author as $author)
+                                                   @foreach ($book->author as $key => $author)
                                                       <p class="font-size-13 line-height mb-1">{{$author->name}}</p>
+                                                      @if ($key == 1)
+                                                         @break
+                                                      @endif
                                                    @endforeach
                                                 </div>
                                                 <div class="price d-flex align-items-center">

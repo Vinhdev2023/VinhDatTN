@@ -30,5 +30,9 @@ class Order extends Model
         return $this->belongsTo(Admin::class,'admin_id_confirmed');
     }
 
+    public function customer() {
+        return $this->belongsTo(Customer::class);
+    }
+
     use HasFactory;
 }

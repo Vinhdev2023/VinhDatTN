@@ -12,7 +12,8 @@ class AdminOrderController extends Controller
     public function index() {
         $path = 'admin.orders.index';
 
-        $orders = Order::orderByRaw('CASE WHEN status = "PENDING" THEN 1 ELSE 2 END, updated_at DESC')->when('PENDING')->get();
+        $orders = Order::orderByRaw('CASE WHEN status = "PENDING" THEN 1 WHEN STATUS = "COMPLETED" THEN 2 ELSE 3 END, updated_at DESC')->get();
+        $orders->load('customer');
 
         return view('admin.order.index', compact('path','orders'));
     }
@@ -65,5 +66,13 @@ class AdminOrderController extends Controller
         }
 
         return redirect()->back()->with('success', 'Order updated!');
+    }
+
+    public function filter($status) {
+        $path = 'admin.orders.filter';
+
+        $orders = Order::where('status',$status)->orderBy('updated_at','desc')->get();
+
+        return view('admin.order.index', compact('path','orders'));
     }
 }

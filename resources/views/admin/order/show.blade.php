@@ -58,12 +58,19 @@
                             @if (@isset($order->admin))
                                 <div class="col-sm-4 invoice-col">
                                 Checked
-                                <address>
-                                    <strong>{{$order->admin->role}}'s Name: {{$order->admin->name}}</strong><br>
-                                    Role: {{$order->admin->role}}<br>
-                                    Email: {{$order->admin->email}}
-                                </address>
-                            </div>
+                                    <address>
+                                        <strong>{{$order->admin->role}}'s Name: {{$order->admin->name}}</strong><br>
+                                        Role: {{$order->admin->role}}<br>
+                                        Email: {{$order->admin->email}}
+                                    </address>
+                                </div>
+                            @elseif($order->status == 'CANCELED' && $order->admin_id_confirmed == null)
+                                <div class="col-sm-4 invoice-col">
+                                Checked
+                                    <address>
+                                        <strong>canceled by: Customer</strong>
+                                    </address>
+                                </div>
                             @endif
                         </div>
                         <!-- /.row -->
@@ -123,11 +130,6 @@
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
                             <div class="col-12">
-                                @if (@isset($user_check_order))
-                                    <p class="left m-0">Checked by: {{$user_check_order->name}}</p>
-                                @elseif($order->status != 'PENDING')
-                                    <p class="left m-0">Checked by: Customer</p>
-                                @endif
                                 @if ($order->status == 'PENDING')
                                     <a href="{{ route('admin.orders.update',['status' => 'CANCELED','order' => $order->id]) }}" type="button" class="btn btn-danger float-right">
                                         Cancel
