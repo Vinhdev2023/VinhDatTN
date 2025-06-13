@@ -19,6 +19,8 @@ class AdminHomeController extends Controller
 
         $customers = Customer::count();
 
-        return view('admin.index', compact('path','orders','customers'));
+        $booksUnder50 = Book::where('quantity','<',50)->count();
+
+        return view('admin.index', compact('path','orders','customers','booksUnder50'));
     }
 }

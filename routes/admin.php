@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminPublisherController;
+use App\Http\Controllers\AdminStatisticController;
 
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::middleware('adminAuth')->group(function () {
@@ -51,6 +52,11 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::get('/orders/{order}/show','show')->name('orders.show');
             Route::get('/orders/update/{status}/{order}','changeStatus')->name('orders.update');
             Route::get('/orders/filter/{status}','filter')->name('orders.filter');
+        });
+
+        Route::controller(AdminStatisticController::class)->group(function () {
+            Route::get('/statistics','statistic_view')->name('statistics');
+            Route::post('/statistics','statistic_get_data')->name('statistics.data');
         });
     });
 

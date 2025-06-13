@@ -34,6 +34,22 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item @if($path == 'admin.statistics' || $path == 'admin.statistics.data'){{'open-menu'}}@endif">
+                    <a href="{{ route('admin.statistics') }}" class="nav-link @if($path == 'admin.statistics' || $path == 'admin.statistics.data'){{'active'}}@endif">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Statistics
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item @if($path == 'admin.orders.index' || $path == 'admin.orders.show' || $path == 'admin.orders.filter') {{'menu-open'}} @endif">
+                    <a href="{{ route('admin.orders.index') }}" class="nav-link @if($path == 'admin.orders.index' || $path == 'admin.orders.show' || $path == 'admin.orders.filter') {{'active'}} @endif">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                            Orders
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item @if($path == 'admin.account.add' || $path == 'admin.account.index' || $path == 'admin.account.trashed') {{' menu-open'}} @endif">
                     <a href="#" class="nav-link @if($path == 'admin.account.add' || $path == 'admin.account.index' || $path == 'admin.account.trashed') {{' active'}} @endif">
                         <i class="nav-icon fas fa-user-secret"></i>
@@ -88,17 +104,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @if($path == 'admin.orders.index' || $path == 'admin.orders.show' || $path == 'admin.orders.filter') {{'menu-open'}} @endif">
-                    <a href="{{ route('admin.orders.index') }}" class="nav-link @if($path == 'admin.orders.index' || $path == 'admin.orders.show' || $path == 'admin.orders.filter') {{'active'}} @endif">
-                        <i class="nav-icon fas fa-shopping-cart"></i>
-                        <p>
-                            Orders
-                        </p>
-                    </a>
-                </li>
                 <li class="nav-item @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit') {{'menu-open'}} @endif">
                     <a href="#" class="nav-link @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit') {{'active'}} @endif">
-                        {{-- <i class="nav-icon fas fa-copy"></i> --}}
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Books
@@ -189,14 +196,6 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="nav-item @if($path == '/admin/statistics' || $path == '/admin/statistics/data'){{'open-menu'}}@endif">
-                    <a href="/admin/statistics" class="nav-link @if($path == '/admin/statistics' || $path == '/admin/statistics/data'){{'active'}}@endif">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                            Statistics
-                        </p>
-                    </a>
-                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

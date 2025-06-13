@@ -64,4 +64,10 @@
 <script src="/admin_plugin/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/admin_plugin/dist/js/pages/dashboard.js"></script>
+<!-- FLOT CHARTS -->
+<script src="/admin_plugin/plugins/flot/jquery.flot.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="/admin_plugin/plugins/flot/plugins/jquery.flot.resize.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="/admin_plugin/plugins/flot/plugins/jquery.flot.pie.js"></script>
 {{ $slot }}
