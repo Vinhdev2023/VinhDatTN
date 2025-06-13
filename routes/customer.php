@@ -5,7 +5,12 @@ use App\Http\Controllers\BookViewController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Customer;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/',[Customer::class,'customer']);
+
+Route::get('/search', [SearchController::class,'search']);
 
 Route::get('/account-setting',[Customer::class,'account_setting'])->middleware('customerAuth');
 Route::get('/book-page/{book}',[BookViewController::class,'view']);

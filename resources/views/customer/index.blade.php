@@ -34,33 +34,12 @@
                               <div class="d-block text-center">
                                   <h2 class="mb-3">Tìm kiếm tên sách</h2>
                                   <div class="w-100 iq-search-filter">
-                                      <form action="">
+                                      <form action="/search" method="get">
                                           <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
-                                              <li class="search-menu-opt">
-                                                  <div class="iq-dropdown">
-                                                      <div class="form-group mb-0">
-
-                                                      </div>
-                                                  </div>
-                                              </li>
-                                              <li class="search-menu-opt">
-                                                  <div class="iq-dropdown">
-                                                      <div class="form-group mb-0">
-
-                                                      </div>
-                                                  </div>
-                                              </li>
-                                              <li class="search-menu-opt">
-                                                  <div class="iq-dropdown">
-                                                      <div class="form-group mb-0">
-
-                                                      </div>
-                                                  </div>
-                                              </li>
                                               <li class="search-menu-opt">
                                                   <div class="iq-search-bar search-book d-flex align-items-center">
                                                       <div class="searchbox">
-                                                          <input type="text" class="text search-input" placeholder="search here...">
+                                                          <input type="text" name="search" class="text search-input" placeholder="search here...">
                                                           <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                                                       </div>
                                                       <button type="submit" class="btn btn-primary search-data ml-2">Search</button>
