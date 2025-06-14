@@ -29,6 +29,17 @@
           <div id="content-page" class="content-page">
               <div class="container-fluid">
                   <div class="row">
+                    @if ($errors->any())
+                    <div class="col-12">
+                        <x-admin.alert-danger>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </x-admin.alert-danger>
+                    </div>
+                    @endif
                       <div class="col-lg-12">
                           <div class="iq-card-transparent mb-0">
                               <div class="d-block text-center">
@@ -53,42 +64,52 @@
                           <div class="iq-card">
                               <div class="iq-card-body">
                                   <div class="row">
-                                      @foreach ($books as $book)
-                                          <div class="col-sm-6 col-md-4 col-lg-3">
-                                              <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
-                                                  <div class="iq-card-body p-0">
-                                                      <div class="d-flex align-items-center">
-                                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                                              <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/images/{{$book->image}}" alt=""></a>
-                                                              <div class="view-book">
-                                                                  <a href="book-page/{{ $book->id }}" class="btn btn-sm btn-white">View Book</a>
-                                                              </div>
-                                                          </div>
-                                                          <div class="col-6">
-                                                              <div class="mb-2">
-                                                                  <h6 class="mb-1">{{ $book->title }}</h6>
-                                                                  @foreach ($book->author as $key => $author)
-                                                                      <p class="font-size-13 line-height mb-1">{{$author->name}}</p>
-                                                                      @if ($key == 1)
-                                                                        @break
-                                                                      @endif
-                                                                  @endforeach
-                                                              </div>
-                                                              <div class="price d-flex align-items-center">
+                                    @foreach ($books as $book)
+                                        <div class="col-sm-6 col-md-4 col-lg-3">
+                                            <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
+                                                <div class="iq-card-body p-0">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="col-6 p-0 position-relative image-overlap-shadow">
+                                                            <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/images/{{$book->image}}" alt=""></a>
+                                                            <div class="view-book">
+                                                                <a href="book-page/{{ $book->id }}" class="btn btn-sm btn-white">View Book</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="mb-2">
+                                                                <h6 class="mb-1">{{ $book->title }}</h6>
+                                                                @foreach ($book->author as $key => $author)
+                                                                    <p class="font-size-13 line-height mb-1">{{$author->name}}</p>
+                                                                    @if ($key == 1)
+                                                                    @break
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                            <div class="price d-flex align-items-center">
 
-                                                                  <h6><b>{{number_format($book->price, 0,',','.')}} đ</b></h6>
-                                                              </div>
-                                                              <div class="iq-product-action">
-                                                                  <a href="/add-cart/{{ $book->id }}">
-                                                                      <i class="ri-shopping-cart-2-fill text-primary"></i>
-                                                                  </a>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      @endforeach
+                                                                <h6><b>{{number_format($book->price, 0,',','.')}} đ</b></h6>
+                                                            </div>
+                                                            <div class="iq-product-action">
+                                                                <a href="/add-cart/{{ $book->id }}">
+                                                                    <i class="ri-shopping-cart-2-fill text-primary"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php $flag = false ?>
+                                    @endforeach
+                                    @if ($flag)
+                                        <div class="col-12">
+                                            <x-admin.alert-danger>
+                                                <ul>
+                                                    <li>Xin lỗi chúng tôi tìm không thấy</li>
+                                                </ul>
+                                            </x-admin.alert-danger>
+                                        </div>
+                                    @endif
                                   </div>
                               </div>
                           </div>

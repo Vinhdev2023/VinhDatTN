@@ -9,7 +9,7 @@ class SearchController extends Controller
 {
     public function search(Request $request) {
         $request->validate([
-            'search' => 'required|string|min:1'
+            'search' => 'required|string|min:2'
         ]);
 
         $stringCut = $request->search;
@@ -30,8 +30,11 @@ class SearchController extends Controller
 
         $books = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->whereRaw($sqlLike)->paginate(12);
         $books->load('author');
+
+        $flag = true;
+
         $search = $request->search;
 
-        return view('customer.index', compact('books','search'));
+        return view('customer.index', compact('books','search','flag'));
     }
 }
