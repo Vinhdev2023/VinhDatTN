@@ -1,7 +1,7 @@
 <x-admin.layout :page="'not-login-page'">
     <x-admin.preloader/>
     <x-admin.navbar/>
-    <x-admin.main-sidebar-container :path="$path" :numbook="$num_book" :numcategory="$num_category" :numauthor="$num_author" :numpublisher="$num_publisher"/>
+    <x-admin.main-sidebar-container :path="$path"/>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -52,38 +52,96 @@
                         <x-admin.card>
                             <x-admin.card-header :class="'p-2'">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Settings</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#chg-pw" data-toggle="tab">Change password</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#orders" data-toggle="tab">orders</a>
+                                    </li>
                                 </ul>
                             </x-admin.card-header>
                             <x-admin.card-body>
-                                <form action="{{route('admin.updatePassword', auth()->guard('admins')->user()->id)}}" method="post" class="form-horizontal">
-                                    @csrf
-                                    @method('PATCH')
-                                    <div class="form-group row">
-                                        <label for="inputOldPassword" class="col-sm-2 col-form-label">Old Password</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" name="old_password" class="form-control" id="inputOldPassword" placeholder="Old Password" required>
-                                        </div>
+                                <div class="tab-content">
+                                    <div class="active tab-pane" id="chg-pw">
+                                        <form action="{{route('admin.updatePassword', auth()->guard('admins')->user()->id)}}" method="post" class="form-horizontal">
+                                            @csrf
+                                            @method('PATCH')
+                                            <div class="form-group row">
+                                                <label for="inputOldPassword" class="col-sm-2 col-form-label">Old Password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" name="old_password" class="form-control" id="inputOldPassword" placeholder="Old Password" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputOldPassword" class="col-sm-2 col-form-label">New Password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" name="password" class="form-control" id="inputOldPassword" placeholder="New Password" required minlength="8">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputOldPassword" class="col-sm-2 col-form-label">Confirm New Password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" name="password_confirmation" class="form-control" id="inputOldPassword" placeholder="Confirm New Password" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="offset-sm-2 col-sm-10">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="reset" class="btn btn-danger">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="inputOldPassword" class="col-sm-2 col-form-label">New Password</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" name="password" class="form-control" id="inputOldPassword" placeholder="New Password" required minlength="8">
-                                        </div>
+                                    <div class="tab-pane" id="orders">
+                                        <table id="example2" class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên Khách hàng</th>
+                                                    <th>Số điện thoại</th>
+                                                    <th>Trạng thái</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Show</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($admin->order as $item)
+                                                    <tr>
+                                                        <td>{{ $item->customer_name }}</td>
+                                                        <td>{{ $item->customer_phone }}</td>
+                                                        <td>
+                                                            @if ($item->status == 'PENDING')
+                                                                Chờ xác nhận
+                                                            @elseif ($item->status == 'CONFIRMED')
+                                                                Đã xác nhận
+                                                            @elseif ($item->status == 'COMPLETED')
+                                                                Đã hoàn thành
+                                                            @elseif ($item->status == 'CANCELED')
+                                                                Đã hủy
+                                                            @endif
+                                                        </td>
+                                                        <td>{{ $item->ship_to_address }}</td>
+                                                        <td>
+                                                            <form action="{{route('admin.customer.destroy', $item->customer_id)}}" method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <a href="{{ route('admin.orders.show',$item->id) }}" class="btn btn-primary">Show</a>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Tên Khách hàng</th>
+                                                    <th>Số điện thoại</th>
+                                                    <th>Trạng thái</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Show</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="inputOldPassword" class="col-sm-2 col-form-label">Confirm New Password</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" name="password_confirmation" class="form-control" id="inputOldPassword" placeholder="Confirm New Password" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                            <button type="reset" class="btn btn-danger">Cancel</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </x-admin.card-body>
                         </x-admin.card>
                         @if ($errors->any())
@@ -109,6 +167,17 @@
     <x-admin.footer/>
     <x-admin.script>
         <script>
+            $(function () {
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": false,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
+            });
         </script>
     </x-admin.script>
 </x-admin.layout>

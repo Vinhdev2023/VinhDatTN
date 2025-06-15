@@ -15,12 +15,11 @@ class AdminAccountSettingController extends Controller
 {
     public function showAccountSetting() {
         $path = 'admin.showAccountSetting';
-        $num_book = Book::count();
-        $num_category = Category::count();
-        $num_author = Author::count();
-        $num_publisher = Publisher::count();
 
-        return view('admin.account.setting-personal', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher'));
+        $admin = Admin::whereKey(auth('admins')->user()->id)->first();
+        $admin->load('order');
+
+        return view('admin.account.setting-personal', compact('path','admin'));
     }
 
     public function updatePassword(Request $request, Admin $admin) {

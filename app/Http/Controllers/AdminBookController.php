@@ -215,16 +215,48 @@ class AdminBookController extends Controller
      */
     public function destroy(Book $book)
     {
+        $book->delete();
+
+        return redirect()->route('admin.books.index')->with('success', 'Book is Deleted');
+    }
+
+    public function trashed() {
+        $path = 'admin.books.trashed';
+
+        $books = Book::orderBy('updated_at', 'desc')->onlyTrashed()->get();
+
+        return view('admin.book.trashed', compact('path', 'books'));
+    }
+
+    public function checked(string $id) {
+        $path = 'admin.books.checked';
+
+        $book = Book::onlyTrashed()->whereKey($id)->first();
+
+        $book->load('category');
+        $book->load('author');
+        $book->load('publisher');
+
+        return view('admin.book.checked', compact('path', 'book'));
+    }
+
+    public function restore(string $id) {
+        Book::whereKey($id)->restore();
+
+        return redirect()->route('admin.books.trashed')->with('success', 'Book is Restore');
+    }
+
+    public function forceDestroy(string $id) {
+        $book = Book::onlyTrashed()->whereKey($id)->first();
+
         $book->load('orderDetail');
         if (sizeof($book->orderDetail) == 0) {
             Classifying::where('book_id', '=', $book->id)->delete();
             Writing::where('book_id', '=', $book->id)->delete();
             $book->forceDelete();
-            return redirect()->route('admin.books.index')->with('success', 'Book is Deleted');
+            return redirect()->route('admin.books.trashed')->with('success', 'Book is Deleted');
         }
 
-        $book->delete();
-
-        return redirect()->route('admin.books.index')->with('success', 'Book is Deleted');
+        return redirect()->route('admin.books.trashed')->with('fail', 'Book can\'t be Deleted');
     }
 }

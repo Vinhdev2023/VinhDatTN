@@ -29,7 +29,7 @@
 <!-- Summernote -->
 <script src="/admin_plugin/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="admin_plugin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/admin_plugin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="/admin_plugin/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/admin_plugin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

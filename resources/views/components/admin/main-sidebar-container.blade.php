@@ -104,8 +104,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit') {{'menu-open'}} @endif">
-                    <a href="#" class="nav-link @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit') {{'active'}} @endif">
+                <li class="nav-item @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit' || $path == 'admin.books.trashed' || $path == 'admin.books.checked') {{'menu-open'}} @endif">
+                    <a href="#" class="nav-link @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit' || $path == 'admin.books.trashed' || $path == 'admin.books.checked') {{'active'}} @endif">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Books
@@ -123,6 +123,12 @@
                             <a href="{{ route('admin.books.index') }}" class="nav-link @if($path == 'admin.books.index' || $path == 'admin.books.edit') {{'active'}} @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Books</p>
+                            </a>
+                        </li>
+                        <li class="nav-item @if($path == 'admin.books.trashed' || $path == 'admin.books.checked') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.books.trashed') }}" class="nav-link @if($path == 'admin.books.trashed' || $path == 'admin.books.checked') {{'active'}} @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Books are Trashed</p>
                             </a>
                         </li>
                     </ul>

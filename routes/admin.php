@@ -18,6 +18,12 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('index');
 
         Route::resource('/books', AdminBookController::class);
+        
+        Route::get('/books-trashed', [AdminBookController::class, 'trashed'])->name('books.trashed');
+        Route::get('/books-checked/{book}', [AdminBookController::class, 'checked'])->name('books.checked');
+        Route::get('/books-restore/{book}', [AdminBookController::class, 'restore'])->name('books.restore');
+        Route::delete('/books-forceDestroy/{book}', [AdminBookController::class, 'forceDestroy'])->name('books.forceDestroy');
+
         Route::resource('/categories', AdminCategoryController::class);
         Route::resource('/publishers', AdminPublisherController::class);
         Route::resource('/authors', AdminAuthorController::class);
@@ -29,10 +35,10 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
         Route::controller(AdminControlAccountController::class)->group(function () {
             Route::get('/employee-account', 'index')->name('account.index');
-            Route::post('/employee-account', 'store')->name('account.store');
             Route::get('/employee-account/trashed', 'trashed')->name('account.trashed');
-
+            
             Route::middleware('adminRole')->group(function () {
+                Route::post('/employee-account', 'store')->name('account.store');
                 Route::get('/employee-account/create', 'add')->name('account.add');
                 Route::delete('/employee-account/{admin}', 'destroy')->name('account.destroy');
                 Route::post('/employee-account/restore/{admin}', 'restore')->name('account.restore');

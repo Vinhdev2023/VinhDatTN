@@ -22,6 +22,16 @@
         </section>
 
         <x-admin.main-content>
+            @if (session('success'))
+                <x-admin.alert-success>
+                    {{ session('success') }}
+                </x-admin.alert-success>
+            @endif
+            @if (session('fail'))
+                <x-admin.alert-warning>
+                    {{ session('fail') }}
+                </x-admin.alert-warning>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="invoice p-3 mb-3">
@@ -127,6 +137,7 @@
                         </div>
                         <!-- /.row -->
 
+                        @if ($order->admin_id_confirmed == auth('admins')->user()->id)
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
                             <div class="col-12">
@@ -147,6 +158,7 @@
                                 @endif
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
