@@ -12,7 +12,9 @@ class Customer extends Controller
         $books = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->paginate(12);
         $books->load('author');
 
-        return view('customer.index', compact('books'));
+        $flag = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->count();
+
+        return view('customer.index', compact('books','flag'));
     }
 
     public function account_setting(){

@@ -99,9 +99,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php $flag = false ?>
                                     @endforeach
-                                    @if ($flag)
+                                    @if ($flag == 0 )
                                         <div class="col-12">
                                             <x-admin.alert-danger>
                                                 <ul>

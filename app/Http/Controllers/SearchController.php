@@ -13,9 +13,11 @@ class SearchController extends Controller
         ]);
 
         $stringCut = $request->search;
+        $stringCut = trim($stringCut);
         while (strpos($stringCut,' ')) {
             $arrayWord[] = "title LIKE '%".substr($stringCut, 0, strpos($stringCut, ' '))."%'";
             $stringCut = substr($stringCut, strpos($stringCut, ' ')+1, strlen($stringCut));
+            $stringCut = ltrim($stringCut);
         }
         $arrayWord[] = "title LIKE '%".$stringCut."%'";
 
@@ -31,7 +33,7 @@ class SearchController extends Controller
         $books = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->whereRaw($sqlLike)->paginate(12);
         $books->load('author');
 
-        $flag = true;
+        $flag = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->whereRaw($sqlLike)->count();
 
         $search = $request->search;
 
