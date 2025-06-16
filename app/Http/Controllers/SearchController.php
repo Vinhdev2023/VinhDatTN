@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class SearchController extends Controller
 {
     public function search(Request $request) {
         $request->validate([
-            'search' => 'required|string'
+            'search' => 'required|string|max:50'
         ]);
 
         $stringCut = $request->search;
@@ -24,6 +25,14 @@ class SearchController extends Controller
         }
         $arrayWord[] = "title LIKE '%".$stringCut."%'";
         $arrayCharset[] = $stringCut;
+
+        foreach ($arrayCharset as $key => $value) {
+            if (strlen($value) > 9) {
+                throw ValidationException::withMessages([
+                    'word' => 'từ quá dài',
+                ]);
+            }
+        }
 
         $sqlLike = '';
         foreach ($arrayWord as $key => $value) {
