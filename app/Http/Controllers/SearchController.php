@@ -29,7 +29,7 @@ class SearchController extends Controller
         foreach ($arrayCharset as $key => $value) {
             if (strlen($value) > 9) {
                 throw ValidationException::withMessages([
-                    'word' => 'từ quá dài',
+                    'word' => 'từ quá dài từ không quá 10 ký tự',
                 ]);
             }
         }
