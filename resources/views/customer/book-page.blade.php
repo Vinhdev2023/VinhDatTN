@@ -4,7 +4,7 @@
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>NHASACHTV - Pay Back Time</title>
+      <title>Nhà Sách Vinh Đạt - Nhà sách trực tuyến</title>
       <!-- Favicon -->
       <link rel="shortcut icon" href="/customer_plugin/images/favicon.ico" />
       <!-- Bootstrap CSS -->
@@ -68,7 +68,7 @@
                                           <span class="font-size-24 text-dark">{{number_format($book->price, 0,',','.')}} ₫</span>
                                        </div>
                                        <span class="text-dark mb-4 pb-4 iq-border-bottom d-block">{{$book->description}}</span>
-                                       <div class="text-primary mb-4">Tác giả: 
+                                       <div class="text-primary mb-4">Tác giả:
                                           @foreach ($book->author as $key => $author)
                                              <span class="text-body">{{ $author->name }}{{ $key == sizeof($book->author)-1 ? '. ' : ', ' }}</span>
                                           @endforeach

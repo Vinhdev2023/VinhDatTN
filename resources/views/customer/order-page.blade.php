@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Booksto - Responsive Bootstrap 4 Admin Dashboard Template</title>
+    <title>Nhà Sách Vinh Đạt - Nhà sách trực tuyến</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="/customer_plugin/images/favicon.ico" />
     <!-- Bootstrap CSS -->
@@ -55,7 +55,7 @@
                                                             <div class="price">
                                                                 <h5>Tổng: {{ number_format($item->total,0,',','.') }} ₫</h5>
                                                                 <h5>
-                                                                    Trạng thái: 
+                                                                    Trạng thái:
                                                                     @if ($item->status == 'PENDING')
                                                                         Chờ xác nhận
                                                                     @elseif ($item->status == 'CONFIRMED')
