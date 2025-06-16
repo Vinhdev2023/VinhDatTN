@@ -10,7 +10,7 @@ class SearchController extends Controller
 {
     public function search(Request $request) {
         $request->validate([
-            'search' => 'required|string|max:50'
+            'search' => 'required|string|max:30'
         ]);
 
         $stringCut = $request->search;
@@ -41,11 +41,6 @@ class SearchController extends Controller
         $flag = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->whereRaw($sqlLike)->count();
 
         if ($flag == 0) {
-            foreach ($arrayCharset as $key => $value) {
-                if (strlen($value) > 9) {
-                    return view('customer.index', compact('books','search','flag'));
-                }
-            }
             $caseSql = [];
             foreach ($arrayCharset as $key => $value) {
                 $length = strlen($value);
@@ -71,7 +66,13 @@ class SearchController extends Controller
                 $sqlRelevation = $sqlRelevation.$value.' +'.PHP_EOL;
             }
 
-            $books = Book::selectRaw('*, ('.PHP_EOL.$sqlRelevation.PHP_EOL.'0) AS relevation')->where('quantity', '>', 0)->having('relevation', '>', 0)->orderBy('relevation', 'desc')->orderBy('created_at', 'desc')->paginate(12)->appends(['search' => $search]);
+            if (strlen(Book::selectRaw('*, ('.PHP_EOL.$sqlRelevation.'0) AS relevation')->where('quantity', '>', 0)->having('relevation', '>', 0)->orderBy('relevation', 'desc')->orderBy('created_at', 'desc')->toSql()) >= 33370) {
+                throw ValidationException::withMessages([
+                    'word' => 'không thể tìm kiếm được',
+                ]);
+            }
+
+            $books = Book::selectRaw('*, ('.PHP_EOL.$sqlRelevation.'0) AS relevation')->where('quantity', '>', 0)->having('relevation', '>', 0)->orderBy('relevation', 'desc')->orderBy('created_at', 'desc')->paginate(12)->appends(['search' => $search]);
             $books->load('author');
 
             $flag = Book::selectRaw('*, ('.PHP_EOL.$sqlRelevation.PHP_EOL.'0) AS relevation')->where('quantity', '>', 0)->having('relevation', '>', 0)->orderBy('relevation', 'desc')->orderBy('created_at', 'desc')->count();
