@@ -9,7 +9,7 @@
                     <a href="/" class="header-logo">
                         <img src="/customer_plugin/images/logo.png" class="img-fluid rounded-normal" alt="">
                         <div class="logo-title">
-                            <span class="text-primary text-uppercase">BOOKSTORE</span>
+                            <span class="text-primary text-uppercase">Nhà Sách Vinh Đạt</span>
                         </div>
                     </a>
                 </div>
