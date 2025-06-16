@@ -58,7 +58,6 @@ class SearchController extends Controller
                 }
             }
         }
-        // dd($caseSql);
 
         if (isset($caseSql)) {
             $sqlRelevation = '';
