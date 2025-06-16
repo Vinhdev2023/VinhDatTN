@@ -58,7 +58,7 @@ class CartController extends Controller
                 foreach ($cart as $obj) {
                     if ($obj->id == $book->id) {
                         if ($obj->quantity >= $book->quantity - $bookTaken) {
-                            return redirect()->back();
+                            return redirect()->back()->with('fail','đã hết không thể thêm vào giỏ');
                         }
                         $obj->quantity++;
                         $flag = 1;
@@ -81,7 +81,7 @@ class CartController extends Controller
             session()->put('cart_total', $total);
             return redirect()->back();
         }
-        return redirect()->back();
+        return redirect()->back()->with('fail','đã hết không thể thêm vào giỏ');
     }
 
     public function removeInCart(Book $book) {

@@ -29,6 +29,13 @@
          <div id="content-page" class="content-page">
             <div class="container-fluid">
                <div class="row">
+                  @if (session('fail'))
+                     <div class="col-12">
+                           <x-admin.alert-danger>
+                              {{ session('fail') }}
+                           </x-admin.alert-danger>
+                     </div>
+                  @endif
                   <div class="col-sm-12">
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between align-items-center">

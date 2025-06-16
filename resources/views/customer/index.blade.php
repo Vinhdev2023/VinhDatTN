@@ -40,6 +40,17 @@
                         </x-admin.alert-danger>
                     </div>
                     @endif
+                    @if (session('fail'))
+                        <div class="col-12">
+                            <x-admin.alert-danger>
+                                <ul>
+                                    <li>
+                                        {{ session('fail') }}
+                                    </li>
+                                </ul>
+                            </x-admin.alert-danger>
+                        </div>
+                    @endif
                       <div class="col-lg-12">
                           <div class="iq-card-transparent mb-0">
                               <div class="d-block text-center">

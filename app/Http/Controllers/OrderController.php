@@ -54,7 +54,7 @@ class OrderController extends Controller
             return redirect('/cart-page');
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('fail', 'cuốn sách đã bán hết');
     }
 
     public function addOrder(Request $request) {
