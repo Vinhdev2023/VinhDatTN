@@ -26,14 +26,6 @@ class SearchController extends Controller
         $arrayWord[] = "title LIKE '%".$stringCut."%'";
         $arrayCharset[] = $stringCut;
 
-        foreach ($arrayCharset as $key => $value) {
-            if (strlen($value) > 9) {
-                throw ValidationException::withMessages([
-                    'word' => 'từ quá dài từ không quá 10 ký tự',
-                ]);
-            }
-        }
-
         $sqlLike = '';
         foreach ($arrayWord as $key => $value) {
             if ($key == sizeof($arrayWord)-1) {
@@ -49,6 +41,11 @@ class SearchController extends Controller
         $flag = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->whereRaw($sqlLike)->count();
 
         if ($flag == 0) {
+            foreach ($arrayCharset as $key => $value) {
+                if (strlen($value) > 9) {
+                    return view('customer.index', compact('books','search','flag'));
+                }
+            }
             $caseSql = [];
             foreach ($arrayCharset as $key => $value) {
                 $length = strlen($value);
