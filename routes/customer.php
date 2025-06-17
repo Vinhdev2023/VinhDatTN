@@ -28,6 +28,8 @@ Route::get('/remove-in-cart/{book}',[CartController::class,'removeInCart']);
 Route::post('/update-cart/{book}',[CartController::class,'updateCart']);
 
 Route::get('/profile-edit',[Customer::class,'profile_edit'])->middleware('customerAuth');
+Route::post('/chg-pw', [AuthCustomerController::class,'chgpw'])->name('customer.chgpw')->middleware('customerAuth');
+
 Route::middleware('customerGuest')->group(function () {
     Route::get('/sign-in',[AuthCustomerController::class,'showLogin'])->name('customer.sign_in.show');
     Route::post('/sign-in', [AuthCustomerController::class,'login'])->name('customer.sign_in');

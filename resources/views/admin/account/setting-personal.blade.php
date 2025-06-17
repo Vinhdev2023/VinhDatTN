@@ -63,7 +63,7 @@
                             <x-admin.card-body>
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="chg-pw">
-                                        <form action="{{route('admin.updatePassword', auth()->guard('admins')->user()->id)}}" method="post" class="form-horizontal">
+                                        <form action="{{route('admin.updatePassword')}}" method="post" class="form-horizontal">
                                             @csrf
                                             @method('PATCH')
                                             <div class="form-group row">

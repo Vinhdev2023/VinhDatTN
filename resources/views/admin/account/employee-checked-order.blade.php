@@ -7,12 +7,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Employees and Admins</h1>
+                        <h1>{{ $admin->role }}: {{ $admin->name }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                            <li class="breadcrumb-item">Employees and Admins</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.account.index') }}">Employees and Admins</a></li>
+                            <li class="breadcrumb-item">{{ $admin->role }}</li>
                         </ol>
                     </div>
                 </div>
@@ -35,47 +36,54 @@
                             <table class="table table-bordered table-hover" id="example">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
+                                        <th>Tên Khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Trạng thái</th>
+                                        <th>Địa chỉ</th>
                                         @if (auth()->guard('admins')->user()->role == 'admin')
                                             <th>Action</th>
                                         @endif
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($employees as $employee)
+                                    @foreach ($admin->order as $order)
                                         <tr>
-                                            <td>{{$employee->name}}</td>
-                                            <td>{{$employee->email}}</td>
-                                            <td>{{$employee->role}}</td>
-                                            @if (auth()->guard('admins')->user()->role == 'admin')
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            @if ($employee->role != 'admin')
-                                                                <form action="{{route('admin.account.destroy', $employee->id)}}" method="post">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('You want to lock this employee now?')">Lock</button>
-                                                                    
-                                                                </form>
-                                                            @endif
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="{{ route('admin.account.showOrderChecked', $employee->id) }}" class="btn btn-primary">Show orders checked</a>
-                                                        </div>
+                                            <td>{{$order->customer_name}}</td>
+                                            <td>{{$order->customer_phone}}</td>
+                                            <td>
+                                                @if ($order->status == 'PENDING')
+                                                    Chờ xác nhận
+                                                @elseif ($order->status == 'CONFIRMED')
+                                                    Đã xác nhận
+                                                @elseif ($order->status == 'COMPLETED')
+                                                    Đã hoàn thành
+                                                @elseif ($order->status == 'CANCELED')
+                                                    Đã hủy
+                                                @endif
+                                            </td>
+                                            <td>{{ $order->ship_to_address }}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        @if (auth()->guard('admins')->user()->role == 'admin' && $order->status == 'CONFIRMED')
+                                                            <a href="{{ route('admin.account.orderChange', $order->id) }}" class="btn btn-danger" onclick="return confirm('Bạn muốn có quyền cập nhật lại đơn này')">Lấy đơn</a>
+                                                        @endif
                                                     </div>
-                                                </td>
-                                            @endif
+                                                    <div class="col">
+                                                        <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-primary">Xem đơn</a>
+                                                    </div>
+                                                </div>
+                                                
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
+                                        <th>Tên Khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Trạng thái</th>
+                                        <th>Địa chỉ</th>
                                         @if (auth()->guard('admins')->user()->role == 'admin')
                                             <th>Action</th>
                                         @endif

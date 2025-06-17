@@ -33,8 +33,15 @@
     <!-- TOP Nav Bar END -->
     <!-- Page Content  -->
     <div id="content-page" class="content-page">
-        <div class="container-fluid checkout-content">
+        <div class="container-fluid">
             <div class="row">
+                @if (session('fail'))
+                <div class="col-12">
+                    <x-admin.alert-danger>
+                        {{ session('fail') }}
+                    </x-admin.alert-danger>
+                </div>
+                @endif
                 <div class="card-block show p-0 col-12">
                     <div class="row align-item-center">
                         <div class="col-lg">
@@ -93,6 +100,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-12">
+                    {{ $orders->links('customer.pagination') }}
                 </div>
             </div>
         </div>

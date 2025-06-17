@@ -30,15 +30,15 @@
               <div class="container-fluid">
                   <div class="row">
                     @if ($errors->any())
-                    <div class="col-12">
-                        <x-admin.alert-danger>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </x-admin.alert-danger>
-                    </div>
+                        <div class="col-12">
+                            <x-admin.alert-danger>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </x-admin.alert-danger>
+                        </div>
                     @endif
                     @if (session('fail'))
                         <div class="col-12">

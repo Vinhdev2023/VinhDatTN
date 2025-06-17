@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -74,5 +75,22 @@ class AdminControlAccountController extends Controller
         Admin::onlyTrashed()->findOrFail($admin)->restore();
 
         return redirect()->route('admin.account.trashed')->with('success', 'Account is unlocked');
+    }
+
+    public function showOrderChecked(string $admin) {
+        $path = 'admin.account.index';
+
+        $admin = Admin::whereKey($admin)->withTrashed()->first();
+        $admin->load('order');
+
+        return view('admin.account.employee-checked-order', compact('path', 'admin'));
+    }
+
+    public function orderChange(Order $order) {
+        $order->update([
+            'admin_id_confirmed' => auth('admins')->user()->id
+        ]);
+
+        return redirect()->route('admin.orders.show', $order->id);
     }
 }

@@ -34,6 +34,28 @@
       <div id="content-page" class="content-page">
          <div class="container-fluid">
             <div class="row">
+               @if ($errors->any())
+                  <div class="col-12">
+                        <x-admin.alert-danger>
+                           <ul>
+                              @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                              @endforeach
+                           </ul>
+                        </x-admin.alert-danger>
+                  </div>
+               @endif
+               @if (session('success'))
+                  <div class="col-12">
+                     <x-admin.alert-success>
+                        <ul>
+                           <li>
+                              {{ session('success') }}
+                           </li>
+                        </ul>
+                     </x-admin.alert-success>
+                  </div>
+               @endif
                <div class="col-lg-12">
                   <div class="iq-card">
                      <div class="iq-card-body p-0">
@@ -64,7 +86,6 @@
                                     <div class="iq-card-body profile-page">
                                        <div class="profile-header">
                                           <div class="cover-container text-center">
-{{--                                             <img src="/customer_plugin/images/user/1.jpg" alt="profile-bg" class="rounded-circle img-fluid">--}}
                                              <div class="profile-detail mt-3">
                                                 <h3>{{auth()->guard('customers')->user()->name}}</h3>
                                              </div>
@@ -140,23 +161,29 @@
                                        <div class="iq-header-title">
                                           <h4 class="card-title mb-0">Order List</h4>
                                        </div>
-
                                     </div>
                                     <div class="iq-card-body">
-                                    <ul class="perfomer-lists m-0 p-0">
-                                       @foreach ($orders as $item)
-                                          <li class="d-flex mb-4 align-items-center">
-                                             <div class="media-support-info ml-3">
-                                                <h5>đơn hàng đặt vào ngày {{ $item->created_at_date }} lúc {{ $item->created_at_time }}</h5>
-                                             </div>
-                                             <div class="iq-card-header-toolbar d-flex align-items-center">
-                                                <span class="text-dark"><b>total: {{ number_format($item->total,0,',','.') }}đ</b></span>
-                                             </div>
-                                          </li>
-                                       @endforeach
+                                       <ul class="perfomer-lists m-0 p-0">
+                                          @foreach ($orders as $item)
+                                             <li class="d-flex mb-4 align-items-center">
+                                                <div class="media-support-info ml-3">
+                                                   <h5>đơn hàng đặt vào ngày {{ $item->created_at_date }} lúc {{ $item->created_at_time }}</h5>
+                                                   <span class="text-dark">
+                                                      <b>total: {{ number_format($item->total,0,',','.') }}đ</b>
+                                                   </span>
+                                                </div>
+                                                <div class="iq-card-header-toolbar d-flex align-items-center">
+                                                   <a href="/order-detail/{{ $item->id }}" class="btn btn-primary">chi tiết</a>
+                                                </div>
+                                             </li>
+                                          @endforeach
                                        </ul>
                                     </div>
                                  </div>
+                              </div>
+                              <div class="col-12 col-md-12 col-lg-4"></div>
+                              <div class="col-12 col-md-12 col-lg-8">
+                                 {{ $orders->links('customer.pagination') }}
                               </div>
                            </div>
                         </div>
@@ -168,18 +195,19 @@
                                  </div>
                               </div>
                               <div class="iq-card-body">
-                                 <form>
+                                 <form action="{{ route('customer.chgpw') }}" method="post">
+                                    @csrf
                                     <div class="form-group">
                                        <label for="cpass">Mật khẩu hiện tại:</label>
-                                       <input type="Password" class="form-control" id="cpass" value="">
+                                       <input type="Password" class="form-control" id="cpass" value="" name="old_password">
                                     </div>
                                     <div class="form-group">
                                        <label for="npass">Mật khẩu mới:</label>
-                                       <input type="Password" class="form-control" id="npass" value="">
+                                       <input type="Password" class="form-control" id="npass" value="" name="password">
                                     </div>
                                     <div class="form-group">
                                        <label for="vpass">Xác nhận lại mật khẩu:</label>
-                                       <input type="Password" class="form-control" id="vpass" value="">
+                                       <input type="Password" class="form-control" id="vpass" value="" name="password_confirmation">
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Gửi</button>
                                     <button type="reset" class="btn iq-bg-danger">Hủy bỏ</button>

@@ -35,7 +35,7 @@ class AdminOrderController extends Controller
     }
 
     public function changeStatus($status, Order $order) {
-        if ($order->admin_id_confirmed != auth('admins')->user()->id) {
+        if ($order->admin_id_confirmed != auth('admins')->user()->id && $order->admin_id_confirmed != null) {
             return redirect()->back()->with('fail', 'You can\'t update!');
         }
         if ($order->status == 'PENDING') {

@@ -1,7 +1,7 @@
 <x-admin.layout :page="'not-login-page'">
      <x-admin.preloader/>
     <x-admin.navbar/>
-    <x-admin.main-sidebar-container :path="$path" :numbook="$num_book" :numcategory="$num_category" :numauthor="$num_author" :numpublisher="$num_publisher"/>
+    <x-admin.main-sidebar-container :path="$path"/>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -56,7 +56,7 @@
                                                 <form action="{{route('admin.customer.destroy', $customer->id)}}" method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('You want to lock?')">Lock</button>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('You want to lock this customer now?')">Lock</button>
                                                 </form>
                                             </td>
                                         </tr>

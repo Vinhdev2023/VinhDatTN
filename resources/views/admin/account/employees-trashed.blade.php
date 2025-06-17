@@ -1,7 +1,7 @@
 <x-admin.layout :page="'not-login-page'">
     <x-admin.preloader/>
     <x-admin.navbar/>
-    <x-admin.main-sidebar-container :path="$path" :numbook="$num_book" :numcategory="$num_category" :numauthor="$num_author" :numpublisher="$num_publisher"/>
+    <x-admin.main-sidebar-container :path="$path"/>
     <div class="content-wrapper">
         <section class="content-header">
             <div class="container-fluid">
@@ -54,7 +54,7 @@
                                                     @if ($employee->role != 'admin')
                                                         <form action="{{route('admin.account.restore', $employee->id)}}" method="post">
                                                             @csrf
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('You want to restore?')">Restore</button>
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('You want to restore this employee now?')">Restore</button>
                                                         </form>
                                                     @endif
                                                 </td>

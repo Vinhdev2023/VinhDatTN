@@ -137,28 +137,26 @@
                         </div>
                         <!-- /.row -->
 
-                        @if ($order->admin_id_confirmed == auth('admins')->user()->id)
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
                             <div class="col-12">
                                 @if ($order->status == 'PENDING')
-                                    <a href="{{ route('admin.orders.update',['status' => 'CANCELED','order' => $order->id]) }}" type="button" class="btn btn-danger float-right">
+                                    <a href="{{ route('admin.orders.update',['status' => 'CANCELED','order' => $order->id]) }}" onclick="return confirm('You want to cancel this order now?')" type="button" class="btn btn-danger float-right">
                                         Cancel
                                     </a>
-                                    <a href="{{ route('admin.orders.update',['status' => 'CONFIRMED','order' => $order->id]) }}" type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
+                                    <a href="{{ route('admin.orders.update',['status' => 'CONFIRMED','order' => $order->id]) }}" onclick="return confirm('You want to confirm this order now?')" type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
                                         Confirm
                                     </a>
-                                @elseif($order->status == 'CONFIRMED')
-                                    <a href="{{ route('admin.orders.update',['status' => 'CANCELED','order' => $order->id]) }}" type="button" class="btn btn-danger float-right">
+                                @elseif($order->status == 'CONFIRMED' && $order->admin_id_confirmed == auth('admins')->user()->id)
+                                    <a href="{{ route('admin.orders.update',['status' => 'CANCELED','order' => $order->id]) }}" onclick="return confirm('You want to cancel this order now?')" type="button" class="btn btn-danger float-right">
                                         Cancel
                                     </a>
-                                    <a href="{{ route('admin.orders.update',['status' => 'COMPLETED','order' => $order->id]) }}" type="button" class="btn btn-success float-right" style="margin-right: 5px;">
+                                    <a href="{{ route('admin.orders.update',['status' => 'COMPLETED','order' => $order->id]) }}" onclick="return confirm('You want to complete this order now?')" type="button" class="btn btn-success float-right" style="margin-right: 5px;">
                                         Complete
                                     </a>
                                 @endif
                             </div>
                         </div>
-                        @endif
                     </div>
                 </div>
             </div>

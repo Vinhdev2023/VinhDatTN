@@ -30,7 +30,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
         Route::controller(AdminAccountSettingController::class)->group(function () {
             Route::get('/account-setting', 'showAccountSetting')->name('showAccountSetting');
-            Route::patch('/account-setting/{admin}', 'updatePassword')->name('updatePassword');
+            Route::patch('/account-setting/updatePassword', 'updatePassword')->name('updatePassword');
         });
 
         Route::controller(AdminControlAccountController::class)->group(function () {
@@ -42,6 +42,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
                 Route::get('/employee-account/create', 'add')->name('account.add');
                 Route::delete('/employee-account/{admin}', 'destroy')->name('account.destroy');
                 Route::post('/employee-account/restore/{admin}', 'restore')->name('account.restore');
+                Route::get('/employee-account/{admin}/show-orders-checked', 'showOrderChecked')->name('account.showOrderChecked');
+                Route::get('/employee-account/orders-change/{order}', 'orderChange')->name('account.orderChange');
             });
         });
 

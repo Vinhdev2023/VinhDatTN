@@ -80,7 +80,7 @@
                                     <div class="bg-primary p-3">
                                         <h5 class="mb-0 text-white line-height">Xin Chào {{auth()->guard('customers')->user()->name}}</h5>
                                     </div>
-                                    <a href="profile-edit" class="iq-sub-card iq-bg-primary-hover">
+                                    <a href="/profile-edit" class="iq-sub-card iq-bg-primary-hover">
                                         <div class="media align-items-center">
                                             <div class="rounded iq-card-icon iq-bg-primary">
                                                 <i class="ri-file-user-line"></i>

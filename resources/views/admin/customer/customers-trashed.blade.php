@@ -1,7 +1,7 @@
 <x-admin.layout :page="'not-login-page'">
      <x-admin.preloader/>
     <x-admin.navbar/>
-    <x-admin.main-sidebar-container :path="$path" :numbook="$num_book" :numcategory="$num_category" :numauthor="$num_author" :numpublisher="$num_publisher"/>
+    <x-admin.main-sidebar-container :path="$path"/>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -55,7 +55,7 @@
                                             <td>
                                                 <form action="{{route('admin.customer.restore', $customer->id)}}" method="post">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('You want to restore?')">Restore</button>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('You want to restore this customer now?')">Restore</button>
                                                 </form>
                                             </td>
                                         </tr>

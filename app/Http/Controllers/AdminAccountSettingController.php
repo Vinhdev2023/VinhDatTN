@@ -22,11 +22,13 @@ class AdminAccountSettingController extends Controller
         return view('admin.account.setting-personal', compact('path','admin'));
     }
 
-    public function updatePassword(Request $request, Admin $admin) {
+    public function updatePassword(Request $request) {
         $request->validate([
             'old_password' => 'required|string',
             'password' => 'required|string|min:8|confirmed'
         ]);
+
+        $admin = Admin::whereKey(auth('admins')->user()->id)->first();
 
         if (Hash::check($request->old_password, $admin->password)) {
             $admin->update([

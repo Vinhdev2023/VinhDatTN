@@ -67,8 +67,7 @@
                                                     @method('DELETE')
                                                     <a href="{{ route('admin.orders.show',$item->id) }}" class="btn btn-primary">Show</a>
                                                     @if ($item->customer != null)
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('You want to lock now?')">Lock now</button>
-                                                        
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('You want to lock this customer now?')">Lock now</button>
                                                     @endif
                                                 </form>
                                             </td>
