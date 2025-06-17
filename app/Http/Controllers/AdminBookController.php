@@ -215,6 +215,10 @@ class AdminBookController extends Controller
      */
     public function destroy(Book $book)
     {
+        $book->update([
+            'quantity' => 0
+        ]);
+
         $book->delete();
 
         return redirect()->route('admin.books.index')->with('success', 'Book is Deleted');

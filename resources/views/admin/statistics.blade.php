@@ -23,7 +23,7 @@
         <x-admin.main-content>
             <div class="row">
                 <div class="col">
-                    <x-admin.card :class="'card-primary'">
+                    <x-admin.card :class="'card-primary card-outline'">
                         <x-admin.card-header>
                             <h3 class="card-title">Date picker</h3>
                         </x-admin.card-header>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col-11">
                     <x-admin.card :class="'card-primary card-outline'">
                         <x-admin.card-header>
                             <h3 class="card-title">
@@ -64,12 +64,9 @@
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
-{{--                                    <button type="button" class="btn btn-tool" data-card-widget="remove">--}}
-{{--                                        <i class="fas fa-times"></i>--}}
-{{--                                    </button>--}}
                                 </div>
                         </x-admin.card-header>
-                        <x-admin.card-body :style="'padding-right: 150px; padding-left: 150px'">
+                        <x-admin.card-body>
                             <div id="line-chart" style="height: 420px;"></div>
                         </x-admin.card-body>
                         <x-admin.card-footer>
@@ -79,6 +76,84 @@
                         </x-admin.card-footer>
                     </x-admin.card>
                 </div>
+                <div class="col-12">
+                    <x-admin.card :class="'card-primary card-outline'">
+                        <x-admin.card-header>
+                            <h3 class="card-title">
+                                    Thống Kê Số lượng đơn hàng theo trạng thái
+                                </h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                        </x-admin.card-header>
+                        <x-admin.card-body>
+                            <div id="bar-chart" style="height: 420px;"></div>
+                        </x-admin.card-body>
+                        <x-admin.card-footer>
+                            <h3 class="card-title">
+                                Tổng số lượng đơn hàng: {{number_format($orderTotal,0,',','.')}}
+                            </h3>
+                        </x-admin.card-footer>
+                    </x-admin.card>
+                </div>
+                <div class="col-12">
+                    <x-admin.card :class="'card-primary card-outline'">
+                        <x-admin.card-header>
+                            <h3 class="card-title">
+                                    Thống Kê các cuốn sách bán được và số lượng ở trong kho
+                                </h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                        </x-admin.card-header>
+                        <x-admin.card-body>
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Book title</th>
+                                        <th>Image</th>
+                                        <th>trong kho</th>
+                                        <th>Bán được</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($books as $book)
+                                        <tr>
+                                            <td>{{ $book->book_title }}</td>
+                                            <td><img src="/images/{{ $book->book_image }}" alt="{{ $book->book_image }}" style="width: 100px"></td>
+                                            <td>{{number_format($book->book_quantity_in_stock, 0, ",", ".")}}</td>
+                                            <td>{{number_format($book->total_sold, 0, ",", ".")}}</td>
+                                            <td>
+                                                @if ($book->book_deleted_at != null)
+                                                    <a href="{{ route('admin.books.checked', $book->book_id) }}" class="btn btn-primary">check</a>
+                                                @else
+                                                    <a href="{{ route('admin.books.show', $book->book_id)}}" class="btn btn-primary">show</a>
+                                                    
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Book title</th>
+                                        <th>Image</th>
+                                        <th>quantity in stock</th>
+                                        <th>total sold</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </x-admin.card-body>
+                    </x-admin.card>
+                </div>
             </div>
         </x-admin.main-content>
     </div>
@@ -86,6 +161,15 @@
     <x-admin.script>
         <script>
             $(function () {
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": false,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
                 //Date range picker
                 $('#reservation').daterangepicker({
                     locale: {
@@ -93,9 +177,9 @@
                     }
                 })
                 /*
-                * LINE CHART
-                * ----------
-                */
+                 * LINE CHART
+                 * ----------
+                 */
                 //LINE randomly generated data
 
                 var sin = @json($dataDateTotal);
@@ -151,11 +235,38 @@
 
                 })
                 /* END LINE CHART */
+
+                /*
+                 * BAR CHART
+                 * ---------
+                 */
+
+                var bar_data = {
+                data : @json($orderNumStatus_num),
+                bars: { show: true }
+                }
+                $.plot('#bar-chart', [bar_data], {
+                grid  : {
+                    borderWidth: 1,
+                    borderColor: '#f3f3f3',
+                    tickColor  : '#f3f3f3'
+                },
+                series: {
+                    bars: {
+                    show: true, barWidth: 0.5, align: 'center',
+                    },
+                },
+                colors: ['#3c8dbc'],
+                xaxis : {
+                    ticks: @json($orderNumStatus_title)
+                }
+                })
+                /* END BAR CHART */
             })
             /*
-            * Custom Label formatter
-            * ----------------------
-            */
+             * Custom Label formatter
+             * ----------------------
+             */
             function labelFormatter(label, series) {
                 return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
                     + label

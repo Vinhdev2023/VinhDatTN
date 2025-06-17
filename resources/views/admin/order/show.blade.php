@@ -91,7 +91,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Product</th>
+                                        <th>Book</th>
                                         <th>Serial #</th>
                                         <th>Description</th>
                                         <th>Quantity</th>
