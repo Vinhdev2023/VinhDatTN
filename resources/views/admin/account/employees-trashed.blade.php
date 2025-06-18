@@ -55,6 +55,7 @@
                                                         <form action="{{route('admin.account.restore', $employee->id)}}" method="post">
                                                             @csrf
                                                             <button type="submit" class="btn btn-danger" onclick="return confirm('You want to restore this employee now?')">Restore</button>
+                                                            <a href="{{ route('admin.account.showOrderChecked', $employee->id) }}" class="btn btn-primary">Show orders checked</a>
                                                         </form>
                                                     @endif
                                                 </td>
