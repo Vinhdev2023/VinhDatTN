@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class SearchController extends Controller
@@ -35,7 +36,18 @@ class SearchController extends Controller
             }
         }
 
-        $books = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->whereRaw($sqlLike)->paginate(12)->appends(['search' => $search]);
+        $books = Book::with('orderDetail.order')
+                    ->leftJoin('order_details', 'books.id', '=', 'order_details.book_id')
+                    ->leftJoin('orders', 'order_details.order_id', '=', 'orders.id')
+                    ->select(
+                        'books.*',
+                        DB::raw('COALESCE(books.quantity - SUM(CASE WHEN orders.status IN ("PENDING", "CONFIRMED") THEN order_details.quantity ELSE 0 END), 0) as real_quantity')
+                    )
+                    ->whereRaw($sqlLike)
+                    ->groupBy('books.id', 'books.isbn_code', 'books.title', 'books.image', 'books.quantity', 'books.price', 'books.description', 'books.publisher_id', 'books.deleted_at', 'books.updated_at', 'books.created_at')
+                    ->having('real_quantity', '>', 0)
+                    ->orderByDesc('books.created_at')
+                    ->paginate(12)->appends(['search' => $search]);
         $books->load('author');
 
         $flag = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->whereRaw($sqlLike)->count();
@@ -55,7 +67,7 @@ class SearchController extends Controller
 
                     $point = substr_count($temp, '_');
                     $point = $length - $point;
-                    $caseSql[] = 'CASE WHEN title LIKE \'%'.$temp.'%\' THEN '.$point.' ELSE 0 END';
+                    $caseSql[] = 'CASE WHEN books.title LIKE \'%'.$temp.'%\' THEN '.$point.' ELSE 0 END';
                 }
             }
         }
@@ -66,13 +78,39 @@ class SearchController extends Controller
                 $sqlRelevation = $sqlRelevation.$value.' +'.PHP_EOL;
             }
 
-            if (strlen(Book::selectRaw('*, ('.PHP_EOL.$sqlRelevation.'0) AS relevation')->where('quantity', '>', 0)->having('relevation', '>', 0)->orderBy('relevation', 'desc')->orderBy('created_at', 'desc')->toSql()) >= 33370) {
+            if (strlen(Book::with('orderDetail.order')
+                    ->leftJoin('order_details', 'books.id', '=', 'order_details.book_id')
+                    ->leftJoin('orders', 'order_details.order_id', '=', 'orders.id')
+                    ->select(
+                        'books.*',
+                        DB::raw('COALESCE(books.quantity - SUM(CASE WHEN orders.status IN ("PENDING", "CONFIRMED") THEN order_details.quantity ELSE 0 END), 0) as real_quantity')
+                    )
+                    ->selectRaw('('.PHP_EOL.$sqlRelevation.'0) AS relevation')
+                    ->groupBy('books.id', 'books.isbn_code', 'books.title', 'books.image', 'books.quantity', 'books.price', 'books.description', 'books.publisher_id', 'books.deleted_at', 'books.updated_at', 'books.created_at')
+                    ->having('real_quantity', '>', 0)
+                    ->orderBy('relevation', 'desc')
+                    ->orderByDesc('books.created_at')->toSql()) >= 33370) {
                 throw ValidationException::withMessages([
                     'word' => 'không thể tìm kiếm được',
                 ]);
             }
 
-            $books = Book::selectRaw('*, ('.PHP_EOL.$sqlRelevation.'0) AS relevation')->where('quantity', '>', 0)->having('relevation', '>', 0)->orderBy('relevation', 'desc')->orderBy('created_at', 'desc')->paginate(12)->appends(['search' => $search]);
+            // $books = Book::selectRaw('*, ('.PHP_EOL.$sqlRelevation.'0) AS relevation')->where('quantity', '>', 0)->having('relevation', '>', 0)->orderBy('relevation', 'desc')->orderBy('created_at', 'desc')->paginate(12)->appends(['search' => $search]);
+            // $books->load('author');
+
+            $books = Book::with('orderDetail.order')
+                    ->leftJoin('order_details', 'books.id', '=', 'order_details.book_id')
+                    ->leftJoin('orders', 'order_details.order_id', '=', 'orders.id')
+                    ->select(
+                        'books.*',
+                        DB::raw('COALESCE(books.quantity - SUM(CASE WHEN orders.status IN ("PENDING", "CONFIRMED") THEN order_details.quantity ELSE 0 END), 0) as real_quantity')
+                    )
+                    ->selectRaw('('.PHP_EOL.$sqlRelevation.'0) AS relevation')
+                    ->groupBy('books.id', 'books.isbn_code', 'books.title', 'books.image', 'books.quantity', 'books.price', 'books.description', 'books.publisher_id', 'books.deleted_at', 'books.updated_at', 'books.created_at')
+                    ->having('real_quantity', '>', 0)
+                    ->orderBy('relevation', 'desc')
+                    ->orderByDesc('books.created_at')
+                    ->paginate(12)->appends(['search' => $search]);
             $books->load('author');
 
             $flag = Book::selectRaw('*, ('.PHP_EOL.$sqlRelevation.PHP_EOL.'0) AS relevation')->where('quantity', '>', 0)->having('relevation', '>', 0)->orderBy('relevation', 'desc')->orderBy('created_at', 'desc')->count();

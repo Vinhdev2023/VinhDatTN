@@ -86,7 +86,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2">
-                                                                    <a href="/remove-in-cart/{{$item->id}}" class="text-dark font-size-20">
+                                                                    <a href="/remove-in-cart/{{$item->id}}" onclick="return confirm('Bạn có muốn bỏ cuốn sách này khỏi giỏ hay không')" class="text-dark font-size-20">
                                                                         <i class="ri-delete-bin-7-fill"></i>
                                                                     </a>
                                                                 </div>
