@@ -36,6 +36,13 @@
                            </x-admin.alert-danger>
                      </div>
                   @endif
+                  @if ($book->quantityInStock <= 0)
+                      <div class="col-12">
+                           <x-admin.alert-danger>
+                              Cuốn sách này đã hết
+                           </x-admin.alert-danger>
+                     </div>
+                  @endif
                   <div class="col-sm-12">
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between align-items-center">
@@ -74,8 +81,8 @@
                                           @endforeach
                                        </div>
                                        <div class="mb-4 d-flex align-items-center">
-                                          <a href="/add-cart/{{ $book->id }}" class="btn btn-primary view-more mr-2">Thêm vào giỏ hàng</a>
-                                          <a href="/buy-now/{{ $book->id }}" class="btn btn-primary view-more mr-2">Mua ngay</a>
+                                          <a href="/add-cart/{{ $book->id }}" @disabled($book->quantityInStock <= 0 ? true : false) class="btn btn-primary view-more mr-2">Thêm vào giỏ hàng</a>
+                                          <a href="/buy-now/{{ $book->id }}" @disabled($book->quantityInStock <= 0 ? true : false) class="btn btn-primary view-more mr-2">Mua ngay</a>
                                        </div>
                                     </div>
                                  </div>
