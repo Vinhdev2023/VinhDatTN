@@ -36,7 +36,7 @@
                                         <h5 class="mb-0 text-white">Giỏ Hàng<small class="badge  badge-light float-right pt-1">{{ sizeof(session()->get('cart')) }}</small></h5>
                                     </div>
                                     @foreach (session()->get('cart') as $item)
-                                    <a href="#" class="iq-sub-card">
+                                    <a href="/cart-page" class="iq-sub-card">
                                         <div class="media align-items-center">
                                             <div class="">
                                                 <img class="rounded" src="/images/{{ $item->image }}" alt="">
@@ -46,7 +46,7 @@
                                                 <p class="mb-0">{{ number_format($item->price,0,',','.') }} đ</p>
                                             </div>
                                             <form action="/remove-in-cart/{{$item->id}}" method="get">
-                                                <button class="btn btn-danger">
+                                                <button class="btn btn-danger" onclick="return confirm('Bạn có muốn bỏ cuốn sách này khỏi giỏ hay không')">
                                                     <i class="ri-close-fill"></i>
                                                 </button>
                                             </form>
