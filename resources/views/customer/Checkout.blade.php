@@ -67,7 +67,7 @@
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <button id="savenddeliver" type="submit" class="btn btn-primary">Lưu và giao tại đây</button>
+                                          <button id="savenddeliver" onclick="return confirm('Bạn có muốn đặt mua hay không')" type="submit" class="btn btn-primary">Lưu và giao tại đây</button>
                                        </div>
                                     </div>
                                  </form>
