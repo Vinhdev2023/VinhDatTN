@@ -65,7 +65,7 @@
                                             <td>
                                                 <div class="row">
                                                     <div class="col">
-                                                        @if (auth()->guard('admins')->user()->role == 'admin' && $order->status == 'CONFIRMED')
+                                                        @if (auth()->guard('admins')->user()->role == 'admin' && ($order->status == 'CONFIRMED' || $order->status == 'PENDING'))
                                                             <a href="{{ route('admin.account.orderChange', $order->id) }}" class="btn btn-danger" onclick="return confirm('Bạn muốn có quyền cập nhật lại đơn này')">Lấy đơn</a>
                                                         @endif
                                                     </div>

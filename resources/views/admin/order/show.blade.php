@@ -140,7 +140,7 @@
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
                             <div class="col-12">
-                                @if ($order->status == 'PENDING')
+                                @if ($order->status == 'PENDING' && $order->admin_id_confirmed == auth('admins')->user()->id)
                                     <a href="{{ route('admin.orders.update',['status' => 'CANCELED','order' => $order->id]) }}" onclick="return confirm('You want to cancel this order now?')" type="button" class="btn btn-danger float-right">
                                         Cancel
                                     </a>

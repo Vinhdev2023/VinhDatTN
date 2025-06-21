@@ -43,6 +43,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
                 Route::delete('/employee-account/{admin}', 'destroy')->name('account.destroy');
                 Route::post('/employee-account/restore/{admin}', 'restore')->name('account.restore');
                 Route::get('/employee-account/{admin}/show-orders-checked', 'showOrderChecked')->name('account.showOrderChecked');
+                Route::get('/employee-account-trashed/{admin}/show-orders-checked', 'employeeAccountTrashedShowOrderChecked')->name('account.showOrderChecked.employeeAccountTrashed');
                 Route::get('/employee-account/orders-change/{order}', 'orderChange')->name('account.orderChange');
             });
         });

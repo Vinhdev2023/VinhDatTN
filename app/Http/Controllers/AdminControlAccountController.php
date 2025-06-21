@@ -93,4 +93,13 @@ class AdminControlAccountController extends Controller
 
         return redirect()->route('admin.orders.show', $order->id);
     }
+
+    public function employeeAccountTrashedShowOrderChecked(string $admin) {
+        $path = 'admin.account.trashed';
+
+        $admin = Admin::whereKey($admin)->withTrashed()->first();
+        $admin->load('order');
+
+        return view('admin.account.employee-checked-order', compact('path', 'admin'));
+    }
 }
