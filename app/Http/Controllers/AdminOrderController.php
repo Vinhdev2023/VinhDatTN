@@ -12,7 +12,12 @@ class AdminOrderController extends Controller
     public function index() {
         $path = 'admin.orders.index';
 
-        $orders = Order::orderByRaw('CASE WHEN status = "PENDING" THEN 1 WHEN STATUS = "COMPLETED" THEN 2 ELSE 3 END, updated_at DESC')->get();
+        $orders = Order::orderByRaw('CASE 
+                        WHEN status = "PENDING" THEN 1 
+                        WHEN STATUS = "COMPLETED" THEN 2 
+                        ELSE 3 
+                    END, 
+                    updated_at DESC')->get();
         $orders->load('customer');
 
         return view('admin.order.index', compact('path','orders'));
@@ -38,10 +43,12 @@ class AdminOrderController extends Controller
         if ($order->admin_id_confirmed != auth('admins')->user()->id && $order->admin_id_confirmed != null) {
             return redirect()->back()->with('fail', 'You can\'t update!');
         }
+
         if ($order->status == 'PENDING') {
             if ($status == 'COMPLETED') {
                 return redirect()->back()->with('fail', "Order can't complete now!");
             }
+
             $order->update([
                 'status' => $status,
                 'admin_id_confirmed' => auth('admins')->user()->id
@@ -53,13 +60,20 @@ class AdminOrderController extends Controller
                 return redirect()->back()->with('fail', "Order can't change to pending now!");
             } elseif ($status == 'COMPLETED') {
                 $order->load('orderDetails');
+
                 foreach ($order->orderDetails as $value) {
                     $book = Book::whereKey($value->book_id)->first();
+
+                    if ($book->quantity - $value->quantity < 0) {
+                        return redirect()->back()->with('fail', "The book in the order has more than in stock.!");
+                    }
+
                     $book->update([
                         'quantity' => $book->quantity - $value->quantity
                     ]);
                 }
             }
+
             $order->update([
                 'status' => $status,
                 'admin_id_confirmed' => auth('admins')->user()->id
