@@ -81,7 +81,9 @@
                                                 <div class="iq-card-body p-0">
                                                     <div class="d-flex align-items-center">
                                                         <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                                            <a href="javascript:void();"><img class="img-fluid rounded w-100" src="/images/{{$book->image}}" alt=""></a>
+                                                            <a href="#">
+                                                                <img class="img-fluid rounded w-100" src="/images/{{$book->image}}" alt="">
+                                                            </a>
                                                             <div class="view-book">
                                                                 <a href="book-page/{{ $book->id }}" class="btn btn-sm btn-white">View Book</a>
                                                             </div>
@@ -101,9 +103,14 @@
                                                                 <h6><b>{{number_format($book->price, 0,',','.')}} đ</b></h6>
                                                             </div>
                                                             <div class="iq-product-action">
-                                                                <a href="/add-cart/{{ $book->id }}">
-                                                                    <i class="ri-shopping-cart-2-fill text-primary"></i>
-                                                                </a>
+                                                                @if ( $book->real_quantity == 0 )
+                                                                <img src="/image-cant-buy.png" alt="" width="20px">
+                                                                @else
+                                                                    <a href="/add-cart/{{ $book->id }}">
+                                                                        <i class="ri-shopping-cart-2-fill text-primary"></i>
+                                                                    </a>
+                                                                @endif
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
