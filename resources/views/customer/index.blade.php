@@ -55,69 +55,74 @@
                       <div class="col-lg-12">
                           <div class="iq-card-transparent mb-0">
                               <div class="d-block text-center">
-                                  <h2 class="mb-3">Tìm kiếm tên sách</h2>
-                                  <div class="w-100 iq-search-filter">
-<<<<<<< HEAD
-                                      <form action="/search" method="get">
-                                          <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
-                                              <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
-                                                  <li class="search-menu-opt">
-                                                      <div class="iq-dropdown">
-                                                          <div class="form-group mb-0">
-                                                              <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect1">
-                                                                  <option selected="">Giá</option>
+                                    <h2 class="mb-3">Tìm kiếm tên sách</h2>
+                                    <div class="w-100 iq-search-filter">
+                                        <form action="/search" method="get">
+                                            <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
+                                                <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
+                                                    <li class="search-menu-opt">
+                                                        <div class="iq-dropdown">
+                                                            <div class="form-group mb-0">
+                                                                <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect1" name="price">
+                                                                    <option selected value="">Không chọn</option>
+                                                                    <option {{ isset($fillter_price) && $fillter_price == '0-50000' ? 'selected' : '' }} value="0-50000">Duới 50.000</option>
+                                                                    <option {{ isset($fillter_price) && $fillter_price == '50000-100000' ? 'selected' : '' }} value="50000-100000">Trên 50.000 Dưới 100.000</option>
+                                                                    <option {{ isset($fillter_price) && $fillter_price == '100000-' ? 'selected' : '' }} value="100000-">Trên 100.000</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="search-menu-opt">
+                                                            <div class="iq-dropdown">
+                                                                <div class="form-group mb-0">
+                                                                    <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect2" name="category">
+                                                                        <option selected value="">Không chọn</option>
+                                                                        @foreach ($categories as $item)
+                                                                            <option 
+                                                                            @if (@isset($fillter_category) && $fillter_category == $item->id)
+                                                                                {{ 'selected' }}
+                                                                            @endif
+                                                                            value="{{ $item->id }}">{{ $item->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                    </li>
+                                                    <li class="search-menu-opt">
+                                                            <div class="iq-dropdown">
+                                                                <div class="form-group mb-0">
+                                                                    <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect3" name="publisher">
+                                                                        <option selected value="">Không chọn</option>
+                                                                        @foreach ($publishers as $item)
+                                                                            <option
+                                                                            @if (@isset($fillter_publisher) && $fillter_publisher == $item->id)
+                                                                                {{ 'selected' }}
+                                                                            @endif
+                                                                            value="{{ $item->id }}">{{ $item->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                    </li>
+                                                    <li class="search-menu-opt">
+                                                        <div class="iq-dropdown">
+                                                            <div class="form-group mb-0">
+                                                                <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect4" name="author">
+                                                                    <option selected value="">Không chọn</option>
+                                                                    @foreach ($authors as $item)
+                                                                        <option
+                                                                        @if (@isset($fillter_author) && $fillter_author == $item->id)
+                                                                            {{ 'selected' }}
+                                                                        @endif
+                                                                        value="{{ $item->id }}">{{ $item->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </li>
 
-                                                              </select>
-                                                          </div>
-                                                      </div>
-                                                  </li>
-                                                  <li class="search-menu-opt">
-                                                      <div class="iq-dropdown">
-                                                          <div class="form-group mb-0">
-                                                              <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect2">
-                                                                  <option selected="">Thể Loại</option>
-
-                                                              </select>
-                                                          </div>
-                                                      </div>
-                                                  </li>
-                                                  <li class="search-menu-opt">
-                                                      <div class="iq-dropdown">
-                                                          <div class="form-group mb-0">
-                                                              <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect3">
-                                                                  <option selected="">Nhà Xuất Bản</option>
-
-                                                              </select>
-                                                          </div>
-                                                      </div>
-                                                  </li>
-                                                  <li class="search-menu-opt">
-                                                      <div class="iq-dropdown">
-                                                          <div class="form-group mb-0">
-                                                              <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect4">
-                                                                  <option selected="">Tác Giả</option>
-
-                                                              </select>
-                                                          </div>
-                                                      </div>
-                                                  </li>
-
-                                              </ul>
-                                              <li class="search-menu-opt">
-                                                  <div class="iq-search-bar search-book d-flex align-items-center">
-                                                      <div class="searchbox">
-                                                          <input type="text" name="search" value="{{ isset($search) ? $search : null }}" class="text search-input" placeholder="search here...">
-                                                          <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                                                      </div>
-                                                      <button type="submit" class="btn btn-primary search-data ml-2">Search</button>
-                                                  </div>
-                                              </li>
-                                          </ul>
-                                      </form>
-=======
-                                      <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
-                                          <li class="search-menu-opt">
-                                                <form action="/search" method="get">
+                                                </ul>
+                                                <li class="search-menu-opt">
                                                     <div class="iq-search-bar search-book d-flex align-items-center">
                                                         <div class="searchbox">
                                                             <input type="text" name="search" value="{{ isset($search) ? $search : null }}" class="text search-input" placeholder="search here...">
@@ -125,11 +130,10 @@
                                                         </div>
                                                         <button type="submit" class="btn btn-primary search-data ml-2">Search</button>
                                                     </div>
-                                                </form>
-                                            </li>
-                                        </ul>
->>>>>>> 6883f869d5166644ef62d6d5f9501c8a9ddddd52
-                                  </div>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    </div>
                               </div>
                           </div>
                           <div class="iq-card">

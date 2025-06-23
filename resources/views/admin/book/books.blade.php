@@ -1,7 +1,7 @@
 <x-admin.layout :page="'not-login-page'">
     <x-admin.preloader/>
     <x-admin.navbar/>
-    <x-admin.main-sidebar-container :path="$path" :numbook="$num_book" :numcategory="$num_category" :numauthor="$num_author" :numpublisher="$num_publisher"/>
+    <x-admin.main-sidebar-container :path="$path"/>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -36,6 +36,7 @@
                     <x-admin.card>
                         <x-admin.card-header>
                             <h3 class="card-title">Book data</h3>
+
                             <div class="card-tools">
                                 <a href="{{ route('admin.books.create') }}" class="btn btn-primary">Add a new book</a>
                             </div>
@@ -77,6 +78,7 @@
                         </x-admin.card-body>
                         <x-admin.card-footer>
                             <a href="{{ route('admin.books.create') }}" class="btn btn-primary">Add a new book</a>
+                            {{ $books->links('admin.paginate') }}
                         </x-admin.card-footer>
                     </x-admin.card>
                 </div>
@@ -88,7 +90,7 @@
         <script>
             $(function () {
                 $('#example2').DataTable({
-                    "paging": true,
+                    "paging": false,
                     "lengthChange": false,
                     "searching": true,
                     "ordering": false,

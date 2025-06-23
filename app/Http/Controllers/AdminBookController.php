@@ -20,13 +20,9 @@ class AdminBookController extends Controller
     public function index()
     {
         $path = 'admin.books.index';
-        $num_book = Book::count();
-        $num_category = Category::count();
-        $num_author = Author::count();
-        $num_publisher = Publisher::count();
 
-        $books = Book::orderBy('updated_at', 'desc')->get();
-        return view('admin.book.books', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'books'));
+        $books = Book::orderBy('updated_at', 'desc')->paginate(10);
+        return view('admin.book.books', compact('path', 'books'));
     }
 
     /**
@@ -94,17 +90,13 @@ class AdminBookController extends Controller
     public function show(Book $book)
     {
         $path = 'admin.books.index';
-        $num_book = Book::count();
-        $num_category = Category::count();
-        $num_author = Author::count();
-        $num_publisher = Publisher::count();
 
         $book->load('category');
         $book->load('author');
         $book->load('publisher');
         // dd(sizeof($book->author));
         // dd($book->category);
-        return view('admin.book.show', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'book'));
+        return view('admin.book.show', compact('path', 'book'));
     }
 
     /**
