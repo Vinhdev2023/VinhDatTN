@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 18, 2025 lúc 09:02 AM
+-- Thời gian đã tạo: Th6 23, 2025 lúc 09:00 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -73,17 +73,26 @@ CREATE TABLE `authors` (
 --
 
 INSERT INTO `authors` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(13, 'Dale Carnegie', '2025-06-06 08:46:51', '2025-06-06 08:46:51'),
-(14, 'Napoleon Hill', '2025-06-06 08:50:35', '2025-06-06 08:51:26'),
-(15, 'Jack Canfield', '2025-06-06 08:54:04', '2025-06-06 08:54:04'),
-(16, 'David J. Lieberman', '2025-06-06 09:01:32', '2025-06-06 09:01:32'),
-(17, 'George Samuel Clason', '2025-06-06 09:04:43', '2025-06-06 09:04:43'),
-(18, 'Stephen R. Covey', '2025-06-06 09:08:19', '2025-06-06 09:08:19'),
-(19, 'Og Mandino', '2025-06-06 09:11:52', '2025-06-06 09:11:52'),
-(20, 'Fujiko Fujio', '2025-06-06 09:15:47', '2025-06-06 09:15:47'),
-(21, 'Toriyama Akira', '2025-06-06 09:20:37', '2025-06-06 09:20:37'),
-(22, 'Kusakabe Masatoshi', '2025-06-06 09:23:31', '2025-06-06 09:23:31'),
-(23, 'Gotōge Koyoharu', '2025-06-06 09:26:36', '2025-06-06 09:26:36');
+(1, 'Nguyễn Nhật Ánh', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(2, 'Paulo Coelho', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(3, 'Haruki Murakami', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(4, 'J.K. Rowling', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(5, 'Sun Tzu', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(6, 'George Orwell', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(7, 'J.R.R. Tolkien', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(8, 'Agatha Christie', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(9, 'Ernest Hemingway', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(10, 'Victor Hugo', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(11, 'F. Scott Fitzgerald', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(12, 'Leo Tolstoy', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(13, 'Franz Kafka', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(14, 'Jane Austen', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(15, 'Gabriel García Márquez', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(16, 'Chimamanda Ngozi Adichie', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(17, 'Yuval Noah Harari', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(18, 'Malcolm Gladwell', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(19, 'Adam Grant', '2025-06-23 18:55:58', '2025-06-23 18:55:58'),
+(20, 'Brené Brown', '2025-06-23 18:55:58', '2025-06-23 18:55:58');
 
 -- --------------------------------------------------------
 
@@ -110,18 +119,105 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `isbn_code`, `title`, `image`, `quantity`, `price`, `description`, `publisher_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(9, '3123dasd', 'Đắc Nhân Tâm', 'dacnhantam.jpg.webp', 4, 50000, 'Đắc nhân tâm của Dale Carnegie là quyển sách của mọi thời đại và một hiện tượng đáng kinh ngạc trong ngành xuất bản Hoa Kỳ. Trong suốt nhiều thập kỷ tiếp theo và cho đến tận bây giờ, tác phẩm này vẫn chiếm vị trí số một trong danh mục sách bán chạy nhất và trở thành một sự kiện có một không hai trong lịch sử ngành xuất bản thế giới và được đánh giá là một quyển sách có tầm ảnh hưởng nhất mọi thời đại.', 14, NULL, '2025-06-06 08:49:17', '2025-06-06 08:49:17'),
-(10, '110da9df', 'Thinking, Growing Rich', '0612ebe2b358740e999d6e1ebbe6ccde.jpg', 10, 70000, 'Cách Nghĩ Để Thành Công mang tới cho bạn triết lý thành đạt, đồng thời cung cấp phương pháp để bạn lên kế hoạch chi tiết để đạt được thành công đó. Không chỉ có lý thuyết suông, tác phẩm này được dẫn chứng từ những trường hợp thực tế, ví dụ như Edison - nhà phát minh lỗi lạc, Henry Ford - ông trùm của nền công nghiệp xe hơi,... Napoleon Hill, tác giả của Cách Nghĩ Để Thành Công, đã dành ra 30 năm để phỏng vấn hơn 500 người thành công trong nhiều lĩnh vực khác nhau, từ đó đúc kết lại những triết lý và viết nên tác phẩm này.', 15, NULL, '2025-06-06 08:52:14', '2025-06-06 08:52:14'),
-(11, 'da813287419', 'Hạt giống tâm hồn', 'tải xuống.jpg', 5, 60000, 'Bộ sách hạt giống tâm hồn là bộ sách được tổng hợp các câu chuyện, bức tranh đầy ý nghĩa về cuộc sống của nhiều tác giả khác nhau. Đó là những câu chuyện về sự thành công, tấm lòng cao đẹp giữa con người với con người. Bộ sách giúp nuôi dưỡng cho bạn có một tâm hồn đẹp, trong sáng, luôn vui tươi và lạc quan.', 16, NULL, '2025-06-06 08:56:03', '2025-06-06 08:56:03'),
-(12, '9319a0d9sa', 'Quẳng gánh lo đi và vui sống', 'tải xuống.webp', 8, 55000, 'Quẳng Gánh Lo Đi Và Vui Sống là tác phẩm nổi tiếng tiếp theo của Dale Carnegie. Cuốn sách này phân tích và giải đáp những nỗi buồn, lo lắng diễn ra hàng ngày trong cuộc sống của mỗi người. Để từ đó tác giả xây dựng nên thái độ sống tích cực, hạnh phúc và từ bỏ thói quen lo lắng. Tác phẩm được chia thành 6 phần, có thể xem mỗi phần là 1 lời khuyên hữu ích cho những ai đang gặp rắc rối và không biết phải làm thế nào để vượt qua vấn đề đó. Đây là quyển sách mà ai cũng nên đọc 1 lần trong đời, để giúp bản thân luôn vui vẻ và tích cực để vượt qua khó khăn.', 14, NULL, '2025-06-06 08:59:05', '2025-06-06 08:59:05'),
-(13, '09285798ashd1241', 'Đọc Vị Bất Kỳ Ai', 'shopping (2).webp', 7, 72000, 'Đọc Vị Bất Kỳ Ai là một quyển cẩm nang dạy bạn cách thâm nhập vào tâm trí của người khác, để suy đoán được họ đang nghĩ gì. Cuốn sách có nội dung bao gồm 2 phần chính và được chia thành 15 chương. Đọc Vị Bất Kỳ Ai sẽ là sự lựa chọn phù hợp cho những ai đang tìm kiếm một quyển sách để cải thiện và phát triển kỹ năng giao tiếp.', 14, NULL, '2025-06-06 09:03:06', '2025-06-06 09:13:34'),
-(14, '91837981g87ya', 'Người giàu có nhất thành Babylon', 'shopping.webp', 15, 82000, 'Một cuốn sách đề cập đến các thành tựu đạt được lớn lao của các cá nhân sống trong thành Babylon cổ đại. Những nguyên lý cơ bản về tài chính trong sách đến giờ con người hiện đại vẫn đã và đang kế thừa và vận dụng thành công. Cuốn sách sẽ giúp bạn hiểu được về vấn đề tài chính, các phương pháp làm giàu, giúp đánh giá được giá trị đồng tiền và định hướng cách thực hành theo nguyên lý tài chính.', 16, NULL, '2025-06-06 09:07:05', '2025-06-06 09:07:05'),
-(15, '1sda891d', '7 Thói Quen Để Thành Đạt', 'shopping (1).webp', 16, 100000, '7 Thói Quen Để Thành Đạt cung cấp cho người đọc những thói quen tạo nên sự khác biệt của người thành công. Steven Covey tin rằng, một người thành công không chỉ cần kỹ năng và kiến thức, mà yếu tố quyết định chính là những thói quen và tính cách của họ. Cuốn sách này sẽ giúp bạn hình thành những thói quen sinh hoạt hợp lý, để từ đó giúp người đọc sống tốt hơn, có ích hơn.', 18, NULL, '2025-06-06 09:10:13', '2025-06-06 09:10:13'),
-(16, '8a7sc91d', 'Người Bán Hàng Vĩ Đại Nhất Thế Giới', 'tải xuống (1).jpg', 14, 124000, 'Người Bán Hàng Vĩ Đại Nhất Thế Giới là câu chuyện về hành trình của Hafid, một cậu bé chăn lạc đà nghèo ở Jerusalem cổ đại. Người thanh niên đã học được những bí quyết từ một thương nhân giàu có và từ đó trở thành một người bán hàng vĩ đại. Cuốn sách này không chỉ dạy bạn cách bán hàng, mà nó còn dạy bạn cách làm người, giúp bạn thành công trong lĩnh vực của mình. Tính đến hiện tại, Người Bán Hàng Vĩ Đại Nhất Thế Giới được chuyển ngữ ra 25 ngôn ngữ và đã bán ra hơn 50 triệu bản trên khắp thế giới, là một trong những cuốn sách hay nên đọc trong đời.', 16, NULL, '2025-06-06 09:12:49', '2025-06-06 09:12:49'),
-(17, 'd8d9a91d', 'Doraemon', 'tải xuống.png', 30, 25000, 'Doraemon là một chú mèo máy được Nobi Sewashi (Nobi Nobito), cháu năm đời của Nobi Nobita, gửi từ thế kỷ 22 về quá khứ của ông mình để giúp đỡ Nobita trở nên tiến bộ và giàu có, tức là cũng sẽ cải thiện hoàn cảnh của con cháu Nobita sau này. Còn ở hiện tại, Nobita là một cậu bé luôn thất bại ở trường học, và sau đó công ty phá sản, thất bại trong công việc, đẩy gia đình và con cháu sau này vào cảnh nợ nần. Nội dung series kể về cuộc đời của cậu bé Nobita và chú mèo máy Doraemon từ tương lai đến để giúp cuộc sống của cậu bé trở nên tốt hơn.', 20, NULL, '2025-06-06 09:18:39', '2025-06-06 09:18:39'),
-(18, '91dausfi9', 'Dragon Ball – 7 viên ngọc rồng', 'tải xuống (2).jpg', 20, 30000, 'Cốt truyện Dragon Ball xoay quanh cuộc phiêu lưu của nhân vật chính Son Goku – một cậu bé có sức mạnh siêu nhiên và khả năng điều khiển năng lượng. Goku cùng với các bạn bè của mình cố gắng tìm kiếm các viên Ngọc Rồng để có thể gọi ra Shenron – con rồng Thần Thánh – để thực hiện một điều ước.', 20, NULL, '2025-06-06 09:21:55', '2025-06-06 09:21:55'),
-(19, '8sa9e81', 'Naruto', 'tải xuống (3).jpg', 25, 29000, 'Nhân vật chính là Uzumaki Naruto, một thiếu niên ồn ào, hiếu động, một ninja luôn muốn tìm cách khẳng định mình để được mọi người công nhận, rất muốn trở thành Hokage (Hỏa Ảnh) - người lãnh đạo ninja cả làng, được tất cả mọi người kính trọng.', 21, NULL, '2025-06-06 09:25:20', '2025-06-06 09:25:20'),
-(20, 'sa8ca71dh1', 'Kimetsu no Yaiba / Demon Slayer', 'tải xuống (4).jpg', 28, 40000, 'Tanjiro mất gia đình vì quỷ, em gái Nezuko biến thành quỷ nhưng vẫn giữ tình người. Anh gia nhập Sát Quỷ Đội để trả thù cho gia đình, tìm cách biến Nezuko trở lại thành người và tiêu diệt tổ quỷ Kibutsuji Muzan. Cùng đồng đội (Zenitsu, Inosuke) và Sát Quỷ Đội, Tanjiro trải qua những trận chiến sinh tử với Thập Nhị Quỷ Nguyệt và Muzan. Dù chịu tổn thất nặng nề (hầu hết Trụ cột hy sinh), họ tiêu diệt được Muzan và tận diệt loài quỷ. Tanjiro bị Muzan biến thành quỷ nhưng được cứu, trở lại làm người cùng Nezuko. Sát Quỷ Đội giải tán sau chiến thắng.', 20, NULL, '2025-06-06 09:31:50', '2025-06-06 09:31:50');
+(496, '1186041111111', 'Cho Tôi Xin Một Vé Đi Tuổi Thơ', 'cho_toi_xin_mot_ve.jpg', 20, 80000, 'Câu chuyện về tuổi thơ trong trẻo, hồn nhiên', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(497, '1280061122415', 'O Alquimista', 'nha_gia_kim.jpg', 15, 120000, 'Hành trình đi tìm kho báu và khám phá bản thân', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(498, '1380099448792', 'Rừng Na Uy', 'rung_na_uy.jpg', 18, 150000, 'Câu chuyện về tình yêu, mất mát và ký ức', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(499, '1480747532743', 'Harry Potter và Hòn đá Phù thủy', 'harry_potter_1.jpg', 25, 180000, 'Câu chuyện về cậu bé phù thủy Harry Potter', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(500, '9781590302255', 'Binh Pháp Tôn Tử', 'binh_pha_ton_tu.jpg', 12, 75000, 'Tác phẩm kinh điển về nghệ thuật chiến tranh', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(501, '9780451524935', '1984', '1984.jpg', 20, 90000, 'Tác phẩm kinh điển về xã hội toàn trị', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(502, '9780547928227', 'The Hobbit', 'the_hobbit.jpg', 22, 160000, 'Hành trình của Bilbo Baggins', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(503, '9780007113804', 'Án Mạng Trên Chuyến Tàu Tốc Hành Phương Đông', 'train.jpg', 18, 110000, 'Phá án trên chuyến tàu tốc hành', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(504, '9780684801469', 'Ông Già Và Biển Cả', 'ong_gia_bien_ca.jpg', 15, 85000, 'Câu chuyện về lão ngư đánh cá với con cá kiếm', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(505, '9780140444308', 'Những Người Khốn Khổ', 'les_miserables.jpg', 30, 200000, 'Bộ tiểu thuyết về cuộc đời Jean Valjean', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(506, '9780743273565', 'Đại Gia Gatsby', 'gatsby.jpg', 16, 95000, 'Bi kịch của giấc mơ Mỹ thời Jazz', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(507, '9780140447931', 'Chiến Tranh và Hòa Bình', 'war_and_peace.jpg', 14, 220000, 'Sử thi về nước Nga thời Napoleon', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(508, '9780805242010', 'Hóa Thân', 'metamorphosis.jpg', 10, 70000, 'Câu chuyện về Gregor Samsa thức dậy thành côn trùng', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(509, '1480141439518', 'Kiêu Hãnh và Định Kiến', 'pride_prejudice.jpg', 25, 85000, 'Tình yêu và định kiến xã hội thế kỷ 19', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(510, '9780060883287', 'Trăm Năm Cô Đơn', 'one_hundred_years.jpg', 20, 130000, 'Câu chuyện dòng họ Buendía ở Macondo', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(511, '9780007356348', 'Chúng Ta Đều Nên Là Những Nhà Nữ Quyền', 'feminist.jpg', 22, 95000, 'Luận về nữ quyền trong thế giới hiện đại', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(512, '9780062316097', 'Sapiens: Lược Sử Loài Người', 'sapiens.jpg', 30, 185000, 'Hành trình tiến hóa của loài người', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(513, '9780316017930', 'Những Kẻ Xuất Chúng', 'outliers.jpg', 18, 125000, 'Bí mật đằng sau thành công của những thiên tài', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(514, '9780753557537', 'Tư Duy Lại Với Tư Duy', 'think_again.jpg', 15, 135000, 'Nghệ thuật tư duy lại và học hỏi', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(515, '9781592408410', 'Can Đảm: Sức Mạnh Của Sự Tổn Thương', 'daring_greatly.jpg', 20, 115000, 'Khám phá sức mạnh của sự tổn thương', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(516, '9786045697043', 'Mắt Biếc', 'mat_biec.jpg', 25, 90000, 'Chuyện tình cảm động tuổi học trò', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(517, '9780062315007', 'Phù Thủy Thành Phố Portobello', 'portobello.jpg', 18, 110000, 'Hành trình tìm kiếm ý nghĩa cuộc sống', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(518, '9784344401034', '1Q84', '1q84.jpg', 20, 250000, 'Thế giới song song với hai mặt trăng', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(519, '9780439064873', 'Harry Potter và Phòng Chứa Bí Mật', 'harry_potter_2.jpg', 22, 185000, 'Cuộc phiêu lưu năm thứ hai tại Hogwarts', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(520, '9780140440393', 'Nghệ Thuật Chiến Tranh', 'art_of_war.jpg', 15, 80000, 'Chiến lược quân sự của Tôn Tử', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(521, '9780452284234', 'Trại Súc Vật', 'animal_farm.jpg', 20, 85000, 'Châm biếm về chủ nghĩa toàn trị', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(522, '9780261102217', 'Chúa tể những chiếc nhẫn: Hiệp hội nhẫn thần', 'lotr_1.jpg', 25, 195000, 'Hành trình hủy diệt chiếc nhẫn quyền lực', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(523, '9780007113805', 'Án Mạng Ở Mesopotamia', 'mesopotamia.jpg', 16, 105000, 'Vụ án bí ẩn ở vùng Lưỡng Hà', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(524, '9780684800714', 'Chuông Nguyện Hồn Ai', 'for_whom_bell_tolls.jpg', 18, 95000, 'Câu chuyện tình trong nội chiến Tây Ban Nha', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(525, '9780140444759', 'Nhà Thờ Đức Bà Paris', 'notre_dame.jpg', 20, 175000, 'Bi kịch tình yêu dưới bóng nhà thờ Đức Bà', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(526, '9780141182630', 'Tender Is the Night', 'tender_night.jpg', 15, 90000, 'Sự suy tàn của một cặp vợ chồng trẻ', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(527, '9780140447934', 'Anna Karenina', 'anna_karenina.jpg', 22, 210000, 'Bi kịch tình yêu trong xã hội quý tộc Nga', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(528, '9780805210552', 'Lâu Đài', 'the_castle.jpg', 12, 85000, 'Hành trình vô vọng của K. đến lâu đài', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(529, '9780141439686', 'Emma', 'emma.jpg', 20, 95000, 'Câu chuyện về cô gái thích mai mối', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(530, '9780307474728', 'Tình Yêu Thời Thổ Tả', 'love_cholera.jpg', 18, 115000, 'Tình yêu vượt thời gian và thử thách', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(531, '9780307271082', 'Americanah', 'americanah.jpg', 25, 135000, 'Hành trình của người phụ nữ Nigeria ở Mỹ', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(532, '9780062316110', 'Homo Deus: Lược Sử Tương Lai', 'homo_deus.jpg', 20, 195000, 'Viễn cảnh tương lai của nhân loại', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(533, '9780316010665', 'Điểm Bùng Phát', 'tipping_point.jpg', 22, 125000, 'Lý thuyết về sự lan truyền của ý tưởng', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(534, '9781982141462', 'Cho và Nhận', 'give_and_take.jpg', 18, 145000, 'Cách tiếp cận mới về thành công', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(535, '9781592407338', 'Sức Mạnh Của Sự Tổn Thương', 'power_vulnerability.jpg', 15, 125000, 'Nghệ thuật sống can đảm', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(536, '9786043073402', 'Cô Gái Đến Từ Hôm Qua', 'co_gai_den_tu_hom_qua.jpg', 25, 85000, 'Chuyện tình tuổi học trò đầy cảm xúc', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(537, '9780061120084', 'Veronika Quyết Chết', 'veronika.jpg', 20, 100000, 'Hành trình tìm kiếm ý nghĩa cuộc sống', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(538, '9780099448471', 'Kafka Bên Bờ Biển', 'kafka_beach.jpg', 18, 160000, 'Hành trình siêu thực của một thiếu niên', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(539, '9780439136365', 'Harry Potter và Tên Tù Nhân Ngục Azkaban', 'harry_potter_3.jpg', 22, 190000, 'Sự xuất hiện của tên tù nhân nguy hiểm', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(540, '9780143106635', 'Thiên Long Bát Bộ', 'tian_long.jpg', 15, 220000, 'Tiểu thuyết kiếm hiệp kinh điển', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(541, '9780451526342', 'Chào Mừng Đến Với Chuột Túi', 'brave_new_world.jpg', 20, 95000, 'Viễn tưởng về xã hội tương lai', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(542, '9780261102354', 'Chúa tể những chiếc nhẫn: Hai Tòa Tháp', 'lotr_2.jpg', 25, 200000, 'Phần tiếp theo của hành trình hủy diệt nhẫn', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(543, '9780007120864', 'Vụ Ám Sát Ông Roger Ackroyd', 'roger_ackroyd.jpg', 18, 100000, 'Vụ án bí ẩn với kết thúc bất ngờ', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(544, '9780684803357', 'Mặt Trời Vẫn Mọc', 'sun_also_rises.jpg', 15, 90000, 'Thế hệ lạc lõng sau Thế chiến I', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(545, '9780140449175', 'Những Người Khốn Khổ Tập 2', 'les_miserables_2.jpg', 20, 195000, 'Phần tiếp theo cuộc đời Jean Valjean', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(546, '9780141184153', 'This Side of Paradise', 'side_paradise.jpg', 16, 95000, 'Tuổi trẻ và thất vọng thời Jazz', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(547, '9781240449174', 'Phục Sinh', 'resurrection.jpg', 14, 95000, 'Hành trình chuộc lỗi của một quý tộc', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(548, '9780805209990', 'Vụ Án', 'the_trial.jpg', 12, 85000, 'Hành trình vô vọng của Josef K.', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(549, '9780141439471', 'Cảm Xúc và Lý Trí', 'sense_sensibility.jpg', 20, 90000, 'Câu chuyện về hai chị em Dashwood', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(550, '9780307387158', 'Hồi Ức Về Những Cô Gái Điếm Buồn Của Tôi', 'sad_whore.jpg', 18, 110000, 'Tình yêu kỳ lạ của một cụ già 90 tuổi', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(551, '9780307277671', 'Một Nửa Mặt Trời Vàng', 'half_sun.jpg', 22, 125000, 'Bi kịch của nội chiến Nigeria', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(552, '9780062464347', '21 Bài Học Cho Thế Kỷ 21', '21_lessons.jpg', 25, 175000, 'Giải đáp những vấn đề cấp bách của hiện tại', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(553, '9780316017923', 'Trong Chớp Mắt', 'blink.jpg', 20, 130000, 'Sức mạnh của suy nghĩ không cần suy nghĩ', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(554, '9780735214158', 'Originals: Chống Lại Đám Đông', 'originals.jpg', 18, 150000, 'Cách trở nên sáng tạo và đột phá', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(555, '9781592409875', 'Sự Hoàn Hảo Không Trọn Vẹn', 'gifts_imperfection.jpg', 15, 120000, 'Từ bỏ sự hoàn hảo để sống trọn vẹn', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(556, '9786043073419', 'Tôi Thấy Hoa Vàng Trên Cỏ Xanh', 'hoa_vang_co_xanh.jpg', 30, 95000, 'Tuổi thơ ở làng quê Việt Nam', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(557, '9780060512130', 'Zahir', 'zahir.jpg', 18, 105000, 'Hành trình tìm kiếm ý nghĩa đích thực', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(558, '9780099528981', 'Biên Niên Ký Chim Vặn Dây Cót', 'wind_up_bird.jpg', 20, 170000, 'Hành trình tìm vợ mất tích của Toru Okada', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(559, '9780439358071', 'Harry Potter và Chiếc Cốc Lửa', 'harry_potter_4.jpg', 22, 195000, 'Giải đấu Tam Pháp Thuật nguy hiểm', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(560, '9780140444261', 'Tam Quốc Diễn Nghĩa', 'three_kingdoms.jpg', 15, 210000, 'Tiểu thuyết lịch sử Trung Quốc kinh điển', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(561, '9780451529060', 'Down and Out in Paris and London', 'down_out.jpg', 18, 90000, 'Cuộc sống của những người nghèo khổ', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(562, '9780261102378', 'Chúa tể những chiếc nhẫn: Sự Trở Về Của Nhà Vua', 'lotr_3.jpg', 25, 205000, 'Kết thúc của hành trình hủy diệt nhẫn', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(563, '9780007120697', 'Vụ Ám Sát Trên Sân Golf', 'golf_course.jpg', 16, 98000, 'Vụ án trên sân golf kỳ lạ', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(564, '9780684804521', 'Tuyết Trên Đỉnh Kilimanjaro', 'snow_kilimanjaro.jpg', 15, 85000, 'Tuyển tập truyện ngắn đặc sắc', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(565, '4180140449174', 'Những Người Khốn Khổ Tập 3', 'les_miserables_3.jpg', 20, 200000, 'Phần cuối cuộc đời Jean Valjean', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(566, '9780141180636', 'The Beautiful and Damned', 'beautiful_damned.jpg', 16, 92000, 'Sự hủy hoại của sự giàu có và thời gian', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(567, '9780140441093', 'Cái Chết Của Ivan Ilyich', 'ivan_ilyich.jpg', 14, 80000, 'Suy ngẫm về cuộc đời khi cái chết cận kề', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(568, '9780805209991', 'Nước Mỹ', 'america.jpg', 12, 88000, 'Hành trình của Karl Rossmann đến nước Mỹ', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(569, '9780141439518', 'Northanger Abbey', 'northanger.jpg', 20, 85000, 'Châm biếm thể loại tiểu thuyết Gothic', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(570, '9780141189363', 'Tướng Quân Giữa Mê Hồn Trận', 'general_labyrinth.jpg', 18, 115000, 'Hành trình của một vị tướng trong mê cung', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(571, '9780307455925', 'Bỏ Quên', 'purple_hibiscus.jpg', 22, 118000, 'Câu chuyện về một gia đình Nigeria', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(572, '9780062464316', 'Sapiens: Graphic History', 'sapiens_graphic.jpg', 25, 165000, 'Phiên bản truyện tranh của Sapiens', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(573, '9780316011785', 'Chú Chó Nhìn Thấy Gì', 'what_dog_saw.jpg', 20, 135000, 'Tuyển tập bài viết từ tờ New Yorker', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(574, '9780735213502', 'Nghĩ Lại và Làm Lại', 'think_again_2.jpg', 18, 155000, 'Nghệ thuật tư duy lại trong công việc', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(575, '9781592408411', 'Dám Lãnh Đạo', 'dare_to_lead.jpg', 15, 130000, 'Xây dựng văn hóa dũng cảm tại nơi làm việc', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(576, '9786043235611', 'Ngồi Khóc Trên Cây', 'ngoi_khoc_tren_cay.jpg', 25, 98000, 'Chuyện tình cảm động giữa chàng sinh viên và cô gái rừng', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(577, '9780060935465', 'Nàng Brida', 'brida.jpg', 20, 110000, 'Hành trình khám phá tâm linh của cô gái trẻ', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(578, '9780307277718', 'Sputnik Sweetheart', 'sputnik.jpg', 18, 145000, 'Câu chuyện về tình yêu và sự cô đơn', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(579, '9780439784542', 'Harry Potter và Hội Phượng Hoàng', 'harry_potter_5.jpg', 22, 210000, 'Cuộc chiến chống lại Chúa tể Hắc ám', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(580, '9780140444285', 'Thủy Hử', 'water_margin.jpg', 15, 195000, '108 anh hùng Lương Sơn Bạc', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(581, '9780451524936', 'Coming Up for Air', 'coming_up_air.jpg', 20, 92000, 'Hồi tưởng về quá khứ và hiện tại u ám', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(582, '9780547928228', 'The Silmarillion', 'silmarillion.jpg', 25, 185000, 'Lịch sử Trung Địa trước Chúa tể những chiếc nhẫn', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(583, '9780007120680', 'Vụ Án Bí Ẩn Ở Styles', 'styles.jpg', 18, 95000, 'Vụ án đầu tiên của thám tử Poirot', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(584, '9780684804538', 'A Farewell to Arms', 'farewell_arms.jpg', 15, 98000, 'Câu chuyện tình trong Thế chiến I', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(585, '9780140449174', 'Những Người Khốn Khổ Tập 4', 'les_miserables_4.jpg', 20, 205000, 'Phần kết cuộc đời Jean Valjean', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(586, '9780141185693', 'The Last Tycoon', 'last_tycoon.jpg', 16, 90000, 'Tiểu thuyết dở dang về Hollywood', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(587, '9780140445077', 'The Cossacks', 'cossacks.jpg', 14, 85000, 'Câu chuyện về chàng quý tộc ở vùng biên ải', 18, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(588, '9780805209992', 'Thư Gửi Cha', 'letter_father.jpg', 12, 75000, 'Bức thư giải thích mối quan hệ với cha', 19, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(589, '9780141439563', 'Mansfield Park', 'mansfield_park.jpg', 20, 88000, 'Câu chuyện về Fanny Price', 20, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(590, '9780307264237', 'Tình Yêu Thời Chiến Tranh', 'war_time_love.jpg', 18, 120000, 'Tình yêu trong thời kỳ nội chiến Colombia', 21, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(591, '9780062693660', 'Hướng Dẫn Tương Lai', 'future_guide.jpg', 25, 175000, 'Cách định hướng trong thế giới phức tạp', 14, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(592, '9780316478526', 'Nói Chuyện Với Người Lạ', 'talking_strangers.jpg', 20, 140000, 'Hiểu và kết nối với những người xa lạ', 15, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(593, '9780735211386', 'Cho và Nhận: Tái Bản', 'give_take_revised.jpg', 18, 160000, 'Phiên bản cập nhật về cách tiếp cận thành công', 16, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25'),
+(594, '9780399592522', 'Sức Mạnh Của Sự Tổn Thương: Tái Bản', 'daring_greatly_revised.jpg', 15, 135000, 'Phiên bản cập nhật về sức mạnh của sự tổn thương', 17, NULL, '2025-06-23 18:58:25', '2025-06-23 18:58:25');
 
 -- --------------------------------------------------------
 
@@ -165,15 +261,26 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(9, 'self-help', '2025-06-06 08:47:50', '2025-06-06 08:47:50'),
-(10, 'tự học, kinh doanh, và kỹ năng làm việc', '2025-06-06 08:51:04', '2025-06-06 08:51:04'),
-(11, 'Sách tự lực', '2025-06-06 08:54:39', '2025-06-06 08:54:39'),
-(12, 'quản lý tài chính cá nhân, kinh doanh và làm giàu', '2025-06-06 09:05:17', '2025-06-06 09:05:17'),
-(13, 'kinh doanh', '2025-06-06 09:09:10', '2025-06-06 09:09:10'),
-(14, 'Hài kịch, khoa học viễn tưởng', '2025-06-06 09:16:00', '2025-06-06 09:16:00'),
-(15, 'Võ thuật, Khoa học viễn tưởng', '2025-06-06 09:20:50', '2025-06-06 09:20:50'),
-(16, 'Hành động, Võ thuật, Nhẫn giả, Phiêu lưu, Hài hước', '2025-06-06 09:24:04', '2025-06-06 09:24:04'),
-(17, 'Shounen Hành Động - Siêu Nhiên - Giả Tưởng', '2025-06-06 09:29:06', '2025-06-06 09:29:06');
+(1, 'Văn học Việt Nam', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(2, 'Tiểu thuyết tâm linh', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(3, 'Văn học hiện đại Nhật Bản', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(4, 'Giả tưởng', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(5, 'Chiến lược quân sự', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(6, 'Chính trị - xã hội', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(7, 'Phiêu lưu giả tưởng', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(8, 'Trinh thám', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(9, 'Tiểu thuyết phiêu lưu', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(10, 'Tiểu thuyết lịch sử', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(11, 'Văn học Mỹ', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(12, 'Tiểu thuyết cổ điển', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(13, 'Văn học hiện sinh', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(14, 'Tiểu thuyết lãng mạn', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(15, 'Hiện thực huyền ảo', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(16, 'Văn học đương đại', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(17, 'Lịch sử nhân loại', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(18, 'Tâm lý xã hội', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(19, 'Kinh doanh & lãnh đạo', '2025-06-23 18:56:13', '2025-06-23 18:56:13'),
+(20, 'Tâm lý học', '2025-06-23 18:56:13', '2025-06-23 18:56:13');
 
 -- --------------------------------------------------------
 
@@ -191,20 +298,51 @@ CREATE TABLE `classifyings` (
 --
 
 INSERT INTO `classifyings` (`book_id`, `category_id`) VALUES
-(9, 9),
-(10, 10),
-(11, 11),
-(12, 11),
-(13, 11),
-(14, 12),
-(15, 9),
-(15, 13),
-(16, 11),
-(17, 14),
-(18, 15),
-(19, 15),
-(19, 16),
-(20, 17);
+(496, 1),
+(497, 2),
+(498, 3),
+(499, 4),
+(500, 5),
+(501, 6),
+(502, 4),
+(503, 8),
+(504, 9),
+(505, 10),
+(506, 11),
+(507, 12),
+(508, 13),
+(509, 14),
+(510, 15),
+(511, 16),
+(512, 17),
+(513, 18),
+(514, 19),
+(515, 20),
+(516, 1),
+(518, 3),
+(519, 4),
+(521, 6),
+(522, 7),
+(523, 8),
+(524, 9),
+(527, 12),
+(528, 13),
+(529, 14),
+(530, 15),
+(531, 16),
+(533, 18),
+(534, 19),
+(535, 20),
+(537, 2),
+(539, 4),
+(542, 7),
+(545, 10),
+(559, 4),
+(562, 7),
+(565, 10),
+(572, 17),
+(579, 4),
+(585, 10);
 
 -- --------------------------------------------------------
 
@@ -348,22 +486,6 @@ CREATE TABLE `orders` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `orders`
---
-
-INSERT INTO `orders` (`id`, `admin_id_confirmed`, `customer_id`, `customer_name`, `customer_phone`, `ship_to_address`, `total`, `status`, `created_at`, `updated_at`) VALUES
-(1, 6, 3, 'Wiley Ondricka', '(401) 547-8317', '70499 Antwon Roads Suite 941\nD\'angeloberg, WA 99017-9154', 978000, 'PENDING', '2025-05-19 09:15:24', '2025-05-19 09:15:25'),
-(2, 4, 5, 'Bessie Kautzer', '+13512635577', '93618 Valentin Lock\nHarberstad, OK 40966', 4293000, 'CANCELED', '2025-05-19 09:15:24', '2025-05-19 09:15:25'),
-(3, 9, 8, 'Nelda Powlowski', '551-994-7882', '60970 Nicklaus Meadows Suite 093\nWest Furman, MT 76793-9080', 3816000, 'CANCELED', '2025-05-19 09:15:24', '2025-05-19 09:15:25'),
-(4, NULL, 12, 'Vinhmoi', '01929149942', 'HaNoi', 292000, 'PENDING', '2025-06-10 07:53:44', '2025-06-10 07:53:44'),
-(5, NULL, 12, 'Vinhmoi', '01929149942', 'HaNoi', 99000, 'CANCELED', '2025-06-10 08:32:23', '2025-06-10 08:32:40'),
-(6, NULL, 12, 'Vinhmoi', '01929149942', 'HaNoi', 29000, 'PENDING', '2025-06-10 23:45:47', '2025-06-10 23:45:47'),
-(7, NULL, 12, 'Vinhmoi', '01929149942', 'HaNoi', 40000, 'PENDING', '2025-06-10 23:46:15', '2025-06-10 23:46:15'),
-(8, NULL, 12, 'Vinhmoi999', '01929149942766767', 'HaNoiuhuhu', 94000, 'PENDING', '2025-06-11 00:56:37', '2025-06-11 00:56:37'),
-(9, NULL, 12, 'Vinhmoi999', '01929149942766767', 'HaNoiuhuhu', 1000000, 'CANCELED', '2025-06-16 03:24:06', '2025-06-16 03:25:08'),
-(10, NULL, 12, 'Vinhmoi999', '01929149942766767', 'HaNoiuhuhu', 1000000, 'PENDING', '2025-06-16 08:44:43', '2025-06-16 08:44:43');
-
 -- --------------------------------------------------------
 
 --
@@ -376,26 +498,6 @@ CREATE TABLE `order_details` (
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `order_details`
---
-
-INSERT INTO `order_details` (`order_id`, `book_id`, `quantity`, `price`) VALUES
-(4, 10, 1, 70000),
-(4, 14, 1, 82000),
-(4, 15, 1, 100000),
-(4, 20, 1, 40000),
-(5, 18, 1, 30000),
-(5, 19, 1, 29000),
-(5, 20, 1, 40000),
-(6, 19, 1, 29000),
-(7, 20, 1, 40000),
-(8, 17, 1, 25000),
-(8, 19, 1, 29000),
-(8, 20, 1, 40000),
-(9, 20, 25, 40000),
-(10, 20, 25, 40000);
 
 -- --------------------------------------------------------
 
@@ -427,14 +529,26 @@ CREATE TABLE `publishers` (
 --
 
 INSERT INTO `publishers` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(14, 'Simon and Schuster', '2025-06-06 08:46:22', '2025-06-06 08:46:22'),
-(15, 'NXB Trẻ', '2025-06-06 08:50:17', '2025-06-06 08:50:17'),
-(16, 'Nhà xuất bản Tổng hợp TPHCM', '2025-06-06 08:53:50', '2025-06-06 08:53:50'),
-(17, 'Nhà xuất bản Lao Động', '2025-06-06 09:01:16', '2025-06-06 09:01:16'),
-(18, 'Franklin Covey', '2025-06-06 09:08:05', '2025-06-06 09:08:05'),
-(19, 'Bantam', '2025-06-06 09:11:38', '2025-06-06 09:11:38'),
-(20, 'Nhà xuất bản Kim Đồng', '2025-06-06 09:15:29', '2025-06-06 09:15:29'),
-(21, 'Shueisha', '2025-06-06 09:23:18', '2025-06-06 09:23:18');
+(2, 'HarperCollins', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(3, 'Macmillan Publishers', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(4, 'Hachette Livre', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(5, 'Scholastic Corporation', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(6, 'Pearson Education', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(7, 'Oxford University Press', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(8, 'Cambridge University Press', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(9, 'Wiley', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(10, 'Springer Nature', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(11, 'McGraw-Hill Education', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(12, 'Cengage Learning', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(13, 'Bloomsbury Publishing', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(14, 'Egmont Group', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(15, 'Kodansha', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(16, 'Shogakukan', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(17, 'Kadokawa Corporation', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(18, 'Nhà xuất bản Văn học', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(19, 'Nhà xuất bản Trẻ', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(20, 'Nhà xuất bản Hội Nhà Văn', '2025-06-23 18:56:18', '2025-06-23 18:56:18'),
+(21, 'Penguin Random House', '2025-06-23 18:56:18', '2025-06-23 18:56:18');
 
 -- --------------------------------------------------------
 
@@ -456,8 +570,10 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('DNDggAvKurnsgeFYzP1oaMDkr08xLGWFP0vqBbzl', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZ1lXMW1ZZzZZVXczTUdPVERIZWh6Y3ZqUEJ0cDJ1cEFDZE5uT1RTayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTM6ImxvZ2luX2FkbWluc181OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1750229194),
-('R1mhqhqq4IgUUR07qmhuFwgCKtqpMIKa0dORej81', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVTVCNFZ0OVdualNOeWlDNWlVUE04bmpqRnN2TXRJZ1hWVHBnejI3QSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTM6ImxvZ2luX2FkbWluc181OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo1NjoibG9naW5fY3VzdG9tZXJzXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTI7fQ==', 1750089722);
+('4NV3tNi4sf0gDoj1ULalptLao75rd0O0UkXTQLP4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoieU55ZXFTT2RuTDZBQlAwbmNpOTlrdXN6d3NZeG84bWd0a2JGM25wWiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jaGVja291dCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTM6ImxvZ2luX2FkbWluc181OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo1NjoibG9naW5fY3VzdG9tZXJzXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTI7czo0OiJjYXJ0IjthOjE6e2k6MDtPOjE1OiJBcHBcTW9kZWxzXEJvb2siOjMxOntzOjEzOiIAKgBjb25uZWN0aW9uIjtzOjU6Im15c3FsIjtzOjg6IgAqAHRhYmxlIjtzOjU6ImJvb2tzIjtzOjEzOiIAKgBwcmltYXJ5S2V5IjtzOjI6ImlkIjtzOjEwOiIAKgBrZXlUeXBlIjtzOjM6ImludCI7czoxMjoiaW5jcmVtZW50aW5nIjtiOjE7czo3OiIAKgB3aXRoIjthOjA6e31zOjEyOiIAKgB3aXRoQ291bnQiO2E6MDp7fXM6MTk6InByZXZlbnRzTGF6eUxvYWRpbmciO2I6MDtzOjEwOiIAKgBwZXJQYWdlIjtpOjE1O3M6NjoiZXhpc3RzIjtiOjE7czoxODoid2FzUmVjZW50bHlDcmVhdGVkIjtiOjA7czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO3M6MTM6IgAqAGF0dHJpYnV0ZXMiO2E6MTI6e3M6MjoiaWQiO2k6MTc7czo5OiJpc2JuX2NvZGUiO3M6ODoiZDhkOWE5MWQiO3M6NToidGl0bGUiO3M6ODoiRG9yYWVtb24iO3M6NToiaW1hZ2UiO3M6MTc6InThuqNpIHh14buRbmcucG5nIjtzOjg6InF1YW50aXR5IjtpOjE7czo1OiJwcmljZSI7aToyNTAwMDtzOjExOiJkZXNjcmlwdGlvbiI7czo3MTM6IkRvcmFlbW9uIGzDoCBt4buZdCBjaMO6IG3DqG8gbcOheSDEkcaw4bujYyBOb2JpIFNld2FzaGkgKE5vYmkgTm9iaXRvKSwgY2jDoXUgbsSDbSDEkeG7nWkgY+G7p2EgTm9iaSBOb2JpdGEsIGfhu61pIHThu6sgdGjhur8ga+G7tyAyMiB24buBIHF1w6Ega2jhu6kgY+G7p2Egw7RuZyBtw6xuaCDEkeG7gyBnacO6cCDEkeG7oSBOb2JpdGEgdHLhu58gbsOqbiB0aeG6v24gYuG7mSB2w6AgZ2nDoHUgY8OzLCB04bupYyBsw6AgY8Wpbmcgc+G6vSBj4bqjaSB0aGnhu4duIGhvw6BuIGPhuqNuaCBj4bunYSBjb24gY2jDoXUgTm9iaXRhIHNhdSBuw6B5LiBDw7JuIOG7nyBoaeG7h24gdOG6oWksIE5vYml0YSBsw6AgbeG7mXQgY+G6rXUgYsOpIGx1w7RuIHRo4bqldCBi4bqhaSDhu58gdHLGsOG7nW5nIGjhu41jLCB2w6Agc2F1IMSRw7MgY8O0bmcgdHkgcGjDoSBz4bqjbiwgdGjhuqV0IGLhuqFpIHRyb25nIGPDtG5nIHZp4buHYywgxJHhuql5IGdpYSDEkcOsbmggdsOgIGNvbiBjaMOhdSBzYXUgbsOgeSB2w6BvIGPhuqNuaCBu4bujIG7huqduLiBO4buZaSBkdW5nIHNlcmllcyBr4buDIHbhu4EgY3Xhu5ljIMSR4budaSBj4bunYSBj4bqtdSBiw6kgTm9iaXRhIHbDoCBjaMO6IG3DqG8gbcOheSBEb3JhZW1vbiB04burIHTGsMahbmcgbGFpIMSR4bq/biDEkeG7gyBnacO6cCBjdeG7mWMgc+G7kW5nIGPhu6dhIGPhuq11IGLDqSB0cuG7nyBuw6puIHThu5F0IGjGoW4uIjtzOjEyOiJwdWJsaXNoZXJfaWQiO2k6MjA7czoxMDoiZGVsZXRlZF9hdCI7TjtzOjEwOiJjcmVhdGVkX2F0IjtzOjE5OiIyMDI1LTA2LTA2IDE2OjE4OjM5IjtzOjEwOiJ1cGRhdGVkX2F0IjtzOjE5OiIyMDI1LTA2LTA2IDE2OjE4OjM5IjtzOjE1OiJxdWFudGl0eUluU3RvY2siO2k6Mjk7fXM6MTE6IgAqAG9yaWdpbmFsIjthOjExOntzOjI6ImlkIjtpOjE3O3M6OToiaXNibl9jb2RlIjtzOjg6ImQ4ZDlhOTFkIjtzOjU6InRpdGxlIjtzOjg6IkRvcmFlbW9uIjtzOjU6ImltYWdlIjtzOjE3OiJ04bqjaSB4deG7kW5nLnBuZyI7czo4OiJxdWFudGl0eSI7aTozMDtzOjU6InByaWNlIjtpOjI1MDAwO3M6MTE6ImRlc2NyaXB0aW9uIjtzOjcxMzoiRG9yYWVtb24gbMOgIG3hu5l0IGNow7ogbcOobyBtw6F5IMSRxrDhu6NjIE5vYmkgU2V3YXNoaSAoTm9iaSBOb2JpdG8pLCBjaMOhdSBuxINtIMSR4budaSBj4bunYSBOb2JpIE5vYml0YSwgZ+G7rWkgdOG7qyB0aOG6vyBr4bu3IDIyIHbhu4EgcXXDoSBraOG7qSBj4bunYSDDtG5nIG3DrG5oIMSR4buDIGdpw7pwIMSR4buhIE5vYml0YSB0cuG7nyBuw6puIHRp4bq/biBi4buZIHbDoCBnacOgdSBjw7MsIHThu6ljIGzDoCBjxaluZyBz4bq9IGPhuqNpIHRoaeG7h24gaG/DoG4gY+G6o25oIGPhu6dhIGNvbiBjaMOhdSBOb2JpdGEgc2F1IG7DoHkuIEPDsm4g4bufIGhp4buHbiB04bqhaSwgTm9iaXRhIGzDoCBt4buZdCBj4bqtdSBiw6kgbHXDtG4gdGjhuqV0IGLhuqFpIOG7nyB0csaw4budbmcgaOG7jWMsIHbDoCBzYXUgxJHDsyBjw7RuZyB0eSBwaMOhIHPhuqNuLCB0aOG6pXQgYuG6oWkgdHJvbmcgY8O0bmcgdmnhu4djLCDEkeG6qXkgZ2lhIMSRw6xuaCB2w6AgY29uIGNow6F1IHNhdSBuw6B5IHbDoG8gY+G6o25oIG7hu6MgbuG6p24uIE7hu5lpIGR1bmcgc2VyaWVzIGvhu4MgduG7gSBjdeG7mWMgxJHhu51pIGPhu6dhIGPhuq11IGLDqSBOb2JpdGEgdsOgIGNow7ogbcOobyBtw6F5IERvcmFlbW9uIHThu6sgdMawxqFuZyBsYWkgxJHhur9uIMSR4buDIGdpw7pwIGN14buZYyBz4buRbmcgY+G7p2EgY+G6rXUgYsOpIHRy4bufIG7Dqm4gdOG7kXQgaMahbi4iO3M6MTI6InB1Ymxpc2hlcl9pZCI7aToyMDtzOjEwOiJkZWxldGVkX2F0IjtOO3M6MTA6ImNyZWF0ZWRfYXQiO3M6MTk6IjIwMjUtMDYtMDYgMTY6MTg6MzkiO3M6MTA6InVwZGF0ZWRfYXQiO3M6MTk6IjIwMjUtMDYtMDYgMTY6MTg6MzkiO31zOjEwOiIAKgBjaGFuZ2VzIjthOjA6e31zOjg6IgAqAGNhc3RzIjthOjE6e3M6MTA6ImRlbGV0ZWRfYXQiO3M6ODoiZGF0ZXRpbWUiO31zOjE3OiIAKgBjbGFzc0Nhc3RDYWNoZSI7YTowOnt9czoyMToiACoAYXR0cmlidXRlQ2FzdENhY2hlIjthOjA6e31zOjEzOiIAKgBkYXRlRm9ybWF0IjtOO3M6MTA6IgAqAGFwcGVuZHMiO2E6MDp7fXM6MTk6IgAqAGRpc3BhdGNoZXNFdmVudHMiO2E6MDp7fXM6MTQ6IgAqAG9ic2VydmFibGVzIjthOjA6e31zOjEyOiIAKgByZWxhdGlvbnMiO2E6MDp7fXM6MTA6IgAqAHRvdWNoZXMiO2E6MDp7fXM6MTA6InRpbWVzdGFtcHMiO2I6MTtzOjEzOiJ1c2VzVW5pcXVlSWRzIjtiOjA7czo5OiIAKgBoaWRkZW4iO2E6MDp7fXM6MTA6IgAqAHZpc2libGUiO2E6MDp7fXM6MTE6IgAqAGZpbGxhYmxlIjthOjc6e2k6MDtzOjk6ImlzYm5fY29kZSI7aToxO3M6NToidGl0bGUiO2k6MjtzOjU6ImltYWdlIjtpOjM7czo4OiJxdWFudGl0eSI7aTo0O3M6NToicHJpY2UiO2k6NTtzOjExOiJkZXNjcmlwdGlvbiI7aTo2O3M6MTI6InB1Ymxpc2hlcl9pZCI7fXM6MTA6IgAqAGd1YXJkZWQiO2E6MTp7aTowO3M6MToiKiI7fXM6MTY6IgAqAGZvcmNlRGVsZXRpbmciO2I6MDt9fXM6MTA6ImNhcnRfdG90YWwiO2k6MjUwMDA7fQ==', 1750404600),
+('8M9vApBhEJsYu6BOMJ06bSgInmM00abr18vbHrYa', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZmNtRnBQNkhWOUFGaFJEa1RzMFVOSVh2R1VoYlk2YXVaMDBOTm5zSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTM6ImxvZ2luX2FkbWluc181OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1750401644),
+('caV13cBVFjWxq9omcyLp38ISEiIm3zT1ckyasHMT', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNVVRRWFiRUZiZTZXcnhwZUUyb2thdjcwRGVYeWlTZlVsbFZwcVVVbyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC8/cGFnZT0xIjt9czo1MzoibG9naW5fYWRtaW5zXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1750705170),
+('Dj9p5BvgHmQR38n9myIWaeJXbj96fFrD7IBz5xox', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVUN5azFscDM0ODR2RWp4UEtnUXdnckFCbkVZa3Z0b0VRYk1qdXFVcyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXJ0LXBhZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjU2OiJsb2dpbl9jdXN0b21lcnNfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMjt9', 1750670741);
 
 -- --------------------------------------------------------
 
@@ -499,18 +615,55 @@ CREATE TABLE `writings` (
 --
 
 INSERT INTO `writings` (`book_id`, `author_id`) VALUES
-(9, 13),
-(10, 14),
-(11, 15),
-(12, 13),
-(13, 16),
-(14, 17),
-(15, 18),
-(16, 19),
-(17, 20),
-(18, 21),
-(19, 22),
-(20, 23);
+(496, 1),
+(497, 2),
+(498, 3),
+(499, 4),
+(500, 5),
+(501, 6),
+(502, 7),
+(503, 8),
+(504, 9),
+(505, 10),
+(506, 11),
+(507, 12),
+(508, 13),
+(509, 14),
+(510, 15),
+(511, 16),
+(512, 17),
+(513, 18),
+(514, 19),
+(515, 20),
+(516, 1),
+(518, 3),
+(519, 4),
+(521, 6),
+(522, 7),
+(523, 8),
+(524, 9),
+(527, 12),
+(528, 13),
+(529, 14),
+(530, 15),
+(531, 16),
+(533, 18),
+(534, 19),
+(535, 20),
+(537, 2),
+(538, 3),
+(539, 4),
+(542, 7),
+(544, 9),
+(545, 10),
+(556, 1),
+(557, 2),
+(559, 4),
+(562, 7),
+(565, 10),
+(572, 17),
+(579, 4),
+(585, 10);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -664,19 +817,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT cho bảng `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=595;
 
 --
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `customers`

@@ -16,6 +16,22 @@
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="/customer_plugin/css/responsive.css">
    </head>
+   <style>
+       /* Thêm CSS mới vào */
+       .search-bookcontent .image-overlap-shadow {
+           height: 250px; /* Chiều cao cố định */
+           overflow: hidden; /* Ẩn phần ảnh thừa */
+       }
+
+       .search-bookcontent .image-overlap-shadow img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover; /* Giữ tỉ lệ ảnh và lấp đầy khung */
+       }
+
+
+   </style>
+
    <body>
       <!-- Wrapper Start -->
       <div class="wrapper">
@@ -136,6 +152,7 @@
                                     </div>
                               </div>
                           </div>
+
                           <div class="iq-card">
                               <div class="iq-card-body">
                                   <div class="row">
