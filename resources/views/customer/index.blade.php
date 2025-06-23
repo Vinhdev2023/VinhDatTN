@@ -16,6 +16,22 @@
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="/customer_plugin/css/responsive.css">
    </head>
+   <style>
+       /* Thêm CSS mới vào */
+       .search-bookcontent .image-overlap-shadow {
+           height: 250px; /* Chiều cao cố định */
+           overflow: hidden; /* Ẩn phần ảnh thừa */
+       }
+
+       .search-bookcontent .image-overlap-shadow img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover; /* Giữ tỉ lệ ảnh và lấp đầy khung */
+       }
+
+
+   </style>
+
    <body>
       <!-- Wrapper Start -->
       <div class="wrapper">
@@ -57,7 +73,7 @@
                               <div class="d-block text-center">
                                   <h2 class="mb-3">Tìm kiếm tên sách</h2>
                                   <div class="w-100 iq-search-filter">
-<<<<<<< HEAD
+
                                       <form action="/search" method="get">
                                           <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
                                               <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
@@ -114,24 +130,11 @@
                                               </li>
                                           </ul>
                                       </form>
-=======
-                                      <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
-                                          <li class="search-menu-opt">
-                                                <form action="/search" method="get">
-                                                    <div class="iq-search-bar search-book d-flex align-items-center">
-                                                        <div class="searchbox">
-                                                            <input type="text" name="search" value="{{ isset($search) ? $search : null }}" class="text search-input" placeholder="search here...">
-                                                            <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary search-data ml-2">Search</button>
-                                                    </div>
-                                                </form>
-                                            </li>
-                                        </ul>
->>>>>>> 6883f869d5166644ef62d6d5f9501c8a9ddddd52
+
                                   </div>
                               </div>
                           </div>
+
                           <div class="iq-card">
                               <div class="iq-card-body">
                                   <div class="row">
