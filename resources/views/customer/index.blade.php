@@ -51,6 +51,7 @@
                             </x-admin.alert-danger>
                         </div>
                     @endif
+
                       <div class="col-lg-12">
                           <div class="iq-card-transparent mb-0">
                               <div class="d-block text-center">
@@ -58,6 +59,49 @@
                                   <div class="w-100 iq-search-filter">
                                       <form action="/search" method="get">
                                           <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
+                                              <ul class="list-inline p-0 m-0 row justify-content-center search-menu-options">
+                                                  <li class="search-menu-opt">
+                                                      <div class="iq-dropdown">
+                                                          <div class="form-group mb-0">
+                                                              <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect1">
+                                                                  <option selected="">Giá</option>
+
+                                                              </select>
+                                                          </div>
+                                                      </div>
+                                                  </li>
+                                                  <li class="search-menu-opt">
+                                                      <div class="iq-dropdown">
+                                                          <div class="form-group mb-0">
+                                                              <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect2">
+                                                                  <option selected="">Thể Loại</option>
+
+                                                              </select>
+                                                          </div>
+                                                      </div>
+                                                  </li>
+                                                  <li class="search-menu-opt">
+                                                      <div class="iq-dropdown">
+                                                          <div class="form-group mb-0">
+                                                              <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect3">
+                                                                  <option selected="">Nhà Xuất Bản</option>
+
+                                                              </select>
+                                                          </div>
+                                                      </div>
+                                                  </li>
+                                                  <li class="search-menu-opt">
+                                                      <div class="iq-dropdown">
+                                                          <div class="form-group mb-0">
+                                                              <select class="form-control form-search-control bg-white border-0" id="exampleFormControlSelect4">
+                                                                  <option selected="">Tác Giả</option>
+
+                                                              </select>
+                                                          </div>
+                                                      </div>
+                                                  </li>
+
+                                              </ul>
                                               <li class="search-menu-opt">
                                                   <div class="iq-search-bar search-book d-flex align-items-center">
                                                       <div class="searchbox">
@@ -110,7 +154,7 @@
                                                                         <i class="ri-shopping-cart-2-fill text-primary"></i>
                                                                     </a>
                                                                 @endif
-                                                                
+
                                                             </div>
                                                         </div>
                                                     </div>
