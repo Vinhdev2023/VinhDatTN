@@ -21,7 +21,7 @@ class AdminBookController extends Controller
     {
         $path = 'admin.books.index';
 
-        $books = Book::orderBy('updated_at', 'desc')->paginate(10);
+        $books = Book::orderBy('updated_at', 'desc')->paginate(5);
         return view('admin.book.books', compact('path', 'books'));
     }
 
