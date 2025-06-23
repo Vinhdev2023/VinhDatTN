@@ -21,7 +21,6 @@ class Customer extends Controller
                         DB::raw('COALESCE(books.quantity - SUM(CASE WHEN orders.status IN ("PENDING", "CONFIRMED") THEN order_details.quantity ELSE 0 END), 0) as real_quantity')
                     )
                     ->groupBy('books.id', 'books.isbn_code', 'books.title', 'books.image', 'books.quantity', 'books.price', 'books.description', 'books.publisher_id', 'books.deleted_at', 'books.updated_at', 'books.created_at')
-                    ->having('real_quantity', '>', 0)
                     ->orderByDesc('books.created_at')
                     ->paginate(12);
         $books->load('author');
