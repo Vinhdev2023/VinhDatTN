@@ -14,7 +14,13 @@ class AdminStatisticController extends Controller
 
         $EndDate = DB::table('orders')->selectRaw("DATE_FORMAT(MAX(created_at), '%d-%m-%Y') AS max")->first()->max;
         $StartDate = DB::table('orders')->selectRaw("DATE_FORMAT(MIN(created_at), '%d-%m-%Y') AS min")->first()->min;
-        $dateInput = $StartDate.' - '.$EndDate;
+
+        if ($EndDate != null && $StartDate != null) {
+            $dateInput = $StartDate.' - '.$EndDate;
+        } else {
+            $dateInput = date('d-m-Y').' - '.date('d-m-Y');
+        }
+
 
         $EndDate = date_format(date_create($EndDate), 'Y-m-d');
         $StartDate = date_format(date_create($StartDate), 'Y-m-d');
@@ -32,9 +38,7 @@ class AdminStatisticController extends Controller
         $orderNumStatus_title = $order_status_statistics[1];
         $orderTotal = $order_status_statistics[2];
 
-        $books = $this->books_sold($StartDate, $EndDate);
-
-        return view('admin.statistics', compact('path', 'dataDateTotal', 'dataDate', 'sumTotal', 'dateInput', 'orderNumStatus_num', 'orderNumStatus_title', 'orderTotal', 'books'));
+        return view('admin.statistics.revenue', compact('path', 'dataDateTotal', 'dataDate', 'sumTotal', 'dateInput', 'orderNumStatus_num', 'orderNumStatus_title', 'orderTotal'));
     }
 
     public function statistic_get_data(Request $request){
@@ -57,9 +61,38 @@ class AdminStatisticController extends Controller
         $orderNumStatus_title = $order_status_statistics[1];
         $orderTotal = $order_status_statistics[2];
 
+        return view('admin.statistics.revenue', compact('path', 'dataDateTotal', 'dataDate', 'sumTotal', 'dateInput', 'orderNumStatus_num', 'orderNumStatus_title', 'orderTotal'));
+    }
+
+    public function statistic_view_booksSold() {
+        $path = 'admin.statistics.booksSold';
+
+        $EndDate = DB::table('orders')->selectRaw("DATE_FORMAT(MAX(created_at), '%d-%m-%Y') AS max")->first()->max;
+        $StartDate = DB::table('orders')->selectRaw("DATE_FORMAT(MIN(created_at), '%d-%m-%Y') AS min")->first()->min;
+
+        if ($EndDate != null && $StartDate != null) {
+            $dateInput = $StartDate.' - '.$EndDate;
+        } else {
+            $dateInput = date('d-m-Y').' - '.date('d-m-Y');
+        }
+
         $books = $this->books_sold($StartDate, $EndDate);
 
-        return view('admin.statistics', compact('path', 'dataDateTotal', 'dataDate', 'sumTotal', 'dateInput', 'orderNumStatus_num', 'orderNumStatus_title', 'orderTotal', 'books'));
+        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput'));
+    }
+
+    public function statistic_view_booksSold_get_data(Request $request) {
+        $path = 'admin.statistics.booksSold';
+
+        $dateInput = $request->FromDateToDate;
+        $EndDate = substr($dateInput, strpos($dateInput,' - ') + 3, strlen($dateInput));
+        $EndDate = date_format(date_create($EndDate), 'Y-m-d');
+        $StartDate = substr($dateInput, 0 , strpos($dateInput,' - '));
+        $StartDate = date_format(date_create($StartDate), 'Y-m-d');
+
+        $books = $this->books_sold_have_date($StartDate, $EndDate, $dateInput);
+
+        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput'));
     }
 
     
@@ -152,7 +185,37 @@ class AdminStatisticController extends Controller
                         )
                         ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
                         ->orderByDesc('total_sold')->orderBy('b.created_at')
-                        ->get();
+                        ->paginate(5);
+        
+        return $statistics;
+    }
+
+    private function books_sold_have_date($startDate, $endDate, $dateInput) {
+        $statistics = DB::table('books as b')
+                        ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
+                        ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
+                        ->select(
+                            'b.id as book_id',
+                            'b.title as book_title',
+                            'b.image as book_image',
+                            'b.quantity as book_quantity_in_stock',
+                            'b.deleted_at as book_deleted_at',
+                            DB::raw("
+                                COALESCE(
+                                    SUM(
+                                        CASE 
+                                            WHEN o.status = 'COMPLETED' 
+                                            AND DATE(o.created_at) BETWEEN '$startDate' AND '$endDate'
+                                            THEN od.quantity 
+                                            ELSE 0 
+                                        END
+                                    ), 0
+                                ) as total_sold
+                            ")
+                        )
+                        ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
+                        ->orderByDesc('total_sold')->orderBy('b.created_at')
+                        ->paginate(5)->appends(['FromDateToDate' => $dateInput]);
         
         return $statistics;
     }

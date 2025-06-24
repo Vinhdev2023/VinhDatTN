@@ -34,13 +34,28 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item @if($path == 'admin.statistics' || $path == 'admin.statistics.data'){{'open-menu'}}@endif">
-                    <a href="{{ route('admin.statistics') }}" class="nav-link @if($path == 'admin.statistics' || $path == 'admin.statistics.data'){{'active'}}@endif">
+                <li class="nav-item @if($path == 'admin.statistics' || $path == 'admin.statistics.data' || $path == 'admin.statistics.booksSold'){{'menu-open'}}@endif">
+                    <a href="#" class="nav-link @if($path == 'admin.statistics' || $path == 'admin.statistics.data' || $path == 'admin.statistics.booksSold') {{'active'}} @endif">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Statistics
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item @if($path == 'admin.statistics' || $path == 'admin.statistics.data') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.statistics') }}" class="nav-link @if($path == 'admin.statistics' || $path == 'admin.statistics.data') {{'active'}} @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Revenue</p>
+                            </a>
+                        </li>
+                        <li class="nav-item @if($path == 'admin.statistics.booksSold' || $path == 'admin.statistics.booksSold.data') {{'menu-open'}} @endif">
+                            <a href="{{ route('admin.statistics.booksSold') }}" class="nav-link @if($path == 'admin.statistics.booksSold' || $path == 'admin.statistics.booksSold.data') {{'active'}} @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Book sold</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item @if($path == 'admin.orders.index' || $path == 'admin.orders.show' || $path == 'admin.orders.filter') {{'menu-open'}} @endif">
                     <a href="{{ route('admin.orders.index') }}" class="nav-link @if($path == 'admin.orders.index' || $path == 'admin.orders.show' || $path == 'admin.orders.filter') {{'active'}} @endif">
@@ -104,7 +119,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit' || $path == 'admin.books.trashed' || $path == 'admin.books.checked') {{'menu-open'}} @endif">
+                <li class="nav-item @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit' || $path == 'admin.books.trashed' || $path == 'admin.books.checked'){{'menu-open'}}@endif">
                     <a href="#" class="nav-link @if($path == 'admin.books.index' || $path == 'admin.books.create' || $path == 'admin.books.edit' || $path == 'admin.books.trashed' || $path == 'admin.books.checked') {{'active'}} @endif">
                         <i class="nav-icon fas fa-book"></i>
                         <p>

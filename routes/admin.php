@@ -66,6 +66,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::controller(AdminStatisticController::class)->group(function () {
             Route::get('/statistics','statistic_view')->name('statistics');
             Route::post('/statistics','statistic_get_data')->name('statistics.data');
+
+            Route::get('/statistics/book','statistic_view_booksSold')->name('statistics.booksSold');
+            Route::get('/statistics/book/data','statistic_view_booksSold_get_data')->name('statistics.booksSold.data');
         });
     });
 
