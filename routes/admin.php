@@ -18,7 +18,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('index');
 
         Route::resource('/books', AdminBookController::class);
-        
+        Route::get('/books-search', [AdminBookController::class, 'search'])->name('books.search');
+
         Route::get('/books-trashed', [AdminBookController::class, 'trashed'])->name('books.trashed');
         Route::get('/books-checked/{book}', [AdminBookController::class, 'checked'])->name('books.checked');
         Route::get('/books-restore/{book}', [AdminBookController::class, 'restore'])->name('books.restore');
@@ -67,8 +68,10 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::get('/statistics','statistic_view')->name('statistics');
             Route::post('/statistics','statistic_get_data')->name('statistics.data');
 
-            Route::get('/statistics/book','statistic_view_booksSold')->name('statistics.booksSold');
-            Route::get('/statistics/book/data','statistic_view_booksSold_get_data')->name('statistics.booksSold.data');
+            Route::get('/statistics/book-sold','statistic_view_booksSold')->name('statistics.booksSold');
+            Route::get('/statistics/book-sold/data','statistic_view_booksSold_get_data')->name('statistics.booksSold.data');
+
+            Route::get('/statistics/book-sold/{book}/show', 'showBookSold')->name('statistics.books.show');
         });
     });
 

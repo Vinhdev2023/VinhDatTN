@@ -81,13 +81,10 @@
 
                                     <hr>
                                     <p><b>Chi tiết</b></p>
-                                    @foreach (session()->get('cart') as $item)
-                                        <div class="d-flex justify-content-between mb-1">
-                                          <span>{{ $item->title }}</span>
-                                          <span>{{ number_format($item->quantity,0,',','.') }}</span>
-                                          <span>{{ number_format($item->quantity*$item->price,0,',','.') }}đ</span>
-                                        </div>
-                                    @endforeach
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Tổng</span>
+                                        <span>{{ number_format(session()->get('cart_total'),0,',','.') }}đ</span>
+                                    </div>
                                     <hr>
                                     <div class="d-flex justify-content-between">
                                         <span class="text-dark"><strong>Tổng</strong></span>
@@ -95,6 +92,76 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="iq-card">
+                                <div class="iq-card-header d-flex justify-content-between iq-border-bottom mb-0">
+                                    <div class="iq-header-title">
+                                        <h4 class="card-title">Giỏ hàng</h4>
+                                    </div>
+                                </div>
+                                <div class="iq-card-body">
+                                    <ul class="list-inline p-0 m-0">
+                                        @if (session()->get('cart'))
+                                            @foreach (session()->get('cart') as $item)
+                                                <li class="checkout-product">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-sm-2">
+                                                            <span class="checkout-product-img">
+                                                                <a href="javascript:void();">
+                                                                    <img class="img-fluid rounded" src="/images/{{$item->image}}" alt="">
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="checkout-product-details">
+                                                                <h5>{{ $item->title }}</h5>
+                                                                <p class="text-success">Còn {{ $item->quantityInStock }}</p>
+                                                                <div class="price">
+                                                                    <h5>{{ number_format($item->price,0,',','.') }} ₫</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <div class="col-sm-10">
+                                                                    <div class="row align-items-center mt-2">
+                                                                        <div class="col-sm-7 col-md-6 text-dark">
+                                                                           {{$item->quantity}}
+                                                                        </div>
+                                                                        <div class="col-sm-5 col-md-6">
+                                                                            <span class="product-price text-dark">{{number_format($item->price * $item->quantity,0,',','.')}} ₫</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <a href="/remove-in-cart/{{$item->id}}" onclick="return confirm('Bạn có muốn bỏ cuốn sách này khỏi giỏ hay không')" class="text-dark font-size-20">
+                                                                        <i class="ri-delete-bin-7-fill"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            @if ($errors->any())
+                                <x-admin.alert-danger>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </x-admin.alert-danger>
+                            @endif
+                            @if (session('fail'))
+                                <x-admin.alert-danger>
+                                    {{ session('fail') }}
+                                </x-admin.alert-danger>
+                            @endif
                         </div>
                      </div>
                   </div>

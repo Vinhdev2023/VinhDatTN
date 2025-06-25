@@ -32,12 +32,15 @@ class SearchController extends Controller
         $arrayWord[] = "title LIKE '%".$stringCut."%'";
         $arrayCharset[] = $stringCut;
 
-        $sqlLike = 'books.quantity > 0 AND ';
-        foreach ($arrayWord as $key => $value) {
-            if ($key == sizeof($arrayWord)-1) {
-                $sqlLike = $sqlLike.$value;
-            }else {
-                $sqlLike = $sqlLike.$value.' AND ';
+        $sqlLike = 'books.quantity > 0';
+        if ($request->search != null) {
+            $sqlLike .= ' AND ';
+            foreach ($arrayWord as $key => $value) {
+                if ($key == sizeof($arrayWord)-1) {
+                    $sqlLike = $sqlLike.$value;
+                }else {
+                    $sqlLike = $sqlLike.$value.' AND ';
+                }
             }
         }
 
@@ -82,11 +85,11 @@ class SearchController extends Controller
         $books = Book::with('orderDetail.order')
                     ->leftJoin('order_details', 'books.id', '=', 'order_details.book_id')
                     ->leftJoin('orders', 'order_details.order_id', '=', 'orders.id')
-                    ->join('classifyings','books.id','=','classifyings.book_id')
-                    ->join('categories','classifyings.category_id','=','categories.id')
-                    ->join('writings', 'books.id', '=', 'writings.book_id')
-                    ->join('authors', 'writings.author_id', '=', 'authors.id')
-                    ->join('publishers', 'books.publisher_id', '=', 'publishers.id')
+                    ->leftJoin('classifyings','books.id','=','classifyings.book_id')
+                    ->leftJoin('categories','classifyings.category_id','=','categories.id')
+                    ->leftJoin('writings', 'books.id', '=', 'writings.book_id')
+                    ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+                    ->leftJoin('publishers', 'books.publisher_id', '=', 'publishers.id')
                     ->select(
                         'books.*',
                         DB::raw('COALESCE(books.quantity - SUM(CASE WHEN orders.status IN ("PENDING", "CONFIRMED") THEN order_details.quantity ELSE 0 END), 0) as real_quantity')
@@ -94,17 +97,17 @@ class SearchController extends Controller
                     ->whereRaw($sqlLike)
                     ->groupBy('books.id', 'books.isbn_code', 'books.title', 'books.image', 'books.quantity', 'books.price', 'books.description', 'books.publisher_id', 'books.deleted_at', 'books.updated_at', 'books.created_at')
                     ->orderByDesc('books.created_at')
-                    ->paginate(12)->appends(['search' => $search, 'price' => $fillter_price, 'fillter_category' => $fillter_category]);
+                    ->paginate(12)->appends(['price' => $fillter_price, 'category' => $fillter_category, 'publisher' => $fillter_publisher, 'author' => $fillter_author, 'search' => $search]);
         $books->load('author');
 
         $flag = Book::with('orderDetail.order')
                     ->leftJoin('order_details', 'books.id', '=', 'order_details.book_id')
                     ->leftJoin('orders', 'order_details.order_id', '=', 'orders.id')
-                    ->join('classifyings','books.id','=','classifyings.book_id')
-                    ->join('categories','classifyings.category_id','=','categories.id')
-                    ->join('writings', 'books.id', '=', 'writings.book_id')
-                    ->join('authors', 'writings.author_id', '=', 'authors.id')
-                    ->join('publishers', 'books.publisher_id', '=', 'publishers.id')
+                    ->leftJoin('classifyings','books.id','=','classifyings.book_id')
+                    ->leftJoin('categories','classifyings.category_id','=','categories.id')
+                    ->leftJoin('writings', 'books.id', '=', 'writings.book_id')
+                    ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+                    ->leftJoin('publishers', 'books.publisher_id', '=', 'publishers.id')
                     ->select(
                         'books.*',
                         DB::raw('COALESCE(books.quantity - SUM(CASE WHEN orders.status IN ("PENDING", "CONFIRMED") THEN order_details.quantity ELSE 0 END), 0) as real_quantity')

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\EnumsOrderStatus;
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,6 +21,7 @@ class AdminStatisticController extends Controller
         if ($EndDate != null && $StartDate != null) {
             $dateInput = $StartDate.' - '.$EndDate;
         } else {
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
             $dateInput = date('d-m-Y').' - '.date('d-m-Y');
         }
 
@@ -78,7 +82,13 @@ class AdminStatisticController extends Controller
 
         $books = $this->books_sold($StartDate, $EndDate);
 
-        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput'));
+        $categories = Category::all();
+
+        $authors = Author::all();
+
+        $publishers = Publisher::all();
+
+        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput', 'publishers', 'authors', 'categories'));
     }
 
     public function statistic_view_booksSold_get_data(Request $request) {
@@ -90,11 +100,127 @@ class AdminStatisticController extends Controller
         $StartDate = substr($dateInput, 0 , strpos($dateInput,' - '));
         $StartDate = date_format(date_create($StartDate), 'Y-m-d');
 
-        $books = $this->books_sold_have_date($StartDate, $EndDate, $dateInput);
+        $stringCut = $request->search;
+        $search = $request->search;
 
-        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput'));
+        $stringCut = trim($stringCut);
+        while (strpos($stringCut,' ')) {
+            $arrayWord[] = "title LIKE '%".substr($stringCut, 0, strpos($stringCut, ' '))."%'";
+            $arrayCharset[] = substr($stringCut, 0, strpos($stringCut, ' '));
+            $stringCut = substr($stringCut, strpos($stringCut, ' ')+1, strlen($stringCut));
+            $stringCut = ltrim($stringCut);
+        }
+        $arrayWord[] = "title LIKE '%".$stringCut."%'";
+        $arrayCharset[] = $stringCut;
+
+        $sqlLike = 'b.created_at is not null';
+        if ($request->search != null) {
+            $sqlLike .= ' AND ';
+            foreach ($arrayWord as $key => $value) {
+                if ($key == sizeof($arrayWord)-1) {
+                    $sqlLike = $sqlLike.$value;
+                }else {
+                    $sqlLike = $sqlLike.$value.' AND ';
+                }
+            }
+        }
+
+        if ($request->price != null ) {
+            list($min, $max) = explode('-', $request->price);
+
+            $sqlLike .= " AND books.price >= ".$min;
+
+            if ($max !== "") {
+                $sqlLike .= " AND books.price <= ".$max;
+            }
+
+            $fillter_price = $request->price;
+        } else {
+            $fillter_price = null;
+        }
+
+        if ($request->quantity != null ) {
+            list($min, $max) = explode('-', $request->quantity);
+
+            $sqlLike .= " AND books.quantity >= ".$min;
+
+            if ($max !== "") {
+                $sqlLike .= " AND books.quantity <= ".$max;
+            }
+
+            $fillter_quantity = $request->quantity;
+        } else {
+            $fillter_quantity = null;
+        }
+
+        if ($request->category != null) {
+            $sqlLike .= " AND categories.id = ".$request->category;
+
+            $fillter_category = $request->category;
+        } else {
+            $fillter_category = null;
+        }
+
+        if ($request->publisher != null) {
+            $sqlLike .= " AND publishers.id = ".$request->publisher;
+
+            $fillter_publisher = $request->publisher;
+        } else {
+            $fillter_publisher = null;
+        }
+
+        if ($request->author != null) {
+            $sqlLike .= " AND authors.id = ".$request->author;
+
+            $fillter_author = $request->author;
+        } else {
+            $fillter_author = null;
+        }
+
+        $books = DB::table('books as b')
+                        ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
+                        ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
+                        ->leftJoin('classifyings','b.id','=','classifyings.book_id')
+                        ->leftJoin('categories','classifyings.category_id','=','categories.id')
+                        ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
+                        ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+                        ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
+                        ->select(
+                            'b.id as book_id',
+                            'b.title as book_title',
+                            'b.image as book_image',
+                            'b.quantity as book_quantity_in_stock',
+                            'b.deleted_at as book_deleted_at',
+                            DB::raw("
+                                COALESCE(
+                                    SUM(
+                                        CASE 
+                                            WHEN o.status = 'COMPLETED' 
+                                            AND DATE(o.created_at) BETWEEN '$StartDate' AND '$EndDate'
+                                            THEN od.quantity 
+                                            ELSE 0 
+                                        END
+                                    ), 0
+                                ) as total_sold
+                            ")
+                        )
+                        ->whereRaw($sqlLike)
+                        ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
+                        ->orderByDesc('total_sold')->orderBy('b.created_at')
+                        ->paginate(5)->appends(['FromDateToDate' => $dateInput, 'price' => $fillter_price, 'category' => $fillter_category, 'publisher' => $fillter_publisher, 'author' => $fillter_author, 'quantity' => $fillter_quantity, 'search' => $search]);
+
+        $categories = Category::all();
+
+        $authors = Author::all();
+
+        $publishers = Publisher::all();
+
+        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput', 'search', 'categories', 'authors', 'publishers', 'fillter_price', 'fillter_category', 'fillter_publisher', 'fillter_author', 'fillter_quantity'));
     }
 
+    public function showBookSold(Book $book) {
+
+    }
     
     private function revenue_statistic($StartDate, $EndDate){
         $a = DB::table('orders')
@@ -164,6 +290,11 @@ class AdminStatisticController extends Controller
         $statistics = DB::table('books as b')
                         ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
                         ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
+                        ->leftJoin('classifyings','b.id','=','classifyings.book_id')
+                        ->leftJoin('categories','classifyings.category_id','=','categories.id')
+                        ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
+                        ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+                        ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
                         ->select(
                             'b.id as book_id',
                             'b.title as book_title',
@@ -194,6 +325,11 @@ class AdminStatisticController extends Controller
         $statistics = DB::table('books as b')
                         ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
                         ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
+                        ->leftJoin('classifyings','books.id','=','classifyings.book_id')
+                        ->leftJoin('categories','classifyings.category_id','=','categories.id')
+                        ->leftJoin('writings', 'books.id', '=', 'writings.book_id')
+                        ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+                        ->leftJoin('publishers', 'books.publisher_id', '=', 'publishers.id')
                         ->select(
                             'b.id as book_id',
                             'b.title as book_title',

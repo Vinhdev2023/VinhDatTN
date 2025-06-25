@@ -48,12 +48,12 @@
                                 @csrf
                                   <div class="form-group">
                                       <label for="exampleInputEmail1">Email address</label>
-                                      <input type="email" name="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Enter email" value="{{ old('email') }}">
+                                      <input type="email" name="email" class="form-control mb-0 text-dark bg-white" id="exampleInputEmail1" placeholder="Enter email" value="{{ old('email') }}">
                                   </div>
                                   <div class="form-group">
                                       <label for="exampleInputPassword1">Password</label>
                                       {{-- <a href="#" class="float-right text-dark">Forgot password?</a> --}}
-                                      <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password">
+                                      <input type="password" name="password" class="form-control mb-0 text-dark" id="exampleInputPassword1" placeholder="Password">
                                   </div>
                                   <div class="sign-info text-center">
                                       <button type="submit" class="btn btn-white d-block w-100 mb-2">Sign in</button>

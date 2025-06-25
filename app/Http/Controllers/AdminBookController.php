@@ -22,7 +22,14 @@ class AdminBookController extends Controller
         $path = 'admin.books.index';
 
         $books = Book::orderBy('updated_at', 'desc')->paginate(5);
-        return view('admin.book.books', compact('path', 'books'));
+
+        $categories = Category::all();
+
+        $authors = Author::all();
+
+        $publishers = Publisher::all();
+
+        return view('admin.book.books', compact('path', 'books', 'publishers', 'authors', 'categories'));
     }
 
     /**
@@ -254,5 +261,113 @@ class AdminBookController extends Controller
         }
 
         return redirect()->route('admin.books.trashed')->with('fail', 'Book can\'t be Deleted');
+    }
+
+    public function search(Request $request) {
+        $path = 'admin.books.index';
+        
+        $request->validate([
+            'search' => 'max:30'
+        ]);
+
+        // dd($request->all());
+
+        $stringCut = $request->search;
+        $search = $request->search;
+
+        $stringCut = trim($stringCut);
+        while (strpos($stringCut,' ')) {
+            $arrayWord[] = "title LIKE '%".substr($stringCut, 0, strpos($stringCut, ' '))."%'";
+            $arrayCharset[] = substr($stringCut, 0, strpos($stringCut, ' '));
+            $stringCut = substr($stringCut, strpos($stringCut, ' ')+1, strlen($stringCut));
+            $stringCut = ltrim($stringCut);
+        }
+        $arrayWord[] = "title LIKE '%".$stringCut."%'";
+        $arrayCharset[] = $stringCut;
+
+        $sqlLike = 'b.created_at is not null';
+        if ($request->search != null) {
+            $sqlLike .= ' AND ';
+            foreach ($arrayWord as $key => $value) {
+                if ($key == sizeof($arrayWord)-1) {
+                    $sqlLike = $sqlLike.$value;
+                }else {
+                    $sqlLike = $sqlLike.$value.' AND ';
+                }
+            }
+        }
+
+        if ($request->price != null ) {
+            list($min, $max) = explode('-', $request->price);
+
+            $sqlLike .= " AND books.price >= ".$min;
+
+            if ($max !== "") {
+                $sqlLike .= " AND books.price <= ".$max;
+            }
+
+            $fillter_price = $request->price;
+        } else {
+            $fillter_price = null;
+        }
+
+        if ($request->quantity != null ) {
+            list($min, $max) = explode('-', $request->quantity);
+
+            $sqlLike .= " AND books.quantity >= ".$min;
+
+            if ($max !== "") {
+                $sqlLike .= " AND books.quantity <= ".$max;
+            }
+
+            $fillter_quantity = $request->quantity;
+        } else {
+            $fillter_quantity = null;
+        }
+
+        if ($request->category != null) {
+            $sqlLike .= " AND categories.id = ".$request->category;
+
+            $fillter_category = $request->category;
+        } else {
+            $fillter_category = null;
+        }
+
+        if ($request->publisher != null) {
+            $sqlLike .= " AND publishers.id = ".$request->publisher;
+
+            $fillter_publisher = $request->publisher;
+        } else {
+            $fillter_publisher = null;
+        }
+
+        if ($request->author != null) {
+            $sqlLike .= " AND authors.id = ".$request->author;
+
+            $fillter_author = $request->author;
+        } else {
+            $fillter_author = null;
+        }
+
+        $books = Book::leftJoin('classifyings','books.id','=','classifyings.book_id')
+                    ->leftJoin('categories','classifyings.category_id','=','categories.id')
+                    ->leftJoin('writings', 'books.id', '=', 'writings.book_id')
+                    ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+                    ->leftJoin('publishers', 'books.publisher_id', '=', 'publishers.id')
+                    ->select(
+                        'books.*'
+                    )
+                    ->WhereRaw($sqlLike)
+                    ->groupBy('books.id', 'books.isbn_code', 'books.title', 'books.image', 'books.quantity', 'books.price', 'books.description', 'books.publisher_id', 'books.deleted_at', 'books.updated_at', 'books.created_at')
+                    ->orderByDesc('books.created_at')
+                    ->paginate(5)->appends(['price' => $fillter_price, 'category' => $fillter_category, 'publisher' => $fillter_publisher, 'author' => $fillter_author, 'quantity' => $fillter_quantity, 'search' => $search]);
+
+        $categories = Category::all();
+
+        $authors = Author::all();
+
+        $publishers = Publisher::all();
+
+        return view('admin.book.books', compact('path', 'books', 'search', 'categories', 'authors', 'publishers', 'fillter_price', 'fillter_category', 'fillter_publisher', 'fillter_author', 'fillter_quantity'));
     }
 }

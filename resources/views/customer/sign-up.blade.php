@@ -44,23 +44,23 @@
                           <div class="sign-in-from bg-primary rounded">
                               <h3 class="mb-0 text-center text-white">Sign Up</h3>
                               <p class="text-center text-white">Enter your email address and password to access admin panel.</p>
-                              <form class="mt-4 form-text" action="" method="post">
+                              <form class="mt-4 form-text" action="{{ route('customer.sign_up') }}" method="post">
                                 @csrf
                                   <div class="form-group">
-                                      <label for="exampleInputEmail1">Your Full Name</label>
-                                      <input type="text" name="name" class="form-control mb-0" id="exampleInputEmail1" placeholder="Your Full Name" required>
+                                      <label for="exampleInputEmail1">Your Account's Name</label>
+                                      <input type="text" name="name" class="form-control mb-0 text-dark" id="exampleInputEmail1" placeholder="Your Full Name" required>
                                   </div>
                                   <div class="form-group">
                                       <label for="exampleInputEmail2">Email address</label>
-                                      <input type="email" name="email" class="form-control mb-0" id="exampleInputEmail2" placeholder="Enter email" required>
+                                      <input type="email" name="email" class="form-control mb-0 text-dark" id="exampleInputEmail2" placeholder="Enter email" required>
                                   </div>
                                   <div class="form-group">
                                       <label for="exampleInputPassword1">Password</label>
-                                      <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
+                                      <input type="password" name="password" class="form-control mb-0 text-dark" id="exampleInputPassword1" placeholder="Password" required>
                                   </div>
                                   <div class="form-group">
                                       <label for="exampleInputPassword1">Conform Password</label>
-                                      <input type="password" name="password_confirmation" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
+                                      <input type="password" name="password_confirmation" class="form-control mb-0 text-dark" id="exampleInputPassword1" placeholder="Password" required>
                                   </div>
                                   <div class="d-inline-block w-100">
                                       <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">

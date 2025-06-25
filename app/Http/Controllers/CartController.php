@@ -19,7 +19,7 @@ class CartController extends Controller
                 }])
                 ->get();
 
-            foreach ($cart as $value) {
+            foreach ($cart as $key => $value) {
                 $book = Book::findOrFail($value->id);
 
                 // Tính tổng số lượng sách đã đặt từ tất cả đơn hàng liên quan
@@ -29,10 +29,29 @@ class CartController extends Controller
                     ->sum('total_quantity');
 
                 $value->quantityInStock = $book->quantity - $bookTaken;
+
+                if ($value->quantityInStock <= 0) {
+                    unset($cart[$key]);
+                }
+            }
+
+            if ($cart == null || $cart == []){
+                session()->forget('cart');
+                session()->forget('cart_total');
+                session()->save();
+                
+                return redirect()->back();
             }
 
             // Cập nhật lại giỏ hàng
             session()->put('cart', $cart);
+
+            $total = 0;
+            $cart = session()->get('cart');
+            foreach ($cart as $obj) {
+                $total += $obj->price * $obj->quantity;
+            }
+            session()->put('cart_total', $total);
             
             return view('customer.cart-page');
         }

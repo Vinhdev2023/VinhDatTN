@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 23, 2025 lúc 10:14 PM
+-- Thời gian đã tạo: Th6 24, 2025 lúc 08:59 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -143,12 +143,12 @@ INSERT INTO `books` (`id`, `isbn_code`, `title`, `image`, `quantity`, `price`, `
 (22, '9780062315007', 'Phù Thủy Thành Phố Portobello', 'tải xuống (23).jpg', 18, 110000, 'Hành trình tìm kiếm ý nghĩa cuộc sống', 16, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (23, '9784344401034', '1Q84', 'tải xuống (24).jpg', 20, 250000, 'Thế giới song song với hai mặt trăng', 17, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (24, '9780439064873', 'Harry Potter và Phòng Chứa Bí Mật', 'tải xuống (25).jpg', 22, 185000, 'Cuộc phiêu lưu năm thứ hai tại Hogwarts', 18, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(25, '9780140440393', 'Nghệ Thuật Chiến Tranh', 'tải xuống (26).jpg', 15, 80000, 'Chiến lược quân sự của Tôn Tử', 19, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
+(25, '9780140440393', 'Nghệ Thuật Chiến Tranh', 'tải xuống (26).jpg', 15, 80000, 'Chiến lược quân sự của Tôn Tử', 2, NULL, '2025-06-23 19:18:13', '2025-06-23 13:17:18'),
 (26, '9780452284234', 'Trại Súc Vật', 'tải xuống (27).jpg', 20, 85000, 'Châm biếm về chủ nghĩa toàn trị', 20, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (27, '9780261102217', 'Chúa tể những chiếc nhẫn: Hiệp hội nhẫn thần', 'tải xuống (28).jpg', 25, 195000, 'Hành trình hủy diệt chiếc nhẫn quyền lực', 21, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (28, '9780007113805', 'Án Mạng Ở Mesopotamia', 'tải xuống (29).jpg', 16, 105000, 'Vụ án bí ẩn ở vùng Lưỡng Hà', 14, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (29, '9780684800714', 'Chuông Nguyện Hồn Ai', 'tải xuống (30).jpg', 18, 95000, 'Câu chuyện tình trong nội chiến Tây Ban Nha', 15, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(30, '9780140444759', 'Nhà Thờ Đức Bà Paris', 'tải xuống (31).jpg', 20, 175000, 'Bi kịch tình yêu dưới bóng nhà thờ Đức Bà', 16, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
+(30, '9780140444759', 'Nhà Thờ Đức Bà Paris', 'tải xuống (31).jpg', 20, 175000, 'Bi kịch tình yêu dưới bóng nhà thờ Đức Bà', 2, NULL, '2025-06-23 19:18:13', '2025-06-23 13:18:08'),
 (31, '9780141182630', 'Tender Is the Night', 'tải xuống (32).jpg', 15, 90000, 'Sự suy tàn của một cặp vợ chồng trẻ', 17, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (32, '9780140447934', 'Anna Karenina', 'tải xuống (33).jpg', 22, 210000, 'Bi kịch tình yêu trong xã hội quý tộc Nga', 18, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (33, '9780805210552', 'Lâu Đài', 'tải xuống (34).jpg', 12, 85000, 'Hành trình vô vọng của K. đến lâu đài', 19, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
@@ -298,6 +298,8 @@ CREATE TABLE `classifyings` (
 --
 
 INSERT INTO `classifyings` (`book_id`, `category_id`) VALUES
+(25, 5),
+(30, 2),
 (117, 1),
 (118, 2),
 (119, 3),
@@ -373,7 +375,7 @@ INSERT INTO `customers` (`id`, `name`, `email`, `password`, `full_name`, `addres
 (9, 'Dr. Leo Abbott I', 'adonis59@example.org', '$2y$12$lIgteTsuPcpI7FcLP8N5Bu0onI4FSVRu4/NVVGiIyi2GfJxu92XWG', NULL, NULL, NULL, NULL, '2025-05-19 09:15:24', '2025-05-19 09:15:24'),
 (10, 'Grant Feeney', 'kilback.autumn@example.com', '$2y$12$lIgteTsuPcpI7FcLP8N5Bu0onI4FSVRu4/NVVGiIyi2GfJxu92XWG', NULL, NULL, NULL, NULL, '2025-05-19 09:15:24', '2025-05-19 09:15:24'),
 (11, 'Bánh mỳ thịt', 'vinh@gmail.com', '$2y$12$.2HV8H1IV1rL5NDTnlWP1.F7CXLXd1DA040gWVZECTu.qVFxXl3Xi', NULL, NULL, NULL, NULL, '2025-05-27 23:45:53', '2025-05-27 23:45:53'),
-(12, 'Lego', 'vinh13@gmail.com', '$2y$12$uXAKARXGkkFTFeu6N.uEbOfLfh6xk9v8/tH7.9RrPIqFaa4fDEimS', 'Vinhmoi999', 'HaNoiuhuhu', '01929149942766767', NULL, '2025-06-06 09:42:55', '2025-06-16 08:44:43');
+(12, 'Lego', 'vinh13@gmail.com', '$2y$12$uXAKARXGkkFTFeu6N.uEbOfLfh6xk9v8/tH7.9RrPIqFaa4fDEimS', 'Vinhmoi999', 'HaNoiuhuhu', '01929149942766767', NULL, '2025-06-06 09:42:55', '2025-06-23 13:18:46');
 
 -- --------------------------------------------------------
 
@@ -480,6 +482,13 @@ CREATE TABLE `orders` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`id`, `admin_id_confirmed`, `customer_id`, `customer_name`, `customer_phone`, `ship_to_address`, `total`, `status`, `created_at`, `updated_at`) VALUES
+(11, NULL, 12, 'Vinhmoi999', '01929149942766767', 'HaNoiuhuhu', 175000, 'PENDING', '2025-06-23 13:18:46', '2025-06-23 13:18:46');
+
 -- --------------------------------------------------------
 
 --
@@ -492,6 +501,13 @@ CREATE TABLE `order_details` (
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `order_details`
+--
+
+INSERT INTO `order_details` (`order_id`, `book_id`, `quantity`, `price`) VALUES
+(11, 30, 1, 175000);
 
 -- --------------------------------------------------------
 
@@ -564,7 +580,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('caV13cBVFjWxq9omcyLp38ISEiIm3zT1ckyasHMT', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNVVRRWFiRUZiZTZXcnhwZUUyb2thdjcwRGVYeWlTZlVsbFZwcVVVbyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NTM6ImxvZ2luX2FkbWluc181OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1750709601);
+('5CvGpgiByvxlZdvblmXBqyXZx6TZwezGFB5MSKrq', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZHhwOXc4d2p4RlhvbkU1Y095a0Q5QkJqeFZ2bVBQUHFpblFlSFl2NSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ib29rLXBhZ2UvMiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1750747826),
+('7rhpyx2yjaMWVWQbWLdq5uHTbOtjF2m9N1ZXD2Mq', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoieXBPNlZCZ3R0Z0dreHdqSjRUcUd2bm1iTTdSS3M1V3lxakR0QTY3NyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9vcmRlci1kZXRhaWwvMTEiO31zOjUzOiJsb2dpbl9hZG1pbnNfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NTY6ImxvZ2luX2N1c3RvbWVyc181OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjEyO30=', 1750709953);
 
 -- --------------------------------------------------------
 
@@ -629,10 +646,12 @@ INSERT INTO `writings` (`book_id`, `author_id`) VALUES
 (21, 1),
 (23, 3),
 (24, 4),
+(25, 8),
 (26, 6),
 (27, 7),
 (28, 8),
 (29, 9),
+(30, 12),
 (32, 12),
 (33, 13),
 (34, 14),
@@ -849,13 +868,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `publishers`
 --
 ALTER TABLE `publishers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

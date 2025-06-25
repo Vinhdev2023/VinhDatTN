@@ -2,8 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Book;
+use App\Models\Order;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckCart
@@ -18,6 +21,28 @@ class CheckCart
         if (session()->get('cart') == null && session()->get('cart_total') == null) {
             return redirect('/cart-page');
         }
+
+        $cart = session()->get('cart');
+            $orderPendingorConfirmed = Order::whereIn('status', ['PENDING', 'CONFIRMED'])
+                ->with(['orderDetails' => function ($query) {
+                    $query->select('order_id', 'book_id', DB::raw('SUM(quantity) as total_quantity'))->groupBy('book_id', 'order_id');
+                }])
+                ->get();
+
+            foreach ($cart as $value) {
+                $book = Book::findOrFail($value->id);
+
+                // Tính tổng số lượng sách đã đặt từ tất cả đơn hàng liên quan
+                $bookTaken = $orderPendingorConfirmed->pluck('orderDetails')
+                    ->flatten()
+                    ->where('book_id', $value->id)
+                    ->sum('total_quantity');
+
+                if ($book->quantity - $bookTaken <= 0) {                    
+                    return redirect('/cart-page');
+                }
+            }
+
         return $next($request);
     }
 }

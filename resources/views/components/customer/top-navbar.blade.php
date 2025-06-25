@@ -25,10 +25,11 @@
                 <ul class="navbar-nav ml-auto navbar-list">
                     @if (session()->get('cart'))
                     <li class="nav-item nav-icon dropdown">
-                        <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                        <a href="/cart-page" class="search-toggle iq-waves-effect text-gray rounded">
                             <i class="ri-shopping-cart-2-line"></i>
                             <span class="badge badge-danger count-cart rounded-circle">{{ sizeof(session()->get('cart')) }}</span>
                         </a>
+                        @if (sizeof(session()->get('cart')) <= 5)
                         <div class="iq-sub-dropdown">
                             <div class="iq-card shadow-none m-0">
                                 <div class="iq-card-body p-0 toggle-cart-info">
@@ -60,6 +61,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </li>
                     @endif
                     <li class="line-height pt-3">

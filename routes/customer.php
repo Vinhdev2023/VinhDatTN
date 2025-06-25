@@ -15,8 +15,8 @@ Route::get('/search', [SearchController::class,'search']);
 Route::get('/account-setting',[Customer::class,'account_setting'])->middleware('customerAuth');
 Route::get('/book-page/{book}',[BookViewController::class,'view']);
 
-Route::get('/checkout',[Customer::class,'Checkout'])->middleware(['customerAuth', 'checkCart']);
 Route::get('/buy-now/{book}',[OrderController::class,'buyNow']);
+Route::get('/checkout',[Customer::class,'Checkout'])->middleware(['customerAuth', 'checkCart']);
 Route::post('/add-order',[OrderController::class,'addOrder'])->middleware(['customerAuth', 'checkCart']);
 Route::get('/order-page',[OrderController::class,'order_page'])->middleware('customerAuth');
 Route::get('/order-detail/{order}',[OrderController::class,'order_detail'])->middleware('customerAuth');
