@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create a book</h1>
+                        <h1>Book Detail</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -97,9 +97,9 @@
                                                 Update
                                             </a>
 
-                                            <a href="{{route('admin.books.index')}}" class="btn btn-primary btn-lg btn-flat">
-                                                Other Book
-                                            </a>
+                                            <button onclick="window.history.back()" class="btn btn-primary btn-lg btn-flat">
+                                                Back
+                                            </button>
 
                                             <button type="submit" class="btn btn-danger btn-lg btn-flat" onclick="return confirm('You want to delete?')">
                                                 Delete

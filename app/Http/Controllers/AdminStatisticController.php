@@ -21,7 +21,6 @@ class AdminStatisticController extends Controller
         if ($EndDate != null && $StartDate != null) {
             $dateInput = $StartDate.' - '.$EndDate;
         } else {
-            date_default_timezone_set('Asia/Ho_Chi_Minh');
             $dateInput = date('d-m-Y').' - '.date('d-m-Y');
         }
 
@@ -71,14 +70,8 @@ class AdminStatisticController extends Controller
     public function statistic_view_booksSold() {
         $path = 'admin.statistics.booksSold';
 
-        $EndDate = DB::table('orders')->selectRaw("DATE_FORMAT(MAX(created_at), '%d-%m-%Y') AS max")->first()->max;
-        $StartDate = DB::table('orders')->selectRaw("DATE_FORMAT(MIN(created_at), '%d-%m-%Y') AS min")->first()->min;
-
-        if ($EndDate != null && $StartDate != null) {
-            $dateInput = $StartDate.' - '.$EndDate;
-        } else {
-            $dateInput = date('d-m-Y').' - '.date('d-m-Y');
-        }
+        $EndDate = DB::table('orders')->selectRaw("DATE(MAX(created_at)) AS max")->first()->max;
+        $StartDate = DB::table('orders')->selectRaw("DATE(MIN(created_at)) AS min")->first()->min;
 
         $books = $this->books_sold($StartDate, $EndDate);
 
@@ -87,6 +80,15 @@ class AdminStatisticController extends Controller
         $authors = Author::all();
 
         $publishers = Publisher::all();
+
+        if ($EndDate != null && $StartDate != null) {
+            $StartDate = date_format(date_create($StartDate), 'd-m-Y');
+            $EndDate = date_format(date_create($EndDate), 'd-m-Y');
+
+            $dateInput = $StartDate.' - '.$EndDate;
+        } else {
+            $dateInput = date('d-m-Y').' - '.date('d-m-Y');
+        }
 
         return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput', 'publishers', 'authors', 'categories'));
     }
@@ -219,7 +221,25 @@ class AdminStatisticController extends Controller
     }
 
     public function showBookSold(Book $book) {
+        $path = 'admin.statistics.booksSold';
 
+        $book->load('category');
+        $book->load('author');
+        $book->load('publisher');
+
+        return view('admin.statistics.show-book-detail', compact('path','book'));
+    }
+
+    public function checkBookSold(string $id) {
+        $path = 'admin.books.checked';
+
+        $book = Book::onlyTrashed()->whereKey($id)->first();
+
+        $book->load('category');
+        $book->load('author');
+        $book->load('publisher');
+
+        return view('admin.statistics.check-book-detail', compact('path', 'book'));
     }
     
     private function revenue_statistic($StartDate, $EndDate){
@@ -317,7 +337,7 @@ class AdminStatisticController extends Controller
                         ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
                         ->orderByDesc('total_sold')->orderBy('b.created_at')
                         ->paginate(5);
-        
+
         return $statistics;
     }
 

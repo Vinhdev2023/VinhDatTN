@@ -6,6 +6,7 @@ use App\Http\Middleware\AdminRole;
 use App\Http\Middleware\CheckCart;
 use App\Http\Middleware\CustomerAuth;
 use App\Http\Middleware\CustomerGuest;
+use App\Http\Middleware\RecordPreviousUrl;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -25,6 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'customerGuest' => CustomerGuest::class,
             'checkCart' => CheckCart::class,
         ]);
+        $middleware->append(RecordPreviousUrl::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

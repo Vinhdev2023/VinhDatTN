@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Revenue statistics</h1>
+                        <h1>Books sold statistics</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Revenue statistics</li>
+                            <li class="breadcrumb-item active">Books sold statistics</li>
                         </ol>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                                             <td>{{number_format($book->total_sold, 0, ",", ".")}}</td>
                                             <td>
                                                 @if ($book->book_deleted_at != null)
-                                                    <a href="{{ route('admin.statistics.books.checked', $book->book_id) }}" class="btn btn-primary">check</a>
+                                                    <a href="{{ route('admin.statistics.books.check', $book->book_id) }}" class="btn btn-primary">check</a>
                                                 @else
                                                     <a href="{{ route('admin.statistics.books.show', $book->book_id)}}" class="btn btn-primary">show</a>
                                                     

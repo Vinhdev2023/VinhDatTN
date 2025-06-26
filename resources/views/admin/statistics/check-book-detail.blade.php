@@ -27,11 +27,6 @@
                     {{ session('success') }}
                 </x-admin.alert-success>
             @endif
-            @if (session('fail'))
-                <x-admin.alert-warning>
-                    {{ session('fail') }}
-                </x-admin.alert-warning>
-            @endif
             <div class="row">
                 <div class="col-12">
                     <x-admin.card :cardSolid="true">
@@ -95,21 +90,9 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <form action="{{route('admin.books.forceDestroy', $book->id)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button onclick="window.history.back()" class="btn btn-primary btn-lg btn-flat">
-                                                Back
-                                            </button>
-
-                                            <a href="{{route('admin.books.restore', $book->id)}}" class="btn btn-primary btn-lg btn-flat">
-                                                Restore
-                                            </a>
-
-                                            <button type="submit" class="btn btn-danger btn-lg btn-flat" onclick="return confirm('You want to delete?')">
-                                                Delete
-                                            </button>
-                                        </form>
+                                        <a href="{{route('admin.statistics.booksSold')}}" class="btn btn-primary btn-lg btn-flat">
+                                            Other Books
+                                        </a>
                                     </div>
                                 </div>
                             </div>

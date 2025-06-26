@@ -21,6 +21,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::get('/books-search', [AdminBookController::class, 'search'])->name('books.search');
 
         Route::get('/books-trashed', [AdminBookController::class, 'trashed'])->name('books.trashed');
+        Route::get('/books-trashed/search', [AdminBookController::class, 'trashedSearch'])->name('books.trashed.search');
         Route::get('/books-checked/{book}', [AdminBookController::class, 'checked'])->name('books.checked');
         Route::get('/books-restore/{book}', [AdminBookController::class, 'restore'])->name('books.restore');
         Route::delete('/books-forceDestroy/{book}', [AdminBookController::class, 'forceDestroy'])->name('books.forceDestroy');
@@ -72,6 +73,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::get('/statistics/book-sold/data','statistic_view_booksSold_get_data')->name('statistics.booksSold.data');
 
             Route::get('/statistics/book-sold/{book}/show', 'showBookSold')->name('statistics.books.show');
+            Route::get('/statistics/book-sold/{id}/checked', 'checkBookSold')->name('statistics.books.check');
         });
     });
 

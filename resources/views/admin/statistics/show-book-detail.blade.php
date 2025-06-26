@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create a book</h1>
+                        <h1>Book detail</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -82,7 +82,7 @@
                                         </h2>
                                     </div>
 
-                                    <h4 class="mt-3">Quantity</h4>
+                                    <h4 class="mt-3">Quantity in stock</h4>
                                     <div class="bg-gray py-2 px-3 mt-4">
                                         <h2 class="mb-0">
                                             {{number_format($book->quantity,0, ',', '.')}}
@@ -90,14 +90,9 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <form action="{{route('admin.books.destroy', $book->id)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <a href="{{ route('admin.statistics')}}" class="btn btn-primary btn-lg btn-flat">
-                                                Other Book
-                                            </a>
-                                        </form>
+                                        <a href="{{ route('admin.statistics.booksSold') }}" class="btn btn-primary btn-lg btn-flat">
+                                            Other Book
+                                        </a>
                                     </div>
                                 </div>
                             </div>

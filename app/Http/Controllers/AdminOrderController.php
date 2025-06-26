@@ -14,8 +14,9 @@ class AdminOrderController extends Controller
 
         $orders = Order::orderByRaw('CASE 
                         WHEN status = "PENDING" THEN 1 
-                        WHEN STATUS = "COMPLETED" THEN 2 
-                        ELSE 3 
+                        WHEN STATUS = "CONFIRMED" THEN 2
+                        WHEN STATUS = "COMPLETED" THEN 3
+                        ELSE 4 
                     END, 
                     updated_at DESC')->get();
         $orders->load('customer');
@@ -34,7 +35,11 @@ class AdminOrderController extends Controller
         $order->load('admin');
 
         $order_details = OrderDetail::where('order_id',$order->id)->get();
-        $order_details->load('book');
+        $order_details->load([
+            'book' => function ($query) {
+                $query->withTrashed();
+            }
+        ]);
 
         return view('admin.order.show', compact('order','path','order_details'));
     }
@@ -47,6 +52,16 @@ class AdminOrderController extends Controller
         if ($order->status == 'PENDING') {
             if ($status == 'COMPLETED') {
                 return redirect()->back()->with('fail', "Order can't complete now!");
+            }
+
+            $order->load('orderDetails');
+
+            foreach ($order->orderDetails as $value) {
+                $book = Book::whereKey($value->book_id)->first();
+
+                if ($book->quantity - $value->quantity < 0) {
+                    return redirect()->back()->with('fail', "The book in the order has more than in stock.!");
+                }
             }
 
             $order->update([

@@ -105,7 +105,13 @@
 
                                         <td>{{$obj->book->title}}</td>
                                         <td>{{$obj->book->id}}</td>
-                                        <td><a href="{{ route('admin.books.show',$obj->book->id) }}">Description</a></td>
+                                        <td>
+                                            @if ($obj->book->deleted_at != null)
+                                                <a href="{{ route('admin.books.checked',$obj->book->id) }}">Description</a>
+                                            @else
+                                                <a href="{{ route('admin.books.show',$obj->book->id) }}">Description</a>                                                
+                                            @endif
+                                        </td>
                                         <td>{{$obj->quantity}}</td>
                                         <td>{{number_format($obj->price)}}</td>
                                         <td>{{number_format($obj->price*$obj->quantity)}}</td>
@@ -140,7 +146,7 @@
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
                             <div class="col-12">
-                                @if ($order->status == 'PENDING' && $order->admin_id_confirmed == auth('admins')->user()->id)
+                                @if ($order->status == 'PENDING')
                                     <a href="{{ route('admin.orders.update',['status' => 'CANCELED','order' => $order->id]) }}" onclick="return confirm('You want to cancel this order now?')" type="button" class="btn btn-danger float-right">
                                         Cancel
                                     </a>
