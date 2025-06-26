@@ -26,7 +26,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'customerGuest' => CustomerGuest::class,
             'checkCart' => CheckCart::class,
         ]);
-        $middleware->append(RecordPreviousUrl::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
