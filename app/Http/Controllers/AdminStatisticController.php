@@ -73,7 +73,10 @@ class AdminStatisticController extends Controller
         $EndDate = DB::table('orders')->selectRaw("DATE(MAX(created_at)) AS max")->first()->max;
         $StartDate = DB::table('orders')->selectRaw("DATE(MIN(created_at)) AS min")->first()->min;
 
-        $books = $this->books_sold($StartDate, $EndDate);
+        $books_sold = $this->books_sold($StartDate, $EndDate);
+
+        $books = $books_sold[0];
+        $total = $books_sold[1];
 
         $categories = Category::all();
 
@@ -90,7 +93,7 @@ class AdminStatisticController extends Controller
             $dateInput = date('d-m-Y').' - '.date('d-m-Y');
         }
 
-        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput', 'publishers', 'authors', 'categories'));
+        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput', 'publishers', 'authors', 'categories', 'total'));
     }
 
     public function statistic_view_booksSold_get_data(Request $request) {
@@ -130,10 +133,10 @@ class AdminStatisticController extends Controller
         if ($request->price != null ) {
             list($min, $max) = explode('-', $request->price);
 
-            $sqlLike .= " AND books.price >= ".$min;
+            $sqlLike .= " AND b.price >= ".$min;
 
             if ($max !== "") {
-                $sqlLike .= " AND books.price <= ".$max;
+                $sqlLike .= " AND b.price <= ".$max;
             }
 
             $fillter_price = $request->price;
@@ -144,10 +147,10 @@ class AdminStatisticController extends Controller
         if ($request->quantity != null ) {
             list($min, $max) = explode('-', $request->quantity);
 
-            $sqlLike .= " AND books.quantity >= ".$min;
+            $sqlLike .= " AND b.quantity >= ".$min;
 
             if ($max !== "") {
-                $sqlLike .= " AND books.quantity <= ".$max;
+                $sqlLike .= " AND b.quantity <= ".$max;
             }
 
             $fillter_quantity = $request->quantity;
@@ -179,7 +182,67 @@ class AdminStatisticController extends Controller
             $fillter_author = null;
         }
 
+        $sqlHaving = '';
+        if ($request->quantity_sold != null) {
+            list($min, $max) = explode('-', $request->quantity_sold);
+
+
+            $sqlHaving .= " AND total_sold >= ".$min;
+
+            if ($max !== "") {
+                $sqlHaving .= " AND total_sold <= ".$max;
+            }
+
+            $fillter_quantity_sold = $request->quantity_sold;
+        } else {
+            $fillter_quantity_sold = null;
+        }
+
         $books = DB::table('books as b')
+                    ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
+                    ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
+                    ->leftJoin('classifyings','b.id','=','classifyings.book_id')
+                    ->leftJoin('categories','classifyings.category_id','=','categories.id')
+                    ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
+                    ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+                    ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
+                    ->select(
+                        'b.id as book_id',
+                        'b.title as book_title',
+                        'b.image as book_image',
+                        'b.quantity as book_quantity_in_stock',
+                        'b.deleted_at as book_deleted_at',
+                        DB::raw("
+                            COALESCE(
+                                SUM(
+                                    CASE 
+                                        WHEN o.status = 'COMPLETED' 
+                                        AND DATE(o.created_at) BETWEEN '$StartDate' AND '$EndDate'
+                                        THEN od.quantity 
+                                        ELSE 0 
+                                    END
+                                ), 0
+                            ) as total_sold
+                        ")
+                    )
+                    ->whereRaw($sqlLike)
+                    ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
+                    ->orderByDesc('total_sold')->orderBy('b.created_at')
+                    ->havingRaw('book_id IS NOT NULL '.$sqlHaving)
+                    ->paginate(5)
+                    ->appends([
+                        'FromDateToDate' => $dateInput, 
+                        'price' => $fillter_price, 
+                        'category' => $fillter_category, 
+                        'publisher' => $fillter_publisher, 
+                        'author' => $fillter_author, 
+                        'quantity' => $fillter_quantity, 
+                        'quantity_sold' => $fillter_quantity_sold,
+                        'search' => $search
+                    ]);
+        
+        $total = DB::table(
+                DB::table('books as b')
                         ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
                         ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
                         ->leftJoin('classifyings','b.id','=','classifyings.book_id')
@@ -208,8 +271,9 @@ class AdminStatisticController extends Controller
                         )
                         ->whereRaw($sqlLike)
                         ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
-                        ->orderByDesc('total_sold')->orderBy('b.created_at')
-                        ->paginate(5)->appends(['FromDateToDate' => $dateInput, 'price' => $fillter_price, 'category' => $fillter_category, 'publisher' => $fillter_publisher, 'author' => $fillter_author, 'quantity' => $fillter_quantity, 'search' => $search]);
+                    )
+                    ->selectRaw('SUM(total_sold) as total')
+                    ->first();
 
         $categories = Category::all();
 
@@ -217,7 +281,7 @@ class AdminStatisticController extends Controller
 
         $publishers = Publisher::all();
 
-        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput', 'search', 'categories', 'authors', 'publishers', 'fillter_price', 'fillter_category', 'fillter_publisher', 'fillter_author', 'fillter_quantity'));
+        return view('admin.statistics.books-sold', compact('path', 'books', 'dateInput', 'search', 'categories', 'authors', 'publishers', 'fillter_price', 'fillter_category', 'fillter_publisher', 'fillter_author', 'fillter_quantity', 'fillter_quantity_sold', 'total'));
     }
 
     public function showBookSold(Book $book) {
@@ -338,7 +402,37 @@ class AdminStatisticController extends Controller
                         ->orderByDesc('total_sold')->orderBy('b.created_at')
                         ->paginate(5);
 
-        return $statistics;
+        $total = DB::table(DB::table('books as b')
+                        ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
+                        ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
+                        ->leftJoin('classifyings','b.id','=','classifyings.book_id')
+                        ->leftJoin('categories','classifyings.category_id','=','categories.id')
+                        ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
+                        ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+                        ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
+                        ->select(
+                            'b.id as book_id',
+                            'b.title as book_title',
+                            'b.image as book_image',
+                            'b.quantity as book_quantity_in_stock',
+                            'b.deleted_at as book_deleted_at',
+                            DB::raw("
+                                COALESCE(
+                                    SUM(
+                                        CASE 
+                                            WHEN o.status = 'COMPLETED' 
+                                            AND DATE(o.created_at) BETWEEN '$startDate' AND '$endDate'
+                                            THEN od.quantity 
+                                            ELSE 0 
+                                        END
+                                    ), 0
+                                ) as total_sold
+                            ")
+                        )
+                        ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at'))
+                        ->selectRaw('SUM(total_sold) as total')->first();
+
+        return [$statistics, $total];
     }
 
     private function books_sold_have_date($startDate, $endDate, $dateInput) {

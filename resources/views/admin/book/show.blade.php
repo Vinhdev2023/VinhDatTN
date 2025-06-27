@@ -97,9 +97,9 @@
                                                 Update
                                             </a>
 
-                                            <button onclick="window.history.back()" class="btn btn-primary btn-lg btn-flat">
+                                            <a href="{{ route('admin.books.index') }}" onclick="window.history.back()" class="btn btn-primary btn-lg btn-flat">
                                                 Back
-                                            </button>
+                                            </a>
 
                                             <button type="submit" class="btn btn-danger btn-lg btn-flat" onclick="return confirm('You want to delete?')">
                                                 Delete

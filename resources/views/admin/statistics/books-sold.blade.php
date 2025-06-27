@@ -25,7 +25,7 @@
                 <div class="col">
                     <x-admin.card :class="'card-primary card-outline'">
                         <x-admin.card-header>
-                            <h3 class="card-title">Date picker</h3>
+                            <h3 class="card-title">Date picker and fillter</h3>
                         </x-admin.card-header>
                         <form action="{{ route('admin.statistics.booksSold.data') }}" method="get">
                             <x-admin.card-body>
@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Quantity</label>
+                                                <label>Quantity in stock</label>
                                                 <select class="form-control select2" style="width: 100%;" name="quantity">
                                                     <option selected value="">Không chọn</option>
                                                     <option {{ isset($fillter_quantity) && $fillter_quantity == '0-50' ? 'selected' : '' }} value="0-50">Duới 50</option>
@@ -101,10 +101,21 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Quantity sold</label>
+                                                <select class="form-control select2" style="width: 100%;" name="quantity_sold">
+                                                    <option selected value="">Không chọn</option>
+                                                    <option {{ isset($fillter_quantity_sold) && $fillter_quantity_sold == '0-50' ? 'selected' : '' }} value="0-50">Duới 50</option>
+                                                    <option {{ isset($fillter_quantity_sold) && $fillter_quantity_sold == '50-100' ? 'selected' : '' }} value="50-100">Trên 50 Dưới 100</option>
+                                                    <option {{ isset($fillter_quantity_sold) && $fillter_quantity_sold == '100-' ? 'selected' : '' }} value="100-">Trên 100</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Search</label>
-                                        <input type="text" name="search" class="form-control float-right" id="" value="{{ isset($search) ? $search : null }}">
+                                        <input type="search" name="search" class="form-control float-right" id="" value="{{ isset($search) ? $search : null }}">
                                     </div>
                             </x-admin.card-body>
                             <x-admin.card-footer>
@@ -119,14 +130,8 @@
                     <x-admin.card :class="'card-primary card-outline'">
                         <x-admin.card-header>
                             <h3 class="card-title">
-                                    Thống Kê các cuốn sách bán được và số lượng ở trong kho
-                                </h3>
-
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
+                                Thống Kê các cuốn sách bán được và số lượng ở trong kho
+                            </h3>
                         </x-admin.card-header>
                         <x-admin.card-body>
                             <table id="example2" class="table table-bordered table-hover">
@@ -169,6 +174,9 @@
                             </table>
                         </x-admin.card-body>
                     <x-admin.card-footer>
+                        <h3 class="card-title">
+                            Tổng số lượng sách bán được: {{number_format($total->total,0,',','.')}}
+                        </h3>
                         {{ $books->links('admin.paginate') }}
                     </x-admin.card-footer>
                     </x-admin.card>
@@ -183,9 +191,9 @@
                 $('#example2').DataTable({
                     "paging": false,
                     "lengthChange": false,
-                    "searching": true,
+                    "searching": false,
                     "ordering": false,
-                    "info": true,
+                    "info": false,
                     "autoWidth": false,
                     "responsive": true,
                 });

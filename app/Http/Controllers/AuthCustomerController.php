@@ -41,7 +41,7 @@ class AuthCustomerController extends Controller
         if (Auth::guard('customers')->attempt($validated)) {
             $request->session()->regenerate();
 
-            if (session()->get('cart') != null && session()->get('cart_total')) {
+            if (session()->get('cart') != null && session()->get('cart_total') != null) {
                 return redirect('/cart-page');
             }
 

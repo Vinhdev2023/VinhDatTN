@@ -14,7 +14,7 @@ class SearchController extends Controller
 {
     public function search(Request $request) {
         $request->validate([
-            'search' => 'max:30'
+            'search' => 'max:255'
         ]);
 
         // dd($request->all());

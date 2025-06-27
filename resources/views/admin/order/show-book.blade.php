@@ -8,12 +8,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>book trashed detail</h1>
+                        <h1>Book Detail</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.books.trashed') }}">Books are Trashed</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.orders.index', $order->id) }}">Orders</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.orders.show', $order->id) }}">Back to order</a></li>
                             <li class="breadcrumb-item">{{$book->title}} Detail</li>
                         </ol>
                     </div>
@@ -22,16 +23,6 @@
         </section>
 
         <x-admin.main-content>
-            @if (session('success'))
-                <x-admin.alert-success>
-                    {{ session('success') }}
-                </x-admin.alert-success>
-            @endif
-            @if (session('fail'))
-                <x-admin.alert-warning>
-                    {{ session('fail') }}
-                </x-admin.alert-warning>
-            @endif
             <div class="row">
                 <div class="col-12">
                     <x-admin.card :cardSolid="true">
@@ -95,21 +86,9 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <form action="{{route('admin.books.forceDestroy', $book->id)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a href="{{ route('admin.books.trashed') }}" onclick="window.history.back()" class="btn btn-primary btn-lg btn-flat">
-                                                Back
-                                            </a>
-
-                                            <a href="{{route('admin.books.restore', $book->id)}}" class="btn btn-primary btn-lg btn-flat">
-                                                Restore
-                                            </a>
-
-                                            <button type="submit" class="btn btn-danger btn-lg btn-flat" onclick="return confirm('You want to delete?')">
-                                                Delete
-                                            </button>
-                                        </form>
+                                        <a href="{{ route('admin.orders.show', $order->id) }}" onclick="window.history.back()" class="btn btn-primary btn-lg btn-flat">
+                                            Back
+                                        </a>
                                     </div>
                                 </div>
                             </div>

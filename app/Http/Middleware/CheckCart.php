@@ -23,25 +23,33 @@ class CheckCart
         }
 
         $cart = session()->get('cart');
-            $orderPendingorConfirmed = Order::whereIn('status', ['PENDING', 'CONFIRMED'])
-                ->with(['orderDetails' => function ($query) {
-                    $query->select('order_id', 'book_id', DB::raw('SUM(quantity) as total_quantity'))->groupBy('book_id', 'order_id');
-                }])
-                ->get();
+        $orderPendingorConfirmed = Order::whereIn('status', ['PENDING', 'CONFIRMED'])
+            ->with(['orderDetails' => function ($query) {
+                $query->select('order_id', 'book_id', DB::raw('SUM(quantity) as total_quantity'))->groupBy('book_id', 'order_id');
+            }])
+            ->get();
 
-            foreach ($cart as $value) {
-                $book = Book::findOrFail($value->id);
+        foreach ($cart as $value) {
+            $book = Book::whereKey($value->id)->first();
 
-                // Tính tổng số lượng sách đã đặt từ tất cả đơn hàng liên quan
-                $bookTaken = $orderPendingorConfirmed->pluck('orderDetails')
-                    ->flatten()
-                    ->where('book_id', $value->id)
-                    ->sum('total_quantity');
+            if ($book == null) {
+                session()->forget('cart');
+                session()->forget('cart_total');
+                session()->save();
 
-                if ($book->quantity - $bookTaken <= 0) {                    
-                    return redirect('/cart-page');
-                }
+                return redirect()->back();
             }
+
+            // Tính tổng số lượng sách đã đặt từ tất cả đơn hàng liên quan
+            $bookTaken = $orderPendingorConfirmed->pluck('orderDetails')
+                ->flatten()
+                ->where('book_id', $value->id)
+                ->sum('total_quantity');
+
+            if ($book->quantity - $bookTaken <= 0) {                    
+                return redirect('/cart-page');
+            }
+        }
 
         return $next($request);
     }

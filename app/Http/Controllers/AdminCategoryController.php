@@ -50,7 +50,7 @@ class AdminCategoryController extends Controller
 
         Category::create($validated);
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category is Created');
+        return redirect()->back()->with('success', 'Category is Created');
     }
 
     /**

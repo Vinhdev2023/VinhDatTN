@@ -20,7 +20,15 @@ class CartController extends Controller
                 ->get();
 
             foreach ($cart as $key => $value) {
-                $book = Book::findOrFail($value->id);
+                $book = Book::whereKey($value->id)->first();
+
+                if ($book == null) {
+                    session()->forget('cart');
+                    session()->forget('cart_total');
+                    session()->save();
+
+                    return redirect()->back();
+                }
 
                 // Tính tổng số lượng sách đã đặt từ tất cả đơn hàng liên quan
                 $bookTaken = $orderPendingorConfirmed->pluck('orderDetails')

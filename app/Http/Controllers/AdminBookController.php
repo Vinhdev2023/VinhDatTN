@@ -269,10 +269,8 @@ class AdminBookController extends Controller
         $path = 'admin.books.index';
         
         $request->validate([
-            'search' => 'max:30'
+            'search' => 'max:255'
         ]);
-
-        // dd($request->all());
 
         $stringCut = $request->search;
         $search = $request->search;
@@ -287,7 +285,7 @@ class AdminBookController extends Controller
         $arrayWord[] = "title LIKE '%".$stringCut."%'";
         $arrayCharset[] = $stringCut;
 
-        $sqlLike = 'b.created_at is not null';
+        $sqlLike = 'books.created_at is not null';
         if ($request->search != null) {
             $sqlLike .= ' AND ';
             foreach ($arrayWord as $key => $value) {
@@ -361,8 +359,16 @@ class AdminBookController extends Controller
                     )
                     ->WhereRaw($sqlLike)
                     ->groupBy('books.id', 'books.isbn_code', 'books.title', 'books.image', 'books.quantity', 'books.price', 'books.description', 'books.publisher_id', 'books.deleted_at', 'books.updated_at', 'books.created_at')
-                    ->orderByDesc('books.created_at')
-                    ->paginate(5)->appends(['price' => $fillter_price, 'category' => $fillter_category, 'publisher' => $fillter_publisher, 'author' => $fillter_author, 'quantity' => $fillter_quantity, 'search' => $search]);
+                    ->orderByDesc('books.updated_at')
+                    ->paginate(5)
+                    ->appends([
+                        'price' => $fillter_price, 
+                        'category' => $fillter_category, 
+                        'publisher' => $fillter_publisher, 
+                        'author' => $fillter_author, 
+                        'quantity' => $fillter_quantity, 
+                        'search' => $search
+                    ]);
 
         $categories = Category::all();
 
@@ -377,7 +383,7 @@ class AdminBookController extends Controller
         $path = 'admin.books.trashed';
         
         $request->validate([
-            'search' => 'max:30'
+            'search' => 'max:255'
         ]);
 
         // dd($request->all());

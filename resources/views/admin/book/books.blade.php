@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Search</label>
-                                    <input type="text" name="search" class="form-control float-right" id="" value="{{ isset($search) ? $search : null }}">
+                                    <input type="search" name="search" class="form-control float-right" id="" value="{{ isset($search) ? $search : null }}">
                                 </div>
                             </x-admin.card-body>
                             <x-admin.card-footer>
@@ -169,9 +169,9 @@
                 $('#example2').DataTable({
                     "paging": false,
                     "lengthChange": false,
-                    "searching": true,
+                    "searching": false,
                     "ordering": false,
-                    "info": true,
+                    "info": false,
                     "autoWidth": false,
                     "responsive": true,
                 });

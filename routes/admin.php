@@ -63,6 +63,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             Route::get('/orders/{order}/show','show')->name('orders.show');
             Route::get('/orders/update/{status}/{order}','changeStatus')->name('orders.update');
             Route::get('/orders/filter/{status}','filter')->name('orders.filter');
+            Route::get('/orders/show-book/{book}/in-order/{order}','showBook')->name('orders.showBook');
         });
 
         Route::controller(AdminStatisticController::class)->group(function () {

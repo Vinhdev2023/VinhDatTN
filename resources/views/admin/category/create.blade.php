@@ -53,6 +53,11 @@
                     </ul>
                 </x-admin.alert-danger>
             @endif
+            @if (session('success'))
+                <x-admin.alert-success>
+                    {{ session('success') }}
+                </x-admin.alert-success>
+            @endif
         </x-admin.main-content>
     </div>
     <x-admin.footer></x-admin.footer>

@@ -107,4 +107,16 @@ class AdminOrderController extends Controller
 
         return view('admin.order.index', compact('path','orders'));
     }
+
+    public function showBook(string $book, Order $order) {
+        $path = 'admin.orders.filter';
+
+        $book = Book::withTrashed()->whereKey($book)->first();
+
+        $book->load('category');
+        $book->load('author');
+        $book->load('publisher');
+
+        return view('admin.order.show-book', compact('path', 'book', 'order'));
+    }
 }

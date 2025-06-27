@@ -106,11 +106,7 @@
                                         <td>{{$obj->book->title}}</td>
                                         <td>{{$obj->book->id}}</td>
                                         <td>
-                                            @if ($obj->book->deleted_at != null)
-                                                <a href="{{ route('admin.books.checked',$obj->book->id) }}">Description</a>
-                                            @else
-                                                <a href="{{ route('admin.books.show',$obj->book->id) }}">Description</a>                                                
-                                            @endif
+                                            <a href="{{ route('admin.orders.showBook', ['book' => $obj->book->id, 'order' => $order->id]) }}">Description</a>  
                                         </td>
                                         <td>{{$obj->quantity}}</td>
                                         <td>{{number_format($obj->price)}}</td>
