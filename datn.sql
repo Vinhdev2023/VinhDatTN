@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 24, 2025 lúc 08:59 AM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Thời gian đã tạo: Th6 27, 2025 lúc 06:30 PM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `datn`
+-- Cơ sở dữ liệu: `vinh_moi`
 --
 
 -- --------------------------------------------------------
@@ -27,22 +27,25 @@ SET time_zone = "+00:00";
 -- Cấu trúc bảng cho bảng `admins`
 --
 
-CREATE TABLE `admins` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `admins` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('admin','employee') NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `admins_name_unique` (`name`),
+  UNIQUE KEY `admins_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `email`, `password`, `role`, `deleted_at`, `created_at`, `updated_at`) VALUES
+REPLACE INTO `admins` (`id`, `name`, `email`, `password`, `role`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 'vinh', 'vinh@gmail.com', '$2y$12$pyjBHTDrXkiakiQohD99w.VED5CSZh0vK7.Jl3nHCtyUIdETUj5HS', 'admin', NULL, '2025-05-19 09:15:24', '2025-05-19 09:15:24'),
 (2, 'Mrs. Johanna Runte DDS', 'sanford.stanford@example.net', '$2y$12$pyjBHTDrXkiakiQohD99w.VED5CSZh0vK7.Jl3nHCtyUIdETUj5HS', 'employee', NULL, '2025-05-19 09:15:24', '2025-06-06 09:57:11'),
 (3, 'Rae Parker', 'zpacocha@example.com', '$2y$12$pyjBHTDrXkiakiQohD99w.VED5CSZh0vK7.Jl3nHCtyUIdETUj5HS', 'admin', NULL, '2025-05-19 09:15:24', '2025-05-19 09:15:24'),
@@ -61,18 +64,20 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `role`, `deleted_at`, `
 -- Cấu trúc bảng cho bảng `authors`
 --
 
-CREATE TABLE `authors` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `authors` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `authors_name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `authors`
 --
 
-INSERT INTO `authors` (`id`, `name`, `created_at`, `updated_at`) VALUES
+REPLACE INTO `authors` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'Nguyễn Nhật Ánh', '2025-06-23 19:09:33', '2025-06-23 19:09:33'),
 (2, 'Paulo Coelho', '2025-06-23 19:09:33', '2025-06-23 19:09:33'),
 (3, 'Haruki Murakami', '2025-06-23 19:09:33', '2025-06-23 19:09:33'),
@@ -92,7 +97,9 @@ INSERT INTO `authors` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (17, 'Yuval Noah Harari', '2025-06-23 19:09:33', '2025-06-23 19:09:33'),
 (18, 'Malcolm Gladwell', '2025-06-23 19:09:33', '2025-06-23 19:09:33'),
 (19, 'Adam Grant', '2025-06-23 19:09:33', '2025-06-23 19:09:33'),
-(20, 'Brené Brown', '2025-06-23 19:09:33', '2025-06-23 19:09:33');
+(20, 'Brené Brown', '2025-06-23 19:09:33', '2025-06-23 19:09:33'),
+(21, 'Linda Kaplan Thaler', '2025-06-27 12:59:59', '2025-06-27 12:59:59'),
+(22, 'Robin Koval', '2025-06-27 13:00:21', '2025-06-27 13:00:21');
 
 -- --------------------------------------------------------
 
@@ -100,8 +107,8 @@ INSERT INTO `authors` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Cấu trúc bảng cho bảng `books`
 --
 
-CREATE TABLE `books` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `books` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `isbn_code` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
@@ -111,25 +118,29 @@ CREATE TABLE `books` (
   `publisher_id` bigint(20) UNSIGNED NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `books_isbn_code_unique` (`isbn_code`),
+  UNIQUE KEY `books_title_unique` (`title`),
+  KEY `books_publisher_id_foreign` (`publisher_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `books`
 --
 
-INSERT INTO `books` (`id`, `isbn_code`, `title`, `image`, `quantity`, `price`, `description`, `publisher_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, '1186041111111', 'Cho Tôi Xin Một Vé Đi Tuổi Thơ', 'shopping (3).webp', 20, 80000, 'Câu chuyện về tuổi thơ trong trẻo, hồn nhiên', 15, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(2, '1280061122415', 'O Alquimista', 'tải xuống (5).jpg', 15, 120000, 'Hành trình đi tìm kho báu và khám phá bản thân', 16, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(3, '1380099448792', 'Rừng Na Uy', 'tải xuống (6).jpg', 18, 150000, 'Câu chuyện về tình yêu, mất mát và ký ức', 17, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(4, '1480747532743', 'Harry Potter và Hòn đá Phù thủy', 'tải xuống (7).jpg', 25, 180000, 'Câu chuyện về cậu bé phù thủy Harry Potter', 18, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(5, '9781590302255', 'Binh Pháp Tôn Tử', 'tải xuống (8).jpg', 12, 75000, 'Tác phẩm kinh điển về nghệ thuật chiến tranh', 19, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(6, '9780451524935', '1984', 'tải xuống (1).png', 20, 90000, 'Tác phẩm kinh điển về xã hội toàn trị', 20, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
+REPLACE INTO `books` (`id`, `isbn_code`, `title`, `image`, `quantity`, `price`, `description`, `publisher_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, '1186041111111', 'Cho Tôi Xin Một Vé Đi Tuổi Thơ', 'shopping (3).webp', 100, 80000, 'Câu chuyện về tuổi thơ trong trẻo, hồn nhiên', 2, NULL, '2025-06-23 19:18:13', '2025-06-26 17:18:34'),
+(2, '1280061122415', 'O Alquimista', 'tải xuống (5).jpg', 100, 120000, 'Hành trình đi tìm kho báu và khám phá bản thân', 2, NULL, '2025-06-23 19:18:13', '2025-06-26 17:14:37'),
+(3, '1380099448792', 'Rừng Na Uy', 'tải xuống (6).jpg', 100, 150000, 'Câu chuyện về tình yêu, mất mát và ký ức', 2, NULL, '2025-06-23 19:18:13', '2025-06-27 11:30:48'),
+(4, '1480747532743', 'Harry Potter và Hòn đá Phù thủy', 'tải xuống (7).jpg', 100, 180000, 'Câu chuyện về cậu bé phù thủy Harry Potter', 2, NULL, '2025-06-23 19:18:13', '2025-06-26 17:12:21'),
+(5, '9781590302255', 'Binh Pháp Tôn Tử', 'tải xuống (8).jpg', 100, 75000, 'Tác phẩm kinh điển về nghệ thuật chiến tranh', 2, NULL, '2025-06-23 19:18:13', '2025-06-26 17:11:40'),
+(6, '9780451524935', '1984', 'tải xuống (1).png', 100, 90000, 'Tác phẩm kinh điển về xã hội toàn trị', 2, NULL, '2025-06-23 19:18:13', '2025-06-26 18:12:39'),
 (7, '9780547928227', 'The Hobbit', 'tải xuống (9).jpg', 22, 160000, 'Hành trình của Bilbo Baggins', 21, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (8, '9780007113804', 'Án Mạng Trên Chuyến Tàu Tốc Hành Phương Đông', 'tải xuống (10).jpg', 18, 110000, 'Phá án trên chuyến tàu tốc hành', 14, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (9, '9780684801469', 'Ông Già Và Biển Cả', 'tải xuống (11).jpg', 15, 85000, 'Câu chuyện về lão ngư đánh cá với con cá kiếm', 15, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (10, '9780140444308', 'Những Người Khốn Khổ', 'tải xuống (12).jpg', 30, 200000, 'Bộ tiểu thuyết về cuộc đời Jean Valjean', 16, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(11, '9780743273565', 'Đại Gia Gatsby', 'tải xuống (13).jpg', 16, 95000, 'Bi kịch của giấc mơ Mỹ thời Jazz', 17, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
+(11, '9780743273565', 'Đại Gia Gatsby', 'tải xuống (13).jpg', 100, 95000, 'Bi kịch của giấc mơ Mỹ thời Jazz', 2, NULL, '2025-06-23 19:18:13', '2025-06-26 17:41:23'),
 (12, '9780140447931', 'Chiến Tranh và Hòa Bình', 'tải xuống (14).jpg', 14, 220000, 'Sử thi về nước Nga thời Napoleon', 18, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (13, '9780805242010', 'Hóa Thân', 'tải xuống (15).jpg', 10, 70000, 'Câu chuyện về Gregor Samsa thức dậy thành côn trùng', 19, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (14, '1480141439518', 'Kiêu Hãnh và Định Kiến', 'tải xuống (16).jpg', 25, 85000, 'Tình yêu và định kiến xã hội thế kỷ 19', 20, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
@@ -141,14 +152,14 @@ INSERT INTO `books` (`id`, `isbn_code`, `title`, `image`, `quantity`, `price`, `
 (20, '9781592408410', 'Can Đảm: Sức Mạnh Của Sự Tổn Thương', 'tải xuống (21).jpg', 20, 115000, 'Khám phá sức mạnh của sự tổn thương', 18, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (21, '9786045697043', 'Mắt Biếc', 'tải xuống (22).jpg', 25, 90000, 'Chuyện tình cảm động tuổi học trò', 15, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (22, '9780062315007', 'Phù Thủy Thành Phố Portobello', 'tải xuống (23).jpg', 18, 110000, 'Hành trình tìm kiếm ý nghĩa cuộc sống', 16, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(23, '9784344401034', '1Q84', 'tải xuống (24).jpg', 20, 250000, 'Thế giới song song với hai mặt trăng', 17, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(24, '9780439064873', 'Harry Potter và Phòng Chứa Bí Mật', 'tải xuống (25).jpg', 22, 185000, 'Cuộc phiêu lưu năm thứ hai tại Hogwarts', 18, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
+(23, '9784344401034', '1Q84', 'tải xuống (24).jpg', 120, 250000, 'Thế giới song song với hai mặt trăng', 2, NULL, '2025-06-23 19:18:13', '2025-06-27 11:33:07'),
+(24, '9780439064873', 'Harry Potter và Phòng Chứa Bí Mật', 'tải xuống (25).jpg', 100, 185000, 'Cuộc phiêu lưu năm thứ hai tại Hogwarts', 2, NULL, '2025-06-23 19:18:13', '2025-06-26 17:17:19'),
 (25, '9780140440393', 'Nghệ Thuật Chiến Tranh', 'tải xuống (26).jpg', 15, 80000, 'Chiến lược quân sự của Tôn Tử', 2, NULL, '2025-06-23 19:18:13', '2025-06-23 13:17:18'),
 (26, '9780452284234', 'Trại Súc Vật', 'tải xuống (27).jpg', 20, 85000, 'Châm biếm về chủ nghĩa toàn trị', 20, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (27, '9780261102217', 'Chúa tể những chiếc nhẫn: Hiệp hội nhẫn thần', 'tải xuống (28).jpg', 25, 195000, 'Hành trình hủy diệt chiếc nhẫn quyền lực', 21, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (28, '9780007113805', 'Án Mạng Ở Mesopotamia', 'tải xuống (29).jpg', 16, 105000, 'Vụ án bí ẩn ở vùng Lưỡng Hà', 14, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (29, '9780684800714', 'Chuông Nguyện Hồn Ai', 'tải xuống (30).jpg', 18, 95000, 'Câu chuyện tình trong nội chiến Tây Ban Nha', 15, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(30, '9780140444759', 'Nhà Thờ Đức Bà Paris', 'tải xuống (31).jpg', 20, 175000, 'Bi kịch tình yêu dưới bóng nhà thờ Đức Bà', 2, NULL, '2025-06-23 19:18:13', '2025-06-23 13:18:08'),
+(30, '9780140444759', 'Nhà Thờ Đức Bà Paris', 'tải xuống (31).jpg', 100, 175000, 'Bi kịch tình yêu dưới bóng nhà thờ Đức Bà', 2, NULL, '2025-06-23 19:18:13', '2025-06-26 17:18:54'),
 (31, '9780141182630', 'Tender Is the Night', 'tải xuống (32).jpg', 15, 90000, 'Sự suy tàn của một cặp vợ chồng trẻ', 17, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (32, '9780140447934', 'Anna Karenina', 'tải xuống (33).jpg', 22, 210000, 'Bi kịch tình yêu trong xã hội quý tộc Nga', 18, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (33, '9780805210552', 'Lâu Đài', 'tải xuống (34).jpg', 12, 85000, 'Hành trình vô vọng của K. đến lâu đài', 19, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
@@ -217,7 +228,7 @@ INSERT INTO `books` (`id`, `isbn_code`, `title`, `image`, `quantity`, `price`, `
 (96, '9780062693660', 'Hướng Dẫn Tương Lai', 'tải xuống (6).png', 25, 175000, 'Cách định hướng trong thế giới phức tạp', 14, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (97, '9780316478526', 'Nói Chuyện Với Người Lạ', 'tải xuống (7).png', 20, 140000, 'Hiểu và kết nối với những người xa lạ', 15, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
 (98, '9780735211386', 'Cho và Nhận: Tái Bản', 'tải xuống (8).png', 18, 160000, 'Phiên bản cập nhật về cách tiếp cận thành công', 16, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13'),
-(99, '9780399592522', 'Sức Mạnh Của Sự Tổn Thương: Tái Bản', 'tải xuống (90).jpg', 15, 135000, 'Phiên bản cập nhật về sức mạnh của sự tổn thương', 17, NULL, '2025-06-23 19:18:13', '2025-06-23 19:18:13');
+(99, '9780399592522', 'Sức Mạnh Của Sự Tử Tế', 'tải xuống (90).jpg', 150, 135000, 'Phiên bản cập nhật về sức mạnh của sự tổn thương', 2, NULL, '2025-06-23 19:18:13', '2025-06-27 12:58:16');
 
 -- --------------------------------------------------------
 
@@ -225,10 +236,11 @@ INSERT INTO `books` (`id`, `isbn_code`, `title`, `image`, `quantity`, `price`, `
 -- Cấu trúc bảng cho bảng `cache`
 --
 
-CREATE TABLE `cache` (
+CREATE TABLE IF NOT EXISTS `cache` (
   `key` varchar(255) NOT NULL,
   `value` mediumtext NOT NULL,
-  `expiration` int(11) NOT NULL
+  `expiration` int(11) NOT NULL,
+  PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -237,10 +249,11 @@ CREATE TABLE `cache` (
 -- Cấu trúc bảng cho bảng `cache_locks`
 --
 
-CREATE TABLE `cache_locks` (
+CREATE TABLE IF NOT EXISTS `cache_locks` (
   `key` varchar(255) NOT NULL,
   `owner` varchar(255) NOT NULL,
-  `expiration` int(11) NOT NULL
+  `expiration` int(11) NOT NULL,
+  PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -249,18 +262,20 @@ CREATE TABLE `cache_locks` (
 -- Cấu trúc bảng cho bảng `categories`
 --
 
-CREATE TABLE `categories` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `categories_name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
+REPLACE INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'Văn học Việt Nam', '2025-06-23 19:09:38', '2025-06-23 19:09:38'),
 (2, 'Tiểu thuyết tâm linh', '2025-06-23 19:09:38', '2025-06-23 19:09:38'),
 (3, 'Văn học hiện đại Nhật Bản', '2025-06-23 19:09:38', '2025-06-23 19:09:38'),
@@ -280,7 +295,21 @@ INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (17, 'Lịch sử nhân loại', '2025-06-23 19:09:38', '2025-06-23 19:09:38'),
 (18, 'Tâm lý xã hội', '2025-06-23 19:09:38', '2025-06-23 19:09:38'),
 (19, 'Kinh doanh & lãnh đạo', '2025-06-23 19:09:38', '2025-06-23 19:09:38'),
-(20, 'Tâm lý học', '2025-06-23 19:09:38', '2025-06-23 19:09:38');
+(20, 'Tâm lý học', '2025-06-23 19:09:38', '2025-06-23 19:09:38'),
+(21, 'Tiểu thuyết', '2025-06-27 12:48:22', '2025-06-27 12:48:22'),
+(22, 'Bi kịch', '2025-06-27 12:48:41', '2025-06-27 12:48:41'),
+(23, 'Hư cấu tâm lý', '2025-06-27 12:48:57', '2025-06-27 12:48:57'),
+(24, 'Văn học viễn tưởng', '2025-06-27 12:51:00', '2025-06-27 12:51:00'),
+(25, 'Lịch sử thay đổi', '2025-06-27 12:51:18', '2025-06-27 12:51:18'),
+(26, 'Tâm lý tình cảm', '2025-06-27 12:55:31', '2025-06-27 12:55:31'),
+(27, 'phát triển bản thân', '2025-06-27 12:58:39', '2025-06-27 12:58:39'),
+(28, 'truyền cảm hứng', '2025-06-27 12:58:50', '2025-06-27 12:58:50'),
+(29, 'sách kỹ năng', '2025-06-27 12:59:13', '2025-06-27 12:59:13'),
+(30, 'Khoa học viễn tưởng', '2025-06-27 13:04:07', '2025-06-27 13:04:07'),
+(31, 'Hư cấu phản không tưởng', '2025-06-27 13:05:11', '2025-06-27 13:05:11'),
+(32, 'Hư cấu chính trị', '2025-06-27 13:06:32', '2025-06-27 13:06:32'),
+(33, 'Văn học thiếu nhi', '2025-06-27 13:10:03', '2025-06-27 13:10:03'),
+(34, 'Tiểu thuyết dành cho giới trẻ', '2025-06-27 13:10:46', '2025-06-27 13:10:46');
 
 -- --------------------------------------------------------
 
@@ -288,57 +317,41 @@ INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Cấu trúc bảng cho bảng `classifyings`
 --
 
-CREATE TABLE `classifyings` (
+CREATE TABLE IF NOT EXISTS `classifyings` (
   `book_id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`book_id`,`category_id`),
+  KEY `classifyings_category_id_foreign` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `classifyings`
 --
 
-INSERT INTO `classifyings` (`book_id`, `category_id`) VALUES
-(25, 5),
-(30, 2),
-(117, 1),
-(118, 2),
-(119, 3),
-(120, 4),
-(121, 5),
-(122, 6),
-(123, 4),
-(124, 8),
-(125, 9),
-(126, 10),
-(127, 11),
-(128, 12),
-(129, 13),
-(130, 14),
-(131, 15),
-(132, 16),
-(133, 17),
-(134, 18),
-(135, 19),
-(136, 20),
-(137, 1),
-(139, 3),
-(140, 4),
-(142, 6),
-(143, 7),
-(144, 8),
-(145, 9),
-(148, 12),
-(149, 13),
-(150, 14),
-(151, 15),
-(152, 16),
-(154, 18),
-(155, 19),
-(156, 20),
-(158, 2),
-(160, 4),
-(163, 7),
-(166, 10);
+REPLACE INTO `classifyings` (`book_id`, `category_id`) VALUES
+(1, 21),
+(1, 33),
+(1, 34),
+(2, 5),
+(3, 26),
+(4, 7),
+(4, 11),
+(5, 6),
+(6, 30),
+(6, 31),
+(6, 32),
+(11, 21),
+(11, 22),
+(11, 23),
+(23, 21),
+(23, 24),
+(23, 25),
+(24, 11),
+(30, 10),
+(30, 14),
+(99, 27),
+(99, 28),
+(99, 29);
 
 -- --------------------------------------------------------
 
@@ -346,8 +359,8 @@ INSERT INTO `classifyings` (`book_id`, `category_id`) VALUES
 -- Cấu trúc bảng cho bảng `customers`
 --
 
-CREATE TABLE `customers` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `customers` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -356,14 +369,17 @@ CREATE TABLE `customers` (
   `phone` varchar(255) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `customers_name_unique` (`name`),
+  UNIQUE KEY `customers_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `customers`
 --
 
-INSERT INTO `customers` (`id`, `name`, `email`, `password`, `full_name`, `address`, `phone`, `deleted_at`, `created_at`, `updated_at`) VALUES
+REPLACE INTO `customers` (`id`, `name`, `email`, `password`, `full_name`, `address`, `phone`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 'Fabiola Bergnaum', 'miller24@example.org', '$2y$12$lIgteTsuPcpI7FcLP8N5Bu0onI4FSVRu4/NVVGiIyi2GfJxu92XWG', NULL, NULL, NULL, NULL, '2025-05-19 09:15:24', '2025-05-19 09:15:24'),
 (2, 'Tobin Mosciski III', 'jenkins.murl@example.org', '$2y$12$lIgteTsuPcpI7FcLP8N5Bu0onI4FSVRu4/NVVGiIyi2GfJxu92XWG', NULL, NULL, NULL, NULL, '2025-05-19 09:15:24', '2025-05-19 09:15:24'),
 (3, 'Rita Quigley IV', 'renee.koch@example.com', '$2y$12$lIgteTsuPcpI7FcLP8N5Bu0onI4FSVRu4/NVVGiIyi2GfJxu92XWG', NULL, NULL, NULL, NULL, '2025-05-19 09:15:24', '2025-05-19 09:15:24'),
@@ -375,7 +391,11 @@ INSERT INTO `customers` (`id`, `name`, `email`, `password`, `full_name`, `addres
 (9, 'Dr. Leo Abbott I', 'adonis59@example.org', '$2y$12$lIgteTsuPcpI7FcLP8N5Bu0onI4FSVRu4/NVVGiIyi2GfJxu92XWG', NULL, NULL, NULL, NULL, '2025-05-19 09:15:24', '2025-05-19 09:15:24'),
 (10, 'Grant Feeney', 'kilback.autumn@example.com', '$2y$12$lIgteTsuPcpI7FcLP8N5Bu0onI4FSVRu4/NVVGiIyi2GfJxu92XWG', NULL, NULL, NULL, NULL, '2025-05-19 09:15:24', '2025-05-19 09:15:24'),
 (11, 'Bánh mỳ thịt', 'vinh@gmail.com', '$2y$12$.2HV8H1IV1rL5NDTnlWP1.F7CXLXd1DA040gWVZECTu.qVFxXl3Xi', NULL, NULL, NULL, NULL, '2025-05-27 23:45:53', '2025-05-27 23:45:53'),
-(12, 'Lego', 'vinh13@gmail.com', '$2y$12$uXAKARXGkkFTFeu6N.uEbOfLfh6xk9v8/tH7.9RrPIqFaa4fDEimS', 'Vinhmoi999', 'HaNoiuhuhu', '01929149942766767', NULL, '2025-06-06 09:42:55', '2025-06-23 13:18:46');
+(12, 'Lego', 'vinh13@gmail.com', '$2y$12$uXAKARXGkkFTFeu6N.uEbOfLfh6xk9v8/tH7.9RrPIqFaa4fDEimS', 'Vinhmoi999', 'HaNoiuhuhu', '01929149942766767', NULL, '2025-06-06 09:42:55', '2025-06-23 13:18:46'),
+(13, 'Đào Thành Vinh', 'daothanhvinh@gmail.com', '$2y$12$eTKvNrzZdDodMWskBO0L5.irPHTEySPvpTZIeh.jk8/xqEUrYlTT.', NULL, NULL, NULL, NULL, '2025-06-24 07:49:28', '2025-06-24 07:49:28'),
+(14, 'vinh moi', 'vinhmoi123@gmail.com', '$2y$12$qEiJVs5jzcehJHUDzl0rvO725HDiFymcKEBbP2GDdbf2vYVLpBSdK', NULL, NULL, NULL, NULL, '2025-06-25 15:45:57', '2025-06-25 15:45:57'),
+(15, 'đào văn', 'dao@gmail.com', '$2y$12$ketkT6jjbTEUeHMIEt5f4.OunYFJZ6NbRAP4akMVxm27FoYRiFfeS', NULL, NULL, NULL, NULL, '2025-06-25 17:43:24', '2025-06-25 17:43:24'),
+(16, 'dao', 'dao123@gmail.com', '$2y$12$DCjEyUQpoVJgY5qlgiKR8eIdv1tLl4XUdIHewXOy4bZabejbrWlwS', NULL, NULL, NULL, NULL, '2025-06-25 17:51:44', '2025-06-25 17:51:44');
 
 -- --------------------------------------------------------
 
@@ -383,14 +403,16 @@ INSERT INTO `customers` (`id`, `name`, `email`, `password`, `full_name`, `addres
 -- Cấu trúc bảng cho bảng `failed_jobs`
 --
 
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(255) NOT NULL,
   `connection` text NOT NULL,
   `queue` text NOT NULL,
   `payload` longtext NOT NULL,
   `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -399,14 +421,16 @@ CREATE TABLE `failed_jobs` (
 -- Cấu trúc bảng cho bảng `jobs`
 --
 
-CREATE TABLE `jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `queue` varchar(255) NOT NULL,
   `payload` longtext NOT NULL,
   `attempts` tinyint(3) UNSIGNED NOT NULL,
   `reserved_at` int(10) UNSIGNED DEFAULT NULL,
   `available_at` int(10) UNSIGNED NOT NULL,
-  `created_at` int(10) UNSIGNED NOT NULL
+  `created_at` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `jobs_queue_index` (`queue`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -415,7 +439,7 @@ CREATE TABLE `jobs` (
 -- Cấu trúc bảng cho bảng `job_batches`
 --
 
-CREATE TABLE `job_batches` (
+CREATE TABLE IF NOT EXISTS `job_batches` (
   `id` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `total_jobs` int(11) NOT NULL,
@@ -425,7 +449,8 @@ CREATE TABLE `job_batches` (
   `options` mediumtext DEFAULT NULL,
   `cancelled_at` int(11) DEFAULT NULL,
   `created_at` int(11) NOT NULL,
-  `finished_at` int(11) DEFAULT NULL
+  `finished_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -434,17 +459,18 @@ CREATE TABLE `job_batches` (
 -- Cấu trúc bảng cho bảng `migrations`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `migrations`
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+REPLACE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
 (3, '0001_01_01_000002_create_jobs_table', 1),
@@ -469,8 +495,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Cấu trúc bảng cho bảng `orders`
 --
 
-CREATE TABLE `orders` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `admin_id_confirmed` bigint(20) UNSIGNED DEFAULT NULL,
   `customer_id` bigint(20) UNSIGNED NOT NULL,
   `customer_name` varchar(255) NOT NULL,
@@ -479,15 +505,18 @@ CREATE TABLE `orders` (
   `total` int(11) NOT NULL,
   `status` enum('CANCELED','PENDING','CONFIRMED','COMPLETED') NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `orders_admin_id_confirmed_foreign` (`admin_id_confirmed`),
+  KEY `orders_customer_id_foreign` (`customer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `orders`
 --
 
-INSERT INTO `orders` (`id`, `admin_id_confirmed`, `customer_id`, `customer_name`, `customer_phone`, `ship_to_address`, `total`, `status`, `created_at`, `updated_at`) VALUES
-(11, NULL, 12, 'Vinhmoi999', '01929149942766767', 'HaNoiuhuhu', 175000, 'PENDING', '2025-06-23 13:18:46', '2025-06-23 13:18:46');
+REPLACE INTO `orders` (`id`, `admin_id_confirmed`, `customer_id`, `customer_name`, `customer_phone`, `ship_to_address`, `total`, `status`, `created_at`, `updated_at`) VALUES
+(11, 1, 12, 'Vinhmoi999', '01929149942766767', 'HaNoiuhuhu', 175000, 'COMPLETED', '2025-06-23 13:18:46', '2025-06-26 06:23:18');
 
 -- --------------------------------------------------------
 
@@ -495,18 +524,20 @@ INSERT INTO `orders` (`id`, `admin_id_confirmed`, `customer_id`, `customer_name`
 -- Cấu trúc bảng cho bảng `order_details`
 --
 
-CREATE TABLE `order_details` (
+CREATE TABLE IF NOT EXISTS `order_details` (
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `book_id` bigint(20) UNSIGNED NOT NULL,
   `quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  PRIMARY KEY (`order_id`,`book_id`),
+  KEY `order_details_book_id_foreign` (`book_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `order_details`
 --
 
-INSERT INTO `order_details` (`order_id`, `book_id`, `quantity`, `price`) VALUES
+REPLACE INTO `order_details` (`order_id`, `book_id`, `quantity`, `price`) VALUES
 (11, 30, 1, 175000);
 
 -- --------------------------------------------------------
@@ -515,10 +546,11 @@ INSERT INTO `order_details` (`order_id`, `book_id`, `quantity`, `price`) VALUES
 -- Cấu trúc bảng cho bảng `password_reset_tokens`
 --
 
-CREATE TABLE `password_reset_tokens` (
+CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -527,18 +559,20 @@ CREATE TABLE `password_reset_tokens` (
 -- Cấu trúc bảng cho bảng `publishers`
 --
 
-CREATE TABLE `publishers` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `publishers` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `publishers_name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `publishers`
 --
 
-INSERT INTO `publishers` (`id`, `name`, `created_at`, `updated_at`) VALUES
+REPLACE INTO `publishers` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (2, 'HarperCollins', '2025-06-23 19:09:43', '2025-06-23 19:09:43'),
 (3, 'Macmillan Publishers', '2025-06-23 19:09:43', '2025-06-23 19:09:43'),
 (4, 'Hachette Livre', '2025-06-23 19:09:43', '2025-06-23 19:09:43'),
@@ -566,22 +600,24 @@ INSERT INTO `publishers` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Cấu trúc bảng cho bảng `sessions`
 --
 
-CREATE TABLE `sessions` (
+CREATE TABLE IF NOT EXISTS `sessions` (
   `id` varchar(255) NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `ip_address` varchar(45) DEFAULT NULL,
   `user_agent` text DEFAULT NULL,
   `payload` longtext NOT NULL,
-  `last_activity` int(11) NOT NULL
+  `last_activity` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sessions_user_id_index` (`user_id`),
+  KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sessions`
 --
 
-INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('5CvGpgiByvxlZdvblmXBqyXZx6TZwezGFB5MSKrq', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZHhwOXc4d2p4RlhvbkU1Y095a0Q5QkJqeFZ2bVBQUHFpblFlSFl2NSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ib29rLXBhZ2UvMiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1750747826),
-('7rhpyx2yjaMWVWQbWLdq5uHTbOtjF2m9N1ZXD2Mq', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoieXBPNlZCZ3R0Z0dreHdqSjRUcUd2bm1iTTdSS3M1V3lxakR0QTY3NyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9vcmRlci1kZXRhaWwvMTEiO31zOjUzOiJsb2dpbl9hZG1pbnNfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NTY6ImxvZ2luX2N1c3RvbWVyc181OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjEyO30=', 1750709953);
+REPLACE INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('ZZKrigvYSzmLKAz483bNLIEpXkQL5FqbETjpo0mu', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWHdLNjZreGh0UENNMm9iamltQ0tNSVlGT2RlbDN3RzlLZWpEcER6ayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9ib29rcy10cmFzaGVkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MzoibG9naW5fYWRtaW5zXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1751036717);
 
 -- --------------------------------------------------------
 
@@ -589,22 +625,24 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 -- Cấu trúc bảng cho bảng `users`
 --
 
-CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+REPLACE INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Test User', 'test@example.com', '2025-05-19 09:15:23', '$2y$12$RxrqaMN/4Lb1gXw5FRvfb.eLNEKo5WpkdLPtwPKxEsY3jCtf8in9q', '8MWKsnW7zp', '2025-05-19 09:15:24', '2025-05-19 09:15:24');
 
 -- --------------------------------------------------------
@@ -613,16 +651,18 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 -- Cấu trúc bảng cho bảng `writings`
 --
 
-CREATE TABLE `writings` (
+CREATE TABLE IF NOT EXISTS `writings` (
   `book_id` bigint(20) UNSIGNED NOT NULL,
-  `author_id` bigint(20) UNSIGNED NOT NULL
+  `author_id` bigint(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`book_id`,`author_id`),
+  KEY `writings_author_id_foreign` (`author_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `writings`
 --
 
-INSERT INTO `writings` (`book_id`, `author_id`) VALUES
+REPLACE INTO `writings` (`book_id`, `author_id`) VALUES
 (1, 1),
 (2, 2),
 (3, 3),
@@ -651,7 +691,7 @@ INSERT INTO `writings` (`book_id`, `author_id`) VALUES
 (27, 7),
 (28, 8),
 (29, 9),
-(30, 12),
+(30, 10),
 (32, 12),
 (33, 13),
 (34, 14),
@@ -672,215 +712,9 @@ INSERT INTO `writings` (`book_id`, `author_id`) VALUES
 (70, 10),
 (77, 17),
 (84, 4),
-(90, 10);
-
---
--- Chỉ mục cho các bảng đã đổ
---
-
---
--- Chỉ mục cho bảng `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `admins_name_unique` (`name`),
-  ADD UNIQUE KEY `admins_email_unique` (`email`);
-
---
--- Chỉ mục cho bảng `authors`
---
-ALTER TABLE `authors`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `authors_name_unique` (`name`);
-
---
--- Chỉ mục cho bảng `books`
---
-ALTER TABLE `books`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `books_isbn_code_unique` (`isbn_code`),
-  ADD UNIQUE KEY `books_title_unique` (`title`),
-  ADD KEY `books_publisher_id_foreign` (`publisher_id`);
-
---
--- Chỉ mục cho bảng `cache`
---
-ALTER TABLE `cache`
-  ADD PRIMARY KEY (`key`);
-
---
--- Chỉ mục cho bảng `cache_locks`
---
-ALTER TABLE `cache_locks`
-  ADD PRIMARY KEY (`key`);
-
---
--- Chỉ mục cho bảng `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `categories_name_unique` (`name`);
-
---
--- Chỉ mục cho bảng `classifyings`
---
-ALTER TABLE `classifyings`
-  ADD PRIMARY KEY (`book_id`,`category_id`),
-  ADD KEY `classifyings_category_id_foreign` (`category_id`);
-
---
--- Chỉ mục cho bảng `customers`
---
-ALTER TABLE `customers`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `customers_name_unique` (`name`),
-  ADD UNIQUE KEY `customers_email_unique` (`email`);
-
---
--- Chỉ mục cho bảng `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Chỉ mục cho bảng `jobs`
---
-ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `jobs_queue_index` (`queue`);
-
---
--- Chỉ mục cho bảng `job_batches`
---
-ALTER TABLE `job_batches`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `orders_admin_id_confirmed_foreign` (`admin_id_confirmed`),
-  ADD KEY `orders_customer_id_foreign` (`customer_id`);
-
---
--- Chỉ mục cho bảng `order_details`
---
-ALTER TABLE `order_details`
-  ADD PRIMARY KEY (`order_id`,`book_id`),
-  ADD KEY `order_details_book_id_foreign` (`book_id`);
-
---
--- Chỉ mục cho bảng `password_reset_tokens`
---
-ALTER TABLE `password_reset_tokens`
-  ADD PRIMARY KEY (`email`);
-
---
--- Chỉ mục cho bảng `publishers`
---
-ALTER TABLE `publishers`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `publishers_name_unique` (`name`);
-
---
--- Chỉ mục cho bảng `sessions`
---
-ALTER TABLE `sessions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sessions_user_id_index` (`user_id`),
-  ADD KEY `sessions_last_activity_index` (`last_activity`);
-
---
--- Chỉ mục cho bảng `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- Chỉ mục cho bảng `writings`
---
-ALTER TABLE `writings`
-  ADD PRIMARY KEY (`book_id`,`author_id`),
-  ADD KEY `writings_author_id_foreign` (`author_id`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
--- AUTO_INCREMENT cho bảng `admins`
---
-ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT cho bảng `authors`
---
-ALTER TABLE `authors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT cho bảng `books`
---
-ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
-
---
--- AUTO_INCREMENT cho bảng `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT cho bảng `customers`
---
-ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT cho bảng `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `jobs`
---
-ALTER TABLE `jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT cho bảng `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT cho bảng `publishers`
---
-ALTER TABLE `publishers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT cho bảng `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+(90, 10),
+(99, 21),
+(99, 22);
 
 --
 -- Các ràng buộc cho các bảng đã đổ
