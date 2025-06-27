@@ -37,4 +37,4 @@ Route::middleware('customerGuest')->group(function () {
     Route::post('/sign-up', [AuthCustomerController::class,'register'])->name('customer.sign_up');
 
 });
-Route::post('/logout', [AuthCustomerController::class,'logout'])->name('customer.logout');
+Route::get('/logout', [AuthCustomerController::class,'logout'])->name('customer.logout');

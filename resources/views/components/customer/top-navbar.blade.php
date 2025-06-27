@@ -103,8 +103,7 @@
                                         </div>
                                     </a>
                                     <div class="d-inline-block w-100 text-center p-3">
-                                        <form action="{{ route('customer.logout') }}" method="post">
-                                            @csrf
+                                        <form action="{{ route('customer.logout') }}" method="get">
                                             <button type="submit" class="btn btn-primary"><i class="ri-book-line"></i>Logout</button>
                                         </form>
                                     </div>
