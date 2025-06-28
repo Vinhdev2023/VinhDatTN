@@ -119,7 +119,7 @@
                                         <span class="text-dark"><strong>{{ number_format($order->total,0,',','.') }}đ</strong></span>
                                     </div>
                                     @if ($order->status == 'PENDING')
-                                        <a href="/update-status/CANCELED/{{ $order->id }}" class="btn btn-danger d-block mt-3">Hủy</a>
+                                        <a href="/update-status/CANCELED/{{ $order->id }}" onclick="return confirm('Bạn có muốn hủy đơn hàng không')" class="btn btn-danger d-block mt-3">Hủy</a>
                                     @endif
                                 </div>
                             </div>

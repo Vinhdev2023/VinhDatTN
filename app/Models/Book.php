@@ -17,6 +17,7 @@ class Book extends Model
         'price',
         'description',
         'publisher_id',
+        'updated_at',
     ];
 
     use HasFactory, SoftDeletes;

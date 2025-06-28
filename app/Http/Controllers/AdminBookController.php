@@ -8,7 +8,9 @@ use App\Models\Category;
 use App\Models\Classifying;
 use App\Models\Publisher;
 use App\Models\Writing;
+use Carbon\Carbon as CarbonCarbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -201,6 +203,10 @@ class AdminBookController extends Controller
                 'author_id' => $author_id
             ]);
         }
+
+        $book->update([
+            'updated_at' => now(),
+        ]);
 
         return redirect()->route('admin.books.show', $book->id)->with('success', 'Book is Updated');
     }

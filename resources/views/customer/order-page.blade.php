@@ -87,7 +87,7 @@
                                                             </div>
                                                             <div class="col-6">
                                                                 @if ($item->status == 'PENDING')
-                                                                    <a href="/update-status/CANCELED/{{ $item->id }}" class="btn btn-danger">Hủy</a>
+                                                                    <a href="/update-status/CANCELED/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Bạn có muốn hủy đơn hàng không')">Hủy</a>
                                                                 @endif
                                                             </div>
                                                         </div>

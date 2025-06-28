@@ -25,11 +25,9 @@ class AuthCustomerController extends Controller
             'password' => 'required|string|min:1|confirmed'
         ]);
 
-        $customer = Customer::create($validated);
+        Customer::create($validated);
 
-        Auth::guard('customers')->login($customer);
-
-        return redirect('/');
+        return redirect()->route('customer.sign_in.show');
     }
 
     public function login(Request $request) {

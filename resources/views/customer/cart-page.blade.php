@@ -61,7 +61,7 @@
                                                                 <h5>{{ $item->title }}</h5>
                                                                 <p class="text-success">Còn {{ $item->quantityInStock }}</p>
                                                                 <div class="price">
-                                                                    <h5>{{ number_format($item->price,0,',','.') }} ₫</h5>
+                                                                    <h5>Giá của 1 cuốn: {{ number_format($item->price,0,',','.') }} ₫</h5>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -81,7 +81,7 @@
                                                                             </form>
                                                                         </div>
                                                                         <div class="col-sm-5 col-md-6">
-                                                                            <span class="product-price">{{number_format($item->price * $item->quantity,0,',','.')}} ₫</span>
+                                                                            <span class="product-price text-dark">mua {{ number_format($item->quantity,0,',','.') }} cuốn này cần: <strong>{{ number_format($item->price * $item->quantity,0,',','.') }} ₫</strong></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
