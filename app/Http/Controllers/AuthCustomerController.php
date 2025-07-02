@@ -76,7 +76,7 @@ class AuthCustomerController extends Controller
             return redirect('/profile-edit')->with('success', 'password is updated');
         }
 
-        return ValidationException::withMessages([
+        throw ValidationException::withMessages([
             'credentials' => 'sai mật khẩu rồi'
         ]);
     }
