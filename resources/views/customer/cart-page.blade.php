@@ -28,8 +28,8 @@
         border-color: #ff4081 !important;
         color: white !important;
         position: absolute;
-        bottom: 40px;
-        right: 40px;
+        bottom: 32px;
+        right: 32px;
     }
 
 
