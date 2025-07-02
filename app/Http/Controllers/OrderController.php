@@ -73,7 +73,7 @@ class OrderController extends Controller
                 session()->forget('cart');
                 session()->forget('cart_total');
                 session()->save();
-                return redirect('/cart-page')->with('fail', 'Số lượng không còn hợp lệ');
+                return redirect('/cart-page')->with('fail', 'Sản phẩm trong giỏ hàng có thể không hợp lệ');
             }
         }
 
@@ -111,7 +111,7 @@ class OrderController extends Controller
         session()->forget('cart_total');
         session()->save();
 
-        return redirect('/order-page');
+        return redirect('/order-page')->with('success', 'Đã đặt hàng thành công');
     }
 
     public function order_page(){
@@ -136,7 +136,7 @@ class OrderController extends Controller
         if ($order->status == 'PENDING') {
             $order->update(['status' => $status]);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'đã hủy thành công');
         }
 
         return redirect()->back()->with('fail', 'bạn không thể hủy được');

@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\DB;
 class Customer extends Controller
 {
     public function customer(){
-        // $books = Book::orderBy('created_at', 'desc')->where('quantity', '>', 0)->paginate(12);
-        // $books->load('author');
-
         $books = Book::with('orderDetail.order')
                     ->leftJoin('order_details', 'books.id', '=', 'order_details.book_id')
                     ->leftJoin('orders', 'order_details.order_id', '=', 'orders.id')

@@ -27,7 +27,7 @@
         background-color: #ff4081 !important;  /* Màu đỏ hồng */
         border-color: #ff4081 !important;
         color: white !important;
-        position: absolute;
+        /* position: absolute; */
         bottom: 32px;
         right: 32px;
     }
@@ -104,7 +104,7 @@
                                                                                 </button>
                                                                             </form>
                                                                         </div>
-                                                                        <div class="col-sm-5 col-md-6">
+                                                                        <div class="col-sm-5 col-md-6 text-break">
                                                                             <span class="product-price text-dark">mua {{ number_format($item->quantity,0,',','.') }} cuốn này cần: <strong>{{ number_format($item->price * $item->quantity,0,',','.') }} ₫</strong></span>
                                                                         </div>
                                                                     </div>
@@ -119,8 +119,10 @@
                                                     </div>
                                                 </li>
                                             @endforeach
-                                            <li class="checkout-product">
-                                            <a href="/delete-cart" onclick="return confirm('Bạn có muốn bỏ giỏ hàng này hay không')" class="btn btn-primary clear-cart-btn">Xóa tất cả giỏ hàng</a>
+                                            <li class="checkout-product nav justify-content-center">
+                                                <a href="/delete-cart" onclick="return confirm('Bạn có muốn bỏ giỏ hàng này hay không')" class="btn btn-primary clear-cart-btn">Xóa tất cả giỏ hàng</a>
+                                                <div class="row">
+                                                </div>
                                             </li>
                                         @endif
                                     </ul>

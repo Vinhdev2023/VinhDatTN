@@ -77,16 +77,16 @@
                                        <span class="text-dark mb-4 pb-4 iq-border-bottom d-block">{{$book->description}}</span>
                                        <div class="text-primary mb-4">Tác giả:
                                           @foreach ($book->author as $key => $author)
-                                             <span class="text-body">{{ $author->name }}{{ $key == sizeof($book->author)-1 ? '. ' : ', ' }}</span>
+                                             <span class="text-body text-lowercase">{{ $author->name }}{{ $key == sizeof($book->author)-1 ? '. ' : ', ' }}</span>
                                           @endforeach
                                        </div>
                                        <div class="text-primary mb-4">Thể loại:
                                           @foreach ($book->category as $key => $category)
-                                             <span class="text-body">{{ $category->name }}{{ $key == sizeof($book->category)-1 ? '. ' : ', ' }}</span>
+                                             <span class="text-body text-lowercase">{{ $category->name }}{{ $key == sizeof($book->category)-1 ? '. ' : ', ' }}</span>
                                           @endforeach
                                        </div>
                                        <div class="text-primary mb-4">Nhà xuất bản:
-                                          <span class="text-body">{{ $book->publisher->name }}{{ '. ' }}</span>
+                                          <span class="text-body text-lowercase">{{ $book->publisher->name }}{{ '. ' }}</span>
                                        </div>
                                        <div class="mb-4 d-flex align-items-center">
                                           <a href="/add-cart/{{ $book->id }}" @disabled($book->quantityInStock <= 0 ? true : false) class="btn btn-primary view-more mr-2">Thêm vào giỏ hàng</a>

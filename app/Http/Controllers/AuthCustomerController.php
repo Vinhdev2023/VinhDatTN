@@ -47,7 +47,7 @@ class AuthCustomerController extends Controller
         }
 
         throw ValidationException::withMessages([
-            'credentials' => 'sorry, incorrect credentials'
+            'credentials' => 'xin lỗi, thông tin đăng nhập không chính xác'
         ]);
     }
 
@@ -73,7 +73,7 @@ class AuthCustomerController extends Controller
                 'password' => Hash::make($request->password)
             ]);
 
-            return redirect('/profile-edit')->with('success', 'password is updated');
+            return redirect('/profile-edit')->with('success', 'mật khẩu đã được cập nhật');
         }
 
         throw ValidationException::withMessages([

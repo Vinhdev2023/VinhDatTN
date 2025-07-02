@@ -42,6 +42,13 @@
                     </x-admin.alert-danger>
                 </div>
                 @endif
+                @if (session('success'))
+                <div class="col-12">
+                    <x-admin.alert-success>
+                        {{ session('success') }}
+                    </x-admin.alert-success>
+                </div>
+                @endif
                 <div class="card-block show p-0 col-12">
                     <div class="row align-item-center">
                         <div class="col-lg-8">

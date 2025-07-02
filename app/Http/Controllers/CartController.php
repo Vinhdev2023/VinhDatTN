@@ -27,7 +27,7 @@ class CartController extends Controller
                     session()->forget('cart_total');
                     session()->save();
 
-                    return redirect()->back();
+                    return redirect()->back()->with('fail', 'giỏ hàng có sản phẩm đã hết hoặc không hợp lệ');
                 }
 
                 // Tính tổng số lượng sách đã đặt từ tất cả đơn hàng liên quan
@@ -48,7 +48,7 @@ class CartController extends Controller
                 session()->forget('cart_total');
                 session()->save();
                 
-                return redirect()->back();
+                return redirect()->back()->with('fail', 'giỏ hàng có sản phẩm đã hết hoặc không hợp lệ');
             }
 
             // Cập nhật lại giỏ hàng
@@ -106,7 +106,7 @@ class CartController extends Controller
                 $total += $obj->price * $obj->quantity;
             }
             session()->put('cart_total', $total);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Đã thêm vào giỏ thành công');
         }
         return redirect()->back()->with('fail','đã hết không thể thêm vào giỏ');
     }
@@ -132,7 +132,7 @@ class CartController extends Controller
             $total += $obj->price * $obj->quantity;
         }
         session()->put('cart_total', $total);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Đã xóa 1 sản phẩm khỏi giỏ');
     }
 
     public function updateCart(Request $request, Book $book){
@@ -165,7 +165,7 @@ class CartController extends Controller
                 $total += $obj->price * $obj->quantity;
             }
             session()->put('cart_total', $total);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Đã cập nhật giỏ hàng thành công');
         }
 
         throw ValidationException::withMessages([
