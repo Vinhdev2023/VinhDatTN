@@ -25,6 +25,7 @@ Route::get('/update-status/{status}/{order}',[OrderController::class,'update_sta
 Route::get('/cart-page',[CartController::class,'index']);
 Route::get('/add-cart/{book}',[CartController::class,'addCart']);
 Route::get('/remove-in-cart/{book}',[CartController::class,'removeInCart']);
+Route::get('/delete-cart',[CartController::class,'removeCart']);
 Route::post('/update-cart/{book}',[CartController::class,'updateCart']);
 
 Route::get('/profile-edit',[Customer::class,'profile_edit'])->middleware('customerAuth');

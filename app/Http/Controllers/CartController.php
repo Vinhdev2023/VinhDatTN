@@ -172,4 +172,11 @@ class CartController extends Controller
             0 => 'số lượng quá nhiều'
         ]);
     }
+
+    public function removeCart() {
+        session()->forget('cart');
+        session()->forget('cart_total');
+        session()->save();
+        return redirect()->back()->with('success', 'Đã xóa giỏ hàng thành công');
+    }
 }

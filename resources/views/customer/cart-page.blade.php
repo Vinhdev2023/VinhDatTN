@@ -120,7 +120,7 @@
                                                 </li>
                                             @endforeach
                                             <li class="checkout-product">
-                                            <a href="/delete-cart" class="btn btn-primary clear-cart-btn">Xóa tất cả giỏ hàng</a>
+                                            <a href="/delete-cart" onclick="return confirm('Bạn có muốn bỏ giỏ hàng này hay không')" class="btn btn-primary clear-cart-btn">Xóa tất cả giỏ hàng</a>
                                             </li>
                                         @endif
                                     </ul>
@@ -140,6 +140,11 @@
                                 <x-admin.alert-danger>
                                     {{ session('fail') }}
                                 </x-admin.alert-danger>
+                            @endif
+                            @if (session('success'))
+                                <x-admin.alert-success>
+                                    {{ session('success') }}
+                                </x-admin.alert-success>
                             @endif
                         </div>
 
