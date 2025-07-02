@@ -16,6 +16,29 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="/customer_plugin/css/responsive.css">
 </head>
+<style>
+    .cart-container {
+        position: relative;
+        min-height: 100vh; /* Chiều cao tối thiểu bằng màn hình */
+        padding-bottom: 60px; /* Tạo khoảng trống cho nút */
+    }
+
+    .clear-cart-btn {
+        background-color: #ff4081 !important;  /* Màu đỏ hồng */
+        border-color: #ff4081 !important;
+        color: white !important;
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+    }
+
+
+    .clear-cart-btn:hover {
+        background-color: #e91e63 !important;  /* Màu đậm hơn khi hover */
+        border-color: #e91e63 !important;
+    }
+
+</style>
 <body class="sidebar-main">
 <!-- loader Start -->
 <div id="loading">
@@ -51,7 +74,7 @@
                                                     <div class="row align-items-center">
                                                         <div class="col-sm-2">
                                                             <span class="checkout-product-img">
-                                                                <a href="javascript:void();">
+                                                                <a href="">
                                                                     <img class="img-fluid rounded" src="/images/{{$item->image}}" alt="">
                                                                 </a>
                                                             </span>
@@ -65,6 +88,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                         <div class="col-sm-6">
                                                             <div class="row">
                                                                 <div class="col-sm-10">
@@ -99,6 +123,7 @@
                                     </ul>
                                 </div>
                             </div>
+
                             @if ($errors->any())
                                 <x-admin.alert-danger>
                                     <ul>
@@ -113,7 +138,9 @@
                                     {{ session('fail') }}
                                 </x-admin.alert-danger>
                             @endif
+                            <a href="/checkout" class="btn btn-primary clear-cart-btn ">Xóa tất cả giỏ hàng</a>
                         </div>
+
                         <div class="col-lg-4">
                             <div class="iq-card">
                                 <div class="iq-card-body">
@@ -132,7 +159,7 @@
                                     <a href="/checkout" class="btn btn-primary d-block mt-3">Đặt hàng</a>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div>
