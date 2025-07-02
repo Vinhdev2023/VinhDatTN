@@ -122,6 +122,7 @@
                                             @endforeach
                                         @endif
                                     </ul>
+                                    <a href="/checkout" class="btn btn-primary clear-cart-btn ">Xóa tất cả giỏ hàng</a>
                                 </div>
                             </div>
 
@@ -139,7 +140,10 @@
                                     {{ session('fail') }}
                                 </x-admin.alert-danger>
                             @endif
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9cafe6a41a3cab3c29655a23a87f5b6a909ef56c
                         </div>
 
                         <div class="col-lg-4">
