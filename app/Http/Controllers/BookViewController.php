@@ -11,6 +11,8 @@ class BookViewController extends Controller
 {
     public function view(Book $book) {
         $book->load('author');
+        $book->load('category');
+        $book->load('publisher');
         
         $orderPendingorConfirmed = Order::where('status', 'PENDING')
             ->orWhere('status', 'CONFIRMED')

@@ -16,14 +16,10 @@ class AdminPublisherController extends Controller
     public function index()
     {
         $path = 'admin.publishers.index';
-        $num_book = Book::count();
-        $num_category = Category::count();
-        $num_author = Author::count();
-        $num_publisher = Publisher::count();
 
         $publishers = Publisher::orderBy('updated_at', 'desc')->get();
 
-        return view('admin.publisher.publishers', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'publishers'));
+        return view('admin.publisher.publishers', compact('path', 'publishers'));
     }
 
     /**
@@ -32,12 +28,8 @@ class AdminPublisherController extends Controller
     public function create()
     {
         $path = 'admin.publishers.create';
-        $num_book = Book::count();
-        $num_category = Category::count();
-        $num_author = Author::count();
-        $num_publisher = Publisher::count();
 
-        return view('admin.publisher.create', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher'));
+        return view('admin.publisher.create', compact('path'));
     }
 
     /**
@@ -51,7 +43,7 @@ class AdminPublisherController extends Controller
 
         Publisher::create($validated);
 
-        return redirect()->route('admin.publishers.index')->with('success', 'Publisher is Created!');
+        return redirect()->back()->with('success', 'Publisher is Created!');
     }
 
     /**

@@ -51,7 +51,7 @@ class AdminAuthorController extends Controller
 
         Author::create($validated);
 
-        return redirect()->route('admin.authors.index')->with('success', 'Author is Created!');
+        return redirect()->back()->with('success', 'Author is Created!');
     }
 
     /**

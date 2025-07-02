@@ -16,7 +16,7 @@
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="/customer_plugin/css/responsive.css">
    </head>
-   <body>
+   <body class="sidebar-main">
       <!-- loader Start -->
       <div id="loading">
          <div id="loading-center">

@@ -63,7 +63,7 @@ class AuthCustomerController extends Controller
     public function chgpw(Request $request) {
         $request->validate([
             'old_password' => 'required|string',
-            'password' => 'required|string|min:8|confirmed'
+            'password' => 'required|string|min:1|confirmed'
         ]);
 
         $customer = Customer::whereKey(auth('customers')->user()->id)->first();

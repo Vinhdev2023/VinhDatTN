@@ -86,7 +86,7 @@ class AdminBookController extends Controller
             ]);
         }
 
-        return redirect()->route('admin.books.index')->with('success', 'Book is Created');
+        return redirect()->route('admin.books.show', $book->id)->with('success', 'Book is Created');
     }
 
     /**
@@ -110,10 +110,6 @@ class AdminBookController extends Controller
     public function edit(Book $book)
     {
         $path = 'admin.books.edit';
-        $num_book = Book::count();
-        $num_category = Category::count();
-        $num_author = Author::count();
-        $num_publisher = Publisher::count();
         
         $categories = Category::all();
         $authors = Author::all();
@@ -122,7 +118,7 @@ class AdminBookController extends Controller
         $book->load('author');
         $book->load('publisher');
         
-        return view('admin.book.edit', compact('path', 'num_book', 'num_category', 'num_author', 'num_publisher', 'categories', 'authors', 'publishers', 'book'));
+        return view('admin.book.edit', compact('path', 'categories', 'authors', 'publishers', 'book'));
     }
 
     /**

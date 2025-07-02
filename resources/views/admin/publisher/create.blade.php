@@ -1,7 +1,7 @@
 <x-admin.layout :page="'not-login-page'">
     <x-admin.preloader/>
     <x-admin.navbar/>
-    <x-admin.main-sidebar-container :path="$path" :numbook="$num_book" :numcategory="$num_category" :numauthor="$num_author" :numpublisher="$num_publisher"/>
+    <x-admin.main-sidebar-container :path="$path"/>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -52,6 +52,11 @@
                         @endforeach
                     </ul>
                 </x-admin.alert-danger>
+            @endif
+            @if (session('success'))
+                <x-admin.alert-success>
+                    {{ session('success') }}
+                </x-admin.alert-success>
             @endif
         </x-admin.main-content>
     </div>
