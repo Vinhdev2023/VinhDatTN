@@ -13,12 +13,16 @@ class AdminOrderController extends Controller
         $path = 'admin.orders.index';
 
         $orders = Order::orderByRaw('CASE 
-                        WHEN status = "PENDING" THEN 1 
-                        WHEN STATUS = "CONFIRMED" THEN 2
+                        WHEN status = "PENDING" THEN 2 
+                        WHEN STATUS = "CONFIRMED" THEN 1
                         WHEN STATUS = "COMPLETED" THEN 3
                         ELSE 4 
-                    END, 
-                    updated_at DESC')->get();
+                    END, created_at ASC
+                    ')
+                    ->select('*')
+                    ->selectRaw('DATE_FORMAT(created_at, "%d/%m/%Y") AS created_at_date')
+                    ->selectRaw('DATE_FORMAT(created_at, "%H:%i:%s") AS created_at_time')
+                    ->get();
         $orders->load('customer');
 
         return view('admin.order.index', compact('path','orders'));
@@ -103,7 +107,10 @@ class AdminOrderController extends Controller
     public function filter($status) {
         $path = 'admin.orders.filter';
 
-        $orders = Order::where('status',$status)->orderBy('updated_at','desc')->get();
+        $orders = Order::where('status',$status)
+            ->select('*')
+            ->selectRaw('DATE_FORMAT(created_at, "%d/%m/%Y") AS created_at_date')
+            ->orderBy('updated_at','desc')->get();
 
         return view('admin.order.index', compact('path','orders'));
     }

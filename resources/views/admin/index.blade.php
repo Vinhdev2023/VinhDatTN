@@ -35,7 +35,7 @@
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="{{ route('admin.orders.filter','PENDING') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -81,6 +81,21 @@
                                 <i class="ion ion-pie-graph"></i>
                             </div>
                             <a href="{{ route('admin.statistics') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ number_format($orders_in_day,0,',','.') }}</h3>
+
+                                <p>Các đơn hàng mới trong ngày hôm nay</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

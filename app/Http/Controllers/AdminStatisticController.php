@@ -199,54 +199,46 @@ class AdminStatisticController extends Controller
         }
 
         $books = DB::table('books as b')
-                    ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
-                    ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
-                    ->leftJoin('classifyings','b.id','=','classifyings.book_id')
-                    ->leftJoin('categories','classifyings.category_id','=','categories.id')
-                    ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
-                    ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
-                    ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
-                    ->select(
-                        'b.id as book_id',
-                        'b.title as book_title',
-                        'b.image as book_image',
-                        'b.quantity as book_quantity_in_stock',
-                        'b.deleted_at as book_deleted_at',
-                        DB::raw("
-                            COALESCE(
-                                SUM(
-                                    CASE 
-                                        WHEN o.status = 'COMPLETED' 
-                                        AND DATE(o.created_at) BETWEEN '$StartDate' AND '$EndDate'
-                                        THEN od.quantity 
-                                        ELSE 0 
-                                    END
-                                ), 0
-                            ) as total_sold
-                        ")
-                    )
-                    ->whereRaw($sqlLike)
-                    ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
-                    ->orderByDesc('total_sold')->orderBy('b.created_at')
-                    ->havingRaw('book_id IS NOT NULL '.$sqlHaving)
-                    ->paginate(5)
-                    ->appends([
-                        'FromDateToDate' => $dateInput, 
-                        'price' => $fillter_price, 
-                        'category' => $fillter_category, 
-                        'publisher' => $fillter_publisher, 
-                        'author' => $fillter_author, 
-                        'quantity' => $fillter_quantity, 
-                        'quantity_sold' => $fillter_quantity_sold,
-                        'search' => $search
-                    ]);
+            ->leftJoin('classifyings', 'b.id', '=', 'classifyings.book_id')
+            ->leftJoin('categories', 'classifyings.category_id', '=', 'categories.id')
+            ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
+            ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+            ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
+            ->select(
+                'b.id as book_id',
+                'b.title as book_title',
+                'b.image as book_image',
+                'b.quantity as book_quantity_in_stock',
+                'b.deleted_at as book_deleted_at',
+                DB::raw('COALESCE((
+                    SELECT SUM(DISTINCT od2.quantity)
+                    FROM order_details od2
+                    JOIN orders o2 ON od2.order_id = o2.id
+                    WHERE od2.book_id = b.id 
+                        AND o2.status = \'COMPLETED\'
+                        AND DATE(o2.created_at) BETWEEN \''.$StartDate.'\' AND \''.$EndDate.'\'
+                ), 0) as total_sold')
+            )
+            ->whereRaw($sqlLike)
+            ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
+            ->havingRaw('book_id IS NOT NULL '.$sqlHaving)
+            ->orderByDesc('total_sold')->orderBy('b.created_at')
+            ->paginate(5)
+            ->appends([
+                'FromDateToDate' => $dateInput, 
+                'price' => $fillter_price, 
+                'category' => $fillter_category, 
+                'publisher' => $fillter_publisher, 
+                'author' => $fillter_author, 
+                'quantity' => $fillter_quantity, 
+                'quantity_sold' => $fillter_quantity_sold,
+                'search' => $search
+            ]);
         
         $total = DB::table(
                 DB::table('books as b')
-                        ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
-                        ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
-                        ->leftJoin('classifyings','b.id','=','classifyings.book_id')
-                        ->leftJoin('categories','classifyings.category_id','=','categories.id')
+                        ->leftJoin('classifyings', 'b.id', '=', 'classifyings.book_id')
+                        ->leftJoin('categories', 'classifyings.category_id', '=', 'categories.id')
                         ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
                         ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
                         ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
@@ -256,18 +248,14 @@ class AdminStatisticController extends Controller
                             'b.image as book_image',
                             'b.quantity as book_quantity_in_stock',
                             'b.deleted_at as book_deleted_at',
-                            DB::raw("
-                                COALESCE(
-                                    SUM(
-                                        CASE 
-                                            WHEN o.status = 'COMPLETED' 
-                                            AND DATE(o.created_at) BETWEEN '$StartDate' AND '$EndDate'
-                                            THEN od.quantity 
-                                            ELSE 0 
-                                        END
-                                    ), 0
-                                ) as total_sold
-                            ")
+                            DB::raw('COALESCE((
+                                SELECT SUM(DISTINCT od2.quantity)
+                                FROM order_details od2
+                                JOIN orders o2 ON od2.order_id = o2.id
+                                WHERE od2.book_id = b.id 
+                                    AND o2.status = \'COMPLETED\'
+                                    AND DATE(o2.created_at) BETWEEN \''.$StartDate.'\' AND \''.$EndDate.'\'
+                            ), 0) as total_sold')
                         )
                         ->whereRaw($sqlLike)
                         ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
@@ -329,11 +317,9 @@ class AdminStatisticController extends Controller
                 ->selectRaw('SUM(total) AS total')->first()->total;
             if($total == null){
                 $total = 0;
-            } else {
-                $total = number_format($total,0,',','.');
             }
             $dataDateTotal[] = [$num, $total];
-            $dataDate[] = [$num, date_format($date, 'd-m-Y')];
+            $dataDate[] = [$num, date_format($date, 'd-m-Y'), number_format($total,0,',','.')];
             $date = date_add($date, date_interval_create_from_date_string('1 day'));
         }
 
@@ -372,101 +358,54 @@ class AdminStatisticController extends Controller
 
     private function books_sold($startDate, $endDate) {
         $statistics = DB::table('books as b')
-                        ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
-                        ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
-                        ->leftJoin('classifyings','b.id','=','classifyings.book_id')
-                        ->leftJoin('categories','classifyings.category_id','=','categories.id')
-                        ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
-                        ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
-                        ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
-                        ->select(
-                            'b.id as book_id',
-                            'b.title as book_title',
-                            'b.image as book_image',
-                            'b.quantity as book_quantity_in_stock',
-                            'b.deleted_at as book_deleted_at',
-                            DB::raw("
-                                COALESCE(
-                                    SUM(
-                                        CASE 
-                                            WHEN o.status = 'COMPLETED' 
-                                            AND DATE(o.created_at) BETWEEN '$startDate' AND '$endDate'
-                                            THEN od.quantity 
-                                            ELSE 0 
-                                        END
-                                    ), 0
-                                ) as total_sold
-                            ")
-                        )
-                        ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
-                        ->orderByDesc('total_sold')->orderBy('b.created_at')
-                        ->paginate(5);
+            ->leftJoin('classifyings', 'b.id', '=', 'classifyings.book_id')
+            ->leftJoin('categories', 'classifyings.category_id', '=', 'categories.id')
+            ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
+            ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+            ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
+            ->select(
+                'b.id as book_id',
+                'b.title as book_title',
+                'b.image as book_image',
+                'b.quantity as book_quantity_in_stock',
+                'b.deleted_at as book_deleted_at',
+                DB::raw('COALESCE((
+                    SELECT SUM(DISTINCT od2.quantity)
+                    FROM order_details od2
+                    JOIN orders o2 ON od2.order_id = o2.id
+                    WHERE od2.book_id = b.id 
+                        AND o2.status = \'COMPLETED\'
+                        AND DATE(o2.created_at) BETWEEN \''.$startDate.'\' AND \''.$endDate.'\'
+                ), 0) as total_sold')
+            )
+            ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
+            ->orderByDesc('total_sold')->orderBy('b.created_at')
+            ->paginate(5);
 
         $total = DB::table(DB::table('books as b')
-                        ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
-                        ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
-                        ->leftJoin('classifyings','b.id','=','classifyings.book_id')
-                        ->leftJoin('categories','classifyings.category_id','=','categories.id')
-                        ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
-                        ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
-                        ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
-                        ->select(
-                            'b.id as book_id',
-                            'b.title as book_title',
-                            'b.image as book_image',
-                            'b.quantity as book_quantity_in_stock',
-                            'b.deleted_at as book_deleted_at',
-                            DB::raw("
-                                COALESCE(
-                                    SUM(
-                                        CASE 
-                                            WHEN o.status = 'COMPLETED' 
-                                            AND DATE(o.created_at) BETWEEN '$startDate' AND '$endDate'
-                                            THEN od.quantity 
-                                            ELSE 0 
-                                        END
-                                    ), 0
-                                ) as total_sold
-                            ")
-                        )
-                        ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at'))
-                        ->selectRaw('SUM(total_sold) as total')->first();
+            ->leftJoin('classifyings', 'b.id', '=', 'classifyings.book_id')
+            ->leftJoin('categories', 'classifyings.category_id', '=', 'categories.id')
+            ->leftJoin('writings', 'b.id', '=', 'writings.book_id')
+            ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
+            ->leftJoin('publishers', 'b.publisher_id', '=', 'publishers.id')
+            ->select(
+                'b.id as book_id',
+                'b.title as book_title',
+                'b.image as book_image',
+                'b.quantity as book_quantity_in_stock',
+                'b.deleted_at as book_deleted_at',
+                DB::raw('COALESCE((
+                    SELECT SUM(DISTINCT od2.quantity)
+                    FROM order_details od2
+                    JOIN orders o2 ON od2.order_id = o2.id
+                    WHERE od2.book_id = b.id 
+                        AND o2.status = \'COMPLETED\'
+                        AND DATE(o2.created_at) BETWEEN \''.$startDate.'\' AND \''.$endDate.'\'
+                ), 0) as total_sold')
+            )
+            ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at'))
+            ->selectRaw('SUM(total_sold) as total')->first();
 
         return [$statistics, $total];
-    }
-
-    private function books_sold_have_date($startDate, $endDate, $dateInput) {
-        $statistics = DB::table('books as b')
-                        ->leftJoin('order_details as od', 'b.id', '=', 'od.book_id')
-                        ->leftJoin('orders as o', 'od.order_id', '=', 'o.id')
-                        ->leftJoin('classifyings','books.id','=','classifyings.book_id')
-                        ->leftJoin('categories','classifyings.category_id','=','categories.id')
-                        ->leftJoin('writings', 'books.id', '=', 'writings.book_id')
-                        ->leftJoin('authors', 'writings.author_id', '=', 'authors.id')
-                        ->leftJoin('publishers', 'books.publisher_id', '=', 'publishers.id')
-                        ->select(
-                            'b.id as book_id',
-                            'b.title as book_title',
-                            'b.image as book_image',
-                            'b.quantity as book_quantity_in_stock',
-                            'b.deleted_at as book_deleted_at',
-                            DB::raw("
-                                COALESCE(
-                                    SUM(
-                                        CASE 
-                                            WHEN o.status = 'COMPLETED' 
-                                            AND DATE(o.created_at) BETWEEN '$startDate' AND '$endDate'
-                                            THEN od.quantity 
-                                            ELSE 0 
-                                        END
-                                    ), 0
-                                ) as total_sold
-                            ")
-                        )
-                        ->groupBy('b.id', 'b.title', 'b.image', 'b.quantity', 'b.deleted_at')
-                        ->orderByDesc('total_sold')->orderBy('b.created_at')
-                        ->paginate(5)->appends(['FromDateToDate' => $dateInput]);
-        
-        return $statistics;
     }
 }

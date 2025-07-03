@@ -159,7 +159,7 @@
                 }).appendTo('body')
                 $('#line-chart').bind('plothover', function (event, pos, item) {
                     if (item) {
-                        $('#line-chart-tooltip').html(sin[item.dataIndex][1] + ' VND in ' + date[item.dataIndex][1])
+                        $('#line-chart-tooltip').html(date[item.dataIndex][2] + ' VND in ' + date[item.dataIndex][1])
                             .css({
                                 top : item.pageY + 5,
                                 left: item.pageX + 5

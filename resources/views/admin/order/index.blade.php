@@ -37,6 +37,7 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
+                                        <th>Thời điểm</th>
                                         <th>Tên Khách hàng</th>
                                         <th>Số điện thoại</th>
                                         <th>Trạng thái</th>
@@ -47,6 +48,7 @@
                                 <tbody>
                                     @foreach ($orders as $item)
                                         <tr>
+                                            <td>{{ $item->created_at_date }} lúc {{ $item->created_at_time }}</td>
                                             <td>{{ $item->customer_name }}</td>
                                             <td>{{ $item->customer_phone }}</td>
                                             <td>
@@ -76,6 +78,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
+                                        <th>Thời điểm</th>
                                         <th>Tên Khách hàng</th>
                                         <th>Số điện thoại</th>
                                         <th>Trạng thái</th>
