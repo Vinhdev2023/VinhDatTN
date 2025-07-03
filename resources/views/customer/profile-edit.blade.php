@@ -16,7 +16,7 @@
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="/customer_plugin/css/responsive.css">
 </head>
-<body class="sidebar-main-active right-column-fixed">
+<body class="sidebar-main">
    <!-- loader Start -->
    <div id="loading">
       <div id="loading-center">
@@ -96,7 +96,7 @@
                                  <div class="iq-card">
                                     <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
                                        <div class="iq-header-title">
-                                          <h4 class="card-title mb-0">Personal Details</h4>
+                                          <h4 class="card-title mb-0">Thông tin cá nhân cơ bản</h4>
                                        </div>
                                     </div>
                                     <div class="iq-card-body">
@@ -159,7 +159,7 @@
                                  <div class="iq-card">
                                     <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
                                        <div class="iq-header-title">
-                                          <h4 class="card-title mb-0">Order List</h4>
+                                          <h4 class="card-title mb-0">danh sách đơn hàng đã đặt</h4>
                                        </div>
                                     </div>
                                     <div class="iq-card-body">
@@ -180,10 +180,6 @@
                                        </ul>
                                     </div>
                                  </div>
-                              </div>
-                              <div class="col-12 col-md-12 col-lg-4"></div>
-                              <div class="col-12 col-md-12 col-lg-8">
-                                 {{ $orders->links('customer.pagination') }}
                               </div>
                            </div>
                         </div>

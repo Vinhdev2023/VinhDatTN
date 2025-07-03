@@ -64,7 +64,7 @@ class Customer extends Controller
             ->selectRaw('DATE_FORMAT(created_at, "%d/%m/%Y") AS created_at_date')
             ->selectRaw('DATE_FORMAT(created_at, "%H:%i:%s") AS created_at_time')
             ->orderByDesc('created_at')
-            ->paginate(10);
+            ->limit(10)->get();
         
         return view('customer.profile-edit', ['orders' => $orders]);
     }
